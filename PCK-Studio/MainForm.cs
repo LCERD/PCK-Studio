@@ -86,7 +86,7 @@ namespace PckStudio
 
         private bool TryOpenPck(string filepath, out PackInfo packInfo)
         {
-            if (!File.Exists(filepath) || !filepath.EndsWith(".pck"))
+            if (!File.Exists(filepath))
             {
                 packInfo = PackInfo.Empty;
                 return false;
@@ -127,7 +127,7 @@ namespace PckStudio
 
         private void AddEditorPage(string filepath)
         {
-            if (!File.Exists(filepath) && !filepath.EndsWith(".pck"))
+            if (!File.Exists(filepath))
             {
                 Trace.TraceError($"[{nameof(AddEditorPage)}] Invalid filepath({filepath})");
                 return;
