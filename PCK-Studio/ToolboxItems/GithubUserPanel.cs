@@ -42,23 +42,50 @@ namespace PckStudio.ToolboxItems
 
         private void LoadAuthor()
         {
-            // TODO: find a better way to check if the avatar has changed since last cache.
-            string cacheKey = Convert.ToBase64String(Encoding.Default.GetBytes(_contributor.AvatarUrl));
+            // This should fix avatars not updating when changed on GitHub :3
+            // Cache by stable user id, not by URL
+            string cacheKey = $"gh-avatar-{_contributor.Id}";
+            string cachedPath = ApplicationScope.DataCacher.GetCachedFilepath(cacheKey);
 
-            if (!ApplicationScope.DataCacher.HasFileCached(cacheKey))
+            // Refresh avatars periodically
+            bool needsRefresh = true;
+            if (ApplicationScope.DataCacher.HasFileCached(cacheKey))
+            {
+                try
+                {
+                    var age = DateTime.UtcNow - File.GetLastWriteTimeUtc(cachedPath);
+                    needsRefresh = age > TimeSpan.FromDays(1); // refresh daily
+                }
+                catch
+                {
+                    needsRefresh = true;
+                }
+            }
+            if (needsRefresh)
             {
                 using (WebClient webClient = new WebClient())
                 {
-                    Stream avatarImgStream = webClient.OpenRead(_contributor.AvatarUrl);
-                    MemoryStream ms = new MemoryStream();
-                    new Bitmap(avatarImgStream).Save(ms, ImageFormat.Png);
-                    avatarImgStream.Flush();
-                    avatarImgStream.Dispose();
-                    ApplicationScope.DataCacher.Cache(ms.ToArray(), cacheKey);
+                    webClient.Headers.Add(HttpRequestHeader.CacheControl, "no-cache");
+                    webClient.Headers.Add(HttpRequestHeader.Pragma, "no-cache");
+                    webClient.Headers.Add(HttpRequestHeader.UserAgent, "PckStudio");
+
+                    string url = _contributor.AvatarUrl;
+                    string sep = url.Contains("?") ? "&" : "?";
+                    string fetchUrl = url + sep + "cb=" + DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+
+                    byte[] bytes = webClient.DownloadData(fetchUrl);
+                    ApplicationScope.DataCacher.Cache(bytes, cacheKey);
+                    cachedPath = ApplicationScope.DataCacher.GetCachedFilepath(cacheKey);
                 }
             }
 
-            Image avatarUserImg = Image.FromFile(ApplicationScope.DataCacher.GetCachedFilepath(cacheKey));
+            // Load without locking the file on disk
+            Image avatarUserImg;
+            using (var fs = new FileStream(cachedPath, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var temp = Image.FromStream(fs))
+            {
+                avatarUserImg = (Image)temp.Clone();
+            }
 
             Action setUiElements = () =>
             {

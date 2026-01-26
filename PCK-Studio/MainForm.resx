@@ -1318,7 +1318,7 @@
     <value>False</value>
   </data>
   <data name="fullBoxSupportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="fullBoxSupportToolStripMenuItem.Text" xml:space="preserve">
     <value>Full Box Support</value>
@@ -1571,7 +1571,7 @@
 </value>
   </data>
   <data name="openPckManagerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="openPckManagerToolStripMenuItem.Text" xml:space="preserve">
     <value>Pck Manager</value>
@@ -1589,7 +1589,7 @@
     <value>Binka -&gt; Wav</value>
   </data>
   <data name="convertMusicFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="convertMusicFilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Audio Converter</value>
@@ -4025,7 +4025,7 @@
     <value>True</value>
   </data>
   <data name="LittleEndianCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1014, 14</value>
+    <value>1014, 13</value>
   </data>
   <data name="LittleEndianCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
