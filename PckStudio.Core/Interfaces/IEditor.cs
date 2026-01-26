@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OMI.Formats.Pck;
 
 namespace PckStudio.Interfaces
 {
-    public interface IEditor<T> where T : class
+    public interface IEditor<T> where T : notnull
     {
+        string TitleName { get; }
+
         T EditorValue { get; }
 
         ISaveContext<T> SaveContext { get; }
 
-        void Save();
+        void SetSaveContext(ISaveContext<T> saveContext);
 
-        void SaveAs();
+        void Save();
 
         void Close();
 

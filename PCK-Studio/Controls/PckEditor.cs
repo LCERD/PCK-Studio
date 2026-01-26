@@ -52,9 +52,6 @@ namespace PckStudio.Controls
 {
     internal partial class PckEditor : EditorControl<PackInfo>
     {
-
-        private string _location = string.Empty;
-
         private readonly OMI.ByteOrder _originalEndianness;
         private OMI.ByteOrder _currentEndianness;
         private bool __modified = false;
@@ -78,8 +75,8 @@ namespace PckStudio.Controls
 
         private readonly Dictionary<PckAssetType, Action<PckAsset>> _pckAssetTypeHandler;
 
-        public PckEditor(PackInfo packInfo, ISaveContext<PackInfo> saveContext)
-            : base(packInfo, saveContext)
+        public PckEditor(string name, PackInfo packInfo, ISaveContext<PackInfo> saveContext)
+            : base(name, packInfo, saveContext)
         {
             InitializeComponent();
             _onModifiedChangeDelegate = OnModify;
@@ -140,26 +137,13 @@ namespace PckStudio.Controls
                 [PckAssetType.MaterialFile] = HandleMaterialFile,
             };
         }
-        
-        public new void Save()
+
+        protected override void PostSave()
         {
-            base.Save();
             _timesSaved++;
             _wasModified = false;
-        }
-
-        public override void SaveAs()
-        {
-            using SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "PCK (Minecraft Console Package)|*.pck",
-                DefaultExt = ".pck",
-            };
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                SaveTo(saveFileDialog.FileName);
-                pckFileLabel.Text = "Current PCK File: " + Path.GetFileName(_location);
-            }
+            MessageBox.Show("Pck Saved.", "Saved");
+            Debug.WriteLine($"_timesSaved: {_timesSaved}");
         }
 
         public override void Close()
@@ -178,12 +162,6 @@ namespace PckStudio.Controls
             BuildMainTreeView();
         }
 
-        private void SaveTo(string filepath)
-        {
-            _location = filepath;
-            Save();
-        }
-
         private void HandleInnerPckFile(PckAsset asset)
         {
             if (asset.Type != PckAssetType.SkinDataFile && asset.Type != PckAssetType.TexturePackInfoFile || asset.Size <= 0 || !Settings.Default.LoadSubPcks)
@@ -199,7 +177,7 @@ namespace PckStudio.Controls
             });
 
             string caption = Path.GetFileName(asset.Filename);
-            string identifier = _location + Path.GetFileName(asset.Filename);
+            string identifier = TitleName + Path.GetFileName(asset.Filename);
             PckFile pckFile = asset.GetData(new PckFileReader(_originalEndianness));
             PackInfo packInfo = PackInfo.Create(pckFile, _originalEndianness, false);
 
@@ -1313,7 +1291,8 @@ namespace PckStudio.Controls
                 return;
             }
 
-            if (string.IsNullOrEmpty(_location))
+            // TODO: ! -null
+            if (true)
             {
                 MessageBox.Show(this, "You must save your pck before creating or opening a music cues PCK file", "Can't create audio.pck");
                 return;

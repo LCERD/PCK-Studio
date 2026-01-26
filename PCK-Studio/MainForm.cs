@@ -30,7 +30,8 @@ namespace PckStudio
 {
 	public partial class MainForm : MetroFramework.Forms.MetroForm
 	{
-		private PckManager PckManager = null;
+        private const string DEFAULT_PCK_SAVECONTEXT_DESCRIPTION = "PCK (Minecraft Console Package)";
+        private PckManager PckManager = null;
 
         private Dictionary<string, TabPage> openTabPages = new Dictionary<string, TabPage>();
 
@@ -67,14 +68,14 @@ namespace PckStudio
                 tabControl.SelectTab(openTabPages[identifier]);
                 return;
             }
-            var editor = new PckEditor(packInfo, saveContext);
+            var editor = new PckEditor(caption, packInfo: packInfo, saveContext: saveContext);
             AddPage(caption, identifier, editor);
         }
 
         private void AddEditorPage(string caption, string identifier, PackInfo packInfo, ISaveContext<PackInfo> saveContext = null)
         {
-            saveContext ??= GetDefaultSaveContext("./new.pck", "PCK (Minecraft Console Package)");
-            var editor = new PckEditor(packInfo, saveContext);
+            saveContext ??= GetDefaultSaveContext("./new.pck", DEFAULT_PCK_SAVECONTEXT_DESCRIPTION);
+            var editor = new PckEditor("New Pack", packInfo: packInfo, saveContext: saveContext);
             AddPage(caption, identifier, editor);
         }
 
@@ -142,8 +143,8 @@ namespace PckStudio
 
             if (TryOpenPck(filepath, out PackInfo packInfo))
             {
-                ISaveContext<PackInfo> saveContext = GetDefaultSaveContext(filepath, "PCK (Minecraft Console Package)");
-                var editor = new PckEditor(packInfo, saveContext);
+                ISaveContext<PackInfo> saveContext = GetDefaultSaveContext(filepath, DEFAULT_PCK_SAVECONTEXT_DESCRIPTION);
+                var editor = new PckEditor(Path.GetFileNameWithoutExtension(filepath), packInfo: packInfo, saveContext: saveContext);
                 TabPage page = AddPage(Path.GetFileName(filepath), filepath, editor);
                 return;
             }
@@ -152,7 +153,7 @@ namespace PckStudio
 
         private static ISaveContext<PackInfo> GetDefaultSaveContext(string filepath, string description)
         {
-            return new DelegatedFileSaveContext<PackInfo>(filepath, false, new FileDialogFilter(description, "*"+Path.GetExtension(filepath)),(packInfo, stream) => new PckFileWriter(packInfo.File, packInfo.Endianness).WriteToStream(stream));
+            return new DelegatedFileSaveContext<PackInfo>(filepath, false,(packInfo, stream) => new PckFileWriter(packInfo.File, packInfo.Endianness).WriteToStream(stream));
         }
 
         private TabPage AddPage(string caption, string identifier, Control control)
@@ -165,6 +166,7 @@ namespace PckStudio
             page.Name = identifier;
             page.Controls.Add(control);
             tabControl.TabPages.Add(page);
+            openTabPages.Add(identifier, page);
             tabControl.SelectTab(page);
             return page;
         }
@@ -297,7 +299,7 @@ namespace PckStudio
 		{
             using var ofd = new OpenFileDialog();
             ofd.CheckFileExists = true;
-            ofd.Filter = "PCK (Minecraft Console Package)|*.pck";
+            ofd.Filter = $"{DEFAULT_PCK_SAVECONTEXT_DESCRIPTION}|*.pck";
             if (ofd.ShowDialog(this) == DialogResult.OK)
             {
                 LoadPckFromFile(ofd.FileName);
@@ -542,11 +544,21 @@ namespace PckStudio
             }
         }
 
-		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
             if (TryGetCurrentEditor(out IEditor<PackInfo> editor))
             {
-                editor.SaveAs();
+                using SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    FileName = editor.TitleName,
+                    Filter = "PCK (Minecraft Console Package)|*.pck",
+                    DefaultExt = ".pck",
+                };
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+                
+                editor.SetSaveContext(GetDefaultSaveContext(saveFileDialog.FileName, DEFAULT_PCK_SAVECONTEXT_DESCRIPTION));
+                editor.Save();
             }
         }
 
