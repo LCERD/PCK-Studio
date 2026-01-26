@@ -1291,13 +1291,6 @@ namespace PckStudio.Controls
                 return;
             }
 
-            // TODO: ! -null
-            if (true)
-            {
-                MessageBox.Show(this, "You must save your pck before creating or opening a music cues PCK file", "Can't create audio.pck");
-                return;
-            }
-
             PckAudioFile newAudioFile = CreateNewAudioFile();
             PckAsset newAudioAsset = CreateNewAudioAsset(LittleEndianCheckBox.Checked, newAudioFile);
 
