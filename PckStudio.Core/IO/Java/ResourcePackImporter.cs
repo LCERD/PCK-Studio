@@ -752,7 +752,22 @@ namespace PckStudio.Core.IO.Java
             if (javaGui.TryGetValue("title/minecraft.png", out ZipArchiveEntry minecraftLogo))
                 skinPlatform.SetSymbol("MenuTitle", minecraftLogo.GetImage());
 
+            static void UpdateScale(string name, FourjUserInterface fui, FuiTimeline timeline, Size scale)
+            {
+                foreach (FuiTimelineEvent evnt in fui.GetEventTimeline(timeline.FindNamedEvent(name)).Frames[0].Events)
+                {
+                    System.Numerics.Matrix3x2 mat = evnt.Matrix;
+                    mat.M11 /= scale.Width;
+                    mat.M22 /= scale.Height;
+                    evnt.Matrix = mat;
+                }
+            }
+
             FuiTimeline hudTimeline = skinHud.GetNamedTimeline("fourj.FJ_Hud");
+            FuiTimeline fjHotbarOffhandSlot = skinHud.GetNamedTimeline("FJ_HotbarOffhandSlot");
+            FuiTimeline fjCrosshair = skinHud.GetNamedTimeline("FJ_Crosshair");
+
+            int ref_index = skinHud.GetReferenceIndex("hotbar_item_back");
 
             // base size : 256x256
             if (javaGui.TryGetValue("widgets.png", out ZipArchiveEntry widgetsEntry))
@@ -768,10 +783,12 @@ namespace PckStudio.Core.IO.Java
                 skinGraphicsHud.SetSymbol("hotbar_item_selected", hotbarItemSelectedTexture);
                 skinGraphicsHud.SetSymbol("hotbar_offhand_slot", hotbarOffhandSlotTexture);
 
+                fjHotbarOffhandSlot.Frames[0].Events[0].Matrix = System.Numerics.Matrix3x2.CreateScale(2f / scale.Width, 2f / scale.Height);
+
                 FuiTimelineEvent fuiTimelineEvent = hudTimeline.FindNamedEvent("HotBar");
                 FuiTimeline eventTimelineHotbar = skinHud.GetEventTimeline(fuiTimelineEvent);
-                // event 0 is a ref named "hotbar_item_back"
-                eventTimelineHotbar.Frames[0].Events[0].Matrix = System.Numerics.Matrix3x2.CreateScale(3f / scale.Width, 3f / scale.Height);
+
+                eventTimelineHotbar.FindEventByReferenceId(refId: ref_index).Matrix = System.Numerics.Matrix3x2.CreateScale(3f / scale.Width, 3f / scale.Height);
                 eventTimelineHotbar.FindNamedEvent("HotbarSelector").Matrix *= System.Numerics.Matrix3x2.CreateScale(1f / scale.Width, 1f / scale.Height);
             }
 
@@ -784,16 +801,20 @@ namespace PckStudio.Core.IO.Java
                 Size baseSize = new Size(256, 256);
                 Size targetSize = iconsTexture.Size;
                 Size scale = new Size(Math.Max(targetSize.Width / baseSize.Width, 1), Math.Max(targetSize.Height / baseSize.Height, 1));
-                
-                skinHud.GetEventTimeline(hudTimeline.FindNamedEvent("FJ_ArmourBar")).Frames[0].Events[0].Matrix *= System.Numerics.Matrix3x2.CreateScale(1f / scale.Width, 1f / scale.Height);
-                skinHud.GetEventTimeline(hudTimeline.FindNamedEvent("ExpBar")).Frames[0].Events[0].Matrix *= System.Numerics.Matrix3x2.CreateScale(1f / scale.Width, 1f / scale.Height);
-                skinHud.GetEventTimeline(hudTimeline.FindNamedEvent("FJ_FoodBar")).Frames[0].Events[0].Matrix *= System.Numerics.Matrix3x2.CreateScale(1f / scale.Width, 1f / scale.Height);
 
-                DebugEx.WriteLine(skinHud.GetEventTimeline(hudTimeline.FindNamedEvent("FJ_ArmourBar")).Frames[0].Events);
-                DebugEx.WriteLine(skinHud.GetEventTimeline(hudTimeline.FindNamedEvent("ExpBar")).Frames[0].Events);
-                DebugEx.WriteLine(skinHud.GetEventTimeline(hudTimeline.FindNamedEvent("FJ_FoodBar")).Frames[0].Events);
-         
+                UpdateScale("FJ_ArmourBar", skinHud, hudTimeline, scale);
+
+                UpdateScale("FJ_HealthBar", skinHud, hudTimeline, scale);
+                UpdateScale("FJ_HealthAbsorbBar", skinHud, hudTimeline, scale);
+
+                UpdateScale("FJ_AirBar", skinHud, hudTimeline, scale);
+
+                UpdateScale("FJ_FoodBar", skinHud, hudTimeline, scale);
+
+                UpdateScale("ExpBar", skinHud, hudTimeline, scale);
+
                 skinGraphicsHud.SetSymbol("HUD_Crosshair", iconsTexture.GetArea(0, 0, 15, 15, scale));
+                UpdateScale("Crosshair", skinHud, fjCrosshair, scale);
 
                 skinGraphicsHud.SetSymbol("experience_bar_empty", iconsTexture.GetArea(0, 64, 182, 5, scale));
 
