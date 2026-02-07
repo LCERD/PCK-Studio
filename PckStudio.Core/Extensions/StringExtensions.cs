@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PckStudio.Core.Extensions
 {
-    internal static class StringExtensions
+    public static class StringExtensions
     {
 
         public static string End(this string str, int count)

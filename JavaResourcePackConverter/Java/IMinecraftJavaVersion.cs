@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     interface IMinecraftJavaVersion : IEquatable<Version>
     {

@@ -752,6 +752,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JavaResourcePackConverter\JavaResourcePackConverter.csproj">
+      <Project>{9d4ce14a-0e13-44d7-a803-9f6e13b8a3b7}</Project>
+      <Name>JavaResourcePackConverter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PckStudio.Core\PckStudio.Core.csproj">
       <Project>{345eabed-f0d1-4d04-b409-babdef747352}</Project>
       <Name>PckStudio.Core</Name>

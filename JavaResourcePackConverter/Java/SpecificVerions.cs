@@ -1,7 +1,7 @@
 ﻿using System;
 using PckStudio.Core.Extensions;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     class SpecificVerions(params Version[] versions) : IMinecraftJavaVersion
     {

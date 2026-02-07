@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using Newtonsoft.Json;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     public struct McPack
     {

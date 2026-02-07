@@ -5,18 +5,22 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Numerics;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OMI.Formats.Archive;
 using OMI.Formats.FUI;
 using OMI.Workers.FUI;
+using PckStudio.Core;
 using PckStudio.Core.Deserializer;
 using PckStudio.Core.DLC;
 using PckStudio.Core.Extensions;
+using PckStudio.Core.IO.Java;
 using PckStudio.Core.Json;
 using PckStudio.Core.Properties;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     public class ResourcePackImporter
     {
@@ -25,32 +29,32 @@ namespace PckStudio.Core.IO.Java
 
         static readonly IReadOnlyDictionary<Version, IMinecraftJavaVersion> _formatVeriosnToGameVersion = new Dictionary<Version, IMinecraftJavaVersion>()
         {
-            [new (1, 0)] = new VersionRange("1.6.1", "1.8.9"),
-            [new (2, 0)] = new VersionRange("1.9", "1.10.2"),
-            [new (3, 0)] = new VersionRange("1.11", "1.12.2"),
+            [new(1, 0)] = new VersionRange("1.6.1", "1.8.9"),
+            [new(2, 0)] = new VersionRange("1.9", "1.10.2"),
+            [new(3, 0)] = new VersionRange("1.11", "1.12.2"),
 
             // ----- TARGET ----- //
-            [new (4, 0)] = new VersionRange("1.13", "1.14.4"),
+            [new(4, 0)] = new VersionRange("1.13", "1.14.4"),
             // ------------------ //
 
-            [new (5, 0)] = new VersionRange("1.15", "1.16.1"),
-            [new (6, 0)] = new VersionRange("1.16.2", "1.16.5"),
-            [new (7, 0)] = new VersionRange("1.17", "1.17.1"),
-            [new (8, 0)] = new VersionRange("1.18", "1.18.2"),
-            [new (9, 0)] = new VersionRange("1.19", "1.19.2"),
-            [new (12, 0)] = new SingleVersion("1.19.3"),
-            [new (13, 0)] = new SingleVersion("1.19.4"),
-            [new (15, 0)] = new VersionRange("1.20", "1.20.1"),
-            [new (18, 0)] = new SingleVersion("1.20.2"),
-            [new (22, 0)] = new VersionRange("1.20.3", "1.20.4"),
-            [new (32, 0)] = new VersionRange("1.20.5", "1.20.6"),
-            [new (34, 0)] = new VersionRange("1.21", "1.21.1"),
-            [new (42, 0)] = new VersionRange("1.21.2", "1.21.3"),
-            [new (46, 0)] = new SingleVersion("1.21.4"),
-            [new (55, 0)] = new SingleVersion("1.21.5"),
-            [new (63, 0)] = new SingleVersion("1.21.6"),
-            [new (64, 0)] = new VersionRange("1.21.7", "1.21.8"),
-            [new (69, 0)] = new VersionRange("1.21.9", "1.21.10"),
+            [new(5, 0)] = new VersionRange("1.15", "1.16.1"),
+            [new(6, 0)] = new VersionRange("1.16.2", "1.16.5"),
+            [new(7, 0)] = new VersionRange("1.17", "1.17.1"),
+            [new(8, 0)] = new VersionRange("1.18", "1.18.2"),
+            [new(9, 0)] = new VersionRange("1.19", "1.19.2"),
+            [new(12, 0)] = new SingleVersion("1.19.3"),
+            [new(13, 0)] = new SingleVersion("1.19.4"),
+            [new(15, 0)] = new VersionRange("1.20", "1.20.1"),
+            [new(18, 0)] = new SingleVersion("1.20.2"),
+            [new(22, 0)] = new VersionRange("1.20.3", "1.20.4"),
+            [new(32, 0)] = new VersionRange("1.20.5", "1.20.6"),
+            [new(34, 0)] = new VersionRange("1.21", "1.21.1"),
+            [new(42, 0)] = new VersionRange("1.21.2", "1.21.3"),
+            [new(46, 0)] = new SingleVersion("1.21.4"),
+            [new(55, 0)] = new SingleVersion("1.21.5"),
+            [new(63, 0)] = new SingleVersion("1.21.6"),
+            [new(64, 0)] = new VersionRange("1.21.7", "1.21.8"),
+            [new(69, 0)] = new VersionRange("1.21.9", "1.21.10"),
         };
 
         public class TextureImportStats(int maxTextures)
@@ -438,7 +442,7 @@ namespace PckStudio.Core.IO.Java
             };
         }
 
-        private static string GetJavaGameVersionFromResourcePackFormat(int format) => _formatVeriosnToGameVersion.TryGetValue(new (format, 0), out IMinecraftJavaVersion versionRange) ? versionRange.ToString(" - ") : "unknown";
+        private static string GetJavaGameVersionFromResourcePackFormat(int format) => _formatVeriosnToGameVersion.TryGetValue(new(format, 0), out IMinecraftJavaVersion versionRange) ? versionRange.ToString(" - ") : "unknown";
 
         private static string GetAtlasPathFromFormat(int format, AtlasResource.AtlasType type)
         {
@@ -724,11 +728,12 @@ namespace PckStudio.Core.IO.Java
 
             FourjUserInterface skinHud = new FourjUIReader().FromStream(new MemoryStream(Resources.skinHud));
 
-
             FourjUserInterface skinGraphicsHud = new FourjUIReader().FromStream(new MemoryStream(Resources.skinGraphicsHud));
+
             FourjUserInterface skinGraphicsInGame = new FourjUIReader().FromStream(new MemoryStream(Resources.skinGraphicsInGame));
 
             FourjUserInterface skinPlatform = new FourjUIReader().FromStream(new MemoryStream(Resources.skinWiiU));
+
             // skinWiiU.fui
             if (
                 javaGui.TryGetValue("title/background/panorama_0.png", out ZipArchiveEntry panorama0Entry) &&
@@ -756,7 +761,7 @@ namespace PckStudio.Core.IO.Java
             {
                 foreach (FuiTimelineEvent evnt in fui.GetEventTimeline(timeline.FindNamedEvent(name)).Frames[0].Events)
                 {
-                    System.Numerics.Matrix3x2 mat = evnt.Matrix;
+                    Matrix3x2 mat = evnt.Matrix;
                     mat.M11 /= scale.Width;
                     mat.M22 /= scale.Height;
                     evnt.Matrix = mat;
@@ -783,13 +788,13 @@ namespace PckStudio.Core.IO.Java
                 skinGraphicsHud.SetSymbol("hotbar_item_selected", hotbarItemSelectedTexture);
                 skinGraphicsHud.SetSymbol("hotbar_offhand_slot", hotbarOffhandSlotTexture);
 
-                fjHotbarOffhandSlot.Frames[0].Events[0].Matrix = System.Numerics.Matrix3x2.CreateScale(2f / scale.Width, 2f / scale.Height);
+                fjHotbarOffhandSlot.Frames[0].Events[0].Matrix = Matrix3x2.CreateScale(2f / scale.Width, 2f / scale.Height);
 
                 FuiTimelineEvent fuiTimelineEvent = hudTimeline.FindNamedEvent("HotBar");
                 FuiTimeline eventTimelineHotbar = skinHud.GetEventTimeline(fuiTimelineEvent);
 
-                eventTimelineHotbar.FindEventByReferenceId(refId: ref_index).Matrix = System.Numerics.Matrix3x2.CreateScale(3f / scale.Width, 3f / scale.Height);
-                eventTimelineHotbar.FindNamedEvent("HotbarSelector").Matrix *= System.Numerics.Matrix3x2.CreateScale(1f / scale.Width, 1f / scale.Height);
+                eventTimelineHotbar.FindEventByReferenceId(refId: ref_index).Matrix = Matrix3x2.CreateScale(3f / scale.Width, 3f / scale.Height);
+                eventTimelineHotbar.FindNamedEvent("HotbarSelector").Matrix *= Matrix3x2.CreateScale(1f / scale.Width, 1f / scale.Height);
             }
 
             // base size : 256x256

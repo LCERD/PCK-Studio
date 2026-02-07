@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     class SingleVersion(Version version) : IMinecraftJavaVersion
     {

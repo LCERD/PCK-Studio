@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     public readonly struct ImportResult<TResult, TStats>(TResult result, TStats stats)
     {

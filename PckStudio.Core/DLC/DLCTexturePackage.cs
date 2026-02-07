@@ -85,7 +85,7 @@ namespace PckStudio.Core.DLC
         //! TODO: add resources from "res/misc/"
         private readonly IDictionary<string, Image> _misc;
 
-        internal DLCTexturePackage(
+        public DLCTexturePackage(
             string name,
             string description,
             int identifier,

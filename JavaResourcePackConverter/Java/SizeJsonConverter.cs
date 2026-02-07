@@ -3,7 +3,7 @@ using System.Drawing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     public class SizeJsonConverter : JsonConverter<Size>
     {

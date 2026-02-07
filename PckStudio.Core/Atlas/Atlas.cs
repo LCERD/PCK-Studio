@@ -290,7 +290,7 @@ namespace PckStudio.Core
             return true;
         }
 
-        internal static Atlas CreateDefault(AtlasResource atlasResource, LCEGameVersion gameVersion)
+        public static Atlas CreateDefault(AtlasResource atlasResource, LCEGameVersion gameVersion)
         {
             Image defaultAtlas = atlasResource.Type switch
             {

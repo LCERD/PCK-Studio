@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PckStudio.Core.Extensions;
 
-namespace PckStudio.Core.IO.Java
+namespace JavaResourcePackConverter
 {
     public class JavaConstants
     {

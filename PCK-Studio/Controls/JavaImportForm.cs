@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using JavaResourcePackConverter;
 using PckStudio.Core;
 using PckStudio.Core.DLC;
 using PckStudio.Core.IO.Java;
