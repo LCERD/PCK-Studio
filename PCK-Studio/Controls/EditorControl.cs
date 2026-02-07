@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PckStudio.Interfaces;
+using System.IO;
 
 namespace PckStudio.Controls
 {
@@ -15,15 +16,18 @@ namespace PckStudio.Controls
     {
         public T EditorValue { get; }
 
-        public ISaveContext<T> SaveContext { get; }
+        public ISaveContext<T> SaveContext { get; private set; }
+
+        public string TitleName { get; }
 
         public EditorControl()
         {
         }
 
-        protected EditorControl(T value, ISaveContext<T> saveContext)
+        protected EditorControl(string titleName, T value, ISaveContext<T> saveContext)
         {
             _ = value ?? throw new ArgumentNullException(nameof(value));
+            TitleName = titleName;
             EditorValue = value;
             SaveContext = saveContext;
         }
@@ -35,9 +39,20 @@ namespace PckStudio.Controls
             base.OnControlRemoved(e);
         }
 
-        public void Save() => SaveContext.Save(EditorValue);
+        public void SetSaveContext(ISaveContext<T> saveContext) => SaveContext = saveContext;
 
-        public virtual void SaveAs() => throw new NotImplementedException();
+        protected virtual void PreSave()
+        { }
+        
+        protected virtual void PostSave()
+        { }
+
+        public void Save()
+        {
+            PreSave();
+            SaveContext.Save(EditorValue);
+            PostSave();
+        }
 
         public virtual void Close() => throw new NotImplementedException();
 

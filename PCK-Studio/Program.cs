@@ -50,7 +50,7 @@ namespace PckStudio
             Updater.SetOwner(MainInstance);
             if (args.Length > 0)
             {
-                MainInstance.LoadPckFromFile(args.Where(arg => File.Exists(arg) && arg.EndsWith(".pck")));
+                MainInstance.LoadPckFromFile(args.Where(arg => File.Exists(arg)));
             }
             Application.ApplicationExit += (sender, e) => { RPC.Deinitialize(); };
             MainInstance.Focus();

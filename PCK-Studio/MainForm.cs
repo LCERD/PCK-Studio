@@ -35,7 +35,8 @@ using PckStudio.Properties;
 namespace PckStudio
 {
     public partial class MainForm : ImmersiveForm
-    {
+	{
+        private const string DEFAULT_PCK_SAVECONTEXT_DESCRIPTION = "PCK (Minecraft Console Package)";
         private PckManager PckManager = null;
 
         private Dictionary<string, TabPage> openTabPages = new Dictionary<string, TabPage>();
@@ -92,7 +93,7 @@ namespace PckStudio
 
         private void AddEditorPage(string caption, string identifier, RawAssetDLCPackage packInfo, ISaveContext<RawAssetDLCPackage> saveContext = null)
         {
-            saveContext ??= GetDefaultSaveContext("./new.pck", "PCK (Minecraft Console Package)");
+            saveContext ??= GetDefaultSaveContext("./new.pck", DEFAULT_PCK_SAVECONTEXT_DESCRIPTION);
             var editor = new RawAssetsEditor(packInfo, saveContext);
             AddPage(caption, identifier, editor);
         }
@@ -102,7 +103,7 @@ namespace PckStudio
             switch (dlcPackage.GetDLCPackageType())
             {
                 case DLCPackageType.RawAssets:
-                    ISaveContext<RawAssetDLCPackage> saveContext = GetDefaultSaveContext("", "PCK (Minecraft Console Package)");
+                    ISaveContext<RawAssetDLCPackage> saveContext = GetDefaultSaveContext("", DEFAULT_PCK_SAVECONTEXT_DESCRIPTION);
                     var editor = new RawAssetsEditor(dlcPackage as RawAssetDLCPackage, saveContext);
                     TabPage page = AddPage(dlcPackage.Name, dlcPackage.Name, editor);
                     break;
@@ -126,7 +127,7 @@ namespace PckStudio
 
         private static ISaveContext<RawAssetDLCPackage> GetDefaultSaveContext(string filepath, string description)
         {
-            return new DelegatedFileSaveContext<RawAssetDLCPackage>(filepath, false, new FileDialogFilter(description, "*" + Path.GetExtension(filepath)), (packInfo, stream) => new PckFileWriter(packInfo.PckFile, packInfo.ByteOrder).WriteToStream(stream));
+            return new DelegatedFileSaveContext<RawAssetDLCPackage>(filepath, false, (packInfo, stream) => new PckFileWriter(packInfo.PckFile, packInfo.ByteOrder).WriteToStream(stream));
         }
 
         private TabPage AddPage(string caption, string identifier, Control control)
@@ -139,6 +140,7 @@ namespace PckStudio
             page.Name = identifier;
             page.Controls.Add(control);
             tabControl.TabPages.Add(page);
+            openTabPages.Add(identifier, page);
             tabControl.SelectTab(page);
             return page;
         }
@@ -272,7 +274,7 @@ namespace PckStudio
         {
             using var ofd = new OpenFileDialog();
             ofd.CheckFileExists = true;
-            ofd.Filter = "PCK (Minecraft Console Package)|*.pck";
+            ofd.Filter = $"{DEFAULT_PCK_SAVECONTEXT_DESCRIPTION}|*.pck";
             if (ofd.ShowDialog(this) == DialogResult.OK)
             {
                 LoadPckFromFile(ofd.FileName);
@@ -493,7 +495,17 @@ namespace PckStudio
         {
             if (TryGetCurrentEditor(out IEditor<RawAssetDLCPackage> editor))
             {
-                editor.SaveAs();
+                using SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    FileName = editor.TitleName,
+                    Filter = "PCK (Minecraft Console Package)|*.pck",
+                    DefaultExt = ".pck",
+                };
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    return;
+                
+                editor.SetSaveContext(GetDefaultSaveContext(saveFileDialog.FileName, DEFAULT_PCK_SAVECONTEXT_DESCRIPTION));
+                editor.Save();
             }
         }
 
