@@ -894,15 +894,9 @@ namespace PckStudio.Controls
             }
 
             viewFileInfoToolStripMenuItem.Visible = true;
-            if (asset.HasProperty("BOX"))
+            if (asset.Type == PckAssetType.SkinFile)
             {
-                buttonEdit.Text = "EDIT BOXES";
-                buttonEdit.Visible = true;
-            }
-            else if (asset.HasProperty("ANIM") &&
-                    asset.GetProperty("ANIM", s => SkinANIM.FromString(s) == (SkinAnimMask.RESOLUTION_64x64 | SkinAnimMask.SLIM_MODEL)))
-            {
-                buttonEdit.Text = "View Skin";
+                buttonEdit.Text = "EDIT SKIN";
                 buttonEdit.Visible = true;
             }
 

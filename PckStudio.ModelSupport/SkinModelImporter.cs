@@ -43,9 +43,9 @@ namespace PckStudio.ModelSupport
 
         private SkinModelImporter()
         {
-            InternalAddProvider(new("Pck skin model(*.psm)", "*.psm"), ImportPsm, ExportPsm);
-            InternalAddProvider(new("Block bench model(*.bbmodel)", "*.bbmodel"), ImportBlockBenchModel, ExportBlockBenchModel);
-            InternalAddProvider(new("Bedrock (Legacy) Model(*.geo.json;*.json)", "*.geo.json;*.json"), ImportBedrockJson, ExportBedrockJson);
+            InternalAddProvider(new("PCK Skin Model(*.psm)", "*.psm"), ImportPsm, ExportPsm);
+            InternalAddProvider(new("Blockbench Legacy project(*.bbmodel)", "*.bbmodel"), ImportBlockBenchModel, ExportBlockBenchModel);
+            InternalAddProvider(new("Bedrock Legacy Entity Model(*.geo.json;*.json)", "*.geo.json;*.json"), ImportBedrockJson, ExportBedrockJson);
         }
 
         internal static SkinModelInfo ImportPsm(string filepath)
