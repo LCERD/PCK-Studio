@@ -27,9 +27,6 @@ namespace PckStudio.Core.Json
         [JsonProperty("colourEntry", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public JsonColorEntry ColourEntry { get; set; }
 
-        [JsonProperty("allowCustomColour", DefaultValueHandling = DefaultValueHandling.Populate)]
-        public bool AllowCustomColour { get; set; }
-
         public JsonTileInfo(string displayName, string internalName)
         {
             DisplayName = displayName;

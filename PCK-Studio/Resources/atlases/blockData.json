@@ -1,6 +1,6 @@
 {
-	"COMMENT_1": "Tile data research by MattNL",
-	"COMMENT_2": "JSON by PhoenixARC, MattNL, and NessieHax (Miku-666)",
+	"COMMENT_1": "Tile data research by MayNL",
+	"COMMENT_2": "JSON by PhoenixARC, MayNL, and NessieHax (Miku-666)",
 	"entries": [
 		{
 			"internalName": "grass_top",
@@ -1086,7 +1086,7 @@
 		},
 		{
 			"internalName": "water_flow",
-			"displayName": ""
+			"displayName": "g"
 		},
 		{
 			"internalName": "sandstone_bottom",
@@ -2317,7 +2317,6 @@
 		{
 			"internalName": "cauldron_water",
 			"displayName": "Cauldron Water",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Cauldron_Water",

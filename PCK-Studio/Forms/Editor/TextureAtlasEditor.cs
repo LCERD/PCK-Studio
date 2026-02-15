@@ -165,7 +165,7 @@ namespace PckStudio.Forms.Editor
                 }
             }
 
-            setColorButton.Enabled = tileInfo.AllowCustomColour;
+            setColorButton.Enabled = tileInfo.HasColourEntry;
 
             variantComboBox.Enabled = variantComboBox.Visible = tileInfo.HasColourEntry && tileInfo.ColourEntry?.Variants?.Length > 1;
             if (variantComboBox.Enabled)
