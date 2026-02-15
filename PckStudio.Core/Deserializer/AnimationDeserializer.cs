@@ -59,7 +59,7 @@ namespace PckStudio.Core.Deserializer
                 // frame time parameter for certain frames.
                 // This will detect that and place the last frame time in its place.
                 // This is accurate to console edition behavior.
-                // - MattNL
+                // - MayNL
                 int currentFrameTime = frameData.Length < 2 || string.IsNullOrEmpty(frameData[1]) ? lastFrameTime : int.Parse(frameData[1]);
                 animation.AddFrame(currentFrameIndex, currentFrameTime);
                 lastFrameTime = currentFrameTime;

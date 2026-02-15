@@ -12,7 +12,7 @@ using PckStudio.Core.Json;
 
 namespace PckStudio.Forms.Editor
 {
-	// Behaviours File Format research by Miku and MattNL
+	// Behaviours File Format research by Miku and MayNL
 	public partial class BehaviourEditor : EditorForm<BehaviourFile>
 	{
         private const string BehaviourEntryDataType = "behaviours";

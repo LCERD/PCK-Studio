@@ -1,4 +1,4 @@
-﻿/* Copyright (c) 2023-present miku-666, MattNL
+﻿/* Copyright (c) 2023-present miku-666, MayNL
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any damages
  * arising from the use of this software.
@@ -168,7 +168,7 @@ namespace PckStudio.Forms.Editor
 		}
 
 		// Most of the code below is modified code from this link: https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.treeview.itemdrag?view=windowsdesktop-6.0
-		// - MattNL
+		// - MayNL
 
 		private void frameTreeView_ItemDrag(object sender, ItemDragEventArgs e)
 		{
@@ -312,7 +312,7 @@ namespace PckStudio.Forms.Editor
                 Title = "Please select a valid Minecaft: Java Edition animation script",
                 // It's marked as .png.mcmeta just in case
                 // some weirdo tries to pass a pack.mcmeta or something
-                // -MattNL
+                // -MayNL
                 Filter = "Animation Scripts (*.mcmeta)|*.png.mcmeta"
             };
             if (fileDialog.ShowDialog(this) != DialogResult.OK)

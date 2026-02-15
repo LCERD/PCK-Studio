@@ -67,7 +67,7 @@
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toNobledezJackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toPhoenixARCDeveloperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forMattNLContributorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forMayNLContributorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.joinDevelopmentDiscordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trelloBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -351,7 +351,7 @@
             this.donateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toNobledezJackToolStripMenuItem,
             this.toPhoenixARCDeveloperToolStripMenuItem,
-            this.forMattNLContributorToolStripMenuItem});
+            this.forMayNLContributorToolStripMenuItem});
             resources.ApplyResources(this.donateToolStripMenuItem, "donateToolStripMenuItem");
             this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             // 
@@ -367,11 +367,11 @@
             resources.ApplyResources(this.toPhoenixARCDeveloperToolStripMenuItem, "toPhoenixARCDeveloperToolStripMenuItem");
             this.toPhoenixARCDeveloperToolStripMenuItem.Click += new System.EventHandler(this.toPhoenixARCDeveloperToolStripMenuItem_Click);
             // 
-            // forMattNLContributorToolStripMenuItem
+            // forMayNLContributorToolStripMenuItem
             // 
-            this.forMattNLContributorToolStripMenuItem.Name = "forMattNLContributorToolStripMenuItem";
-            resources.ApplyResources(this.forMattNLContributorToolStripMenuItem, "forMattNLContributorToolStripMenuItem");
-            this.forMattNLContributorToolStripMenuItem.Click += new System.EventHandler(this.forMattNLContributorToolStripMenuItem_Click);
+            this.forMayNLContributorToolStripMenuItem.Name = "forMayNLContributorToolStripMenuItem";
+            resources.ApplyResources(this.forMayNLContributorToolStripMenuItem, "forMayNLContributorToolStripMenuItem");
+            this.forMayNLContributorToolStripMenuItem.Click += new System.EventHandler(this.forMayNLContributorToolStripMenuItem_Click);
             // 
             // joinDevelopmentDiscordToolStripMenuItem
             // 
@@ -553,7 +553,7 @@
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toNobledezJackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toPhoenixARCDeveloperToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forMattNLContributorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forMayNLContributorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;

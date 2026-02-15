@@ -978,7 +978,7 @@ namespace PckStudio.Controls
 
         // Most of the code below is modified code from this link:
         // https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.treeview.itemdrag?view=windowsdesktop-6.0
-        // - MattNL
+        // - MayNL
 
         private void treeViewMain_ItemDrag(object sender, ItemDragEventArgs e)
         {

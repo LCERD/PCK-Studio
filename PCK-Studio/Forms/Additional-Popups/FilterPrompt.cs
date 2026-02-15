@@ -77,7 +77,7 @@ namespace PckStudio.Forms.Additional_Popups.Animation
 
 		private void filter_TextChanged(object sender, EventArgs e)
 		{
-			// Some code in this function is modified code from this StackOverflow answer - MattNL
+			// Some code in this function is modified code from this StackOverflow answer - MayNL
 			// https://stackoverflow.com/questions/8260322/filter-a-treeview-with-a-textbox-in-a-c-sharp-winforms-app
 
 			// block re-painting control until all objects are loaded

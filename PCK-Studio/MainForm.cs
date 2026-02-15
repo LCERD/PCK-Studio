@@ -495,7 +495,7 @@ namespace PckStudio
 
         private void toNobledezJackToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://www.paypal.me/realnobledez");
 
-        private void forMattNLContributorToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://ko-fi.com/mattnl");
+        private void forMayNLContributorToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://ko-fi.com/maynl");
 
         private void joinDevelopmentDiscordToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://discord.gg/aJtZNFVQTv");
 

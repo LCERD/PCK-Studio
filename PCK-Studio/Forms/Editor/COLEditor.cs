@@ -517,7 +517,7 @@ namespace PckStudio.Forms.Editor
 
 		private void metroTextBox1_TextChanged(object sender, EventArgs e)
 		{
-			// Some code in this function is modified code from this StackOverflow answer - MattNL
+			// Some code in this function is modified code from this StackOverflow answer - MayNL
 			//https://stackoverflow.com/questions/8260322/filter-a-treeview-with-a-textbox-in-a-c-sharp-winforms-app
 
 			//blocks repainting tree until all objects loaded
