@@ -7,7 +7,7 @@ using OMI.Formats.Model;
 using PckStudio.Core.Skin;
 using PckStudio.ModelSupport;
 
-namespace PckStuido.ModelSupport.Extension
+namespace PckStudio.ModelSupport.Extension
 {
     public static class SkinExtension
     {

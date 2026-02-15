@@ -8,8 +8,8 @@
     <OutputType>Library</OutputType>
     <DefineConstants Condition="'$(Configuration)' != 'Debug'">NDEBUG</DefineConstants>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PckStuido.ModelSupport</RootNamespace>
-    <AssemblyName>PckStuido.ModelSupport</AssemblyName>
+    <RootNamespace>PckStudio.ModelSupport</RootNamespace>
+    <AssemblyName>PckStudio.ModelSupport</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <LangVersion>12</LangVersion>
     <FileAlignment>512</FileAlignment>

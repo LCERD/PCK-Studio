@@ -16,7 +16,7 @@ using PckStudio.Core.Skin;
 using PckStudio.Core.Extensions;
 using PckStudio.Interfaces;
 using PckStudio.ModelSupport;
-using PckStuido.ModelSupport.Extension;
+using PckStudio.ModelSupport.Extension;
 
 namespace PckStudio.Forms.Editor
 {

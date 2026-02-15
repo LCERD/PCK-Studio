@@ -33,7 +33,7 @@ using PckStudio.Core.Json;
 using PckStudio.Core.Extensions;
 using PckStudio.Core;
 using PckStudio.ModelSupport.Format.External;
-using PckStuido.ModelSupport.Properties;
+using PckStudio.ModelSupport.Properties;
 using NamedTexture = PckStudio.Core.NamedData<System.Drawing.Image>;
 
 namespace PckStudio.ModelSupport
