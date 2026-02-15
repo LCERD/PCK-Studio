@@ -69,24 +69,23 @@
             this.toPhoenixARCDeveloperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forMayNLContributorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.joinDevelopmentDiscordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trelloBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editorTab = new MetroFramework.Controls.MetroTabPage();
+            this.label11 = new MetroFramework.Controls.MetroLabel();
             this.tabControl = new PckStudio.Controls.CustomTabControl();
             this.StartPage = new MetroFramework.Controls.MetroTabPage();
             this.labelVersion = new MetroFramework.Controls.MetroLabel();
             this.label5 = new MetroFramework.Controls.MetroLabel();
             this.ChangelogRichTextBox = new System.Windows.Forms.RichTextBox();
             this.pckOpen = new System.Windows.Forms.PictureBox();
-            this.editorTab = new MetroFramework.Controls.MetroTabPage();
-            this.label11 = new MetroFramework.Controls.MetroLabel();
             toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
+            this.editorTab.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.StartPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pckOpen)).BeginInit();
-            this.editorTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripSeparator1
@@ -264,7 +263,6 @@
             this.videosToolStripMenuItem,
             this.donateToolStripMenuItem,
             this.joinDevelopmentDiscordToolStripMenuItem,
-            this.trelloBoardToolStripMenuItem,
             this.toolStripSeparator3,
             this.settingsToolStripMenuItem});
             this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
@@ -379,18 +377,32 @@
             this.joinDevelopmentDiscordToolStripMenuItem.Name = "joinDevelopmentDiscordToolStripMenuItem";
             this.joinDevelopmentDiscordToolStripMenuItem.Click += new System.EventHandler(this.joinDevelopmentDiscordToolStripMenuItem_Click);
             // 
-            // trelloBoardToolStripMenuItem
-            // 
-            this.trelloBoardToolStripMenuItem.Image = global::PckStudio.Properties.Resources.trello;
-            this.trelloBoardToolStripMenuItem.Name = "trelloBoardToolStripMenuItem";
-            resources.ApplyResources(this.trelloBoardToolStripMenuItem, "trelloBoardToolStripMenuItem");
-            this.trelloBoardToolStripMenuItem.Click += new System.EventHandler(this.trelloBoardToolStripMenuItem_Click);
-            // 
             // settingsToolStripMenuItem
             // 
             resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // editorTab
+            // 
+            this.editorTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            resources.ApplyResources(this.editorTab, "editorTab");
+            this.editorTab.Controls.Add(this.label11);
+            this.editorTab.ForeColor = System.Drawing.Color.Transparent;
+            this.editorTab.HorizontalScrollbarBarColor = true;
+            this.editorTab.HorizontalScrollbarHighlightOnWheel = false;
+            this.editorTab.HorizontalScrollbarSize = 0;
+            this.editorTab.Name = "editorTab";
+            this.editorTab.Style = MetroFramework.MetroColorStyle.White;
+            this.editorTab.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.editorTab.VerticalScrollbarBarColor = true;
+            this.editorTab.VerticalScrollbarHighlightOnWheel = false;
+            this.editorTab.VerticalScrollbarSize = 0;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // tabControl
             // 
@@ -463,27 +475,6 @@
             this.pckOpen.MouseEnter += new System.EventHandler(this.OpenPck_MouseEnter);
             this.pckOpen.MouseLeave += new System.EventHandler(this.OpenPck_MouseLeave);
             // 
-            // editorTab
-            // 
-            this.editorTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            resources.ApplyResources(this.editorTab, "editorTab");
-            this.editorTab.Controls.Add(this.label11);
-            this.editorTab.ForeColor = System.Drawing.Color.Transparent;
-            this.editorTab.HorizontalScrollbarBarColor = true;
-            this.editorTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.editorTab.HorizontalScrollbarSize = 0;
-            this.editorTab.Name = "editorTab";
-            this.editorTab.Style = MetroFramework.MetroColorStyle.White;
-            this.editorTab.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.editorTab.VerticalScrollbarBarColor = true;
-            this.editorTab.VerticalScrollbarHighlightOnWheel = false;
-            this.editorTab.VerticalScrollbarSize = 0;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
             // MainForm
             // 
             this.ApplyImageInvert = true;
@@ -502,12 +493,12 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.editorTab.ResumeLayout(false);
+            this.editorTab.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.StartPage.ResumeLayout(false);
             this.StartPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pckOpen)).EndInit();
-            this.editorTab.ResumeLayout(false);
-            this.editorTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,7 +549,6 @@
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem joinDevelopmentDiscordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem trelloBoardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recentlyOpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
