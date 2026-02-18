@@ -10,12 +10,12 @@ namespace PckStudio.Forms.Editor
 		private SkinBOX result;
 		public SkinBOX Result => result;
 
-        public BoxEditor(string formattedBoxString, bool hasInflation)
-			: this(SkinBOX.FromString(formattedBoxString), hasInflation)
+        public BoxEditor(string formattedBoxString, int xmlVersion)
+			: this(SkinBOX.FromString(formattedBoxString), xmlVersion)
 		{
 		}
 
-		public BoxEditor(SkinBOX box, bool hasInflation)
+		public BoxEditor(SkinBOX box, int xmlVersion)
 		{
 			InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace PckStudio.Forms.Editor
 
             closeButton.Visible = !Settings.Default.AutoSaveChanges;
 
-            inflationUpDown.Enabled = hasInflation;
+            inflationUpDown.Enabled = xmlVersion == 3;
 
 			parentComboBox.SelectedItem = parentComboBox.Items[parentComboBox.Items.IndexOf(box.Type)];
 			PosXUpDown.Value = (decimal)box.Pos.X;

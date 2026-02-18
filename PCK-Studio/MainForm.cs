@@ -25,6 +25,7 @@ using PckStudio.Controls;
 using PckStudio.Internal;
 using PckStudio.Core;
 using PckStudio.Core.App;
+using PckStudio.ToolboxItems;
 
 namespace PckStudio
 {
@@ -317,14 +318,22 @@ namespace PckStudio
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            closeToolStripMenuItem.Visible = tabControl.SelectedIndex > 0;
+            bool isEditorTabSelected = tabControl.SelectedIndex > 0;
+
+            closeToolStripMenuItem.Visible = isEditorTabSelected;
             closeAllToolStripMenuItem.Visible = tabControl.SelectedIndex == 0 && tabControl.TabCount > 1;
-            saveToolStripMenuItem.Visible = tabControl.SelectedIndex > 0;
-            saveAsToolStripMenuItem.Visible = tabControl.SelectedIndex > 0;
+            saveToolStripMenuItem.Visible = isEditorTabSelected;
+            saveAsToolStripMenuItem.Visible = isEditorTabSelected;
+            setXMLVersionStripMenuItem.Enabled = isEditorTabSelected;
 
             if (tabControl.SelectedIndex == 0)
             {
                 RPC.SetPresence("An Open Source .PCK File Editor");
+            }
+            else if (TryGetCurrentEditor(out IEditor<PackInfo> editor))
+            {
+                // this is to ensure that the correct XMLVerison is displayed for each editor - May
+                setXMLVersionStripMenuItem.DropDownItems[editor.EditorValue.File.xmlVersion].PerformClick();
             }
         }
 
@@ -340,7 +349,7 @@ namespace PckStudio
 			locFile.InitializeDefault(packName);
 			pack.CreateNewAsset("localisation.loc", PckAssetType.LocalisationFile, new LOCFileWriter(locFile, 2));
 
-			pack.CreateNewAssetIf(createSkinsPCK, "Skins.pck", PckAssetType.SkinDataFile, new PckFileWriter(new PckFile(3, true), OMI.ByteOrder.BigEndian));
+			pack.CreateNewAssetIf(createSkinsPCK, "Skins.pck", PckAssetType.SkinDataFile, new PckFileWriter(new PckFile(3, 3), OMI.ByteOrder.BigEndian));
 
 			return pack;
 		}
@@ -593,5 +602,17 @@ namespace PckStudio
 			PckManager?.Close();
             Application.Exit();
         }
-	}
+
+        private void setXMLVersionMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripRadioButtonMenuItem item && int.TryParse(item.Tag?.ToString(), out int version))
+            {
+                if (TryGetCurrentEditor(out IEditor<PackInfo> editor) && editor.EditorValue.File.xmlVersion != version)
+                {
+                    editor.EditorValue.File.xmlVersion = version;
+                    Console.WriteLine($"New XMLVersion: {editor.TitleName} {editor.EditorValue.File.xmlVersion}");
+                }
+            }
+        }
+    }
 }

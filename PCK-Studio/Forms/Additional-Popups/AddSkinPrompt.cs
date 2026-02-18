@@ -26,10 +26,12 @@ namespace PckStudio.Forms.Additional_Popups
 
         private Skin newSkin;
         private Random rng = new Random();
+        private int _xmlVersion = 0;
 
-        public AddSkinPrompt()
+        public AddSkinPrompt(int xmlVersion = 0)
         {
             InitializeComponent();
+            _xmlVersion = xmlVersion;
             newSkin = new Skin("", new SkinANIM(SkinAnimMask.RESOLUTION_64x64), Resources.classic_template, Enumerable.Empty<SkinBOX>(), Enumerable.Empty<SkinPartOffset>());
         }
 
@@ -228,7 +230,7 @@ namespace PckStudio.Forms.Additional_Popups
 
             ISaveContext<Skin> saveContext = new DelegatedSaveContext<Skin>(Settings.Default.AutoSaveChanges, (customSkin) => newSkin = customSkin);
 
-            using CustomSkinEditor customSkinEditor = new CustomSkinEditor(newSkin, saveContext);
+            using CustomSkinEditor customSkinEditor = new CustomSkinEditor(newSkin, saveContext, _xmlVersion);
 
             if (customSkinEditor.ShowDialog() == DialogResult.OK)
             {

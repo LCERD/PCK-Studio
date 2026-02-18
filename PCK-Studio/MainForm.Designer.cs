@@ -48,6 +48,11 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quickChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setXMLVersionStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setXMLVersion0MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
+            this.setXMLVersion1MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
+            this.setXMLVersion2MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
+            this.setXMLVersion3MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
             this.miscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPckManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertMusicFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,7 +213,8 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quickChangeToolStripMenuItem});
+            this.quickChangeToolStripMenuItem,
+            this.setXMLVersionStripMenuItem});
             this.editToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
@@ -218,6 +224,48 @@
             resources.ApplyResources(this.quickChangeToolStripMenuItem, "quickChangeToolStripMenuItem");
             this.quickChangeToolStripMenuItem.Name = "quickChangeToolStripMenuItem";
             this.quickChangeToolStripMenuItem.Click += new System.EventHandler(this.quickChangeToolStripMenuItem_Click);
+            // 
+            // setXMLVersionStripMenuItem
+            // 
+            this.setXMLVersionStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setXMLVersion0MenuItem,
+            this.setXMLVersion1MenuItem,
+            this.setXMLVersion2MenuItem,
+            this.setXMLVersion3MenuItem});
+            resources.ApplyResources(this.setXMLVersionStripMenuItem, "setXMLVersionStripMenuItem");
+            this.setXMLVersionStripMenuItem.Name = "setXMLVersionStripMenuItem";
+            // 
+            // setXMLVersion0MenuItem
+            // 
+            this.setXMLVersion0MenuItem.CheckOnClick = true;
+            this.setXMLVersion0MenuItem.Name = "setXMLVersion0MenuItem";
+            resources.ApplyResources(this.setXMLVersion0MenuItem, "setXMLVersion0MenuItem");
+            this.setXMLVersion0MenuItem.Tag = 0;
+            this.setXMLVersion0MenuItem.Click += new System.EventHandler(this.setXMLVersionMenuItem_Click);
+            // 
+            // setXMLVersion1MenuItem
+            // 
+            this.setXMLVersion1MenuItem.CheckOnClick = true;
+            this.setXMLVersion1MenuItem.Name = "setXMLVersion1MenuItem";
+            resources.ApplyResources(this.setXMLVersion1MenuItem, "setXMLVersion1MenuItem");
+            this.setXMLVersion1MenuItem.Tag = 1;
+            this.setXMLVersion1MenuItem.Click += new System.EventHandler(this.setXMLVersionMenuItem_Click);
+            // 
+            // setXMLVersion2MenuItem
+            // 
+            this.setXMLVersion2MenuItem.CheckOnClick = true;
+            this.setXMLVersion2MenuItem.Name = "setXMLVersion2MenuItem";
+            resources.ApplyResources(this.setXMLVersion2MenuItem, "setXMLVersion2MenuItem");
+            this.setXMLVersion2MenuItem.Tag = 2;
+            this.setXMLVersion2MenuItem.Click += new System.EventHandler(this.setXMLVersionMenuItem_Click);
+            // 
+            // setXMLVersion3MenuItem
+            // 
+            this.setXMLVersion3MenuItem.CheckOnClick = true;
+            this.setXMLVersion3MenuItem.Name = "setXMLVersion3MenuItem";
+            resources.ApplyResources(this.setXMLVersion3MenuItem, "setXMLVersion3MenuItem");
+            this.setXMLVersion3MenuItem.Tag = 3;
+            this.setXMLVersion3MenuItem.Click += new System.EventHandler(this.setXMLVersionMenuItem_Click);
             // 
             // miscToolStripMenuItem
             // 
@@ -551,6 +599,11 @@
         private System.Windows.Forms.ToolStripMenuItem joinDevelopmentDiscordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recentlyOpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setXMLVersionStripMenuItem;
+        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion0MenuItem;
+        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion1MenuItem;
+        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion2MenuItem;
+        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion3MenuItem;
     }
 }
 

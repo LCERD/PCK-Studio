@@ -25,7 +25,7 @@ namespace PckStudio.Forms.Editor
         private const float cOffsetMaximum = 100_000f;
         private Random _rng;
         private bool _inflateOverlayParts;
-        private bool _allowInflate;
+        private int _xmlVersion;
 
         private BindingSource _skinPartListBindingSource;
         private BindingSource _skinOffsetListBindingSource;
@@ -38,10 +38,10 @@ namespace PckStudio.Forms.Editor
             PixelOffsetMode = PixelOffsetMode.HighQuality,
         };
 
-        private CustomSkinEditor() : this(null, null)
+        private CustomSkinEditor() : this(null, null, 0)
         { }
 
-        public CustomSkinEditor(Skin skin, ISaveContext<Skin> saveContext, bool inflateOverlayParts = false, bool allowInflate = false)
+        public CustomSkinEditor(Skin skin, ISaveContext<Skin> saveContext, int xmlVersion)
             : base(skin, saveContext)
         {
             InitializeComponent();
@@ -50,8 +50,8 @@ namespace PckStudio.Forms.Editor
             _skinPartListBindingSource = new BindingSource(renderer3D1.ModelData, null);
             skinPartListBox.DataSource = _skinPartListBindingSource;
             skinPartListBox.DisplayMember = "Type";
-            _allowInflate = allowInflate;
-            _inflateOverlayParts = inflateOverlayParts;
+            _xmlVersion = xmlVersion;
+            _inflateOverlayParts = _xmlVersion > 0;
         }
 
         private void InitializeRenderSettings()
@@ -148,7 +148,7 @@ namespace PckStudio.Forms.Editor
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var boxEditor = new BoxEditor(SkinBOX.DefaultHead, _allowInflate);
+            var boxEditor = new BoxEditor(SkinBOX.DefaultHead, _xmlVersion);
             if (boxEditor.ShowDialog() == DialogResult.OK)
             {
                 SkinBOX newBox = boxEditor.Result;
@@ -280,7 +280,9 @@ namespace PckStudio.Forms.Editor
         {
             if (skinPartListBox.SelectedItem is SkinBOX box)
             {
-                var boxEditor = new BoxEditor(box, _allowInflate);
+                Console.WriteLine($"SkinEditor {_xmlVersion}");
+
+                var boxEditor = new BoxEditor(box, _xmlVersion);
                 if (boxEditor.ShowDialog() == DialogResult.OK)
                 {
                     renderer3D1.ModelData[skinPartListBox.SelectedIndex] = boxEditor.Result;

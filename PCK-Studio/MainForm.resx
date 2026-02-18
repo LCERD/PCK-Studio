@@ -478,6 +478,39 @@
   <data name="quickChangeToolStripMenuItem.Text" xml:space="preserve">
     <value>Quick Change</value>
   </data>
+  <data name="setXMLVersion0MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="setXMLVersion0MenuItem.Text" xml:space="preserve">
+    <value>Version 0</value>
+  </data>
+  <data name="setXMLVersion1MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="setXMLVersion1MenuItem.Text" xml:space="preserve">
+    <value>Version 1</value>
+  </data>
+  <data name="setXMLVersion2MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="setXMLVersion2MenuItem.Text" xml:space="preserve">
+    <value>Version 2</value>
+  </data>
+  <data name="setXMLVersion3MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="setXMLVersion3MenuItem.Text" xml:space="preserve">
+    <value>Version 3</value>
+  </data>
+  <data name="setXMLVersionStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="setXMLVersionStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="setXMLVersionStripMenuItem.Text" xml:space="preserve">
+    <value>Set Skin BOX Version</value>
+  </data>
   <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 20</value>
   </data>
@@ -500,25 +533,25 @@
 </value>
   </data>
   <data name="openPckManagerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="openPckManagerToolStripMenuItem.Text" xml:space="preserve">
     <value>Pck Manager</value>
   </data>
   <data name="wavBinkaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="wavBinkaToolStripMenuItem.Text" xml:space="preserve">
     <value>Wav -&gt; Binka</value>
   </data>
   <data name="binkaWavToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>145, 22</value>
   </data>
   <data name="binkaWavToolStripMenuItem.Text" xml:space="preserve">
     <value>Binka -&gt; Wav</value>
   </data>
   <data name="convertMusicFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="convertMusicFilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Audio Converter</value>
@@ -3175,7 +3208,7 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>PckStudio.Controls.CustomTabControl, PCK-Studio, Version=7.0.0.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.CustomTabControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5820,6 +5853,36 @@
   </data>
   <data name="&gt;&gt;quickChangeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersionStripMenuItem.Name" xml:space="preserve">
+    <value>setXMLVersionStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersionStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion0MenuItem.Name" xml:space="preserve">
+    <value>setXMLVersion0MenuItem</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion0MenuItem.Type" xml:space="preserve">
+    <value>PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion1MenuItem.Name" xml:space="preserve">
+    <value>setXMLVersion1MenuItem</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion1MenuItem.Type" xml:space="preserve">
+    <value>PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion2MenuItem.Name" xml:space="preserve">
+    <value>setXMLVersion2MenuItem</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion2MenuItem.Type" xml:space="preserve">
+    <value>PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion3MenuItem.Name" xml:space="preserve">
+    <value>setXMLVersion3MenuItem</value>
+  </data>
+  <data name="&gt;&gt;setXMLVersion3MenuItem.Type" xml:space="preserve">
+    <value>PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;miscToolStripMenuItem.Name" xml:space="preserve">
     <value>miscToolStripMenuItem</value>

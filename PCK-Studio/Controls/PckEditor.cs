@@ -451,7 +451,7 @@ namespace PckStudio.Controls
                 asset.SetSkin(customSkin, locFile);
             });
 
-            using CustomSkinEditor skinEditor = new CustomSkinEditor(skin, saveContext, EditorValue.File.HasVerionString);
+            using CustomSkinEditor skinEditor = new CustomSkinEditor(skin, saveContext, EditorValue.File.xmlVersion);
             if (skinEditor.ShowDialog() == DialogResult.OK)
             {
                 entryDataTextBox.Text = entryTypeTextBox.Text = string.Empty;
@@ -1219,7 +1219,7 @@ namespace PckStudio.Controls
 
         private void createSkinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (AddSkinPrompt addNewSkinDialog = new AddSkinPrompt())
+            using (AddSkinPrompt addNewSkinDialog = new AddSkinPrompt(EditorValue.File.xmlVersion))
                 if (addNewSkinDialog.ShowDialog() == DialogResult.OK)
                 {
                     TryGetLocFile(out LOCFile locFile);
@@ -1322,7 +1322,7 @@ namespace PckStudio.Controls
                 return;
             }
 
-            EditorValue.File.CreateNewAsset("Skins.pck", PckAssetType.SkinDataFile, new PckFileWriter(new PckFile(3, true),
+            EditorValue.File.CreateNewAsset("Skins.pck", PckAssetType.SkinDataFile, new PckFileWriter(new PckFile(3, 3),
                     LittleEndianCheckBox.Checked ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian));
 
             BuildMainTreeView();
@@ -1869,7 +1869,7 @@ namespace PckStudio.Controls
                         case "BOX" when asset.Type == PckAssetType.SkinFile:
                             try
                             {
-                                using BoxEditor diag = new BoxEditor(property.Value, false);
+                                using BoxEditor diag = new BoxEditor(property.Value, EditorValue.File.xmlVersion);
                                 if (diag.ShowDialog(this) == DialogResult.OK)
                                 {
                                     asset.SetProperty(asset.GetPropertyIndex(property), new KeyValuePair<string, string>("BOX", diag.Result.ToString()));
@@ -1928,7 +1928,7 @@ namespace PckStudio.Controls
         {
             if (treeViewMain.SelectedNode is TreeNode t && t.Tag is PckAsset asset)
             {
-                using BoxEditor diag = new BoxEditor(SkinBOX.DefaultHead, false);
+                using BoxEditor diag = new BoxEditor(SkinBOX.DefaultHead, EditorValue.File.xmlVersion);
                 if (diag.ShowDialog(this) == DialogResult.OK)
                 {
                     asset.AddProperty("BOX", diag.Result);
