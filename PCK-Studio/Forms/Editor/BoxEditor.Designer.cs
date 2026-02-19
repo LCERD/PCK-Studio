@@ -45,9 +45,12 @@
             this.SizeXUpDown = new System.Windows.Forms.NumericUpDown();
             this.uvYUpDown = new System.Windows.Forms.NumericUpDown();
             this.uvXUpDown = new System.Windows.Forms.NumericUpDown();
-            this.armorCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.helmetCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.mirrorCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.inflationUpDown = new System.Windows.Forms.NumericUpDown();
+            this.chestplateCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.leggingsCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.bootsCheckBox = new MetroFramework.Controls.MetroCheckBox();
             parentLabel = new MetroFramework.Controls.MetroLabel();
             positionLabel = new MetroFramework.Controls.MetroLabel();
             sizeLabel = new MetroFramework.Controls.MetroLabel();
@@ -68,18 +71,18 @@
             // 
             parentLabel.AutoSize = true;
             parentLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            parentLabel.Location = new System.Drawing.Point(357, 72);
+            parentLabel.Location = new System.Drawing.Point(47, 55);
             parentLabel.Name = "parentLabel";
-            parentLabel.Size = new System.Drawing.Size(64, 25);
+            parentLabel.Size = new System.Drawing.Size(50, 25);
             parentLabel.TabIndex = 2;
-            parentLabel.Text = "Parent:";
+            parentLabel.Text = "Type:";
             parentLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // positionLabel
             // 
             positionLabel.AutoSize = true;
             positionLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            positionLabel.Location = new System.Drawing.Point(33, 72);
+            positionLabel.Location = new System.Drawing.Point(22, 84);
             positionLabel.Name = "positionLabel";
             positionLabel.Size = new System.Drawing.Size(75, 25);
             positionLabel.TabIndex = 4;
@@ -90,7 +93,7 @@
             // 
             sizeLabel.AutoSize = true;
             sizeLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            sizeLabel.Location = new System.Drawing.Point(33, 97);
+            sizeLabel.Location = new System.Drawing.Point(51, 109);
             sizeLabel.Name = "sizeLabel";
             sizeLabel.Size = new System.Drawing.Size(46, 25);
             sizeLabel.TabIndex = 22;
@@ -101,7 +104,7 @@
             // 
             uvLabel.AutoSize = true;
             uvLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            uvLabel.Location = new System.Drawing.Point(33, 123);
+            uvLabel.Location = new System.Drawing.Point(58, 135);
             uvLabel.Name = "uvLabel";
             uvLabel.Size = new System.Drawing.Size(39, 25);
             uvLabel.TabIndex = 26;
@@ -112,7 +115,7 @@
             // 
             inflationLabel.AutoSize = true;
             inflationLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            inflationLabel.Location = new System.Drawing.Point(33, 149);
+            inflationLabel.Location = new System.Drawing.Point(42, 165);
             inflationLabel.Name = "inflationLabel";
             inflationLabel.Size = new System.Drawing.Size(55, 25);
             inflationLabel.TabIndex = 31;
@@ -121,7 +124,7 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(252, 187);
+            this.closeButton.Location = new System.Drawing.Point(207, 187);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(126, 23);
             this.closeButton.TabIndex = 1;
@@ -165,7 +168,7 @@
             "ARMARMOR0",
             "BODYARMOR",
             "BELT"});
-            this.parentComboBox.Location = new System.Drawing.Point(417, 72);
+            this.parentComboBox.Location = new System.Drawing.Point(103, 51);
             this.parentComboBox.Name = "parentComboBox";
             this.parentComboBox.Size = new System.Drawing.Size(163, 29);
             this.parentComboBox.TabIndex = 3;
@@ -182,7 +185,7 @@
             0,
             0,
             65536});
-            this.PosXUpDown.Location = new System.Drawing.Point(120, 76);
+            this.PosXUpDown.Location = new System.Drawing.Point(103, 86);
             this.PosXUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -207,7 +210,7 @@
             0,
             0,
             65536});
-            this.PosYUpDown.Location = new System.Drawing.Point(199, 76);
+            this.PosYUpDown.Location = new System.Drawing.Point(182, 86);
             this.PosYUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -232,7 +235,7 @@
             0,
             0,
             65536});
-            this.PosZUpDown.Location = new System.Drawing.Point(278, 76);
+            this.PosZUpDown.Location = new System.Drawing.Point(261, 86);
             this.PosZUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -257,7 +260,7 @@
             0,
             0,
             65536});
-            this.SizeZUpDown.Location = new System.Drawing.Point(278, 102);
+            this.SizeZUpDown.Location = new System.Drawing.Point(261, 111);
             this.SizeZUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -277,7 +280,7 @@
             0,
             0,
             65536});
-            this.SizeYUpDown.Location = new System.Drawing.Point(199, 102);
+            this.SizeYUpDown.Location = new System.Drawing.Point(182, 111);
             this.SizeYUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -297,7 +300,7 @@
             0,
             0,
             65536});
-            this.SizeXUpDown.Location = new System.Drawing.Point(120, 102);
+            this.SizeXUpDown.Location = new System.Drawing.Point(103, 111);
             this.SizeXUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -317,7 +320,7 @@
             0,
             0,
             65536});
-            this.uvYUpDown.Location = new System.Drawing.Point(199, 128);
+            this.uvYUpDown.Location = new System.Drawing.Point(182, 137);
             this.uvYUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -342,7 +345,7 @@
             0,
             0,
             65536});
-            this.uvXUpDown.Location = new System.Drawing.Point(120, 128);
+            this.uvXUpDown.Location = new System.Drawing.Point(103, 137);
             this.uvXUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -357,25 +360,25 @@
             this.uvXUpDown.Size = new System.Drawing.Size(73, 20);
             this.uvXUpDown.TabIndex = 27;
             // 
-            // armorCheckBox
+            // helmetCheckBox
             // 
-            this.armorCheckBox.AutoSize = true;
-            this.armorCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
-            this.armorCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.armorCheckBox.Location = new System.Drawing.Point(363, 101);
-            this.armorCheckBox.Name = "armorCheckBox";
-            this.armorCheckBox.Size = new System.Drawing.Size(245, 25);
-            this.armorCheckBox.TabIndex = 29;
-            this.armorCheckBox.Text = "Hide when wearing a helmet";
-            this.armorCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.armorCheckBox.UseSelectable = true;
+            this.helmetCheckBox.AutoSize = true;
+            this.helmetCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
+            this.helmetCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
+            this.helmetCheckBox.Location = new System.Drawing.Point(340, 84);
+            this.helmetCheckBox.Name = "helmetCheckBox";
+            this.helmetCheckBox.Size = new System.Drawing.Size(160, 25);
+            this.helmetCheckBox.TabIndex = 29;
+            this.helmetCheckBox.Text = "Mask with helmet";
+            this.helmetCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.helmetCheckBox.UseSelectable = true;
             // 
             // mirrorCheckBox
             // 
             this.mirrorCheckBox.AutoSize = true;
             this.mirrorCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
             this.mirrorCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.mirrorCheckBox.Location = new System.Drawing.Point(363, 130);
+            this.mirrorCheckBox.Location = new System.Drawing.Point(340, 58);
             this.mirrorCheckBox.Name = "mirrorCheckBox";
             this.mirrorCheckBox.Size = new System.Drawing.Size(133, 25);
             this.mirrorCheckBox.TabIndex = 30;
@@ -393,7 +396,7 @@
             0,
             0,
             65536});
-            this.inflationUpDown.Location = new System.Drawing.Point(120, 154);
+            this.inflationUpDown.Location = new System.Drawing.Point(103, 167);
             this.inflationUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -403,11 +406,53 @@
             this.inflationUpDown.Size = new System.Drawing.Size(73, 20);
             this.inflationUpDown.TabIndex = 32;
             // 
+            // chestplateCheckBox
+            // 
+            this.chestplateCheckBox.AutoSize = true;
+            this.chestplateCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
+            this.chestplateCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
+            this.chestplateCheckBox.Location = new System.Drawing.Point(340, 109);
+            this.chestplateCheckBox.Name = "chestplateCheckBox";
+            this.chestplateCheckBox.Size = new System.Drawing.Size(184, 25);
+            this.chestplateCheckBox.TabIndex = 33;
+            this.chestplateCheckBox.Text = "Mask with chestplate";
+            this.chestplateCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.chestplateCheckBox.UseSelectable = true;
+            // 
+            // leggingsCheckBox
+            // 
+            this.leggingsCheckBox.AutoSize = true;
+            this.leggingsCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
+            this.leggingsCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
+            this.leggingsCheckBox.Location = new System.Drawing.Point(340, 135);
+            this.leggingsCheckBox.Name = "leggingsCheckBox";
+            this.leggingsCheckBox.Size = new System.Drawing.Size(172, 25);
+            this.leggingsCheckBox.TabIndex = 34;
+            this.leggingsCheckBox.Text = "Mask with leggings";
+            this.leggingsCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.leggingsCheckBox.UseSelectable = true;
+            // 
+            // bootsCheckBox
+            // 
+            this.bootsCheckBox.AutoSize = true;
+            this.bootsCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
+            this.bootsCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
+            this.bootsCheckBox.Location = new System.Drawing.Point(340, 161);
+            this.bootsCheckBox.Name = "bootsCheckBox";
+            this.bootsCheckBox.Size = new System.Drawing.Size(150, 25);
+            this.bootsCheckBox.TabIndex = 35;
+            this.bootsCheckBox.Text = "Mask with boots";
+            this.bootsCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.bootsCheckBox.UseSelectable = true;
+            // 
             // BoxEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 220);
+            this.ClientSize = new System.Drawing.Size(540, 220);
+            this.Controls.Add(this.bootsCheckBox);
+            this.Controls.Add(this.leggingsCheckBox);
+            this.Controls.Add(this.chestplateCheckBox);
             this.Controls.Add(this.inflationUpDown);
             this.Controls.Add(this.uvYUpDown);
             this.Controls.Add(this.uvXUpDown);
@@ -420,7 +465,7 @@
             this.Controls.Add(inflationLabel);
             this.Controls.Add(this.parentComboBox);
             this.Controls.Add(this.mirrorCheckBox);
-            this.Controls.Add(this.armorCheckBox);
+            this.Controls.Add(this.helmetCheckBox);
             this.Controls.Add(uvLabel);
             this.Controls.Add(sizeLabel);
             this.Controls.Add(positionLabel);
@@ -428,9 +473,9 @@
             this.Controls.Add(this.closeButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(630, 554);
+            this.MaximumSize = new System.Drawing.Size(540, 554);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(630, 220);
+            this.MinimumSize = new System.Drawing.Size(540, 220);
             this.Name = "BoxEditor";
             this.Resizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -464,8 +509,11 @@
 		private System.Windows.Forms.NumericUpDown SizeXUpDown;
 		private System.Windows.Forms.NumericUpDown uvYUpDown;
 		private System.Windows.Forms.NumericUpDown uvXUpDown;
-		private MetroFramework.Controls.MetroCheckBox armorCheckBox;
+		private MetroFramework.Controls.MetroCheckBox helmetCheckBox;
 		private MetroFramework.Controls.MetroCheckBox mirrorCheckBox;
 		private System.Windows.Forms.NumericUpDown inflationUpDown;
-	}
+        private MetroFramework.Controls.MetroCheckBox chestplateCheckBox;
+        private MetroFramework.Controls.MetroCheckBox leggingsCheckBox;
+        private MetroFramework.Controls.MetroCheckBox bootsCheckBox;
+    }
 }

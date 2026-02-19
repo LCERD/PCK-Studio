@@ -1,7 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using OpenTK;
 using PckStudio.Core.Skin;
 using PckStudio.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace PckStudio.Forms.Editor
 {
@@ -37,19 +38,29 @@ namespace PckStudio.Forms.Editor
 			SizeZUpDown.Value = (decimal)box.Size.Z;
 			uvXUpDown.Value = (decimal)box.UV.X;
 			uvYUpDown.Value = (decimal)box.UV.Y;
-			armorCheckBox.Checked = box.HideWithArmor;
-			mirrorCheckBox.Checked = box.Mirror;
+            helmetCheckBox.Checked = (box.ArmorMaskFlags & 1) != 0;
+            chestplateCheckBox.Checked = (box.ArmorMaskFlags & 2) != 0;
+            leggingsCheckBox.Checked = (box.ArmorMaskFlags & 4) != 0;
+            bootsCheckBox.Checked = (box.ArmorMaskFlags & 8) != 0;
+            mirrorCheckBox.Checked = box.Mirror;
 			inflationUpDown.Value = (decimal)box.Scale;
 		}
 
 		private void saveButton_Click(object sender, EventArgs e)
 		{
-			result = SkinBOX.FromString(
+            int mask = 0;
+
+            if (helmetCheckBox.Checked) mask |= 1;
+            if (chestplateCheckBox.Checked) mask |= 2;
+            if (leggingsCheckBox.Checked) mask |= 4;
+            if (bootsCheckBox.Checked) mask |= 8;
+
+            result = SkinBOX.FromString(
 				$"{parentComboBox.SelectedItem} " +
 				$"{PosXUpDown.Value} {PosYUpDown.Value} {PosZUpDown.Value} " +
 				$"{SizeXUpDown.Value} {SizeYUpDown.Value} {SizeZUpDown.Value} " +
 				$"{uvXUpDown.Value} {uvYUpDown.Value} " +
-				$"{Convert.ToInt32(armorCheckBox.Checked)} " +
+				$"{mask} " +
 				$"{Convert.ToInt32(mirrorCheckBox.Checked)} " +
 				$"{inflationUpDown.Value}");
 			DialogResult = DialogResult.OK;

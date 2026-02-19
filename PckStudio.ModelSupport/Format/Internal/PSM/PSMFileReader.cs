@@ -73,7 +73,7 @@ namespace PckStudio.ModelSupport.Internal.Format
             int uvX = mirrorAndUvX & 0x7f;
             int uvY = hideWithArmorAndUvY & 0x7f;
             bool mirror = (mirrorAndUvX & 0x80) != 0;
-            bool hideWithArmor = (hideWithArmorAndUvY & 0x80) != 0;
+            int hideWithArmor = (hideWithArmorAndUvY & 0x80);
             float scale = reader.ReadSingle();
             return new SkinBOX(type, new System.Numerics.Vector3(posX, posY, posZ), new System.Numerics.Vector3(sizeX, sizeY, sizeZ), new System.Numerics.Vector2(uvX, uvY), hideWithArmor, mirror, scale);
         }

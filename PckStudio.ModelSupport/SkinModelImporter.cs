@@ -123,7 +123,7 @@ namespace PckStudio.ModelSupport
             SkinBOX ApplyOffset(SkinBOX box)
             {
                 SkinPartOffset offset = skinModel.PartOffsets.FirstOrDefault(offset => offset.Type == (box.IsOverlayPart() ? box.GetBaseType() : box.Type));
-                return string.IsNullOrEmpty(offset.Type) ? box : new SkinBOX(box.Type, box.Pos - (Vector3.UnitY * offset.Value), box.Size, box.UV, box.HideWithArmor, box.Mirror, box.Scale);
+                return string.IsNullOrEmpty(offset.Type) ? box : new SkinBOX(box.Type, box.Pos - (Vector3.UnitY * offset.Value), box.Size, box.UV, box.ArmorMaskFlags, box.Mirror, box.Scale);
             }
 
             IEnumerable<SkinBOX> convertedBoxes = boxes.Select(ApplyOffset);
@@ -310,10 +310,11 @@ namespace PckStudio.ModelSupport
 
                 foreach (Cube cube in bone.Cubes)
                 {
+                    //TODO: add support for other armor flags
                     Vector3 pos = TranslateToInternalPosition(boxType, cube.Origin, cube.Size, Vector3.UnitY);
-                    var skinBox = new SkinBOX(boxType, pos, cube.Size, cube.Uv, hideWithArmor: bone.Name == "helmet", mirror: cube.Mirror);
+                    var skinBox = new SkinBOX(boxType, pos, cube.Size, cube.Uv, armorMaskFlags: Convert.ToInt32(bone.Name == "helmet"), mirror: cube.Mirror);
                     if (SkinBOX.IsBasePart(boxType) && ((boxType == "HEAD" && cube.Inflate == 0.5f) || (cube.Inflate >= 0.25f && cube.Inflate <= 0.5f)))
-                        skinBox = new SkinBOX(SkinBOXExtensions.GetOverlayType(boxType), pos, cube.Size, cube.Uv, hideWithArmor: bone.Name == "helmet", mirror: cube.Mirror);
+                        skinBox = new SkinBOX(SkinBOXExtensions.GetOverlayType(boxType), pos, cube.Size, cube.Uv, armorMaskFlags: Convert.ToInt32(bone.Name == "helmet"), mirror: cube.Mirror);
                     boxes.Add(skinBox);
                 }
             }

@@ -60,8 +60,7 @@ namespace PckStudio.ModelSupport.Internal.Format
             byte uvX = (byte)MathHelper.Clamp((int)part.UV.X, 0, 64);
             byte uvY = (byte)MathHelper.Clamp((int)part.UV.Y, 0, 64);
             byte mirrorAndUvX = (byte)(Convert.ToByte(part.Mirror) << 7 | uvX);
-            byte hideWithArmorAndUvY = (byte)(Convert.ToByte(part.HideWithArmor) << 7 | uvY);
-
+            byte hideWithArmorAndUvY = (byte)(Convert.ToByte(part.ArmorMaskFlags) << 7 | uvY);
             writer.Write(mirrorAndUvX);
             writer.Write(hideWithArmorAndUvY);
             writer.Write(part.Scale);

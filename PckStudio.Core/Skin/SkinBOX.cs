@@ -90,18 +90,18 @@ namespace PckStudio.Core.Skin
         public Vector3 Pos { get; }
         public Vector3 Size { get; }
         public Vector2 UV { get; }
-        public bool HideWithArmor { get; }
+        public int ArmorMaskFlags { get; }
         public bool Mirror { get; }
         public float Scale { get; }
 
         public SkinBOX(string type, Vector3 pos, Vector3 size, Vector2 uv,
-            bool hideWithArmor = false, bool mirror = false, float scale = 0.0f)
+            int armorMaskFlags = 0, bool mirror = false, float scale = 0.0f)
         {
             Type = type;
             Pos = pos;
             Size = size;
             UV = uv;
-            HideWithArmor = hideWithArmor;
+            ArmorMaskFlags = armorMaskFlags;
             Mirror = mirror;
             Scale = scale;
         }
@@ -117,13 +117,13 @@ namespace PckStudio.Core.Skin
             Vector3 pos = TryGetVector3(arguments, 1);
             Vector3 size = TryGetVector3(arguments, 4);
             Vector2 uv = TryGetVector2(arguments, 7);
-            
-            bool hideWithArmor = arguments.IndexInRange(9) && arguments[9] == "1";    
+
+            int.TryParse(arguments[9], out int armorMaskFlags);
             bool mirror = arguments.IndexInRange(10) && arguments[10] == "1";
             float scale = default;
             if (arguments.IndexInRange(11))
                 float.TryParse(arguments[11], out scale);
-            return new SkinBOX(type, pos, size, uv, hideWithArmor, mirror, scale);
+            return new SkinBOX(type, pos, size, uv, armorMaskFlags, mirror, scale);
         }
 
         public bool IsValidType() => IsValidType(Type);
@@ -146,7 +146,7 @@ namespace PckStudio.Core.Skin
         public override string ToString()
         {
 			return
-                $"{Type} {Pos.X} {Pos.Y} {Pos.Z} {Size.X} {Size.Y} {Size.Z} {UV.X} {UV.Y} {Convert.ToInt32(HideWithArmor)} {Convert.ToInt32(Mirror)} {Scale}"
+                $"{Type} {Pos.X} {Pos.Y} {Pos.Z} {Size.X} {Size.Y} {Size.Z} {UV.X} {UV.Y} {ArmorMaskFlags} {Convert.ToInt32(Mirror)} {Scale}"
                 .Replace(',', '.');
         }
 
@@ -171,7 +171,7 @@ namespace PckStudio.Core.Skin
             hashCode = hashCode * -1521134295 + Pos.GetHashCode();
             hashCode = hashCode * -1521134295 + Size.GetHashCode();
             hashCode = hashCode * -1521134295 + UV.GetHashCode();
-            hashCode = hashCode * -1521134295 + HideWithArmor.GetHashCode();
+            hashCode = hashCode * -1521134295 + ArmorMaskFlags.GetHashCode();
             hashCode = hashCode * -1521134295 + Mirror.GetHashCode();
             hashCode = hashCode * -1521134295 + Scale.GetHashCode();
             return hashCode;
