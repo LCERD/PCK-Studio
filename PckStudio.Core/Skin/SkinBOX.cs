@@ -118,7 +118,9 @@ namespace PckStudio.Core.Skin
             Vector3 size = TryGetVector3(arguments, 4);
             Vector2 uv = TryGetVector2(arguments, 7);
 
-            int.TryParse(arguments[9], out int armorMaskFlags);
+            int armorMaskFlags = default;
+            if (arguments.IndexInRange(9))
+                int.TryParse(arguments[9], out armorMaskFlags);
             bool mirror = arguments.IndexInRange(10) && arguments[10] == "1";
             float scale = default;
             if (arguments.IndexInRange(11))
