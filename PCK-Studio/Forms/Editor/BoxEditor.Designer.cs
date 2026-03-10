@@ -180,11 +180,6 @@
             this.PosXUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.PosXUpDown.DecimalPlaces = 3;
             this.PosXUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PosXUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.PosXUpDown.Location = new System.Drawing.Point(103, 86);
             this.PosXUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -205,11 +200,6 @@
             this.PosYUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.PosYUpDown.DecimalPlaces = 3;
             this.PosYUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PosYUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.PosYUpDown.Location = new System.Drawing.Point(182, 86);
             this.PosYUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -230,11 +220,6 @@
             this.PosZUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.PosZUpDown.DecimalPlaces = 3;
             this.PosZUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PosZUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.PosZUpDown.Location = new System.Drawing.Point(261, 86);
             this.PosZUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -253,13 +238,7 @@
             // SizeZUpDown
             // 
             this.SizeZUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.SizeZUpDown.DecimalPlaces = 3;
             this.SizeZUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SizeZUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.SizeZUpDown.Location = new System.Drawing.Point(261, 111);
             this.SizeZUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -273,13 +252,7 @@
             // SizeYUpDown
             // 
             this.SizeYUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.SizeYUpDown.DecimalPlaces = 3;
             this.SizeYUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SizeYUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.SizeYUpDown.Location = new System.Drawing.Point(182, 111);
             this.SizeYUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -293,13 +266,7 @@
             // SizeXUpDown
             // 
             this.SizeXUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.SizeXUpDown.DecimalPlaces = 3;
             this.SizeXUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SizeXUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.SizeXUpDown.Location = new System.Drawing.Point(103, 111);
             this.SizeXUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -313,13 +280,7 @@
             // uvYUpDown
             // 
             this.uvYUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.uvYUpDown.DecimalPlaces = 3;
             this.uvYUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.uvYUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.uvYUpDown.Location = new System.Drawing.Point(182, 137);
             this.uvYUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -338,13 +299,7 @@
             // uvXUpDown
             // 
             this.uvXUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.uvXUpDown.DecimalPlaces = 3;
             this.uvXUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.uvXUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.uvXUpDown.Location = new System.Drawing.Point(103, 137);
             this.uvXUpDown.Maximum = new decimal(new int[] {
             9999,
@@ -391,11 +346,6 @@
             this.inflationUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.inflationUpDown.DecimalPlaces = 3;
             this.inflationUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.inflationUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             this.inflationUpDown.Location = new System.Drawing.Point(103, 167);
             this.inflationUpDown.Maximum = new decimal(new int[] {
             9999,
