@@ -268,6 +268,18 @@ namespace PckStudio.Rendering
                 { "SLEEVE1" , leftArm },
                 { "PANTS0"  , rightLeg },
                 { "PANTS1"  , leftLeg },
+
+                { "WAIST"  , body },
+                { "LEGGING0"  , rightLeg},
+                { "LEGGING1"  , leftLeg},
+                { "SOCK0"  , rightLeg},
+                { "SOCK1"  , leftLeg},
+                { "BOOT0"  , rightLeg},
+                { "BOOT1"  , leftLeg},
+                { "ARMARMOR0", rightArm },
+                { "ARMARMOR1", leftArm },
+                { "BODYARMOR"  , body },
+                { "BELT"  , body },
             };
             CalculateSkinBounds();
             InitializeArmorData();
