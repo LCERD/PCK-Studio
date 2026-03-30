@@ -51,6 +51,7 @@ namespace PckStudio.Forms.Editor
             skinPartListBox.DataSource = _skinPartListBindingSource;
             skinPartListBox.DisplayMember = "Type";
             _xmlVersion = xmlVersion;
+            boxEditorControl1.SetBOXVersion(xmlVersion);
             _inflateOverlayParts = _xmlVersion > 0;
         }
 
@@ -148,16 +149,12 @@ namespace PckStudio.Forms.Editor
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var boxEditor = new BoxEditor(SkinBOX.DefaultHead, _xmlVersion);
-            if (boxEditor.ShowDialog() == DialogResult.OK)
-            {
-                SkinBOX newBox = boxEditor.Result;
-                renderer3D1.ModelData.Add(newBox);
-                EditorValue.Model.AdditionalBoxes.Add(newBox);
-                _skinPartListBindingSource.ResetBindings(false);
-                if (generateTextureCheckBox.Checked)
-                    GenerateUVTextureMap(newBox);
-            }
+            SkinBOX newBox = SkinBOX.DefaultHead;
+            renderer3D1.ModelData.Add(newBox);
+            EditorValue.Model.AdditionalBoxes.Add(newBox);
+            _skinPartListBindingSource.ResetBindings(false);
+            if (generateTextureCheckBox.Checked)
+                GenerateUVTextureMap(newBox);
         }
 
         private void exportTextureButton_Click(object sender, EventArgs e)
@@ -276,47 +273,16 @@ namespace PckStudio.Forms.Editor
             textureSizeLabel.Text = $"{texture.Width}x{texture.Height}";
         }
 
-        private void skinPartListBox_DoubleClick(object sender, EventArgs e)
-        {
-            if (skinPartListBox.SelectedItem is SkinBOX box)
-            {
-                Console.WriteLine($"SkinEditor {_xmlVersion}");
-
-                var boxEditor = new BoxEditor(box, _xmlVersion);
-                if (boxEditor.ShowDialog() == DialogResult.OK)
-                {
-                    renderer3D1.ModelData[skinPartListBox.SelectedIndex] = boxEditor.Result;
-                    _skinPartListBindingSource.ResetItem(skinPartListBox.SelectedIndex);
-                }
-            }
-        }
-
         // TODO: fixed outline rendering
         private void skinPartListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int scale = 1;
             renderer3D1.SelectedIndices = skinPartListBox.SelectedIndices.Cast<int>().ToArray();
-            StringBuilder uv_sb = new StringBuilder();
-            StringBuilder size_sb = new StringBuilder();
-            StringBuilder pos_sb = new StringBuilder();
-            foreach (SkinBOX b in skinPartListBox.SelectedItems.Cast<SkinBOX>())
-            {
-                uv_sb.Append(b.UV);
-                uv_sb.Append(", ");
-                size_sb.Append(b.Size);
-                size_sb.Append(", ");
-                pos_sb.Append(b.Pos);
-                pos_sb.Append(", ");
-            }
-
-            uvLabel.Text = $"UV: {uv_sb}";
-            sizeLabel.Text = $"Size: {size_sb}";
-            positionLabel.Text = $"Position: {pos_sb}";
 
             // TODO: highlight all selected boxes
             if (skinPartListBox.SelectedItem is SkinBOX box)
             {
-
+                boxEditorControl1.SetBOX(box);
                 Image uvArea = EditorValue.Texture.GetArea(Rectangle.Truncate(new RectangleF(box.UV.X, box.UV.Y, box.Size.X * 2 + box.Size.Z * 2, box.Size.Z + box.Size.Y)));
 
                 Bitmap refImg = new Bitmap(1, 1);
@@ -478,6 +444,15 @@ namespace PckStudio.Forms.Editor
         private void animEditorButton_Click(object sender, EventArgs e)
         {
             ProcessDialogKey(Keys.A);
+        }
+
+        private void boxEditorControl1_BoxChanged(object sender, EventArgs e)
+        {
+            if(skinPartListBox.SelectedIndex > 0)
+            {
+                renderer3D1.ModelData[skinPartListBox.SelectedIndex] = boxEditorControl1.GetBOX();
+                _skinPartListBindingSource.ResetItem(skinPartListBox.SelectedIndex);
+            }
         }
     }
 }

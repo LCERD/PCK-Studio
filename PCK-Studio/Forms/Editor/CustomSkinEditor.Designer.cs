@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.GroupBox groupBox1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomSkinEditor));
-            this.sizeLabel = new System.Windows.Forms.Label();
-            this.positionLabel = new System.Windows.Forms.Label();
-            this.uvLabel = new System.Windows.Forms.Label();
             this.importTextureButton = new MetroFramework.Controls.MetroButton();
             this.exportTextureButton = new MetroFramework.Controls.MetroButton();
             this.skinPartTabContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -65,8 +61,7 @@
             this.renderSettingsButton = new MetroFramework.Controls.MetroButton();
             this.exportTemplateButton = new MetroFramework.Controls.MetroButton();
             this.animEditorButton = new MetroFramework.Controls.MetroButton();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            groupBox1.SuspendLayout();
+            this.boxEditorControl1 = new PckStudio.Controls.BoxEditorControl();
             this.skinPartTabContextMenu.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.skinPartsTabPage.SuspendLayout();
@@ -74,34 +69,6 @@
             this.offsetTabContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Controls.Add(this.sizeLabel);
-            groupBox1.Controls.Add(this.positionLabel);
-            groupBox1.Controls.Add(this.uvLabel);
-            groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
-            // 
-            // sizeLabel
-            // 
-            resources.ApplyResources(this.sizeLabel, "sizeLabel");
-            this.sizeLabel.ForeColor = System.Drawing.Color.White;
-            this.sizeLabel.Name = "sizeLabel";
-            // 
-            // positionLabel
-            // 
-            resources.ApplyResources(this.positionLabel, "positionLabel");
-            this.positionLabel.ForeColor = System.Drawing.Color.White;
-            this.positionLabel.Name = "positionLabel";
-            // 
-            // uvLabel
-            // 
-            resources.ApplyResources(this.uvLabel, "uvLabel");
-            this.uvLabel.ForeColor = System.Drawing.Color.White;
-            this.uvLabel.Name = "uvLabel";
             // 
             // importTextureButton
             // 
@@ -219,7 +186,6 @@
             this.skinPartListBox.Tag = "";
             this.skinPartListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.skinPartListBox_MouseClick);
             this.skinPartListBox.SelectedIndexChanged += new System.EventHandler(this.skinPartListBox_SelectedIndexChanged);
-            this.skinPartListBox.DoubleClick += new System.EventHandler(this.skinPartListBox_DoubleClick);
             this.skinPartListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.skinPartListBox_KeyUp);
             // 
             // captureScreenshotButton
@@ -366,14 +332,23 @@
             this.animEditorButton.UseSelectable = true;
             this.animEditorButton.Click += new System.EventHandler(this.animEditorButton_Click);
             // 
+            // boxEditorControl1
+            // 
+            this.boxEditorControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.boxEditorControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.boxEditorControl1, "boxEditorControl1");
+            this.boxEditorControl1.Name = "boxEditorControl1";
+            this.boxEditorControl1.BoxChanged += new System.EventHandler(this.boxEditorControl1_BoxChanged);
+            // 
             // CustomSkinEditor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.boxEditorControl1);
             this.Controls.Add(this.exportTextureButton);
             this.Controls.Add(this.importTextureButton);
             this.Controls.Add(this.textureSizeLabel);
-            this.Controls.Add(groupBox1);
             this.Controls.Add(this.showToolsCheckBox);
             this.Controls.Add(this.centerSelectionCheckbox);
             this.Controls.Add(this.showArmorCheckbox);
@@ -383,7 +358,6 @@
             this.Controls.Add(this.animEditorButton);
             this.Controls.Add(this.exportTemplateButton);
             this.Controls.Add(this.renderSettingsButton);
-            this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.skinNameLabel);
             this.Controls.Add(this.captureScreenshotButton);
             this.Controls.Add(this.renderer3D1);
@@ -394,8 +368,6 @@
             this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomSkinEditor_FormClosing);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             this.skinPartTabContextMenu.ResumeLayout(false);
             this.metroTabControl1.ResumeLayout(false);
             this.skinPartsTabPage.ResumeLayout(false);
@@ -435,12 +407,10 @@
         private System.Windows.Forms.ToolStripMenuItem addOffsetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeOffsetToolStripMenuItem;
         private MetroFramework.Controls.MetroCheckBox centerSelectionCheckbox;
-        private System.Windows.Forms.Label positionLabel;
-        private System.Windows.Forms.Label sizeLabel;
-        private System.Windows.Forms.Label uvLabel;
         private System.Windows.Forms.Label textureSizeLabel;
         private MetroFramework.Controls.MetroButton renderSettingsButton;
         private MetroFramework.Controls.MetroButton exportTemplateButton;
         private MetroFramework.Controls.MetroButton animEditorButton;
+        private Controls.BoxEditorControl boxEditorControl1;
     }
 }
