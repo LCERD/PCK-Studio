@@ -935,6 +935,13 @@ namespace PckStudio.Controls
                         break;
                     }
 
+                    if (resourceLocation.Category == ResourceCategory.MobEntityTextures || resourceLocation.Category == ResourceCategory.ItemEntityTextures)
+                    {
+                        buttonEdit.Text = "EDIT ENTITY MODEL";
+                        buttonEdit.Visible = true;
+                        break;
+                    }
+
                     buttonEdit.Text = "EDIT TEXTURE ATLAS";
                     buttonEdit.Visible = true;
                 }
