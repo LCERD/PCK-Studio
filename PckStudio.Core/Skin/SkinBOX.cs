@@ -52,7 +52,7 @@ namespace PckStudio.Core.Skin
         {
             [unchecked((int)0x9560320c)] = SkinAnimFlag.HEAD_DISABLED,              // HEAD     -4 -8 -4 8  8 8  0  0 0 0 0
             
-            [unchecked((int)0x1f13e4a3)] = SkinAnimFlag.BODY_DISABLED,              // BODY     -4  0 -2 8 12 4 16 16 0 0 0
+            [unchecked((int)0x1f13e4a3)] = SkinAnimFlag.TORSO_DISABLED,              // BODY     -4  0 -2 8 12 4 16 16 0 0 0
 
             [unchecked((int)0x407c9b27)] = SkinAnimFlag.RIGHT_ARM_DISABLED,         // ARM0     -3 -2 -2 4 12 4 40 16 0 0 0 // standard (64x64)
             [unchecked((int)0x867c9b27)] = SkinAnimFlag.RIGHT_ARM_DISABLED,         // ARM0     -2 -2 -2 3 12 4 40 16 0 0 0 // slim
@@ -66,22 +66,22 @@ namespace PckStudio.Core.Skin
 
             [unchecked((int)0x5da5e24a)] = SkinAnimFlag.RIGHT_LEG_DISABLED,         // LEG0     -2  0 -2 4 12 4  0 16 0 0 0
 
-            [unchecked((int)0x4bfe0142)] = SkinAnimFlag.HEAD_OVERLAY_DISABLED,      // HEADWEAR -4 -8 -4 8  8 8 32  0 0 0 0
+            [unchecked((int)0x4bfe0142)] = SkinAnimFlag.HEADWEAR_DISABLED,      // HEADWEAR -4 -8 -4 8  8 8 32  0 0 0 0
 
             // ------------------------------------------------------------------------------------------------------------------------------------
 
-            [unchecked((int)0xe693e4a3)] = SkinAnimFlag.BODY_OVERLAY_DISABLED,      // BODY     -4  0 -2 8 12 4 16 32 0 0 0
-            [unchecked((int)0x8e322609)] = SkinAnimFlag.BODY_OVERLAY_DISABLED,      // JACKET   -4  0 -2 8 12 4 16 32 0 0 0
+            [unchecked((int)0xe693e4a3)] = SkinAnimFlag.JACKET_DISABLED,      // BODY     -4  0 -2 8 12 4 16 32 0 0 0
+            [unchecked((int)0x8e322609)] = SkinAnimFlag.JACKET_DISABLED,      // JACKET   -4  0 -2 8 12 4 16 32 0 0 0
 
-            [unchecked((int)0x860c4433)] = SkinAnimFlag.RIGHT_ARM_OVERLAY_DISABLED, // SLEEVE0  -3 -2 -2 4 12 4 40 32 0 0 0 // classic
-            [unchecked((int)0xcc0c4433)] = SkinAnimFlag.RIGHT_ARM_OVERLAY_DISABLED, // SLEEVE0  -2 -2 -2 3 12 4 40 32 0 0 0 // slim
+            [unchecked((int)0x860c4433)] = SkinAnimFlag.RIGHT_SLEEVE_DISABLED, // SLEEVE0  -3 -2 -2 4 12 4 40 32 0 0 0 // classic
+            [unchecked((int)0xcc0c4433)] = SkinAnimFlag.RIGHT_SLEEVE_DISABLED, // SLEEVE0  -2 -2 -2 3 12 4 40 32 0 0 0 // slim
 
-            [unchecked((int)0x91407908)] = SkinAnimFlag.LEFT_ARM_OVERLAY_DISABLED,  // SLEEVE1  -1 -2 -2 4 12 4 48 48 0 0 0 // classic
-            [unchecked((int)0x79807908)] = SkinAnimFlag.LEFT_ARM_OVERLAY_DISABLED,  // SLEEVE1  -1 -2 -2 3 12 4 48 48 0 0 0 // slim
+            [unchecked((int)0x91407908)] = SkinAnimFlag.LEFT_SLEEVE_DISABLED,  // SLEEVE1  -1 -2 -2 4 12 4 48 48 0 0 0 // classic
+            [unchecked((int)0x79807908)] = SkinAnimFlag.LEFT_SLEEVE_DISABLED,  // SLEEVE1  -1 -2 -2 3 12 4 48 48 0 0 0 // slim
 
-            [unchecked((int)0x4de0238a)] = SkinAnimFlag.RIGHT_LEG_OVERLAY_DISABLED, // PANTS0   -2  0 -2 4 12 4  0 32 0 0 0
+            [unchecked((int)0x4de0238a)] = SkinAnimFlag.RIGHT_PANTS_DISABLED, // PANTS0   -2  0 -2 4 12 4  0 32 0 0 0
 
-            [unchecked((int)0x176f238a)] = SkinAnimFlag.LEFT_LEG_OVERLAY_DISABLED,  // PANTS1   -2  0 -2 4 12 4  0 48 0 0 0
+            [unchecked((int)0x176f238a)] = SkinAnimFlag.LEFT_PANTS_DISABLED,  // PANTS1   -2  0 -2 4 12 4  0 48 0 0 0
         };
 
         public static readonly string[] ValidBoxTypes = BaseTypes.Concat(OverlayTypes).ToArray();

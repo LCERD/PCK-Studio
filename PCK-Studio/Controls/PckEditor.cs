@@ -247,7 +247,7 @@ namespace PckStudio.Controls
                     }
                     if (!hasDefaultModel && !hasCustomModel)
                     {
-                        MessageBox.Show(this, $"Not Model found for: {modelName}");
+                        MessageBox.Show(this, $"No Model found for: {modelName}");
                         return;
                     }
 
@@ -906,10 +906,18 @@ namespace PckStudio.Controls
                 case PckAssetType.CapeFile:
                 case PckAssetType.TextureFile:
                 {
-                    Image img = asset.GetTexture();
 
-                    previewPictureBox.Image = img;
-                    labelImageSize.Text = $"{previewPictureBox.Image.Size.Width}x{previewPictureBox.Image.Size.Height}";
+                    try
+                    {
+                        Image img = asset.GetTexture();
+                        previewPictureBox.Image = img;
+                        labelImageSize.Text = $"{previewPictureBox.Image.Size.Width}x{previewPictureBox.Image.Size.Height}";
+                    }
+                    catch(System.ArgumentException ex)
+                    {
+                        previewPictureBox.Image = Resources.NoImageFound;
+                        MessageBox.Show(this, "Not a valid .PNG or .TGA image or invalid image data found");
+                    }
 
                     if (asset.Type != PckAssetType.TextureFile)
                         break;
@@ -923,6 +931,13 @@ namespace PckStudio.Controls
                         !asset.IsMipmappedFile())
                     {
                         buttonEdit.Text = "EDIT TILE ANIMATION";
+                        buttonEdit.Visible = true;
+                        break;
+                    }
+
+                    if (resourceLocation.Category == ResourceCategory.MobEntityTextures || resourceLocation.Category == ResourceCategory.ItemEntityTextures)
+                    {
+                        buttonEdit.Text = "EDIT ENTITY MODEL";
                         buttonEdit.Visible = true;
                         break;
                     }

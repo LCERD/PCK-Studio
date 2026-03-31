@@ -23,44 +23,44 @@ namespace PckStudio.Core.Skin
     /// </summary>
 	public enum SkinAnimFlag : int
 	{
-		STATIC_ARMS           = 0,  // 0x01
-		ZOMBIE_ARMS           = 1,  // 0x02
-		STATIC_LEGS           = 2,  // 0x04
-		BAD_SANTA             = 3,  // 0x08
-										 //
-		__BIT_4               = 4,  // 0x10 - Unused??
-		SYNCED_LEGS           = 5,  // 0x20
-        SYNCED_ARMS           = 6,  // 0x40
-        STATUE_OF_LIBERTY     = 7,  // 0x80
+		STATIC_ARMS					= 0,   // 0x01
+		ZOMBIE_ARMS					= 1,   // 0x02
+		STATIC_LEGS					= 2,   // 0x04
+		SIT_IDLE_ANIMATION			= 3,   // 0x08
+										   //
+        CUSTOM_ANIMATION_OVERRIDE	= 4,   // 0x10
+		SYNCED_LEGS					= 5,   // 0x20
+        SYNCED_ARMS					= 6,   // 0x40
+        STATUE_OF_LIBERTY			= 7,   // 0x80
 
-        ALL_ARMOR_DISABLED    = 8,  // 0x100
-		HEAD_BOBBING_DISABLED = 9,  // 0x200
-		HEAD_DISABLED         = 10, // 0x400
-		RIGHT_ARM_DISABLED    = 11, // 0x800
+        ALL_ARMOR_DISABLED			= 8,   // 0x100
+		NO_BOBBING_OVERRIDE			= 9,   // 0x200
+		HEAD_DISABLED				= 10,  // 0x400
+		RIGHT_ARM_DISABLED			= 11,  // 0x800
 
-        LEFT_ARM_DISABLED     = 12, // 0x1000
-		BODY_DISABLED         = 13, // 0x2000
-		RIGHT_LEG_DISABLED    = 14, // 0x4000
-		LEFT_LEG_DISABLED     = 15, // 0x8000
+        LEFT_ARM_DISABLED			= 12,  // 0x1000
+		TORSO_DISABLED				= 13,  // 0x2000
+		RIGHT_LEG_DISABLED			= 14,  // 0x4000
+		LEFT_LEG_DISABLED			= 15,  // 0x8000
 
-        HEAD_OVERLAY_DISABLED = 16, // 0x10000
-		DO_BACKWARDS_CROUCH   = 17, // 0x20000
-		RESOLUTION_64x64      = 18, // 0x40000
-		SLIM_MODEL            = 19, // 0x80000
+        HEADWEAR_DISABLED			= 16,  // 0x10000
+		DO_BACKWARDS_CROUCH			= 17,  // 0x20000
+		MODERN_WIDE_MODEL			= 18,  // 0x40000
+		SLIM_MODEL					= 19,  // 0x80000
 
-        LEFT_ARM_OVERLAY_DISABLED  = 20, // 0x100000
-		RIGHT_ARM_OVERLAY_DISABLED = 21, // 0x200000
-		LEFT_LEG_OVERLAY_DISABLED  = 22, // 0x400000
-		RIGHT_LEG_OVERLAY_DISABLED = 23, // 0x800000
+        LEFT_SLEEVE_DISABLED		= 20,  // 0x100000
+		RIGHT_SLEEVE_DISABLED		= 21,  // 0x200000
+		LEFT_PANTS_DISABLED			= 22,  // 0x400000
+		RIGHT_PANTS_DISABLED		= 23,  // 0x800000
 
-        BODY_OVERLAY_DISABLED = 24, // 0x1000000
-		FORCE_HEAD_ARMOR      = 25, // 0x2000000
-		FORCE_RIGHT_ARM_ARMOR = 26, // 0x4000000
-		FORCE_LEFT_ARM_ARMOR  = 27, // 0x8000000
+        JACKET_DISABLED				= 24,  // 0x1000000
+		SHOW_HEAD_ARMOR				= 25,  // 0x2000000
+		SHOW_CHESTPLATE_RIGHT		= 26,  // 0x4000000
+		SHOW_CHESTPLATE_LEFT		= 27,  // 0x8000000
 
-        FORCE_BODY_ARMOR      = 28, // 0x10000000
-		FORCE_RIGHT_LEG_ARMOR = 29, // 0x20000000
-		FORCE_LEFT_LEG_ARMOR  = 30, // 0x40000000
-		DINNERBONE            = 31, // 0x80000000
+        SHOW_CHESTPLATE_CENTER		= 28,  // 0x10000000
+		SHOW_RIGHT_LEG_ARMOR		= 29,  // 0x20000000
+		SHOW_LEFT_LEG_ARMOR			= 30,  // 0x40000000
+		DINNERBONE					= 31,  // 0x80000000
     }
 }

@@ -75,15 +75,15 @@ namespace PckStudio.Forms.Editor
                         checkbox.Checked = state;
                         switch(checkBoxLinkage[checkbox])
 						{
-                            case SkinAnimFlag.FORCE_HEAD_ARMOR:
-                            case SkinAnimFlag.FORCE_BODY_ARMOR:
-                            case SkinAnimFlag.FORCE_LEFT_ARM_ARMOR:
-                            case SkinAnimFlag.FORCE_RIGHT_ARM_ARMOR:
-                            case SkinAnimFlag.FORCE_LEFT_LEG_ARMOR:
-                            case SkinAnimFlag.FORCE_RIGHT_LEG_ARMOR:
+                            case SkinAnimFlag.SHOW_HEAD_ARMOR:
+                            case SkinAnimFlag.SHOW_CHESTPLATE_CENTER:
+                            case SkinAnimFlag.SHOW_CHESTPLATE_LEFT:
+                            case SkinAnimFlag.SHOW_CHESTPLATE_RIGHT:
+                            case SkinAnimFlag.SHOW_LEFT_LEG_ARMOR:
+                            case SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR:
                                 checkbox.Enabled = state;
                                 break;
-                            case SkinAnimFlag.RESOLUTION_64x64:
+                            case SkinAnimFlag.MODERN_WIDE_MODEL:
                                 checkbox.Enabled = !state;
                                 // Prioritize slim model > classic model, LCE would
                                 if(state)
@@ -105,7 +105,7 @@ namespace PckStudio.Forms.Editor
                      * not the best way to do this but whatever lol
                      * fix for both model flags being unset when both are set to true, with slim model prioritized of course
                      */
-                    if (item.Value == SkinAnimFlag.RESOLUTION_64x64 && anim.GetFlag(SkinAnimFlag.SLIM_MODEL))
+                    if (item.Value == SkinAnimFlag.MODERN_WIDE_MODEL && anim.GetFlag(SkinAnimFlag.SLIM_MODEL))
                         continue;
 
                     item.Key.Checked = anim.GetFlag(item.Value);
@@ -119,38 +119,38 @@ namespace PckStudio.Forms.Editor
                     switch (checkBoxLinkage[checkBox])
                     {
                         case SkinAnimFlag.HEAD_DISABLED:
-                            checkBoxLinkage[SkinAnimFlag.FORCE_HEAD_ARMOR].Enabled = checkBox.Checked;
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.FORCE_HEAD_ARMOR]);
+                            checkBoxLinkage[SkinAnimFlag.SHOW_HEAD_ARMOR].Enabled = checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.SHOW_HEAD_ARMOR]);
                             break;
-                        case SkinAnimFlag.BODY_DISABLED:
-                            checkBoxLinkage[SkinAnimFlag.FORCE_BODY_ARMOR].Enabled = checkBox.Checked;
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.FORCE_BODY_ARMOR]);
+                        case SkinAnimFlag.TORSO_DISABLED:
+                            checkBoxLinkage[SkinAnimFlag.SHOW_CHESTPLATE_CENTER].Enabled = checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.SHOW_CHESTPLATE_CENTER]);
                             break;
                         case SkinAnimFlag.LEFT_LEG_DISABLED:
-                            checkBoxLinkage[SkinAnimFlag.FORCE_LEFT_LEG_ARMOR].Enabled = checkBox.Checked;
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.FORCE_LEFT_LEG_ARMOR]);
+                            checkBoxLinkage[SkinAnimFlag.SHOW_LEFT_LEG_ARMOR].Enabled = checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.SHOW_LEFT_LEG_ARMOR]);
                             break;
                         case SkinAnimFlag.RIGHT_LEG_DISABLED:
-                            checkBoxLinkage[SkinAnimFlag.FORCE_RIGHT_LEG_ARMOR].Enabled = checkBox.Checked;
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.FORCE_RIGHT_LEG_ARMOR]);
+                            checkBoxLinkage[SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR].Enabled = checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR]);
                             break;
                         case SkinAnimFlag.LEFT_ARM_DISABLED:
-                            checkBoxLinkage[SkinAnimFlag.FORCE_LEFT_ARM_ARMOR].Enabled = checkBox.Checked;
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.FORCE_LEFT_ARM_ARMOR]);
+                            checkBoxLinkage[SkinAnimFlag.SHOW_CHESTPLATE_LEFT].Enabled = checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.SHOW_CHESTPLATE_LEFT]);
                             break;
                         case SkinAnimFlag.RIGHT_ARM_DISABLED:
-                            checkBoxLinkage[SkinAnimFlag.FORCE_RIGHT_ARM_ARMOR].Enabled = checkBox.Checked;
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.FORCE_RIGHT_ARM_ARMOR]);
+                            checkBoxLinkage[SkinAnimFlag.SHOW_CHESTPLATE_LEFT].Enabled = checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.SHOW_CHESTPLATE_LEFT]);
                             break;
                         
-                        case SkinAnimFlag.RESOLUTION_64x64:
+                        case SkinAnimFlag.MODERN_WIDE_MODEL:
                             Uncheck(checkBoxLinkage[SkinAnimFlag.SLIM_MODEL]);
                             checkBoxLinkage[SkinAnimFlag.SLIM_MODEL].Enabled = !checkBox.Checked;
                             break;
 
                         case SkinAnimFlag.SLIM_MODEL:
-                            Uncheck(checkBoxLinkage[SkinAnimFlag.RESOLUTION_64x64]);
-                            checkBoxLinkage[SkinAnimFlag.RESOLUTION_64x64].Enabled = !checkBox.Checked;
+                            Uncheck(checkBoxLinkage[SkinAnimFlag.MODERN_WIDE_MODEL]);
+                            checkBoxLinkage[SkinAnimFlag.MODERN_WIDE_MODEL].Enabled = !checkBox.Checked;
                             break;
                         default:
                             break;
@@ -190,37 +190,37 @@ namespace PckStudio.Forms.Editor
         private void InitializeRuleSet()
         {
             ruleset = new ANIMRuleSet(
-                (bobbingCheckBox, SkinAnimFlag.HEAD_BOBBING_DISABLED),
-                (bodyCheckBox, SkinAnimFlag.BODY_DISABLED),
-                (bodyOCheckBox, SkinAnimFlag.BODY_OVERLAY_DISABLED),
-                (chestplateCheckBox, SkinAnimFlag.FORCE_BODY_ARMOR),
-                (classicCheckBox, SkinAnimFlag.RESOLUTION_64x64),
+                (bobbingCheckBox, SkinAnimFlag.NO_BOBBING_OVERRIDE),
+                (bodyCheckBox, SkinAnimFlag.TORSO_DISABLED),
+                (bodyOCheckBox, SkinAnimFlag.JACKET_DISABLED),
+                (chestplateCheckBox, SkinAnimFlag.SHOW_CHESTPLATE_CENTER),
+                (classicCheckBox, SkinAnimFlag.MODERN_WIDE_MODEL),
                 (crouchCheckBox, SkinAnimFlag.DO_BACKWARDS_CROUCH),
                 (dinnerboneCheckBox, SkinAnimFlag.DINNERBONE),
                 (headCheckBox, SkinAnimFlag.HEAD_DISABLED),
-                (headOCheckBox, SkinAnimFlag.HEAD_OVERLAY_DISABLED),
-                (helmetCheckBox, SkinAnimFlag.FORCE_HEAD_ARMOR),
+                (headOCheckBox, SkinAnimFlag.HEADWEAR_DISABLED),
+                (helmetCheckBox, SkinAnimFlag.SHOW_HEAD_ARMOR),
                 (leftArmCheckBox, SkinAnimFlag.LEFT_ARM_DISABLED),
-                (leftArmOCheckBox, SkinAnimFlag.LEFT_ARM_OVERLAY_DISABLED),
-                (leftArmorCheckBox, SkinAnimFlag.FORCE_LEFT_ARM_ARMOR),
+                (leftArmOCheckBox, SkinAnimFlag.LEFT_SLEEVE_DISABLED),
+                (leftArmorCheckBox, SkinAnimFlag.SHOW_CHESTPLATE_LEFT),
                 (leftLegCheckBox, SkinAnimFlag.LEFT_LEG_DISABLED),
-                (leftLeggingCheckBox, SkinAnimFlag.FORCE_LEFT_LEG_ARMOR),
-                (leftLegOCheckBox, SkinAnimFlag.LEFT_LEG_OVERLAY_DISABLED),
+                (leftLeggingCheckBox, SkinAnimFlag.SHOW_LEFT_LEG_ARMOR),
+                (leftLegOCheckBox, SkinAnimFlag.LEFT_PANTS_DISABLED),
                 (noArmorCheckBox, SkinAnimFlag.ALL_ARMOR_DISABLED),
                 (rightArmCheckBox, SkinAnimFlag.RIGHT_ARM_DISABLED),
-                (rightArmOCheckBox, SkinAnimFlag.RIGHT_ARM_OVERLAY_DISABLED),
-                (rightArmorCheckBox, SkinAnimFlag.FORCE_RIGHT_ARM_ARMOR),
+                (rightArmOCheckBox, SkinAnimFlag.RIGHT_SLEEVE_DISABLED),
+                (rightArmorCheckBox, SkinAnimFlag.SHOW_CHESTPLATE_LEFT),
                 (rightLegCheckBox, SkinAnimFlag.RIGHT_LEG_DISABLED),
-                (rightLeggingCheckBox, SkinAnimFlag.FORCE_RIGHT_LEG_ARMOR),
-                (rightLegOCheckBox, SkinAnimFlag.RIGHT_LEG_OVERLAY_DISABLED),
-                (santaCheckBox, SkinAnimFlag.BAD_SANTA),
+                (rightLeggingCheckBox, SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR),
+                (rightLegOCheckBox, SkinAnimFlag.RIGHT_PANTS_DISABLED),
+                (santaCheckBox, SkinAnimFlag.SIT_IDLE_ANIMATION),
                 (slimCheckBox, SkinAnimFlag.SLIM_MODEL),
                 (staticArmsCheckBox, SkinAnimFlag.STATIC_ARMS),
                 (staticLegsCheckBox, SkinAnimFlag.STATIC_LEGS),
                 (statueCheckBox, SkinAnimFlag.STATUE_OF_LIBERTY),
                 (syncArmsCheckBox, SkinAnimFlag.SYNCED_ARMS),
                 (syncLegsCheckBox, SkinAnimFlag.SYNCED_LEGS),
-                (unknownCheckBox, SkinAnimFlag.__BIT_4),
+                (animationOverrideCheckBox, SkinAnimFlag.CUSTOM_ANIMATION_OVERRIDE),
                 (zombieCheckBox, SkinAnimFlag.ZOMBIE_ARMS)
             );
             ruleset.OnCheckboxChanged = setDisplayAnim;
@@ -281,7 +281,7 @@ namespace PckStudio.Forms.Editor
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
             bool isSlim = ruleset.Value.GetFlag(SkinAnimFlag.SLIM_MODEL);
-            bool is64x64 = ruleset.Value.GetFlag(SkinAnimFlag.RESOLUTION_64x64);
+            bool is64x64 = ruleset.Value.GetFlag(SkinAnimFlag.MODERN_WIDE_MODEL);
             bool isClassic32 = !isSlim && !is64x64;
 
             Image skin = isSlim ? Properties.Resources.slim_template : Properties.Resources.classic_template;
@@ -292,11 +292,11 @@ namespace PckStudio.Forms.Editor
             using (Graphics graphic = Graphics.FromImage(img))
             {
                 graphic.DrawImage(skin, new Rectangle(Point.Empty, imgSize), new Rectangle(Point.Empty, imgSize), GraphicsUnit.Pixel);
-                if (ruleset.Value.GetFlag(SkinAnimFlag.HEAD_OVERLAY_DISABLED))
+                if (ruleset.Value.GetFlag(SkinAnimFlag.HEADWEAR_DISABLED))
                     graphic.FillRectangle(Brushes.Magenta, new Rectangle(32, 0, 32, 16));
                 if (ruleset.Value.GetFlag(SkinAnimFlag.HEAD_DISABLED))
                     graphic.FillRectangle(Brushes.Magenta, new Rectangle(0, 0, 32, 16));
-                if (ruleset.Value.GetFlag(SkinAnimFlag.BODY_DISABLED))
+                if (ruleset.Value.GetFlag(SkinAnimFlag.TORSO_DISABLED))
                     graphic.FillRectangle(Brushes.Magenta, new Rectangle(16, 16, 24, 16));
                 if (img.Height == 64)
                 {
@@ -304,19 +304,19 @@ namespace PckStudio.Forms.Editor
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(40, 16, 16, 16));
                     if (ruleset.Value.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(0, 16, 16, 16));
-                    if (ruleset.Value.GetFlag(SkinAnimFlag.BODY_OVERLAY_DISABLED))
+                    if (ruleset.Value.GetFlag(SkinAnimFlag.JACKET_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(16, 32, 24, 16));
-                    if (ruleset.Value.GetFlag(SkinAnimFlag.RIGHT_ARM_OVERLAY_DISABLED))
+                    if (ruleset.Value.GetFlag(SkinAnimFlag.RIGHT_SLEEVE_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(40, 32, 16, 16));
-                    if (ruleset.Value.GetFlag(SkinAnimFlag.RIGHT_LEG_OVERLAY_DISABLED))
+                    if (ruleset.Value.GetFlag(SkinAnimFlag.RIGHT_PANTS_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(0, 32, 16, 16));
-                    if (ruleset.Value.GetFlag(SkinAnimFlag.LEFT_LEG_OVERLAY_DISABLED))
+                    if (ruleset.Value.GetFlag(SkinAnimFlag.LEFT_PANTS_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(0, 48, 16, 16));
                     if (ruleset.Value.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(16, 48, 16, 16));
                     if (ruleset.Value.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(32, 48, 16, 16));
-                    if (ruleset.Value.GetFlag(SkinAnimFlag.LEFT_ARM_OVERLAY_DISABLED))
+                    if (ruleset.Value.GetFlag(SkinAnimFlag.LEFT_SLEEVE_DISABLED))
                         graphic.FillRectangle(Brushes.Magenta, new Rectangle(48, 48, 16, 16));
                 }
                 else
@@ -343,7 +343,7 @@ namespace PckStudio.Forms.Editor
         static readonly Dictionary<string, SkinAnimMask> Templates = new Dictionary<string, SkinAnimMask>()
         {
                 { "Steve (64x32)",           SkinAnimMask.NONE },
-                { "Steve (64x64)",           SkinAnimMask.RESOLUTION_64x64 },
+                { "Steve (64x64)",           SkinAnimMask.MODERN_WIDE_MODEL },
                 { "Alex (64x64)",            SkinAnimMask.SLIM_MODEL },
                 { "Zombie Skins",            SkinAnimMask.ZOMBIE_ARMS },
                 { "Cetacean Skins",          SkinAnimMask.SYNCED_ARMS | SkinAnimMask.SYNCED_LEGS },

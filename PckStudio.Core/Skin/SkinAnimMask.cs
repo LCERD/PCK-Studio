@@ -13,15 +13,15 @@ namespace PckStudio.Core.Skin
         STATIC_ARMS                 = 1 << 0,  // 0x01
         ZOMBIE_ARMS                 = 1 << 1,  // 0x02
         STATIC_LEGS                 = 1 << 2,  // 0x04
-        BAD_SANTA                   = 1 << 3,  // 0x08
+        SIT_IDLE_ANIMATION          = 1 << 3,  // 0x08
 
-        __BIT_4                     = 1 << 4,  // 0x10 - Unused??
+        CUSTOM_ANIMATION_OVERRIDE   = 1 << 4,  // 0x10, Overrides the game's "Custom Skin Animation" setting (0x19 in Settings enum)
         SYNCED_LEGS                 = 1 << 5,  // 0x20
         SYNCED_ARMS                 = 1 << 6,  // 0x40
         STATUE_OF_LIBERTY           = 1 << 7,  // 0x80
 
         ALL_ARMOR_DISABLED          = 1 << 8,  // 0x100
-        HEAD_BOBBING_DISABLED       = 1 << 9,  // 0x200
+        NO_BOBBING_OVERRIDE         = 1 << 9,  // 0x200
         HEAD_DISABLED               = 1 << 10, // 0x400
         RIGHT_ARM_DISABLED          = 1 << 11, // 0x800
 
@@ -30,17 +30,17 @@ namespace PckStudio.Core.Skin
         RIGHT_LEG_DISABLED          = 1 << 14, // 0x4000
         LEFT_LEG_DISABLED           = 1 << 15, // 0x8000
 
-        HEAD_OVERLAY_DISABLED       = 1 << 16, // 0x10000
-        DO_BACKWARDS_CROUCH         = 1 << 17, // 0x20000
-        RESOLUTION_64x64            = 1 << 18, // 0x40000
+        HEADWEAR_DISABLED           = 1 << 16, // 0x10000
+        BACKWARDS_CROUCH            = 1 << 17, // 0x20000
+        MODERN_WIDE_MODEL           = 1 << 18, // 0x40000
         SLIM_MODEL                  = 1 << 19, // 0x80000
 
-        LEFT_ARM_OVERLAY_DISABLED   = 1 << 20, // 0x100000
-        RIGHT_ARM_OVERLAY_DISABLED  = 1 << 21, // 0x200000
-        LEFT_LEG_OVERLAY_DISABLED   = 1 << 22, // 0x400000
-        RIGHT_LEG_OVERLAY_DISABLED  = 1 << 23, // 0x800000
+        LEFT_SLEEVE_DISABLED        = 1 << 20, // 0x100000
+        RIGHT_SLEEVE_DISABLED       = 1 << 21, // 0x200000
+        LEFT_PANTS_DISABLED         = 1 << 22, // 0x400000
+        RIGHT_PANTS_DISABLED        = 1 << 23, // 0x800000
 
-        BODY_OVERLAY_DISABLED       = 1 << 24, // 0x1000000
+        JACKET_DISABLED             = 1 << 24, // 0x1000000
         FORCE_HEAD_ARMOR            = 1 << 25, // 0x2000000
         FORCE_RIGHT_ARM_ARMOR       = 1 << 26, // 0x4000000
         FORCE_LEFT_ARM_ARMOR        = 1 << 27, // 0x8000000

@@ -137,6 +137,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BoxEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BoxEditorControl.Designer.cs">
+      <DependentUpon>BoxEditorControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -396,6 +402,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\BoxEditorControl.resx">
+      <DependentUpon>BoxEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PckEditor.resx">
       <DependentUpon>PckEditor.cs</DependentUpon>
     </EmbeddedResource>

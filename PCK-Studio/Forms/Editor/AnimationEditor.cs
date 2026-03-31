@@ -256,7 +256,7 @@ namespace PckStudio.Forms.Editor
 				 * it would replace the first instance of that frame and time
 				 * rather than the actual frame that was clicked.
 				 * I've just switched to passing the index to fix this for now.
-				 * - Matt
+				 * - MayNL
 				*/
 
                 EditorValue.SetFrame(frameTreeView.SelectedNode.Index, diag.FrameTextureIndex, diag.FrameTime);

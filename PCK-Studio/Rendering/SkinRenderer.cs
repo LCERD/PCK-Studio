@@ -268,13 +268,25 @@ namespace PckStudio.Rendering
                 { "SLEEVE1" , leftArm },
                 { "PANTS0"  , rightLeg },
                 { "PANTS1"  , leftLeg },
+
+                { "WAIST"  , body },
+                { "LEGGING0"  , rightLeg},
+                { "LEGGING1"  , leftLeg},
+                { "SOCK0"  , rightLeg},
+                { "SOCK1"  , leftLeg},
+                { "BOOT0"  , rightLeg},
+                { "BOOT1"  , leftLeg},
+                { "ARMARMOR0", rightArm },
+                { "ARMARMOR1", leftArm },
+                { "BODYARMOR"  , body },
+                { "BELT"  , body },
             };
             CalculateSkinBounds();
             InitializeArmorData();
             InitializeCamera();
             InitializeComponent();
 
-            ANIM ??= new SkinANIM(SkinAnimMask.RESOLUTION_64x64);
+            ANIM ??= new SkinANIM(SkinAnimMask.MODERN_WIDE_MODEL);
             ModelData = new ObservableCollection<SkinBOX>();
             ModelData.CollectionChanged += ModelData_CollectionChanged;
         }
@@ -705,9 +717,9 @@ namespace PckStudio.Rendering
         private void OnANIMUpdate()
         {
             head.SetVisible(0, !ANIM.GetFlag(SkinAnimFlag.HEAD_DISABLED));
-            head.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.HEAD_OVERLAY_DISABLED));
+            head.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.HEADWEAR_DISABLED));
             
-            body.SetVisible(0, !ANIM.GetFlag(SkinAnimFlag.BODY_DISABLED));
+            body.SetVisible(0, !ANIM.GetFlag(SkinAnimFlag.TORSO_DISABLED));
             rightArm.SetVisible(0, !ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_DISABLED));
             leftArm.SetVisible(0, !ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED));
             rightLeg.SetVisible(0, !ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED));
@@ -716,14 +728,14 @@ namespace PckStudio.Rendering
             bool slim = ANIM.GetFlag(SkinAnimFlag.SLIM_MODEL);
 
             head.FlipZMapping = true;
-            if (slim || ANIM.GetFlag(SkinAnimFlag.RESOLUTION_64x64))
+            if (slim || ANIM.GetFlag(SkinAnimFlag.MODERN_WIDE_MODEL))
             {
                 TextureSize = new Size(64, 64);
-                body.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.BODY_OVERLAY_DISABLED));
-                rightArm.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_OVERLAY_DISABLED));
-                leftArm.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_OVERLAY_DISABLED));
-                rightLeg.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_OVERLAY_DISABLED));
-                leftLeg.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_OVERLAY_DISABLED));
+                body.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.JACKET_DISABLED));
+                rightArm.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.RIGHT_SLEEVE_DISABLED));
+                leftArm.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.LEFT_SLEEVE_DISABLED));
+                rightLeg.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.RIGHT_PANTS_DISABLED));
+                leftLeg.SetVisible(1, !ANIM.GetFlag(SkinAnimFlag.LEFT_PANTS_DISABLED));
 
                 int slimValue = slim ? 3 : 4;
                 rightArm.ReplaceCube(0, new(slim ? -2 : -3, -2, -2), new(slimValue, 12, 4), new(40, 16));
@@ -919,26 +931,26 @@ namespace PckStudio.Rendering
                 {
                     armorTexture.Bind();
                     cubeShader.SetUniform2("TexSize", new Vector2(64, 64));
-                    if (!ANIM.GetFlag(SkinAnimFlag.HEAD_DISABLED) || ANIM.GetFlag(SkinAnimFlag.FORCE_HEAD_ARMOR))
+                    if (!ANIM.GetFlag(SkinAnimFlag.HEAD_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_HEAD_ARMOR))
                         RenderPart(cubeShader, offsetSpecificMeshStorage["HELMET"], Matrix4.Identity, renderTransform);
                     
-                    if (!ANIM.GetFlag(SkinAnimFlag.BODY_DISABLED) || ANIM.GetFlag(SkinAnimFlag.FORCE_BODY_ARMOR))
+                    if (!ANIM.GetFlag(SkinAnimFlag.TORSO_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_CENTER))
                         RenderPart(cubeShader, offsetSpecificMeshStorage["CHEST"], Matrix4.Identity, renderTransform);
                     
-                    if (!ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.FORCE_RIGHT_ARM_ARMOR))
+                    if (!ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT))
                         RenderPart(cubeShader, offsetSpecificMeshStorage["SHOULDER0"], armRightMatrix, renderTransform);
                     
-                    if (!ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.FORCE_LEFT_ARM_ARMOR))
+                    if (!ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT))
                         RenderPart(cubeShader, offsetSpecificMeshStorage["SHOULDER1"], armLeftMatrix, renderTransform);
 
-                    bool showRightLegArmor = !ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.FORCE_RIGHT_LEG_ARMOR);
+                    bool showRightLegArmor = !ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR);
                     if (showRightLegArmor)
                     {
                         RenderPart(cubeShader, offsetSpecificMeshStorage["PANTS0"], legRightMatrix, renderTransform);
                         RenderPart(cubeShader, offsetSpecificMeshStorage["BOOT0"], legRightMatrix, renderTransform);
                     }
 
-                    bool showLeftLegArmor = !ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.FORCE_LEFT_LEG_ARMOR);
+                    bool showLeftLegArmor = !ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_LEFT_LEG_ARMOR);
                     if (showLeftLegArmor)
                     {
                         RenderPart(cubeShader, offsetSpecificMeshStorage["PANTS1"], legLeftMatrix, renderTransform);

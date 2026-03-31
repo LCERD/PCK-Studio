@@ -32,7 +32,7 @@ namespace PckStudio.Forms.Additional_Popups
         {
             InitializeComponent();
             _xmlVersion = xmlVersion;
-            newSkin = new Skin("", new SkinANIM(SkinAnimMask.RESOLUTION_64x64), Resources.classic_template, Enumerable.Empty<SkinBOX>(), Enumerable.Empty<SkinPartOffset>());
+            newSkin = new Skin("", new SkinANIM(SkinAnimMask.MODERN_WIDE_MODEL), Resources.classic_template, Enumerable.Empty<SkinBOX>(), Enumerable.Empty<SkinPartOffset>());
         }
 
         private void SetNewTexture(Image img)
@@ -44,7 +44,7 @@ namespace PckStudio.Forms.Additional_Popups
                 MessageBox.Show("The selected image does not suit a skin texture.", "Invalid image dimensions.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            newSkin.Anim.SetFlag(SkinAnimFlag.RESOLUTION_64x64, img.Width == img.Height);
+            newSkin.Anim.SetFlag(SkinAnimFlag.MODERN_WIDE_MODEL, img.Width == img.Height);
 
             skinPictureBox.Image = newSkin.Texture = img;
             labelSelectTexture.Visible = false;
@@ -69,7 +69,7 @@ namespace PckStudio.Forms.Additional_Popups
                     g.DrawRectangle(outlineColor, 70, 15, 40, 40);
                     g.FillRectangle(fillColor, 71, 16, 39, 39);
                 }
-                if (!newSkin.Anim.GetFlag(SkinAnimFlag.BODY_DISABLED))
+                if (!newSkin.Anim.GetFlag(SkinAnimFlag.TORSO_DISABLED))
                 {
                     //Body
                     g.DrawRectangle(outlineColor, 70, 55, 40, 60);
