@@ -28,6 +28,7 @@ using PckStudio.ToolboxItems;
 using PckStudio.Controls;
 using PckStudio.Interfaces;
 using PckStudio.Internal;
+using Newtonsoft.Json.Linq;
 
 namespace PckStudio.Forms.Editor
 {
@@ -264,6 +265,37 @@ namespace PckStudio.Forms.Editor
             saveFileDialog1.ShowDialog();
         }
 
+        private JArray BuildJSONData(IReadOnlyCollection<GameRuleFile.GameRule> gameRules)
+        {
+            JArray data = new JArray();
+
+            foreach (GameRuleFile.GameRule rule in gameRules)
+            {
+                JObject ruleObject = new JObject();
+
+                ruleObject["name"] = rule.Name;
+
+                JObject ruleParameters = new JObject();
+
+                foreach (var parameter in rule.GetParameters())
+                {
+                    ruleParameters[parameter.Key] = parameter.Value;
+                }
+
+                if (ruleParameters.Count > 0)
+                    ruleObject["parameters"] = ruleParameters;
+
+                JArray childRules = BuildJSONData(rule.GetRules());
+
+                if(childRules.Count > 0)
+                    ruleObject["rules"] = childRules;
+
+                data.Add(ruleObject);
+            }
+
+            return data;
+        }
+
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
             if (saveFileDialog1.FileName == "")
@@ -271,11 +303,13 @@ namespace PckStudio.Forms.Editor
                 return;
             }
 
-            TextWriter writer = new StreamWriter(saveFileDialog1.FileName);
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            serializer.Serialize(writer, _file.Root.ChildRules);
-            writer.Flush();
+            using (StreamWriter file = File.CreateText(saveFileDialog1.FileName))
+            using (JsonTextWriter writer = new JsonTextWriter(file))
+            {
+                JArray data = BuildJSONData(EditorValue.Root.GetRules());
+                writer.Formatting = Formatting.Indented;
+                data.WriteTo(writer);
+            }
         }
     }
 }
