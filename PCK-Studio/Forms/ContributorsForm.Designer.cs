@@ -70,9 +70,9 @@
             metroLabel5.Enabled = false;
             metroLabel5.Location = new System.Drawing.Point(397, 456);
             metroLabel5.Name = "metroLabel5";
-            metroLabel5.Size = new System.Drawing.Size(300, 19);
+            metroLabel5.Size = new System.Drawing.Size(298, 19);
             metroLabel5.TabIndex = 5;
-            metroLabel5.Text = "Additional development by MattNL and Miku-666";
+            metroLabel5.Text = "Additional development by Miku-666 and MayNL";
             metroLabel5.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroLabel6

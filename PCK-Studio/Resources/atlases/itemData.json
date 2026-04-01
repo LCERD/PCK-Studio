@@ -1,11 +1,10 @@
 {
-	"COMMENT_1": "Tile data research by MattNL",
-	"COMMENT_2": "JSON by PhoenixARC, MattNL, and NessieHax (Miku-666)",
+	"COMMENT_1": "Tile data research by MayNL",
+	"COMMENT_2": "JSON by PhoenixARC, MayNL, and NessieHax (Miku-666)",
 	"entries": [
 		{
 			"internalName": "helmetCloth",
 			"displayName": "Leather Cap",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Armour_Default_Leather_Colour",
@@ -75,7 +74,6 @@
 		{
 			"internalName": "chestplateCloth",
 			"displayName": "Leather Tunic",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Armour_Default_Leather_Colour",
@@ -145,7 +143,6 @@
 		{
 			"internalName": "leggingsCloth",
 			"displayName": "Leather Pants",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Armour_Default_Leather_Colour",
@@ -215,7 +212,6 @@
 		{
 			"internalName": "bootsCloth",
 			"displayName": "Leather Boots",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Armour_Default_Leather_Colour",
@@ -593,7 +589,6 @@
 		{
 			"internalName": "potion_contents",
 			"displayName": "Potion (Overlay)",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Potion_BaseColour",
@@ -1094,7 +1089,6 @@
 		{
 			"internalName": "leather_horse_armor_base",
 			"displayName": "Leather Horse Armor",
-			"allowCustomColour": true,
 			"hasColourEntry": true,
 			"colourEntry": {
 				"defaultName": "Armour_Default_Leather_Colour",
