@@ -8,7 +8,7 @@ namespace PckStudio.Core
         public static readonly PackInfo Empty = new PackInfo(default, default, default);
         public bool IsValid { get; }
         public PckFile File { get; }
-        public OMI.ByteOrder Endianness { get; }
+        public OMI.ByteOrder Endianness;
 
         
         //public enum PackType

@@ -138,6 +138,11 @@ namespace PckStudio.Controls
             };
         }
 
+        protected override void PreSave()
+        {
+            EditorValue.Endianness = LittleEndianCheckBox.Checked ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian;
+        }
+
         protected override void PostSave()
         {
             _timesSaved++;
