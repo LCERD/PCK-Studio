@@ -254,7 +254,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonDone.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="buttonDone.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 477</value>
@@ -449,7 +449,7 @@
     <value>0</value>
   </data>
   <data name="captureScreenshotButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="captureScreenshotButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 450</value>
@@ -593,7 +593,7 @@
     <value>0, 0</value>
   </data>
   <data name="offsetListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 302</value>
+    <value>532, 353</value>
   </data>
   <data name="offsetListBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -614,7 +614,7 @@
     <value>4, 38</value>
   </data>
   <data name="skinOffsetsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 302</value>
+    <value>532, 353</value>
   </data>
   <data name="skinOffsetsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -776,7 +776,7 @@
     <value>6</value>
   </data>
   <data name="renderSettingsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="renderSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 423</value>
@@ -830,7 +830,7 @@
     <value>14</value>
   </data>
   <data name="animEditorButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="animEditorButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 450</value>
@@ -855,6 +855,9 @@
   </data>
   <data name="&gt;&gt;animEditorButton.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="boxEditorControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="boxEditorControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>636, 405</value>

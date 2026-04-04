@@ -334,9 +334,9 @@
             // 
             // boxEditorControl1
             // 
+            resources.ApplyResources(this.boxEditorControl1, "boxEditorControl1");
             this.boxEditorControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.boxEditorControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.boxEditorControl1, "boxEditorControl1");
             this.boxEditorControl1.Name = "boxEditorControl1";
             this.boxEditorControl1.BoxChanged += new System.EventHandler(this.boxEditorControl1_BoxChanged);
             // 
