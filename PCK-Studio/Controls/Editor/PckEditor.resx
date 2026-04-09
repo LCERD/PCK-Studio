@@ -912,7 +912,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 111</value>
+    <value>204, 108</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -957,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="ParameterTypeTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 81</value>
+    <value>215, 78</value>
   </data>
   <data name="ParameterTypeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1002,7 +1002,7 @@
     <value>False</value>
   </data>
   <data name="parameterValueTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 113</value>
+    <value>215, 110</value>
   </data>
   <data name="parameterValueTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1026,7 +1026,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 139</value>
+    <value>215, 136</value>
   </data>
   <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 33</value>
@@ -1059,7 +1059,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 4</value>
+    <value>266, 1</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1083,22 +1083,22 @@
     <value>301, 19</value>
   </metadata>
   <data name="addParameterToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="addParameterToolStripMenuItem1.Text" xml:space="preserve">
     <value>Add Parameter</value>
   </data>
   <data name="addBOXEntryToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="addBOXEntryToolStripMenuItem1.Text" xml:space="preserve">
     <value>Add BOX Parameter</value>
   </data>
   <data name="addANIMEntryToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
+    <value>248, 22</value>
   </data>
   <data name="addANIMEntryToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Add Skin ANIM Parameter</value>
+    <value>Add Skin Adjustment Parameters</value>
   </data>
   <data name="addParameterToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1133,7 +1133,7 @@
     <value>Edit All Parameters</value>
   </data>
   <data name="contextMenuParameterTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 92</value>
+    <value>206, 114</value>
   </data>
   <data name="&gt;&gt;contextMenuParameterTree.Name" xml:space="preserve">
     <value>contextMenuParameterTree</value>
@@ -1342,7 +1342,7 @@
 </value>
   </data>
   <data name="createToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="createToolStripMenuItem.Text" xml:space="preserve">
     <value>Create</value>
@@ -1407,7 +1407,7 @@
 </value>
   </data>
   <data name="importSkinsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="importSkinsToolStripMenuItem.Text" xml:space="preserve">
     <value>Import</value>
@@ -1419,13 +1419,13 @@
     <value>Export as 3DS Texture</value>
   </data>
   <data name="exportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="exportToolStripMenuItem.Text" xml:space="preserve">
     <value>Export</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>144, 6</value>
   </data>
   <data name="skinToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 22</value>
@@ -1596,7 +1596,7 @@
     <value>Set BOX Version</value>
   </data>
   <data name="miscFunctionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="miscFunctionsToolStripMenuItem.Text" xml:space="preserve">
     <value>File Functions</value>
@@ -1611,16 +1611,16 @@
 </value>
   </data>
   <data name="extractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="extractToolStripMenuItem.Text" xml:space="preserve">
     <value>Extract</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>144, 6</value>
   </data>
   <data name="cloneFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="cloneFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Clone</value>
@@ -1633,7 +1633,7 @@
 </value>
   </data>
   <data name="renameFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="renameFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Rename</value>
@@ -1649,19 +1649,19 @@
 </value>
   </data>
   <data name="replaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="replaceToolStripMenuItem.Text" xml:space="preserve">
     <value>Replace</value>
   </data>
   <data name="deleteFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="deleteFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="contextMenuPCKEntries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 236</value>
+    <value>148, 214</value>
   </data>
   <data name="&gt;&gt;contextMenuPCKEntries.Name" xml:space="preserve">
     <value>contextMenuPCKEntries</value>
@@ -1947,6 +1947,84 @@
   <data name="&gt;&gt;miscFunctionsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;setFileTypeToolStripMenuItem.Name" xml:space="preserve">
+    <value>setFileTypeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;setFileTypeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;skinToolStripMenuItem1.Name" xml:space="preserve">
+    <value>skinToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;skinToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;capeToolStripMenuItem.Name" xml:space="preserve">
+    <value>capeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;capeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textureToolStripMenuItem.Name" xml:space="preserve">
+    <value>textureToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;textureToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;languagesFileLOCToolStripMenuItem.Name" xml:space="preserve">
+    <value>languagesFileLOCToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;languagesFileLOCToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gameRulesFileGRFToolStripMenuItem.Name" xml:space="preserve">
+    <value>gameRulesFileGRFToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;gameRulesFileGRFToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;audioPCKFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>audioPCKFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;audioPCKFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;coloursCOLFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>coloursCOLFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;coloursCOLFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gameRulesHeaderGRHToolStripMenuItem.Name" xml:space="preserve">
+    <value>gameRulesHeaderGRHToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;gameRulesHeaderGRHToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;skinsPCKToolStripMenuItem.Name" xml:space="preserve">
+    <value>skinsPCKToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;skinsPCKToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;modelsFileBINToolStripMenuItem.Name" xml:space="preserve">
+    <value>modelsFileBINToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;modelsFileBINToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;behavioursFileBINToolStripMenuItem.Name" xml:space="preserve">
+    <value>behavioursFileBINToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;behavioursFileBINToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;entityMaterialsFileBINToolStripMenuItem.Name" xml:space="preserve">
+    <value>entityMaterialsFileBINToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;entityMaterialsFileBINToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;viewFileInfoToolStripMenuItem.Name" xml:space="preserve">
     <value>viewFileInfoToolStripMenuItem</value>
   </data>
@@ -2083,84 +2161,6 @@
     <value>addMultipleEntriesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;addMultipleEntriesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;setFileTypeToolStripMenuItem.Name" xml:space="preserve">
-    <value>setFileTypeToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;setFileTypeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;skinToolStripMenuItem1.Name" xml:space="preserve">
-    <value>skinToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;skinToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;capeToolStripMenuItem.Name" xml:space="preserve">
-    <value>capeToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;capeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textureToolStripMenuItem.Name" xml:space="preserve">
-    <value>textureToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;textureToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;languagesFileLOCToolStripMenuItem.Name" xml:space="preserve">
-    <value>languagesFileLOCToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;languagesFileLOCToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gameRulesFileGRFToolStripMenuItem.Name" xml:space="preserve">
-    <value>gameRulesFileGRFToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;gameRulesFileGRFToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;audioPCKFileToolStripMenuItem.Name" xml:space="preserve">
-    <value>audioPCKFileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;audioPCKFileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;coloursCOLFileToolStripMenuItem.Name" xml:space="preserve">
-    <value>coloursCOLFileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;coloursCOLFileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gameRulesHeaderGRHToolStripMenuItem.Name" xml:space="preserve">
-    <value>gameRulesHeaderGRHToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;gameRulesHeaderGRHToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;skinsPCKToolStripMenuItem.Name" xml:space="preserve">
-    <value>skinsPCKToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;skinsPCKToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;modelsFileBINToolStripMenuItem.Name" xml:space="preserve">
-    <value>modelsFileBINToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;modelsFileBINToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;behavioursFileBINToolStripMenuItem.Name" xml:space="preserve">
-    <value>behavioursFileBINToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;behavioursFileBINToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;entityMaterialsFileBINToolStripMenuItem.Name" xml:space="preserve">
-    <value>entityMaterialsFileBINToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;entityMaterialsFileBINToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

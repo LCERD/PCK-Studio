@@ -110,8 +110,7 @@ namespace PckStudio.Controls
 
         private void HandleBoxChanged(object sender, EventArgs e)
         {
-            // we'll explain this in a minute
-            this.OnBoxChanged(EventArgs.Empty);
+            OnBoxChanged(EventArgs.Empty);
         }
 
         protected virtual void OnBoxChanged(EventArgs e)

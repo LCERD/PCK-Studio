@@ -86,9 +86,10 @@ namespace PckStudio.Core.Extensions
             string name = asset.GetParameter("DISPLAYNAME");
             Image texture = asset.GetTexture();
             SkinANIM anim = asset.GetParameter("ANIM", SkinANIM.FromString);
+            SkinGameFlags gameFlags = asset.GetParameter("GAME_FLAGS", SkinGameFlags.FromString);
             IEnumerable<SkinBOX> boxes = asset.GetMultipleParameters("BOX").Select(kv => SkinBOX.FromString(kv.Value));
             IEnumerable<SkinPartOffset> offsets = asset.GetMultipleParameters("OFFSET").Select(kv => SkinPartOffset.FromString(kv.Value));
-            return new Skin.Skin(name, skinId, texture, anim, boxes, offsets);
+            return new Skin.Skin(name, skinId, texture, anim, gameFlags, boxes, offsets);
         }
 
         public static void SetSkin(this PckAsset asset, Skin.Skin skin, LOCFile localizationFile)
@@ -130,7 +131,7 @@ namespace PckStudio.Core.Extensions
             }
 
             asset.SetParameter("ANIM", skin.Anim.ToString());
-            asset.SetParameter("GAME_FLAGS", "0x18");
+            asset.SetParameter("GAME_FLAGS", skin.GameFlags.ToString());
             asset.SetParameter("FREE", "1");
 
             asset.RemoveParameters("BOX");

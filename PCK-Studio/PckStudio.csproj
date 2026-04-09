@@ -137,27 +137,39 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BoxEditorControl.cs">
+    <Compile Include="Controls\Editor\BoxEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\BoxEditorControl.Designer.cs">
+    <Compile Include="Controls\Editor\BoxEditorControl.Designer.cs">
       <DependentUpon>BoxEditorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CustomTabControl.cs">
+    <Compile Include="Controls\Editor\SkinAdjustmentsEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\SkinAdjustmentsEditorControl.Designer.cs">
+      <DependentUpon>SkinAdjustmentsEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Interface\CustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\EditorControl.cs">
+    <Compile Include="Controls\Editor\EditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\EditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controls\PageClosingEventArgs.cs" />
-    <Compile Include="Controls\PckEditor.cs">
+    <Compile Include="Controls\Editor\PckEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PckEditor.Designer.cs">
+    <Compile Include="Controls\Editor\PckEditor.Designer.cs">
       <DependentUpon>PckEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Interface\PictureButtonControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Interface\PictureButtonControl.Designer.cs">
+      <DependentUpon>PictureButtonControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Additional-Popups\FilterPrompt.cs">
       <SubType>Form</SubType>
@@ -176,6 +188,12 @@
     </Compile>
     <Compile Include="Forms\Editor\ModelEditor.Designer.cs">
       <DependentUpon>ModelEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Editor\SkinAdjustmentsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editor\SkinAdjustmentsEditor.Designer.cs">
+      <DependentUpon>SkinAdjustmentsEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Internal\ApplicationScope.cs" />
     <Compile Include="Internal\AppResourceManager.cs" />
@@ -364,12 +382,6 @@
     <Compile Include="Forms\Editor\BoxEditor.Designer.cs">
       <DependentUpon>BoxEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Editor\ANIMEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Editor\ANIMEditor.Designer.cs">
-      <DependentUpon>ANIMEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,11 +414,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\BoxEditorControl.resx">
+    <EmbeddedResource Include="Controls\Editor\BoxEditorControl.resx">
       <DependentUpon>BoxEditorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PckEditor.resx">
+    <EmbeddedResource Include="Controls\Editor\PckEditor.resx">
       <DependentUpon>PckEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Editor\SkinAdjustmentsEditorControl.resx">
+      <DependentUpon>SkinAdjustmentsEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Interface\PictureButtonControl.resx">
+      <DependentUpon>PictureButtonControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Additional-Popups\FilterPrompt.resx">
       <DependentUpon>FilterPrompt.cs</DependentUpon>
@@ -416,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editor\ModelEditor.resx">
       <DependentUpon>ModelEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editor\SkinAdjustmentsEditor.resx">
+      <DependentUpon>SkinAdjustmentsEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Features\CemuPanel.resx">
       <DependentUpon>CemuPanel.cs</DependentUpon>
@@ -501,9 +522,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editor\BoxEditor.resx">
       <DependentUpon>BoxEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Editor\ANIMEditor.resx">
-      <DependentUpon>ANIMEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AppSettingsForm.resx">
       <DependentUpon>AppSettingsForm.cs</DependentUpon>
@@ -639,6 +657,24 @@
     <None Include="Resources\atlases\additional_mapicons.png" />
     <None Include="Resources\atlases\map_icons.png" />
     <None Include="Resources\atlases\banners.png" />
+    <Content Include="Resources\anim_editor\armor_body.png" />
+    <Content Include="Resources\anim_editor\armor_head.png" />
+    <Content Include="Resources\anim_editor\armor_left_arm.png" />
+    <Content Include="Resources\anim_editor\armor_left_leg.png" />
+    <Content Include="Resources\anim_editor\armor_right_arm.png" />
+    <Content Include="Resources\anim_editor\armor_right_leg.png" />
+    <Content Include="Resources\anim_editor\classic_head.png" />
+    <Content Include="Resources\anim_editor\slim_body.png" />
+    <Content Include="Resources\anim_editor\slim_head.png" />
+    <Content Include="Resources\anim_editor\slim_left_arm.png" />
+    <Content Include="Resources\anim_editor\slim_left_leg.png" />
+    <Content Include="Resources\anim_editor\slim_right_arm.png" />
+    <Content Include="Resources\anim_editor\slim_right_leg.png" />
+    <Content Include="Resources\anim_editor\wide_body.png" />
+    <Content Include="Resources\anim_editor\wide_head.png" />
+    <Content Include="Resources\anim_editor\wide_left_arm.png" />
+    <Content Include="Resources\anim_editor\wide_legs.png" />
+    <Content Include="Resources\anim_editor\wide_right_arm.png" />
     <Content Include="Resources\atlases\entities.png" />
     <None Include="Resources\atlases\experience_orbs.png" />
     <None Include="Resources\atlases\explosion.png" />
@@ -744,6 +780,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

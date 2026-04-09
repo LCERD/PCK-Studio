@@ -55,9 +55,10 @@
             // boxEditorControl1
             // 
             this.boxEditorControl1.BackColor = System.Drawing.Color.Transparent;
-            this.boxEditorControl1.Location = new System.Drawing.Point(0, 0);
+            this.boxEditorControl1.Location = new System.Drawing.Point(19, 55);
+            this.boxEditorControl1.MinimumSize = new System.Drawing.Size(502, 146);
             this.boxEditorControl1.Name = "boxEditorControl1";
-            this.boxEditorControl1.Size = new System.Drawing.Size(540, 220);
+            this.boxEditorControl1.Size = new System.Drawing.Size(502, 146);
             this.boxEditorControl1.TabIndex = 2;
             // 
             // BoxEditor
@@ -69,7 +70,7 @@
             this.Controls.Add(this.boxEditorControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(540, 554);
+            this.MaximumSize = new System.Drawing.Size(540, 220);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(540, 220);
             this.Name = "BoxEditor";

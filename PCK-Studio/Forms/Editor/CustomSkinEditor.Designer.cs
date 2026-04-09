@@ -60,8 +60,8 @@
             this.textureSizeLabel = new System.Windows.Forms.Label();
             this.renderSettingsButton = new MetroFramework.Controls.MetroButton();
             this.exportTemplateButton = new MetroFramework.Controls.MetroButton();
-            this.animEditorButton = new MetroFramework.Controls.MetroButton();
             this.boxEditorControl1 = new PckStudio.Controls.BoxEditorControl();
+            this.skinAdjustmentsEditorControl1 = new PckStudio.Controls.SkinAdjustmentsEditorControl();
             this.skinPartTabContextMenu.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.skinPartsTabPage.SuspendLayout();
@@ -72,8 +72,8 @@
             // 
             // importTextureButton
             // 
-            resources.ApplyResources(this.importTextureButton, "importTextureButton");
             this.importTextureButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.importTextureButton, "importTextureButton");
             this.importTextureButton.Name = "importTextureButton";
             this.importTextureButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.importTextureButton.UseSelectable = true;
@@ -81,8 +81,8 @@
             // 
             // exportTextureButton
             // 
-            resources.ApplyResources(this.exportTextureButton, "exportTextureButton");
             this.exportTextureButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.exportTextureButton, "exportTextureButton");
             this.exportTextureButton.Name = "exportTextureButton";
             this.exportTextureButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.exportTextureButton.UseSelectable = true;
@@ -135,8 +135,8 @@
             // 
             // importSkinButton
             // 
-            resources.ApplyResources(this.importSkinButton, "importSkinButton");
             this.importSkinButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.importSkinButton, "importSkinButton");
             this.importSkinButton.Name = "importSkinButton";
             this.importSkinButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.importSkinButton.UseSelectable = true;
@@ -144,8 +144,8 @@
             // 
             // exportSkinButton
             // 
-            resources.ApplyResources(this.exportSkinButton, "exportSkinButton");
             this.exportSkinButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.exportSkinButton, "exportSkinButton");
             this.exportSkinButton.Name = "exportSkinButton";
             this.exportSkinButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.exportSkinButton.UseSelectable = true;
@@ -153,8 +153,8 @@
             // 
             // outlineColorButton
             // 
-            resources.ApplyResources(this.outlineColorButton, "outlineColorButton");
             this.outlineColorButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.outlineColorButton, "outlineColorButton");
             this.outlineColorButton.Name = "outlineColorButton";
             this.outlineColorButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.outlineColorButton.UseSelectable = true;
@@ -190,8 +190,8 @@
             // 
             // captureScreenshotButton
             // 
-            resources.ApplyResources(this.captureScreenshotButton, "captureScreenshotButton");
             this.captureScreenshotButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.captureScreenshotButton, "captureScreenshotButton");
             this.captureScreenshotButton.Name = "captureScreenshotButton";
             this.captureScreenshotButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.captureScreenshotButton.UseSelectable = true;
@@ -317,20 +317,12 @@
             // 
             // exportTemplateButton
             // 
-            resources.ApplyResources(this.exportTemplateButton, "exportTemplateButton");
             this.exportTemplateButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.exportTemplateButton, "exportTemplateButton");
             this.exportTemplateButton.Name = "exportTemplateButton";
             this.exportTemplateButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.exportTemplateButton.UseSelectable = true;
             this.exportTemplateButton.Click += new System.EventHandler(this.exportTemplateButton_Click);
-            // 
-            // animEditorButton
-            // 
-            resources.ApplyResources(this.animEditorButton, "animEditorButton");
-            this.animEditorButton.Name = "animEditorButton";
-            this.animEditorButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.animEditorButton.UseSelectable = true;
-            this.animEditorButton.Click += new System.EventHandler(this.animEditorButton_Click);
             // 
             // boxEditorControl1
             // 
@@ -340,10 +332,18 @@
             this.boxEditorControl1.Name = "boxEditorControl1";
             this.boxEditorControl1.BoxChanged += new System.EventHandler(this.boxEditorControl1_BoxChanged);
             // 
+            // skinAdjustmentsEditorControl1
+            // 
+            resources.ApplyResources(this.skinAdjustmentsEditorControl1, "skinAdjustmentsEditorControl1");
+            this.skinAdjustmentsEditorControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.skinAdjustmentsEditorControl1.Name = "skinAdjustmentsEditorControl1";
+            this.skinAdjustmentsEditorControl1.AdjustmentsChanged += new System.EventHandler(this.skinAdjustmentsEditorControl1_AdjustmentsChanged);
+            // 
             // CustomSkinEditor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.skinAdjustmentsEditorControl1);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.boxEditorControl1);
             this.Controls.Add(this.exportTextureButton);
@@ -355,7 +355,6 @@
             this.Controls.Add(this.generateTextureCheckBox);
             this.Controls.Add(this.outlineColorButton);
             this.Controls.Add(this.uvPictureBox);
-            this.Controls.Add(this.animEditorButton);
             this.Controls.Add(this.exportTemplateButton);
             this.Controls.Add(this.renderSettingsButton);
             this.Controls.Add(this.skinNameLabel);
@@ -410,7 +409,7 @@
         private System.Windows.Forms.Label textureSizeLabel;
         private MetroFramework.Controls.MetroButton renderSettingsButton;
         private MetroFramework.Controls.MetroButton exportTemplateButton;
-        private MetroFramework.Controls.MetroButton animEditorButton;
         private Controls.BoxEditorControl boxEditorControl1;
+        private Controls.SkinAdjustmentsEditorControl skinAdjustmentsEditorControl1;
     }
 }

@@ -41,7 +41,7 @@ namespace PckStudio.Core.Extensions
             }
 
             skinFile.AddParameter("ANIM", skin.Anim);
-            skinFile.AddParameter("GAME_FLAGS", "0x18");
+            skinFile.AddParameter("GAME_FLAGS", skin.GameFlags);
             skinFile.AddParameter("FREE", "1");
 
             foreach (SkinBOX box in skin.Model.AdditionalBoxes)

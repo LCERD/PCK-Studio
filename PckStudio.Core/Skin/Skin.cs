@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace PckStudio.Core.Skin
         public SkinIdentifier Identifier { get; set; }
         
         public SkinANIM Anim { get; set; }
+
+        public SkinGameFlags GameFlags { get; set; }
 
         public SkinModel Model { get; set; }
         
@@ -36,16 +39,17 @@ namespace PckStudio.Core.Skin
             CapeTexture = capeTexture;
         }    
 
-        public Skin(string name, SkinANIM anim, Image texture, IEnumerable<SkinBOX> additionalBoxes, IEnumerable<SkinPartOffset> partOffsets)
+        public Skin(string name, SkinANIM anim, SkinGameFlags gameFlags, Image texture, IEnumerable<SkinBOX> additionalBoxes, IEnumerable<SkinPartOffset> partOffsets)
             : this(name, texture)
         {
             Model.AdditionalBoxes.AddRange(additionalBoxes);
             Model.PartOffsets.AddRange(partOffsets);
             Anim = anim;
+            GameFlags = gameFlags;
         }
 
-        public Skin(string name, int id, Image texture, SkinANIM anim, IEnumerable<SkinBOX> additionalBoxes, IEnumerable<SkinPartOffset> partOffsets)
-            : this(name, anim, texture, additionalBoxes, partOffsets)
+        public Skin(string name, int id, Image texture, SkinANIM anim, SkinGameFlags gameFlags, IEnumerable<SkinBOX> additionalBoxes, IEnumerable<SkinPartOffset> partOffsets)
+            : this(name, anim, gameFlags, texture, additionalBoxes, partOffsets)
         {
             Identifier = new(id);
         }

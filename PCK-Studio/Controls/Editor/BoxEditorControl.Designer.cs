@@ -64,7 +64,7 @@
             // 
             this.parentLabel.AutoSize = true;
             this.parentLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.parentLabel.Location = new System.Drawing.Point(47, 55);
+            this.parentLabel.Location = new System.Drawing.Point(25, 5);
             this.parentLabel.Name = "parentLabel";
             this.parentLabel.Size = new System.Drawing.Size(50, 25);
             this.parentLabel.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             this.positionLabel.AutoSize = true;
             this.positionLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.positionLabel.Location = new System.Drawing.Point(22, 84);
+            this.positionLabel.Location = new System.Drawing.Point(0, 34);
             this.positionLabel.Name = "positionLabel";
             this.positionLabel.Size = new System.Drawing.Size(75, 25);
             this.positionLabel.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             this.sizeLabel.AutoSize = true;
             this.sizeLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.sizeLabel.Location = new System.Drawing.Point(51, 109);
+            this.sizeLabel.Location = new System.Drawing.Point(29, 59);
             this.sizeLabel.Name = "sizeLabel";
             this.sizeLabel.Size = new System.Drawing.Size(46, 25);
             this.sizeLabel.TabIndex = 22;
@@ -97,7 +97,7 @@
             // 
             this.uvLabel.AutoSize = true;
             this.uvLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.uvLabel.Location = new System.Drawing.Point(58, 135);
+            this.uvLabel.Location = new System.Drawing.Point(36, 85);
             this.uvLabel.Name = "uvLabel";
             this.uvLabel.Size = new System.Drawing.Size(39, 25);
             this.uvLabel.TabIndex = 26;
@@ -108,7 +108,7 @@
             // 
             this.inflationLabel.AutoSize = true;
             this.inflationLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.inflationLabel.Location = new System.Drawing.Point(42, 165);
+            this.inflationLabel.Location = new System.Drawing.Point(20, 115);
             this.inflationLabel.Name = "inflationLabel";
             this.inflationLabel.Size = new System.Drawing.Size(55, 25);
             this.inflationLabel.TabIndex = 31;
@@ -150,7 +150,7 @@
             "ARMARMOR0",
             "BODYARMOR",
             "BELT"});
-            this.parentComboBox.Location = new System.Drawing.Point(103, 51);
+            this.parentComboBox.Location = new System.Drawing.Point(81, 1);
             this.parentComboBox.Name = "parentComboBox";
             this.parentComboBox.Size = new System.Drawing.Size(163, 29);
             this.parentComboBox.TabIndex = 3;
@@ -162,7 +162,7 @@
             this.PosXUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.PosXUpDown.DecimalPlaces = 3;
             this.PosXUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PosXUpDown.Location = new System.Drawing.Point(103, 86);
+            this.PosXUpDown.Location = new System.Drawing.Point(81, 36);
             this.PosXUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -182,7 +182,7 @@
             this.PosYUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.PosYUpDown.DecimalPlaces = 3;
             this.PosYUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PosYUpDown.Location = new System.Drawing.Point(182, 86);
+            this.PosYUpDown.Location = new System.Drawing.Point(160, 36);
             this.PosYUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -202,7 +202,7 @@
             this.PosZUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.PosZUpDown.DecimalPlaces = 3;
             this.PosZUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.PosZUpDown.Location = new System.Drawing.Point(261, 86);
+            this.PosZUpDown.Location = new System.Drawing.Point(239, 36);
             this.PosZUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -221,7 +221,7 @@
             // 
             this.SizeZUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.SizeZUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SizeZUpDown.Location = new System.Drawing.Point(261, 111);
+            this.SizeZUpDown.Location = new System.Drawing.Point(239, 61);
             this.SizeZUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -235,7 +235,7 @@
             // 
             this.SizeYUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.SizeYUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SizeYUpDown.Location = new System.Drawing.Point(182, 111);
+            this.SizeYUpDown.Location = new System.Drawing.Point(160, 61);
             this.SizeYUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -249,7 +249,7 @@
             // 
             this.SizeXUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.SizeXUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.SizeXUpDown.Location = new System.Drawing.Point(103, 111);
+            this.SizeXUpDown.Location = new System.Drawing.Point(81, 61);
             this.SizeXUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -263,7 +263,7 @@
             // 
             this.uvYUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.uvYUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.uvYUpDown.Location = new System.Drawing.Point(182, 137);
+            this.uvYUpDown.Location = new System.Drawing.Point(160, 87);
             this.uvYUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -282,7 +282,7 @@
             // 
             this.uvXUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.uvXUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.uvXUpDown.Location = new System.Drawing.Point(103, 137);
+            this.uvXUpDown.Location = new System.Drawing.Point(81, 87);
             this.uvXUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -302,7 +302,7 @@
             this.helmetCheckBox.AutoSize = true;
             this.helmetCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
             this.helmetCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.helmetCheckBox.Location = new System.Drawing.Point(340, 84);
+            this.helmetCheckBox.Location = new System.Drawing.Point(318, 34);
             this.helmetCheckBox.Name = "helmetCheckBox";
             this.helmetCheckBox.Size = new System.Drawing.Size(160, 25);
             this.helmetCheckBox.TabIndex = 29;
@@ -315,7 +315,7 @@
             this.mirrorCheckBox.AutoSize = true;
             this.mirrorCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
             this.mirrorCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.mirrorCheckBox.Location = new System.Drawing.Point(340, 58);
+            this.mirrorCheckBox.Location = new System.Drawing.Point(318, 8);
             this.mirrorCheckBox.Name = "mirrorCheckBox";
             this.mirrorCheckBox.Size = new System.Drawing.Size(133, 25);
             this.mirrorCheckBox.TabIndex = 30;
@@ -328,7 +328,7 @@
             this.inflationUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.inflationUpDown.DecimalPlaces = 3;
             this.inflationUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.inflationUpDown.Location = new System.Drawing.Point(103, 167);
+            this.inflationUpDown.Location = new System.Drawing.Point(81, 117);
             this.inflationUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -343,7 +343,7 @@
             this.chestplateCheckBox.AutoSize = true;
             this.chestplateCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
             this.chestplateCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.chestplateCheckBox.Location = new System.Drawing.Point(340, 109);
+            this.chestplateCheckBox.Location = new System.Drawing.Point(318, 59);
             this.chestplateCheckBox.Name = "chestplateCheckBox";
             this.chestplateCheckBox.Size = new System.Drawing.Size(184, 25);
             this.chestplateCheckBox.TabIndex = 33;
@@ -356,7 +356,7 @@
             this.leggingsCheckBox.AutoSize = true;
             this.leggingsCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
             this.leggingsCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.leggingsCheckBox.Location = new System.Drawing.Point(340, 135);
+            this.leggingsCheckBox.Location = new System.Drawing.Point(318, 85);
             this.leggingsCheckBox.Name = "leggingsCheckBox";
             this.leggingsCheckBox.Size = new System.Drawing.Size(172, 25);
             this.leggingsCheckBox.TabIndex = 34;
@@ -369,7 +369,7 @@
             this.bootsCheckBox.AutoSize = true;
             this.bootsCheckBox.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
             this.bootsCheckBox.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.bootsCheckBox.Location = new System.Drawing.Point(340, 161);
+            this.bootsCheckBox.Location = new System.Drawing.Point(318, 111);
             this.bootsCheckBox.Name = "bootsCheckBox";
             this.bootsCheckBox.Size = new System.Drawing.Size(150, 25);
             this.bootsCheckBox.TabIndex = 35;
@@ -402,8 +402,9 @@
             this.Controls.Add(this.sizeLabel);
             this.Controls.Add(this.positionLabel);
             this.Controls.Add(this.parentLabel);
+            this.MinimumSize = new System.Drawing.Size(502, 146);
             this.Name = "BoxEditorControl";
-            this.Size = new System.Drawing.Size(540, 220);
+            this.Size = new System.Drawing.Size(502, 146);
             ((System.ComponentModel.ISupportInitialize)(this.PosXUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosYUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosZUpDown)).EndInit();

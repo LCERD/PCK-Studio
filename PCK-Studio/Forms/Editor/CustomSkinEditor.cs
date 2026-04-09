@@ -53,6 +53,7 @@ namespace PckStudio.Forms.Editor
             _xmlVersion = xmlVersion;
             boxEditorControl1.SetBOXVersion(xmlVersion);
             _inflateOverlayParts = _xmlVersion > 0;
+            skinAdjustmentsEditorControl1.SetSkin(skin);
         }
 
         private void InitializeRenderSettings()
@@ -72,21 +73,12 @@ namespace PckStudio.Forms.Editor
             skinNameLabel.Text = EditorValue.MetaData.Name;
             if (EditorValue.HasCape)
                 renderer3D1.CapeTexture = EditorValue.CapeTexture;
+            boxEditorControl1.Enabled = false; // make disabled until a box is selected - May
             LoadModelData();
         }
 
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (keyData == Keys.A)
-            {
-                using var animeditor = new ANIMEditor(EditorValue.Anim);
-                if (animeditor.ShowDialog() == DialogResult.OK)
-                {
-                    renderer3D1.ANIM = EditorValue.Anim = animeditor.ResultAnim;
-                    skinPartListBox_SelectedIndexChanged(this, EventArgs.Empty);
-                }
-                return true;
-            }
             return base.ProcessDialogKey(keyData);
         }
 
@@ -98,6 +90,7 @@ namespace PckStudio.Forms.Editor
             List<SkinPartOffset> offsetProperties = modelInfo.PartOffsets;
             
             renderer3D1.ANIM = EditorValue.Anim;
+            renderer3D1.GameFlags = EditorValue.GameFlags;
 
             renderer3D1.ModelData.Clear();
             foreach (SkinBOX box in boxProperties)
@@ -153,6 +146,8 @@ namespace PckStudio.Forms.Editor
             renderer3D1.ModelData.Add(newBox);
             EditorValue.Model.AdditionalBoxes.Add(newBox);
             _skinPartListBindingSource.ResetBindings(false);
+            skinPartListBox.SelectedItems.Clear();
+            skinPartListBox.SelectedIndex = skinPartListBox.Items.IndexOf(newBox);
             if (generateTextureCheckBox.Checked)
                 GenerateUVTextureMap(newBox);
         }
@@ -193,6 +188,7 @@ namespace PckStudio.Forms.Editor
             EditorValue.Model.PartOffsets.AddRange(renderer3D1.GetOffsets());
             // just in case they're not the same instance
             EditorValue.Anim = renderer3D1.ANIM;
+            EditorValue.GameFlags = renderer3D1.GameFlags;
             DialogResult = DialogResult.OK;
             Save();
         }
@@ -283,6 +279,7 @@ namespace PckStudio.Forms.Editor
             // TODO: highlight all selected boxes
             if (skinPartListBox.SelectedItem is SkinBOX box)
             {
+                boxEditorControl1.Enabled = true;
                 boxEditorControl1.SetBOX(box);
                 Image uvArea = EditorValue.Texture.GetArea(Rectangle.Truncate(new RectangleF(box.UV.X, box.UV.Y, box.Size.X * 2 + box.Size.Z * 2, box.Size.Z + box.Size.Y)));
 
@@ -308,6 +305,10 @@ namespace PckStudio.Forms.Editor
                     g.FillPath(brush, graphicsPath);
                 }
                 uvPictureBox.Invalidate();
+            }
+            else
+            {
+                boxEditorControl1.Enabled = false;
             }
         }
 
@@ -442,18 +443,19 @@ namespace PckStudio.Forms.Editor
             }
         }
 
-        private void animEditorButton_Click(object sender, EventArgs e)
-        {
-            ProcessDialogKey(Keys.A);
-        }
-
         private void boxEditorControl1_BoxChanged(object sender, EventArgs e)
         {
-            if(skinPartListBox.SelectedIndex > 0)
+            if(skinPartListBox.SelectedIndex > -1)
             {
                 renderer3D1.ModelData[skinPartListBox.SelectedIndex] = boxEditorControl1.GetBOX();
                 _skinPartListBindingSource.ResetItem(skinPartListBox.SelectedIndex);
             }
+        }
+
+        private void skinAdjustmentsEditorControl1_AdjustmentsChanged(object sender, EventArgs e)
+        {
+            renderer3D1.ANIM = skinAdjustmentsEditorControl1.GetAnim();
+            renderer3D1.GameFlags = skinAdjustmentsEditorControl1.GetGameFlags();
         }
     }
 }

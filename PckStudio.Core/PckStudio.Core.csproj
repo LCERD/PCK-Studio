@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{345EABED-F0D1-4D04-B409-BABDEF747352}</ProjectGuid>
@@ -12,8 +12,8 @@
     <AssemblyName>PckStudio.Core</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-		<LangVersion>12</LangVersion>
-		<FileAlignment>512</FileAlignment>
+    <LangVersion>12</LangVersion>
+    <FileAlignment>512</FileAlignment>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
     <Deterministic>true</Deterministic>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
@@ -130,6 +130,9 @@
     <Compile Include="Serializer\AtlasSerializer.cs" />
     <Compile Include="Serializer\ImageSerializer.cs" />
     <Compile Include="Skin\Skin.cs" />
+    <Compile Include="Skin\SkinGameFlagsFlag.cs" />
+    <Compile Include="Skin\SkinGameFlagsMask.cs" />
+    <Compile Include="Skin\SkinGameFlags.cs" />
     <Compile Include="Skin\SkinANIM.cs" />
     <Compile Include="Skin\SkinAnimFlag.cs" />
     <Compile Include="Skin\SkinAnimMask.cs" />
@@ -151,10 +154,10 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
-	  <PackageReference Include="Autoupdater.NET.Official">
-		  <Version>1.9.2</Version>
-	  </PackageReference>
-	  <PackageReference Include="OpenTK" Version="3.3.3" />
+    <PackageReference Include="Autoupdater.NET.Official">
+      <Version>1.9.2</Version>
+    </PackageReference>
+    <PackageReference Include="OpenTK" Version="3.3.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vendor\OMI-Lib\OMI Filetypes Library\OMI Filetype Library.csproj">

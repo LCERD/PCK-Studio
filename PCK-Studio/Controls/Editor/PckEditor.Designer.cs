@@ -73,6 +73,19 @@ namespace PckStudio.Controls
             this.as3DSTextureFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.miscFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setFileTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.capeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languagesFileLOCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameRulesFileGRFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.audioPCKFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coloursCOLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameRulesHeaderGRHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skinsPCKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modelsFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.behavioursFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entityMaterialsFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewFileInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateMipMapTextureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fixSkinDecimalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,19 +111,6 @@ namespace PckStudio.Controls
             this.addMultipleEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LittleEndianCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.previewPictureBox = new PckStudio.ToolboxItems.InterpolationPictureBox();
-            this.setFileTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.capeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languagesFileLOCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameRulesFileGRFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.audioPCKFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coloursCOLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameRulesHeaderGRHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.skinsPCKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modelsFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.behavioursFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entityMaterialsFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(logoPictureBox)).BeginInit();
             this.ParametersTabControl.SuspendLayout();
@@ -302,7 +302,7 @@ namespace PckStudio.Controls
             // 
             this.addANIMEntryToolStripMenuItem1.Name = "addANIMEntryToolStripMenuItem1";
             resources.ApplyResources(this.addANIMEntryToolStripMenuItem1, "addANIMEntryToolStripMenuItem1");
-            this.addANIMEntryToolStripMenuItem1.Click += new System.EventHandler(this.addSkinANIMParameterToolStripMenuItem1_Click);
+            this.addANIMEntryToolStripMenuItem1.Click += new System.EventHandler(this.addSkinAdjustmentParametersToolStripMenuItem_Click);
             // 
             // addMultipleEntriesToolStripMenuItem1
             // 
@@ -502,6 +502,96 @@ namespace PckStudio.Controls
             this.miscFunctionsToolStripMenuItem.Name = "miscFunctionsToolStripMenuItem";
             resources.ApplyResources(this.miscFunctionsToolStripMenuItem, "miscFunctionsToolStripMenuItem");
             // 
+            // setFileTypeToolStripMenuItem
+            // 
+            this.setFileTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.skinToolStripMenuItem1,
+            this.capeToolStripMenuItem,
+            this.textureToolStripMenuItem,
+            this.languagesFileLOCToolStripMenuItem,
+            this.gameRulesFileGRFToolStripMenuItem,
+            this.audioPCKFileToolStripMenuItem,
+            this.coloursCOLFileToolStripMenuItem,
+            this.gameRulesHeaderGRHToolStripMenuItem,
+            this.skinsPCKToolStripMenuItem,
+            this.modelsFileBINToolStripMenuItem,
+            this.behavioursFileBINToolStripMenuItem,
+            this.entityMaterialsFileBINToolStripMenuItem});
+            this.setFileTypeToolStripMenuItem.Name = "setFileTypeToolStripMenuItem";
+            resources.ApplyResources(this.setFileTypeToolStripMenuItem, "setFileTypeToolStripMenuItem");
+            // 
+            // skinToolStripMenuItem1
+            // 
+            this.skinToolStripMenuItem1.Image = global::PckStudio.Properties.Resources.SKIN_ICON;
+            this.skinToolStripMenuItem1.Name = "skinToolStripMenuItem1";
+            resources.ApplyResources(this.skinToolStripMenuItem1, "skinToolStripMenuItem1");
+            // 
+            // capeToolStripMenuItem
+            // 
+            this.capeToolStripMenuItem.Image = global::PckStudio.Properties.Resources.CAPE_ICON;
+            this.capeToolStripMenuItem.Name = "capeToolStripMenuItem";
+            resources.ApplyResources(this.capeToolStripMenuItem, "capeToolStripMenuItem");
+            // 
+            // textureToolStripMenuItem
+            // 
+            this.textureToolStripMenuItem.Image = global::PckStudio.Properties.Resources.TEXTURE_ICON;
+            this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
+            resources.ApplyResources(this.textureToolStripMenuItem, "textureToolStripMenuItem");
+            // 
+            // languagesFileLOCToolStripMenuItem
+            // 
+            this.languagesFileLOCToolStripMenuItem.Image = global::PckStudio.Properties.Resources.LOC_ICON;
+            this.languagesFileLOCToolStripMenuItem.Name = "languagesFileLOCToolStripMenuItem";
+            resources.ApplyResources(this.languagesFileLOCToolStripMenuItem, "languagesFileLOCToolStripMenuItem");
+            // 
+            // gameRulesFileGRFToolStripMenuItem
+            // 
+            this.gameRulesFileGRFToolStripMenuItem.Image = global::PckStudio.Properties.Resources.GRF_ICON;
+            this.gameRulesFileGRFToolStripMenuItem.Name = "gameRulesFileGRFToolStripMenuItem";
+            resources.ApplyResources(this.gameRulesFileGRFToolStripMenuItem, "gameRulesFileGRFToolStripMenuItem");
+            // 
+            // audioPCKFileToolStripMenuItem
+            // 
+            this.audioPCKFileToolStripMenuItem.Image = global::PckStudio.Properties.Resources.BINKA_ICON;
+            this.audioPCKFileToolStripMenuItem.Name = "audioPCKFileToolStripMenuItem";
+            resources.ApplyResources(this.audioPCKFileToolStripMenuItem, "audioPCKFileToolStripMenuItem");
+            // 
+            // coloursCOLFileToolStripMenuItem
+            // 
+            this.coloursCOLFileToolStripMenuItem.Image = global::PckStudio.Properties.Resources.COL_ICON;
+            this.coloursCOLFileToolStripMenuItem.Name = "coloursCOLFileToolStripMenuItem";
+            resources.ApplyResources(this.coloursCOLFileToolStripMenuItem, "coloursCOLFileToolStripMenuItem");
+            // 
+            // gameRulesHeaderGRHToolStripMenuItem
+            // 
+            this.gameRulesHeaderGRHToolStripMenuItem.Image = global::PckStudio.Properties.Resources.GRH_ICON;
+            this.gameRulesHeaderGRHToolStripMenuItem.Name = "gameRulesHeaderGRHToolStripMenuItem";
+            resources.ApplyResources(this.gameRulesHeaderGRHToolStripMenuItem, "gameRulesHeaderGRHToolStripMenuItem");
+            // 
+            // skinsPCKToolStripMenuItem
+            // 
+            this.skinsPCKToolStripMenuItem.Image = global::PckStudio.Properties.Resources.SKINS_ICON;
+            this.skinsPCKToolStripMenuItem.Name = "skinsPCKToolStripMenuItem";
+            resources.ApplyResources(this.skinsPCKToolStripMenuItem, "skinsPCKToolStripMenuItem");
+            // 
+            // modelsFileBINToolStripMenuItem
+            // 
+            this.modelsFileBINToolStripMenuItem.Image = global::PckStudio.Properties.Resources.MODELS_ICON;
+            this.modelsFileBINToolStripMenuItem.Name = "modelsFileBINToolStripMenuItem";
+            resources.ApplyResources(this.modelsFileBINToolStripMenuItem, "modelsFileBINToolStripMenuItem");
+            // 
+            // behavioursFileBINToolStripMenuItem
+            // 
+            this.behavioursFileBINToolStripMenuItem.Image = global::PckStudio.Properties.Resources.BEHAVIOURS_ICON;
+            this.behavioursFileBINToolStripMenuItem.Name = "behavioursFileBINToolStripMenuItem";
+            resources.ApplyResources(this.behavioursFileBINToolStripMenuItem, "behavioursFileBINToolStripMenuItem");
+            // 
+            // entityMaterialsFileBINToolStripMenuItem
+            // 
+            this.entityMaterialsFileBINToolStripMenuItem.Image = global::PckStudio.Properties.Resources.ENTITY_MATERIALS_ICON;
+            this.entityMaterialsFileBINToolStripMenuItem.Name = "entityMaterialsFileBINToolStripMenuItem";
+            resources.ApplyResources(this.entityMaterialsFileBINToolStripMenuItem, "entityMaterialsFileBINToolStripMenuItem");
+            // 
             // viewFileInfoToolStripMenuItem
             // 
             this.viewFileInfoToolStripMenuItem.Name = "viewFileInfoToolStripMenuItem";
@@ -666,96 +756,6 @@ namespace PckStudio.Controls
             this.previewPictureBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             this.previewPictureBox.Name = "previewPictureBox";
             this.previewPictureBox.TabStop = false;
-            // 
-            // setFileTypeToolStripMenuItem
-            // 
-            this.setFileTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.skinToolStripMenuItem1,
-            this.capeToolStripMenuItem,
-            this.textureToolStripMenuItem,
-            this.languagesFileLOCToolStripMenuItem,
-            this.gameRulesFileGRFToolStripMenuItem,
-            this.audioPCKFileToolStripMenuItem,
-            this.coloursCOLFileToolStripMenuItem,
-            this.gameRulesHeaderGRHToolStripMenuItem,
-            this.skinsPCKToolStripMenuItem,
-            this.modelsFileBINToolStripMenuItem,
-            this.behavioursFileBINToolStripMenuItem,
-            this.entityMaterialsFileBINToolStripMenuItem});
-            this.setFileTypeToolStripMenuItem.Name = "setFileTypeToolStripMenuItem";
-            resources.ApplyResources(this.setFileTypeToolStripMenuItem, "setFileTypeToolStripMenuItem");
-            // 
-            // skinToolStripMenuItem1
-            // 
-            this.skinToolStripMenuItem1.Image = global::PckStudio.Properties.Resources.SKIN_ICON;
-            this.skinToolStripMenuItem1.Name = "skinToolStripMenuItem1";
-            resources.ApplyResources(this.skinToolStripMenuItem1, "skinToolStripMenuItem1");
-            // 
-            // capeToolStripMenuItem
-            // 
-            this.capeToolStripMenuItem.Image = global::PckStudio.Properties.Resources.CAPE_ICON;
-            this.capeToolStripMenuItem.Name = "capeToolStripMenuItem";
-            resources.ApplyResources(this.capeToolStripMenuItem, "capeToolStripMenuItem");
-            // 
-            // textureToolStripMenuItem
-            // 
-            this.textureToolStripMenuItem.Image = global::PckStudio.Properties.Resources.TEXTURE_ICON;
-            this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
-            resources.ApplyResources(this.textureToolStripMenuItem, "textureToolStripMenuItem");
-            // 
-            // languagesFileLOCToolStripMenuItem
-            // 
-            this.languagesFileLOCToolStripMenuItem.Image = global::PckStudio.Properties.Resources.LOC_ICON;
-            this.languagesFileLOCToolStripMenuItem.Name = "languagesFileLOCToolStripMenuItem";
-            resources.ApplyResources(this.languagesFileLOCToolStripMenuItem, "languagesFileLOCToolStripMenuItem");
-            // 
-            // gameRulesFileGRFToolStripMenuItem
-            // 
-            this.gameRulesFileGRFToolStripMenuItem.Image = global::PckStudio.Properties.Resources.GRF_ICON;
-            this.gameRulesFileGRFToolStripMenuItem.Name = "gameRulesFileGRFToolStripMenuItem";
-            resources.ApplyResources(this.gameRulesFileGRFToolStripMenuItem, "gameRulesFileGRFToolStripMenuItem");
-            // 
-            // audioPCKFileToolStripMenuItem
-            // 
-            this.audioPCKFileToolStripMenuItem.Image = global::PckStudio.Properties.Resources.BINKA_ICON;
-            this.audioPCKFileToolStripMenuItem.Name = "audioPCKFileToolStripMenuItem";
-            resources.ApplyResources(this.audioPCKFileToolStripMenuItem, "audioPCKFileToolStripMenuItem");
-            // 
-            // coloursCOLFileToolStripMenuItem
-            // 
-            this.coloursCOLFileToolStripMenuItem.Image = global::PckStudio.Properties.Resources.COL_ICON;
-            this.coloursCOLFileToolStripMenuItem.Name = "coloursCOLFileToolStripMenuItem";
-            resources.ApplyResources(this.coloursCOLFileToolStripMenuItem, "coloursCOLFileToolStripMenuItem");
-            // 
-            // gameRulesHeaderGRHToolStripMenuItem
-            // 
-            this.gameRulesHeaderGRHToolStripMenuItem.Image = global::PckStudio.Properties.Resources.GRH_ICON;
-            this.gameRulesHeaderGRHToolStripMenuItem.Name = "gameRulesHeaderGRHToolStripMenuItem";
-            resources.ApplyResources(this.gameRulesHeaderGRHToolStripMenuItem, "gameRulesHeaderGRHToolStripMenuItem");
-            // 
-            // skinsPCKToolStripMenuItem
-            // 
-            this.skinsPCKToolStripMenuItem.Image = global::PckStudio.Properties.Resources.SKINS_ICON;
-            this.skinsPCKToolStripMenuItem.Name = "skinsPCKToolStripMenuItem";
-            resources.ApplyResources(this.skinsPCKToolStripMenuItem, "skinsPCKToolStripMenuItem");
-            // 
-            // modelsFileBINToolStripMenuItem
-            // 
-            this.modelsFileBINToolStripMenuItem.Image = global::PckStudio.Properties.Resources.MODELS_ICON;
-            this.modelsFileBINToolStripMenuItem.Name = "modelsFileBINToolStripMenuItem";
-            resources.ApplyResources(this.modelsFileBINToolStripMenuItem, "modelsFileBINToolStripMenuItem");
-            // 
-            // behavioursFileBINToolStripMenuItem
-            // 
-            this.behavioursFileBINToolStripMenuItem.Image = global::PckStudio.Properties.Resources.BEHAVIOURS_ICON;
-            this.behavioursFileBINToolStripMenuItem.Name = "behavioursFileBINToolStripMenuItem";
-            resources.ApplyResources(this.behavioursFileBINToolStripMenuItem, "behavioursFileBINToolStripMenuItem");
-            // 
-            // entityMaterialsFileBINToolStripMenuItem
-            // 
-            this.entityMaterialsFileBINToolStripMenuItem.Image = global::PckStudio.Properties.Resources.ENTITY_MATERIALS_ICON;
-            this.entityMaterialsFileBINToolStripMenuItem.Name = "entityMaterialsFileBINToolStripMenuItem";
-            resources.ApplyResources(this.entityMaterialsFileBINToolStripMenuItem, "entityMaterialsFileBINToolStripMenuItem");
             // 
             // PckEditor
             // 

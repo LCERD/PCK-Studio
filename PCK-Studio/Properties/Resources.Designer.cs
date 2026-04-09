@@ -750,6 +750,186 @@ namespace PckStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_armor_body {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_armor_body", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_armor_head {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_armor_head", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_armor_left_arm {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_armor_left_arm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_armor_left_leg {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_armor_left_leg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_armor_right_arm {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_armor_right_arm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_armor_right_leg {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_armor_right_leg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_classic_head {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_classic_head", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_slim_body {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_slim_body", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_slim_head {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_slim_head", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_slim_left_arm {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_slim_left_arm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_slim_left_leg {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_slim_left_leg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_slim_right_arm {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_slim_right_arm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_slim_right_leg {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_slim_right_leg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_wide_body {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_wide_body", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_wide_head {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_wide_head", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_wide_left_arm {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_wide_left_arm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_wide_legs {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_wide_legs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap skinAdjustments_wide_right_arm {
+            get {
+                object obj = ResourceManager.GetObject("skinAdjustments_wide_right_arm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap SKINS_ICON {
             get {
                 object obj = ResourceManager.GetObject("SKINS_ICON", resourceCulture);

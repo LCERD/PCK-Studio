@@ -32,7 +32,7 @@ namespace PckStudio.Forms.Additional_Popups
         {
             InitializeComponent();
             _xmlVersion = xmlVersion;
-            newSkin = new Skin("", new SkinANIM(SkinAnimMask.MODERN_WIDE_MODEL), Resources.classic_template, Enumerable.Empty<SkinBOX>(), Enumerable.Empty<SkinPartOffset>());
+            newSkin = new Skin("", new SkinANIM(SkinAnimMask.MODERN_WIDE_MODEL), SkinGameFlags.Empty, Resources.classic_template, Enumerable.Empty<SkinBOX>(), Enumerable.Empty<SkinPartOffset>());
         }
 
         private void SetNewTexture(Image img)
@@ -258,10 +258,11 @@ namespace PckStudio.Forms.Additional_Popups
 
 		private void buttonAnimGen_Click(object sender, EventArgs e)
 		{
-            using ANIMEditor diag = new ANIMEditor(newSkin.Anim);
+            using SkinAdjustmentsEditor diag = new SkinAdjustmentsEditor(newSkin);
             if (diag.ShowDialog(this) == DialogResult.OK)
             {
-                newSkin.Anim = diag.ResultAnim;
+                newSkin.Anim = diag.anim;
+                newSkin.GameFlags = diag.gameFlags;
                 DrawModel();
             }
         }

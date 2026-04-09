@@ -1,52 +1,49 @@
-﻿using System;
+﻿using DiscordRPC;
+using MetroFramework.Forms;
+using OMI.Formats.Behaviour;
+using OMI.Formats.Color;
+using OMI.Formats.GameRule;
+using OMI.Formats.Languages;
+using OMI.Formats.Material;
+using OMI.Formats.Model;
+using OMI.Formats.Pck;
+using OMI.Workers;
+using OMI.Workers.Behaviour;
+using OMI.Workers.Color;
+using OMI.Workers.GameRule;
+using OMI.Workers.Language;
+using OMI.Workers.Material;
+using OMI.Workers.Model;
+using OMI.Workers.Pck;
+using PckStudio.Core;
+using PckStudio.Core.Deserializer;
+using PckStudio.Core.Extensions;
+using PckStudio.Core.FileFormats;
+using PckStudio.Core.IO._3DST;
+using PckStudio.Core.IO.PckAudio;
+using PckStudio.Core.Json;
+using PckStudio.Core.Misc;
+using PckStudio.Core.Serializer;
+using PckStudio.Core.Skin;
+using PckStudio.Forms.Additional_Popups;
+using PckStudio.Forms.Additional_Popups.Animation;
+using PckStudio.Forms.Editor;
+using PckStudio.Interfaces;
+using PckStudio.Internal;
+using PckStudio.Json;
+using PckStudio.ModelSupport;
+using PckStudio.Popups;
+using PckStudio.Properties;
+using PckStudio.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-
-using MetroFramework.Forms;
-
-using OMI.Formats.Languages;
-using OMI.Formats.Pck;
-using OMI.Workers.Language;
-using OMI.Workers.Pck;
-
-using OMI.Workers;
-using OMI.Formats.Model;
-using OMI.Workers.Model;
-using OMI.Formats.GameRule;
-using OMI.Workers.GameRule;
-using OMI.Formats.Material;
-using OMI.Workers.Material;
-using OMI.Formats.Behaviour;
-using OMI.Workers.Behaviour;
-using OMI.Formats.Color;
-using OMI.Workers.Color;
-
-using PckStudio.Core.Extensions;
-using PckStudio.Forms.Editor;
-using PckStudio.Forms.Additional_Popups;
-using PckStudio.Forms.Additional_Popups.Animation;
-using PckStudio.Interfaces;
-using PckStudio.Internal;
-using PckStudio.Popups;
-using PckStudio.Properties;
-
-using PckStudio.Core.Deserializer;
-using PckStudio.Core.Serializer;
-using PckStudio.Core.Json;
-using PckStudio.Core.FileFormats;
-using PckStudio.Core.Skin;
-using PckStudio.Rendering;
-using PckStudio.Core;
-using PckStudio.ModelSupport;
-using PckStudio.Json;
-using PckStudio.Core.IO.PckAudio;
-using PckStudio.Core.IO._3DST;
-using PckStudio.Core.Misc;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PckStudio.Controls
 {
@@ -1857,6 +1854,31 @@ namespace PckStudio.Controls
             }
         }
 
+        private void WriteSkinAdjustments(PckAsset asset, SkinANIM anim, SkinGameFlags gameFlags)
+        {
+            if (asset.HasParameter("ANIM"))
+                asset.SetParameter("ANIM", anim.ToString());
+            else
+                asset.AddParameter(new KeyValuePair<string, string>("ANIM", anim.ToString()));
+
+            if (asset.HasParameter("GAME_FLAGS"))
+                asset.SetParameter("GAME_FLAGS", gameFlags.ToString());
+            else
+                asset.AddParameter(new KeyValuePair<string, string>("ANIM", gameFlags.ToString()));
+
+            ReloadParameterTreeView();
+            _wasModified = true;
+        }
+
+        private void EditSkinAdjustments(PckAsset asset)
+        {
+            using SkinAdjustmentsEditor diag = new SkinAdjustmentsEditor(asset.GetSkin());
+            if (diag.ShowDialog(this) == DialogResult.OK)
+            {
+                WriteSkinAdjustments(asset, diag.anim, diag.gameFlags);
+            }
+        }
+
         private void treeParameter_DoubleClick(object sender, EventArgs e)
         {
             if (treeParameters.SelectedNode is TreeNode subnode && subnode.Tag is KeyValuePair<string, string> parameter &&
@@ -1867,25 +1889,9 @@ namespace PckStudio.Controls
                     switch (parameter.Key)
                     {
                         case "ANIM" when asset.Type == PckAssetType.SkinFile:
-                            try
-                            {
-                                using ANIMEditor diag = new ANIMEditor(SkinANIM.FromString(parameter.Value));
-                                if (diag.ShowDialog(this) == DialogResult.OK)
-                                {
-                                    asset.SetParameter(asset.GetParameterIndex(parameter), new KeyValuePair<string, string>("ANIM", diag.ResultAnim.ToString()));
-                                    ReloadParameterTreeView();
-                                    _wasModified = true;
-                                }
-                                return;
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine(ex.Message);
-                                Trace.WriteLine("Invalid ANIM value: " + parameter.Value);
-                                MessageBox.Show(this, "Failed to parse ANIM value, aborting to normal functionality. Please make sure the value only includes hexadecimal characters (0-9,A-F) and has no more than 8 characters.");
-                            }
-                            break;
-
+                        case "GAME_FLAGS" when asset.Type == PckAssetType.SkinFile:
+                            EditSkinAdjustments(asset);
+                            return; // no error handling nor manual editing needed for skin adjustments
                         case "BOX" when asset.Type == PckAssetType.SkinFile:
                             try
                             {
@@ -1959,17 +1965,11 @@ namespace PckStudio.Controls
             }
         }
 
-        private void addSkinANIMParameterToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void addSkinAdjustmentParametersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (treeViewMain.SelectedNode.TryGetTagData(out PckAsset asset))
             {
-                using ANIMEditor diag = new ANIMEditor(SkinANIM.Empty);
-                if (diag.ShowDialog(this) == DialogResult.OK)
-                {
-                    asset.AddParameter("ANIM", diag.ResultAnim);
-                    ReloadParameterTreeView();
-                    _wasModified = true;
-                }
+                EditSkinAdjustments(asset);
                 return;
             }
         }
