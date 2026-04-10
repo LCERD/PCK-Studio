@@ -353,7 +353,7 @@ namespace PckStudio.Rendering
 
         private void InitializeCapeData()
         {
-            cape ??= new CubeMesh(new Cube(new(-5, 0, -3), new(10, 16, 1), new(0, 0), 0f, false, false));
+            cape ??= new CubeMesh(new Cube(new(5, 0, 3), new(10, 16, 1), new(0, 0), 0f, false, false));
         }
 
         private void InitializeArmorData()
@@ -925,17 +925,23 @@ namespace PckStudio.Rendering
                 {
                     cubeShader.SetUniform2("TexSize", new Vector2(64, 32));
                     capeTexture.Bind();
-                    // Defines minimum Angle(in Degrees) of the cape
-                    float capeMinimumRotationAngle = 7.5f;
-                    // Controls how much of an angle is applied
-                    float capeRotationFactor = 0.4f;
-                    // Low value = slow movement
-                    float capeRotationSpeed = 0.02f;
-                    float capeRotation = ((float)MathHelper.RadiansToDegrees(Math.Sin(Math.Abs(animationCurrentRotationAngle) * capeRotationSpeed) * capeRotationFactor)) + capeMinimumRotationAngle;
-                    Matrix4 partMatrix = 
-                        Matrix4.CreateRotationY(MathHelper.DegreesToRadians(180f)) *
-                        Matrix4.CreateRotationX(MathHelper.DegreesToRadians(capeRotation));
-                    RenderPart(cubeShader, cape, partMatrix, renderTransform);
+                    
+                    // disabled this for now becuase it looks odd and for some reason the cape isn't rotating fully - May
+                    
+                    //// Defines minimum Angle(in Degrees) of the cape
+                    //float capeMinimumRotationAngle = 7.5f;
+                    //// Controls how much of an angle is applied
+                    //float capeRotationFactor = 0.4f;
+                    //// Low value = slow movement
+                    //float capeRotationSpeed = 0.02f;
+                    //float capeRotation = ((float)MathHelper.RadiansToDegrees(Math.Sin(Math.Abs(animationCurrentRotationAngle) * capeRotationSpeed) * capeRotationFactor)) + capeMinimumRotationAngle;
+                    //Matrix4 partMatrix = 
+                    //    Matrix4.CreateRotationY(MathHelper.DegreesToRadians(180f)) *
+                    //    Matrix4.CreateRotationX(MathHelper.DegreesToRadians(capeRotation));
+
+                    Matrix4 capeMatrix = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(180f));
+
+                    RenderPart(cubeShader, cape, capeMatrix, renderTransform);
                 }
 
                 // Armor rendering
