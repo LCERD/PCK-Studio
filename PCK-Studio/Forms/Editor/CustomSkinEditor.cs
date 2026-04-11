@@ -26,6 +26,7 @@ namespace PckStudio.Forms.Editor
         private Random _rng;
         private bool _inflateOverlayParts;
         private int _xmlVersion;
+        private SkinGameFlags _gameFlags;
 
         private BindingSource _skinPartListBindingSource;
         private BindingSource _skinOffsetListBindingSource;
@@ -91,7 +92,6 @@ namespace PckStudio.Forms.Editor
             List<SkinPartOffset> offsetProperties = modelInfo.PartOffsets;
             
             renderer3D1.ANIM = EditorValue.Anim;
-            renderer3D1.GameFlags = EditorValue.GameFlags;
 
             renderer3D1.ModelData.Clear();
             foreach (SkinBOX box in boxProperties)
@@ -189,7 +189,7 @@ namespace PckStudio.Forms.Editor
             EditorValue.Model.PartOffsets.AddRange(renderer3D1.GetOffsets());
             // just in case they're not the same instance
             EditorValue.Anim = renderer3D1.ANIM;
-            EditorValue.GameFlags = renderer3D1.GameFlags;
+            EditorValue.GameFlags = _gameFlags;
             DialogResult = DialogResult.OK;
             Save();
         }
@@ -457,7 +457,7 @@ namespace PckStudio.Forms.Editor
         private void skinAdjustmentsEditorControl1_AdjustmentsChanged(object sender, EventArgs e)
         {
             renderer3D1.ANIM = skinAdjustmentsEditorControl1.GetAnim();
-            renderer3D1.GameFlags = skinAdjustmentsEditorControl1.GetGameFlags();
+            _gameFlags = skinAdjustmentsEditorControl1.GetGameFlags();
         }
     }
 }

@@ -160,17 +160,6 @@ namespace PckStudio.Rendering
             }
         }
 
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SkinGameFlags GameFlags
-        {
-            get => _gameFlags;
-            set
-            {
-                _gameFlags = value;
-            }
-        }
-
         public ObservableCollection<SkinBOX> ModelData { get; }
     
         /// <summary>
@@ -208,7 +197,6 @@ namespace PckStudio.Rendering
         private VertexBufferLayout plainColorVertexBufferLayout;
 
         private SkinANIM _anim;
-        private SkinGameFlags _gameFlags;
         private Image _skinImage;
         private Image _capeImage;
         private Texture2D skinTexture;
