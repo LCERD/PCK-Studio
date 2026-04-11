@@ -74,7 +74,7 @@ namespace PckStudio.Forms.Editor
             skinNameLabel.Text = EditorValue.MetaData.Name;
             if (EditorValue.HasCape)
                 renderer3D1.CapeTexture = EditorValue.CapeTexture;
-            boxEditorControl1.Enabled = false; // make disabled until a box is selected - May
+            boxEditorControl1.Enabled = false; // enabled by default just in case - May
             LoadModelData();
         }
 
@@ -277,10 +277,15 @@ namespace PckStudio.Forms.Editor
             int scale = 1;
             renderer3D1.SelectedIndices = skinPartListBox.SelectedIndices.Cast<int>().ToArray();
 
+            // make disabled until a box is confirmed selected - May
+            boxEditorControl1.Enabled = false;
+
             // TODO: highlight all selected boxes
             if (skinPartListBox.SelectedItem is SkinBOX box)
             {
-                boxEditorControl1.Enabled = true;
+                // enable box editor only if selecting
+                boxEditorControl1.Enabled = skinPartListBox.SelectedItems.Count < 2;
+
                 boxEditorControl1.SetBOX(box);
                 Image uvArea = EditorValue.Texture.GetArea(Rectangle.Truncate(new RectangleF(box.UV.X, box.UV.Y, box.Size.X * 2 + box.Size.Z * 2, box.Size.Z + box.Size.Y)));
 
@@ -306,10 +311,6 @@ namespace PckStudio.Forms.Editor
                     g.FillPath(brush, graphicsPath);
                 }
                 uvPictureBox.Invalidate();
-            }
-            else
-            {
-                boxEditorControl1.Enabled = false;
             }
         }
 
