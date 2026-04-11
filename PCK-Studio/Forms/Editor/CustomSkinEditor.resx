@@ -410,7 +410,7 @@
     <value>0, 0</value>
   </data>
   <data name="skinPartListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 114</value>
+    <value>157, 113</value>
   </data>
   <data name="skinPartListBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -508,14 +508,14 @@
   <data name="&gt;&gt;skinNameLabel.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="metroTabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="parameterTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="skinPartsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 38</value>
   </data>
   <data name="skinPartsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 114</value>
+    <value>157, 113</value>
   </data>
   <data name="skinPartsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -530,7 +530,7 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;skinPartsTabPage.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
+    <value>parameterTabControl</value>
   </data>
   <data name="&gt;&gt;skinPartsTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -566,7 +566,7 @@
     <value>0, 0</value>
   </data>
   <data name="offsetListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 114</value>
+    <value>157, 128</value>
   </data>
   <data name="offsetListBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -587,7 +587,7 @@
     <value>4, 38</value>
   </data>
   <data name="skinOffsetsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 114</value>
+    <value>157, 128</value>
   </data>
   <data name="skinOffsetsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -602,30 +602,30 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;skinOffsetsTabPage.Parent" xml:space="preserve">
-    <value>metroTabControl1</value>
+    <value>parameterTabControl</value>
   </data>
   <data name="&gt;&gt;skinOffsetsTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="metroTabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>632, 21</value>
+  <data name="parameterTabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>632, 22</value>
   </data>
-  <data name="metroTabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 156</value>
+  <data name="parameterTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 155</value>
   </data>
-  <data name="metroTabControl1.TabIndex" type="System.Int32, mscorlib">
+  <data name="parameterTabControl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;metroTabControl1.Name" xml:space="preserve">
-    <value>metroTabControl1</value>
+  <data name="&gt;&gt;parameterTabControl.Name" xml:space="preserve">
+    <value>parameterTabControl</value>
   </data>
-  <data name="&gt;&gt;metroTabControl1.Type" xml:space="preserve">
+  <data name="&gt;&gt;parameterTabControl.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroTabControl, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;metroTabControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;parameterTabControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;metroTabControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;parameterTabControl.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="renderer3D1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">

@@ -93,6 +93,11 @@ namespace PckStudio.Core.Skin
         public int ArmorMaskFlags { get; }
         public bool Mirror { get; }
         public float Scale { get; }
+        // Simplified display info for the CustomSkinEditor
+        public string DisplayInfo
+        {
+            get { return $"{Type} ({Size.X}x{Size.Y}x{Size.Z})".Replace(',', '.'); }
+        }
 
         public SkinBOX(string type, Vector3 pos, Vector3 size, Vector2 uv,
             int armorMaskFlags = 0, bool mirror = false, float scale = 0.0f)

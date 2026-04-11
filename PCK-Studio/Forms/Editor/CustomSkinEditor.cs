@@ -49,7 +49,7 @@ namespace PckStudio.Forms.Editor
             _rng = new Random();
             _skinPartListBindingSource = new BindingSource(renderer3D1.ModelData, null);
             skinPartListBox.DataSource = _skinPartListBindingSource;
-            skinPartListBox.DisplayMember = "Type";
+            skinPartListBox.DisplayMember = "DisplayInfo";
             _xmlVersion = xmlVersion;
             boxEditorControl1.SetBOXVersion(xmlVersion);
             _inflateOverlayParts = _xmlVersion > 0;

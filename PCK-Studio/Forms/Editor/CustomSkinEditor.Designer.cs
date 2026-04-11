@@ -47,7 +47,7 @@
             this.captureScreenshotButton = new MetroFramework.Controls.MetroButton();
             this.showToolsCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.skinNameLabel = new MetroFramework.Controls.MetroLabel();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.parameterTabControl = new MetroFramework.Controls.MetroTabControl();
             this.skinPartsTabPage = new System.Windows.Forms.TabPage();
             this.skinOffsetsTabPage = new System.Windows.Forms.TabPage();
             this.offsetListBox = new System.Windows.Forms.ListBox();
@@ -63,7 +63,7 @@
             this.boxEditorControl1 = new PckStudio.Controls.BoxEditorControl();
             this.skinAdjustmentsEditorControl1 = new PckStudio.Controls.SkinAdjustmentsEditorControl();
             this.skinPartTabContextMenu.SuspendLayout();
-            this.metroTabControl1.SuspendLayout();
+            this.parameterTabControl.SuspendLayout();
             this.skinPartsTabPage.SuspendLayout();
             this.skinOffsetsTabPage.SuspendLayout();
             this.offsetTabContextMenu.SuspendLayout();
@@ -210,17 +210,17 @@
             this.skinNameLabel.Name = "skinNameLabel";
             this.skinNameLabel.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroTabControl1
+            // parameterTabControl
             // 
-            resources.ApplyResources(this.metroTabControl1, "metroTabControl1");
-            this.metroTabControl1.Controls.Add(this.skinPartsTabPage);
-            this.metroTabControl1.Controls.Add(this.skinOffsetsTabPage);
-            this.metroTabControl1.Multiline = true;
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Pink;
-            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabControl1.UseSelectable = true;
+            resources.ApplyResources(this.parameterTabControl, "parameterTabControl");
+            this.parameterTabControl.Controls.Add(this.skinPartsTabPage);
+            this.parameterTabControl.Controls.Add(this.skinOffsetsTabPage);
+            this.parameterTabControl.Multiline = true;
+            this.parameterTabControl.Name = "parameterTabControl";
+            this.parameterTabControl.SelectedIndex = 0;
+            this.parameterTabControl.Style = MetroFramework.MetroColorStyle.Pink;
+            this.parameterTabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.parameterTabControl.UseSelectable = true;
             // 
             // skinPartsTabPage
             // 
@@ -345,7 +345,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.skinAdjustmentsEditorControl1);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.parameterTabControl);
             this.Controls.Add(this.boxEditorControl1);
             this.Controls.Add(this.exportTextureButton);
             this.Controls.Add(this.importTextureButton);
@@ -369,7 +369,7 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomSkinEditor_FormClosing);
             this.skinPartTabContextMenu.ResumeLayout(false);
-            this.metroTabControl1.ResumeLayout(false);
+            this.parameterTabControl.ResumeLayout(false);
             this.skinPartsTabPage.ResumeLayout(false);
             this.skinOffsetsTabPage.ResumeLayout(false);
             this.offsetTabContextMenu.ResumeLayout(false);
@@ -399,7 +399,7 @@
         private MetroFramework.Controls.MetroButton captureScreenshotButton;
         private MetroFramework.Controls.MetroCheckBox showToolsCheckBox;
         private MetroFramework.Controls.MetroLabel skinNameLabel;
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabControl parameterTabControl;
         private System.Windows.Forms.TabPage skinPartsTabPage;
         private System.Windows.Forms.TabPage skinOffsetsTabPage;
         private System.Windows.Forms.ListBox offsetListBox;
