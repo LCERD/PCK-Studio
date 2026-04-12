@@ -53,7 +53,7 @@ namespace PckStudio.Forms.Editor
             skinPartListBox.DisplayMember = "DisplayInfo";
             _xmlVersion = xmlVersion;
             boxEditorControl1.SetBOXVersion(xmlVersion);
-            _inflateOverlayParts = _xmlVersion > 0;
+            _inflateOverlayParts = _xmlVersion > 0 && _xmlVersion < 3;
             skinAdjustmentsEditorControl1.SetSkin(skin);
         }
 
@@ -447,10 +447,12 @@ namespace PckStudio.Forms.Editor
 
         private void boxEditorControl1_BoxChanged(object sender, EventArgs e)
         {
-            if(skinPartListBox.SelectedIndex > -1)
+            int index = skinPartListBox.SelectedIndex;
+
+            if (index > -1)
             {
-                renderer3D1.ModelData[skinPartListBox.SelectedIndex] = boxEditorControl1.GetBOX();
-                _skinPartListBindingSource.ResetItem(skinPartListBox.SelectedIndex);
+                renderer3D1.ModelData[index] = boxEditorControl1.GetBOX();
+                _skinPartListBindingSource.ResetItem(index);
             }
         }
 

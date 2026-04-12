@@ -88,7 +88,8 @@ namespace PckStudio.Controls
             leggingsCheckBox.Checked = (box.ArmorMaskFlags & 4) != 0;
             bootsCheckBox.Checked = (box.ArmorMaskFlags & 8) != 0;
             mirrorCheckBox.Checked = box.Mirror;
-            inflationUpDown.Value = (decimal)box.Scale;
+            // if the XMLVersion doesn't support scaling, set this value to 0 because it's not supported and fixes a rendering issue - May
+            inflationUpDown.Value = boxVersion == 3 ? (decimal)box.Scale : 0;
             CancelBoxChanged = false;
         }
 
