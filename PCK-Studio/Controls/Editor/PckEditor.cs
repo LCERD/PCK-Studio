@@ -97,25 +97,24 @@ namespace PckStudio.Controls
             behavioursFileBINToolStripMenuItem.Click += (sender, e) => SetFileType(PckAssetType.BehavioursFile);
             entityMaterialsFileBINToolStripMenuItem.Click += (sender, e) => SetFileType(PckAssetType.MaterialFile);
 
-            imageList.Images.Add(Resources.ZZFolder); // Icon for folders
-            imageList.Images.Add(Resources.BINKA_ICON); // Icon for music cue file (audio.pck)
-            imageList.Images.Add(Resources.IMAGE_ICON); // Icon for images (unused for now)
-            imageList.Images.Add(Resources.LOC_ICON); // Icon for string localization files (languages.loc;localisation.loc)
-            imageList.Images.Add(Resources.PCK_ICON); // Icon for generic PCK files (*.pck)
-            imageList.Images.Add(Resources.ZUnknown); // Icon for Unknown formats
-            imageList.Images.Add(Resources.COL_ICON); // Icon for color palette files (colours.col)
-            imageList.Images.Add(Resources.SKINS_ICON); // Icon for Skin.pck archives (skins.pck)
-            imageList.Images.Add(Resources.MODELS_ICON); // Icon for Model files (models.bin)
-            imageList.Images.Add(Resources.GRF_ICON); // Icon for Game Rule files (*.grf)
-            imageList.Images.Add(Resources.GRH_ICON); // Icon for Game Rule Header files (*.grh)
-            imageList.Images.Add(Resources.INFO_ICON); // Icon for Info files (0)
-            imageList.Images.Add(Resources.CLASSIC_SKIN_ICON); // Icon for Skin files (*.png)
-            imageList.Images.Add(Resources.CAPE_ICON); // Icon for Cape files (*.png)
-            imageList.Images.Add(Resources.TEXTURE_ICON); // Icon for Texture files (*.png;*.tga)
-            imageList.Images.Add(Resources.BEHAVIOURS_ICON); // Icon for Behaviour files (behaviours.bin)
-            imageList.Images.Add(Resources.ENTITY_MATERIALS_ICON); // Icon for Entity Material files (entityMaterials.bin)
-            imageList.Images.Add(Resources.MODERN_SKIN_ICON); // Icon for Skin files with Modern ANIM flag (*.png)
-            imageList.Images.Add(Resources.SLIM_SKIN_ICON); // Icon for Skin files with Slim ANIM flag (*.png)
+            imageList.Images.Add("folderIcon", Resources.ZZFolder); // Icon for folders
+            imageList.Images.Add("classicSkinFileIcon", Resources.CLASSIC_SKIN_ICON); // Icon for Skin files (*.png)
+            imageList.Images.Add("modernSkinFileIcon", Resources.MODERN_SKIN_ICON); // Icon for Skin files with Modern ANIM flag (*.png)
+            imageList.Images.Add("slimSkinFileIcon", Resources.SLIM_SKIN_ICON); // Icon for Skin files with Slim ANIM flag (*.png)
+            imageList.Images.Add("capeFileIcon", Resources.CAPE_ICON); // Icon for Cape files (*.png)
+            imageList.Images.Add("textureFileIcon", Resources.TEXTURE_ICON); // Icon for Texture files (*.png;*.tga)
+            imageList.Images.Add("unknownFileIcon", Resources.ZUnknown); // Icon for Unknown formats and UIDataFile (never used in any game version)
+            imageList.Images.Add("infoFileIcon", Resources.INFO_ICON); // Icon for Info files (0)
+            imageList.Images.Add("pckFileIcon", Resources.PCK_ICON); // Icon for generic PCK files (*.pck)
+            imageList.Images.Add("localisationFileIcon", Resources.LOC_ICON); // Icon for string localization files (languages.loc;localisation.loc)
+            imageList.Images.Add("gameRulesFileIcon", Resources.GRF_ICON); // Icon for Game Rule files (*.grf)
+            imageList.Images.Add("audioFileIcon", Resources.BINKA_ICON); // Icon for music cue file (audio.pck)
+            imageList.Images.Add("colourTableFileIcon", Resources.COL_ICON); // Icon for color table files (colours.col)
+            imageList.Images.Add("gameRulesHeaderIcon", Resources.GRH_ICON); // Icon for Game Rule Header files (*.grh)
+            imageList.Images.Add("skinDataFileIcon", Resources.SKINS_ICON); // Icon for Skin.pck archives (skins.pck)
+            imageList.Images.Add("modelsFileIcon", Resources.MODELS_ICON); // Icon for Model files (models.bin)
+            imageList.Images.Add("behavioursFileIcon", Resources.BEHAVIOURS_ICON); // Icon for Behaviour files (behaviours.bin)
+            imageList.Images.Add("materialFileIcon", Resources.ENTITY_MATERIALS_ICON); // Icon for Entity Material files (entityMaterials.bin)
 
             _pckAssetTypeHandler = new Dictionary<PckAssetType, Action<PckAsset>>(15)
             {
@@ -585,9 +584,7 @@ namespace PckStudio.Controls
             {
                 TreeNode node = BuildNodeTreeBySeperator(root, asset.Filename, '/');
                 node.Tag = asset;
-                int nodeIconId = GetNodeIconId(asset);
-                node.ImageIndex = nodeIconId;
-                node.SelectedImageIndex = nodeIconId;
+                node.ImageKey = node.SelectedImageKey = GetNodeIconKey(asset);
             }
         }
 
@@ -620,31 +617,31 @@ namespace PckStudio.Controls
             return 12; // classic skin model icon
         }
 
-        private int GetNodeIconId(PckAsset asset)
+        private string GetNodeIconKey(PckAsset asset)
         {
-            int anim = 0;
+            //int anim = 0;
 
-            if (asset.Type == PckAssetType.SkinFile)
-                anim = asset.GetSkin().Anim.ToValue();
+            //if (asset.Type == PckAssetType.SkinFile)
+            //    anim = asset.GetSkin().Anim.ToValue();
 
             return asset.Type switch
             {
-                PckAssetType.AudioFile           => 1,
-                PckAssetType.LocalisationFile    => 3,
-                PckAssetType.TexturePackInfoFile => 4,
-                PckAssetType.ColourTableFile     => 6,
-                PckAssetType.ModelsFile          => 8,
-                PckAssetType.SkinDataFile        => 7,
-                PckAssetType.GameRulesFile       => 9,
-                PckAssetType.GameRulesHeader     => 10,
-                PckAssetType.InfoFile            => 11,
-                PckAssetType.SkinFile            => GetSkinNodeIconId(anim),
-                PckAssetType.CapeFile            => 13,
-                PckAssetType.TextureFile         => 14,
-                PckAssetType.BehavioursFile      => 15,
-                PckAssetType.MaterialFile        => 16,
+                PckAssetType.SkinFile            => "classicSkinFileIcon", //GetSkinNodeIconId(anim),
+                PckAssetType.CapeFile            => "capeFileIcon",
+                PckAssetType.TextureFile         => "textureFileIcon",
+                PckAssetType.InfoFile            => "infoFileIcon",
+                PckAssetType.TexturePackInfoFile => "pckFileIcon",
+                PckAssetType.LocalisationFile    => "localisationFileIcon",
+                PckAssetType.GameRulesFile       => "gameRulesFileIcon",
+                PckAssetType.AudioFile           => "audioFileIcon",
+                PckAssetType.ColourTableFile     => "colourTableFileIcon",
+                PckAssetType.GameRulesHeader     => "gameRulesHeaderIcon",
+                PckAssetType.SkinDataFile        => "skinDataFileIcon",
+                PckAssetType.ModelsFile          => "modelsFileIcon",
+                PckAssetType.BehavioursFile      => "behavioursFileIcon",
+                PckAssetType.MaterialFile        => "materialFileIcon",
                 // unknown file format
-                _ => 5,
+                _ => "unknownFileIcon",
             };
         }
 
@@ -894,9 +891,8 @@ namespace PckStudio.Controls
             {
                 Debug.WriteLine($"Setting {asset.Type} to {type}");
                 asset.Type = type;
-                int nodeIconId = GetNodeIconId(asset);
-                treeViewMain.SelectedNode.ImageIndex = nodeIconId;
-                treeViewMain.SelectedNode.SelectedImageIndex = nodeIconId;
+                TreeNode node = treeViewMain.SelectedNode;
+                node.ImageKey = node.SelectedImageKey = GetNodeIconKey(asset);
             }
         }
 
