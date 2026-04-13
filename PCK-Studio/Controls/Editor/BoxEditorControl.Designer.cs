@@ -330,10 +330,15 @@
             this.inflationUpDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.inflationUpDown.Location = new System.Drawing.Point(81, 117);
             this.inflationUpDown.Maximum = new decimal(new int[] {
-            9999,
+            10,
             0,
             0,
             0});
+            this.inflationUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
             this.inflationUpDown.Name = "inflationUpDown";
             this.inflationUpDown.Size = new System.Drawing.Size(73, 20);
             this.inflationUpDown.TabIndex = 32;
