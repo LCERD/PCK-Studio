@@ -214,7 +214,7 @@ namespace PckStudio.Core.Extensions
 
             Marshal.Copy(baseImageData.Scan0, baseImageBuffer, 0, baseImageBuffer.Length);
 
-            BitmapData overlayImageData = overlayImage.LockBits(new Rectangle(Point.Empty, overlayImage.Size), 
+            BitmapData overlayImageData = overlayImage.LockBits(new Rectangle(Point.Empty, overlayImage.Size),
                 ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
             byte[] overlayImageBuffer = new byte[overlayImageData.Stride * overlayImageData.Height];
 
@@ -258,7 +258,7 @@ namespace PckStudio.Core.Extensions
                 ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
             byte[] overlayImageBuffer = new byte[overlayImageData.Stride * overlayImageData.Height];
-            
+
             Marshal.Copy(overlayImageData.Scan0, overlayImageBuffer, 0, overlayImageBuffer.Length);
 
             overlayImage.UnlockBits(overlayImageData);
