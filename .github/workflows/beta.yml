@@ -47,8 +47,5 @@ jobs:
         with:
           tag_name: beta-${{ env.SHORT_SHA }}
           name: Beta @ ${{ env.SHORT_SHA }}
-          body: |
-            ## ${{ env.COMMIT_TITLE }}
-            ${{ env.COMMIT_BODY }}
           prerelease: true
           files: ${{ env.RELEASE_NAME }}_${{ env.COMMIT_TIME }}.zip
