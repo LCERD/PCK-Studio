@@ -1,0 +1,51 @@
+name: Create beta release
+
+
+
+on: 
+  push:
+    branches:
+      - 'main'
+    
+env:
+  RELEASE_NAME: PCK-Studio_Beta
+      
+jobs:
+  CreateRelease:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+        
+      - name: Get NuGet Packages
+        run: nuget restore PCK_Studio.sln
+  
+      - name: Build solution
+        run: "msbuild PCK_Studio.sln -p:Configuration=Release"
+
+      - name: Get commit info
+        run: |
+          "COMMIT_TIME=$(git show -s --format=%cs)" >> $env:GITHUB_ENV
+          "SHORT_SHA=$($env:GITHUB_SHA.Substring(0,7))" >> $env:GITHUB_ENV
+          "COMMIT_TITLE=$(git show -s --format=%s)" >> $env:GITHUB_ENV
+          "COMMIT_BODY<<EOF" >> $env:GITHUB_ENV
+          git show -s --format=%b >> $env:GITHUB_ENV
+          "EOF" >> $env:GITHUB_ENV
+
+      - name: Package binary
+        run: Compress-Archive -Path "${{ github.workspace }}\PCK-Studio\bin\Release\*" -Destination ${{ env.RELEASE_NAME }}_${{ env.COMMIT_TIME }}.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: beta-${{ env.SHORT_SHA }}
+          name: Beta @ ${{ env.SHORT_SHA }}
+          prerelease: true
+          files: ${{ env.RELEASE_NAME }}_${{ env.COMMIT_TIME }}.zip
