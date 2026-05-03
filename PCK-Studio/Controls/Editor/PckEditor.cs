@@ -35,6 +35,7 @@ using PckStudio.ModelSupport;
 using PckStudio.Popups;
 using PckStudio.Properties;
 using PckStudio.Rendering;
+using PckStudio.Rendering.Texture;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -662,6 +663,39 @@ namespace PckStudio.Controls
             return "classicSkinFileIcon"; // classic skin model icon
         }
 
+        private Image DrawCapeIcon(Image capeTexture)
+        {
+            Bitmap customIcon = new Bitmap(Resources.CUSTOM_SKIN_ICON.Width, Resources.CUSTOM_SKIN_ICON.Height);
+
+            float textureScaleX = capeTexture.Width / 64f;   // minecraft capes always have a width of 64
+            float textureScaleY = capeTexture.Height / 32f; // minecraft capes always have a height of 32
+
+            float width = 10;
+            float height = 16;
+            float depth = 1;
+
+            // this math is basically to ensure the face is stretched if the texture is improper
+            Rectangle faceRect = new Rectangle(
+                (int)(depth * textureScaleX),
+                (int)(depth * textureScaleY),
+                (int)(width * textureScaleX),
+                (int)(height * textureScaleY)
+            );
+
+            Image capeFace = capeTexture.GetArea(faceRect);
+
+            using (Graphics gfx = Graphics.FromImage(customIcon))
+            {
+                gfx.InterpolationMode = InterpolationMode.NearestNeighbor;
+                gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                gfx.SmoothingMode = SmoothingMode.None;
+
+                gfx.DrawImage(capeFace, 56, 12, 145, 232); // position for the cape on the icon
+            }
+
+            return customIcon;
+        }
+
         private string GetCapeNodeIconKey(PckAsset cape, bool reset)
         {
             if (!Settings.Default.UseCustomCapeIcons)
@@ -688,23 +722,6 @@ namespace PckStudio.Controls
             {
                 Bitmap customIcon = new Bitmap(Resources.CUSTOM_SKIN_ICON.Width, Resources.CUSTOM_SKIN_ICON.Height);
 
-                float textureScaleX = capeTexture.Width / 64f;   // minecraft capes always have a width of 64
-                float textureScaleY = capeTexture.Height / 32f; // minecraft capes always have a height of 32
-
-                float width = 10;
-                float height = 16;
-                float depth = 1;
-
-                // this math is basically to ensure the face is stretched if the texture is improper
-                Rectangle faceRect = new Rectangle(
-                    (int)(depth * textureScaleX),
-                    (int)(depth * textureScaleY),
-                    (int)(width * textureScaleX),
-                    (int)(height * textureScaleY)
-                );
-
-                Image capeFace = capeTexture.GetArea(faceRect);
-
                 using (Graphics gfx = Graphics.FromImage(customIcon))
                 {
                     gfx.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -713,7 +730,7 @@ namespace PckStudio.Controls
 
                     gfx.Fill(new Rectangle(0, 0, customIcon.Width, customIcon.Height), Color.FromArgb(0xFF, 0x5D, 0x9C, 0xEC));
 
-                    gfx.DrawImage(capeFace, 56, 12, 145, 232); // position for the cape on the icon
+                    gfx.DrawImage(DrawCapeIcon(capeTexture), 56, 12, 145, 232); // position for the cape on the icon
 
                     gfx.DrawImage(Resources.CUSTOM_SKIN_ICON, 0, 0);
                 }
@@ -752,6 +769,8 @@ namespace PckStudio.Controls
                 int skinIconHeight = Resources.SKINS_ICON.Height;
 
                 Bitmap customIcon = new Bitmap(skinIconWidth, skinIconHeight);
+
+                skin.DrawPaperDoll(xmlVersion: EditorValue.File.xmlVersion).Save("C:\\Users\\MattN\\Pictures\\icontest\\" + skin.Identifier.Id.ToString() + ".png");
 
                 using (Graphics gfx = Graphics.FromImage(customIcon))
                 {
@@ -2466,6 +2485,85 @@ namespace PckStudio.Controls
                 treeViewMain.SelectedNode = e.Node;
         }
 
+        private void exportIconToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeViewMain?.SelectedNode.TryGetTagData(out PckAsset asset) ?? false)
+            {
+                if(asset.Type != PckAssetType.CapeFile)
+                {
+                    return;
+                }
+
+                using SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = Path.GetFileName(asset.Filename);
+                saveFileDialog.Filter = Path.GetExtension(asset.Filename).Replace(".", string.Empty) + " File|*" + Path.GetExtension(asset.Filename);
+                if (saveFileDialog.ShowDialog(this) != DialogResult.OK ||
+                    // Makes sure chosen directory isn't null or whitespace AKA makes sure its usable
+                    string.IsNullOrWhiteSpace(Path.GetDirectoryName(saveFileDialog.FileName)))
+                {
+                    MessageBox.Show(this, "The chosen directory is invalid. Please choose a different one and try again.", "Node not extracted");
+
+                    return;
+                }
+
+                Image capeTexture = null;
+
+                try
+                {
+                    capeTexture = asset.GetTexture();
+                }
+                catch
+                {
+                    MessageBox.Show(this, "Failed to get image data from Cape", "Icon not exported");
+
+                    return;
+                }
+
+                DrawCapeIcon(capeTexture).Save(saveFileDialog.FileName);
+            }
+        }
+
+        private void exportSkinIcon(bool cropped = false)
+        {
+            if (treeViewMain?.SelectedNode.TryGetTagData(out PckAsset asset) ?? false)
+            {
+                if (asset.Type != PckAssetType.SkinFile)
+                {
+                    return;
+                }
+
+                using SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = Path.GetFileName(asset.Filename);
+                saveFileDialog.Filter = Path.GetExtension(asset.Filename).Replace(".", string.Empty) + " File|*" + Path.GetExtension(asset.Filename);
+                if (saveFileDialog.ShowDialog(this) != DialogResult.OK ||
+                    // Makes sure chosen directory isn't null or whitespace AKA makes sure its usable
+                    string.IsNullOrWhiteSpace(Path.GetDirectoryName(saveFileDialog.FileName)))
+                {
+                    MessageBox.Show(this, "The chosen directory is invalid. Please choose a different one and try again.", "Node not extracted");
+
+                    return;
+                }
+
+                Skin skin =  null;
+
+                try
+                {
+                    skin = asset.GetSkin();
+                }
+                catch
+                {
+                    MessageBox.Show(this, "Failed to get skin from node", "Icon not exported");
+
+                    return;
+                }
+
+                skin.DrawPaperDoll(bustCrop: cropped).Save(saveFileDialog.FileName);
+            }
+        }
+
+        private void fullBodyToolStripMenuItem_Click(object sender, EventArgs e) => exportSkinIcon();
+        private void croppedToolStripMenuItem_Click(object sender, EventArgs e) => exportSkinIcon(cropped: true);
+
         private void contextMenuPCKEntries_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             fixSkinDecimalsToolStripMenuItem.Visible = false;
@@ -2476,6 +2574,10 @@ namespace PckStudio.Controls
             exportToolStripMenuItem.Visible = false;
             toolStripSeparator5.Visible = false;
             toolStripSeparator6.Visible = false;
+            exportIconToolStripMenuItem.Visible = false;
+            fullBodyToolStripMenuItem.Visible = false;
+            croppedToolStripMenuItem.Visible = false;
+
             if (treeViewMain?.SelectedNode.TryGetTagData(out PckAsset asset) ?? false)
             {
                 replaceToolStripMenuItem.Visible = true;
@@ -2484,11 +2586,20 @@ namespace PckStudio.Controls
                 toolStripSeparator5.Visible = true;
                 toolStripSeparator6.Visible = true;
 
-                switch(asset.Type)
+                bool customSkinIcons = Settings.Default.UseCustomSkinIcons;
+
+                switch (asset.Type)
                 {
                     case PckAssetType.SkinFile:
                         fixSkinDecimalsToolStripMenuItem.Visible = true;
                         exportToolStripMenuItem.Visible = true;
+
+                        exportIconToolStripMenuItem.Visible = customSkinIcons; // only enable if setting is true, no point in exporting custom icons otherwise
+                            fullBodyToolStripMenuItem.Visible = customSkinIcons; // these 2 are sub menu items of export icon - May
+                            croppedToolStripMenuItem.Visible = customSkinIcons;
+                        break;
+                    case PckAssetType.CapeFile:
+                        exportIconToolStripMenuItem.Visible = Settings.Default.UseCustomCapeIcons;
                         break;
                     case PckAssetType.TextureFile:
                         generateMipMapTextureToolStripMenuItem1.Visible = true;

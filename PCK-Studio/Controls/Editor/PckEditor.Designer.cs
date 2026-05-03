@@ -101,6 +101,9 @@ namespace PckStudio.Controls
             this.bOXVersion1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bOXVersion2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bOXVersion3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullBodyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.croppedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.cloneFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -498,7 +501,8 @@ namespace PckStudio.Controls
             this.fixSkinDecimalsToolStripMenuItem,
             this.setSubPCKEndiannessToolStripMenuItem,
             this.setModelContainerFormatToolStripMenuItem,
-            this.setSubPCKBOXVersionToolStripMenuItem});
+            this.setSubPCKBOXVersionToolStripMenuItem,
+            this.exportIconToolStripMenuItem});
             this.miscFunctionsToolStripMenuItem.Name = "miscFunctionsToolStripMenuItem";
             resources.ApplyResources(this.miscFunctionsToolStripMenuItem, "miscFunctionsToolStripMenuItem");
             // 
@@ -691,6 +695,27 @@ namespace PckStudio.Controls
             resources.ApplyResources(this.bOXVersion3ToolStripMenuItem, "bOXVersion3ToolStripMenuItem");
             this.bOXVersion3ToolStripMenuItem.Click += new System.EventHandler(this.setBoxVersion3ToolStripMenuItem_Click);
             // 
+            // exportIconToolStripMenuItem
+            // 
+            this.exportIconToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fullBodyToolStripMenuItem,
+            this.croppedToolStripMenuItem});
+            this.exportIconToolStripMenuItem.Name = "exportIconToolStripMenuItem";
+            resources.ApplyResources(this.exportIconToolStripMenuItem, "exportIconToolStripMenuItem");
+            this.exportIconToolStripMenuItem.Click += new System.EventHandler(this.exportIconToolStripMenuItem_Click);
+            // 
+            // fullBodyToolStripMenuItem
+            // 
+            this.fullBodyToolStripMenuItem.Name = "fullBodyToolStripMenuItem";
+            resources.ApplyResources(this.fullBodyToolStripMenuItem, "fullBodyToolStripMenuItem");
+            this.fullBodyToolStripMenuItem.Click += new System.EventHandler(this.fullBodyToolStripMenuItem_Click);
+            // 
+            // croppedToolStripMenuItem
+            // 
+            this.croppedToolStripMenuItem.Name = "croppedToolStripMenuItem";
+            resources.ApplyResources(this.croppedToolStripMenuItem, "croppedToolStripMenuItem");
+            this.croppedToolStripMenuItem.Click += new System.EventHandler(this.croppedToolStripMenuItem_Click);
+            // 
             // extractToolStripMenuItem
             // 
             resources.ApplyResources(this.extractToolStripMenuItem, "extractToolStripMenuItem");
@@ -865,5 +890,8 @@ namespace PckStudio.Controls
         private ToolStripMenuItem modelsFileBINToolStripMenuItem;
         private ToolStripMenuItem behavioursFileBINToolStripMenuItem;
         private ToolStripMenuItem entityMaterialsFileBINToolStripMenuItem;
+        private ToolStripMenuItem exportIconToolStripMenuItem;
+        private ToolStripMenuItem fullBodyToolStripMenuItem;
+        private ToolStripMenuItem croppedToolStripMenuItem;
     }
 }
