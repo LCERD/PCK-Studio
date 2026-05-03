@@ -588,9 +588,18 @@ namespace PckStudio
 
 		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var appSettings = new AppSettingsForm();
+            bool customSkinIcons = Settings.Default.UseCustomSkinIcons;
+            bool customCapeIcons = Settings.Default.UseCustomSkinIcons;
+
+            var appSettings = new AppSettingsForm();
 			appSettings.ShowDialog(this);
-		}
+
+            if ((customSkinIcons != Settings.Default.UseCustomSkinIcons || customSkinIcons != Settings.Default.UseCustomSkinIcons) // check if either of these options were changed
+                && TryGetCurrentEditor(out IEditor<PackInfo> editor)) // if so, redraw custom icons
+            {
+                editor.UpdateView(); // reset all custom node icons
+            }
+        }
 
 		private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
