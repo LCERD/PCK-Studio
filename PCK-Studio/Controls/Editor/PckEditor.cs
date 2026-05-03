@@ -697,8 +697,8 @@ namespace PckStudio.Controls
 
                 // this math is basically to ensure the face is stretched if the texture is improper
                 Rectangle faceRect = new Rectangle(
-                    (int)(depth * textureScaleX + depth * textureScaleX),
-                    (int)(depth * textureScaleY + depth * textureScaleY),
+                    (int)(depth * textureScaleX),
+                    (int)(depth * textureScaleY),
                     (int)(width * textureScaleX),
                     (int)(height * textureScaleY)
                 );
