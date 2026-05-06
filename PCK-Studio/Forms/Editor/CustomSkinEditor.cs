@@ -331,6 +331,11 @@ namespace PckStudio.Forms.Editor
             renderer3D1.ShowArmor = showArmorCheckbox.Checked;
         }
 
+        private void showToolsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            renderer3D1.ShowTools = showToolsCheckBox.Checked;
+        }
+
         private void skinPartListBox_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)

@@ -203,6 +203,7 @@
             this.showToolsCheckBox.Name = "showToolsCheckBox";
             this.showToolsCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.showToolsCheckBox.UseSelectable = true;
+            this.showToolsCheckBox.CheckedChanged += new System.EventHandler(this.showToolsCheckBox_CheckedChanged);
             // 
             // skinNameLabel
             // 

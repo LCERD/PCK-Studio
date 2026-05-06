@@ -114,6 +114,7 @@ namespace PckStudio.Rendering
         public bool CenterOnSelect { get; set; } = false;
         public bool ShowBoundingBox { get; set; }
         public bool ShowArmor { get; set; } = false;
+        public bool ShowTools { get; set; } = false;
         public bool Animate { get; set; } = true;
         public bool RenderCape { get; set; } = true;
         public bool ShowGuideLines
@@ -202,6 +203,7 @@ namespace PckStudio.Rendering
         private Texture2D skinTexture;
         private Texture2D capeTexture;
         private Texture2D armorTexture;
+        private Texture2D toolsTexture;
 
         private DrawContext _cubicalDrawContext;
         private DrawContext _skeletonDrawContext;
@@ -221,6 +223,8 @@ namespace PckStudio.Rendering
         private CubeMeshCollection leftArm;
         private CubeMeshCollection rightLeg;
         private CubeMeshCollection leftLeg;
+        private CubeMeshCollection tool0;
+        private CubeMeshCollection tool1;
 
         private float animationCurrentRotationAngle;
         private float animationRotationSpeed = 16f;
@@ -370,11 +374,17 @@ namespace PckStudio.Rendering
             var pants1 = new CubeMeshCollection("PANTS1", leftLeg.Translation, leftLeg.Pivot);
             pants1.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 48), inflate: armorInflation, mirrorTexture: true);
 
-            var boot0     = new CubeMeshCollection("BOOT0", rightLeg.Translation, rightLeg.Pivot);
+            var boot0 = new CubeMeshCollection("BOOT0", rightLeg.Translation, rightLeg.Pivot);
             boot0.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 16), inflate: armorInflation + 0.25f);
             
-            var boot1     = new CubeMeshCollection("BOOT1", leftLeg.Translation, leftLeg.Pivot);
+            var boot1 = new CubeMeshCollection("BOOT1", leftLeg.Translation, leftLeg.Pivot);
             boot1.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 16), inflate: armorInflation + 0.25f, mirrorTexture: true);
+
+            // Tool boxes handled by UpdateANIM method - May
+            tool0 = new CubeMeshCollection("TOOL0", rightArm.Translation, rightArm.Pivot);
+            tool0.Add(new(0), new(0), new(0));
+            tool1 = new CubeMeshCollection("TOOL1", leftArm.Translation, leftArm.Pivot);
+            tool1.Add(new(0), new(0), new(0));
 
             offsetSpecificMeshStorage = new Dictionary<string, CubeMeshCollection>
             {
@@ -386,12 +396,10 @@ namespace PckStudio.Rendering
                 { pants0.Name, pants0 },
                 { pants1.Name, pants1 },
                 { boot0.Name, boot0 },
-                { boot1.Name, boot1 }
+                { boot1.Name, boot1 },
+                { tool0.Name, tool0 },
+                { tool1.Name, tool1 },
             };
-
-            //// TODO
-            //{ "TOOL0"    , new CubeGroupMesh("TOOL0") },
-            //{ "TOOL1"    , new CubeGroupMesh("TOOL1") },
         }
 
         private void InitializeShaders()
@@ -421,6 +429,16 @@ namespace PckStudio.Rendering
                 armorTexture.WrapS = TextureWrapMode.Repeat;
                 armorTexture.WrapT = TextureWrapMode.Repeat;
                 armorTexture.SetTexture(Resources.armor);
+                GLErrorCheck();
+
+                toolsTexture = new Texture2D();
+                toolsTexture.PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat.Bgra;
+                toolsTexture.InternalPixelFormat = PixelInternalFormat.Rgba8;
+                toolsTexture.MinFilter = TextureMinFilter.Nearest;
+                toolsTexture.MagFilter = TextureMagFilter.Nearest;
+                toolsTexture.WrapS = TextureWrapMode.Repeat;
+                toolsTexture.WrapT = TextureWrapMode.Repeat;
+                toolsTexture.SetTexture(Resources.tools);
                 GLErrorCheck();
 
                 capeTexture = new Texture2D();
@@ -728,6 +746,9 @@ namespace PckStudio.Rendering
 
             bool slim = ANIM.GetFlag(SkinAnimFlag.SLIM_MODEL);
 
+            tool0.ReplaceCube(0, new(slim ? -0.75f : -1.75f, -5.35f, -18.35f), new(0, 16, 16), new(0, -16));
+            tool1.ReplaceCube(0, new(slim ? 0.75f : 1.75f, -5.35f, -18.35f), new(0, 16, 16), new(0, -16));
+
             head.FlipZMapping = true;
             if (slim || ANIM.GetFlag(SkinAnimFlag.MODERN_WIDE_MODEL))
             {
@@ -966,6 +987,17 @@ namespace PckStudio.Rendering
                     
                     if (showRightLegArmor && showLeftLegArmor)
                         RenderPart(cubeShader, offsetSpecificMeshStorage["WAIST"], Matrix4.Identity, renderTransform);
+                }
+
+                if(ShowTools)
+                {
+                    toolsTexture.Bind();
+                    cubeShader.SetUniform2("TexSize", Resources.tools.Size);
+
+                    Matrix4 handheldRotation = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(45f));
+
+                    RenderPart(cubeShader, offsetSpecificMeshStorage["TOOL0"], armRightMatrix * handheldRotation, renderTransform);
+                    RenderPart(cubeShader, offsetSpecificMeshStorage["TOOL1"], armLeftMatrix * handheldRotation, renderTransform);
                 }
 
                 if (showWireFrame)
