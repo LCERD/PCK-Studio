@@ -362,10 +362,18 @@ namespace PckStudio.Forms.Editor
         {
             var offsets = renderer3D1.GetOffsets().Select(offset => offset.Type).ToList();
             string[] available = SkinPartOffset.ValidModelOffsetTypes.Where(s => !offsets.Contains(s)).ToArray();
+
+            if (available.Length == 0)
+            {
+                MessageBox.Show(this, "All possible offset types are already present on this skin.", "Parameter not added");
+                return;
+            }
+
             using ItemSelectionPopUp typeSelection = new ItemSelectionPopUp(available);
             using NumericPrompt valuePrompt = new NumericPrompt(0f, -cOffsetMaximum, cOffsetMaximum);
             valuePrompt.DecimalPlaces = 1;
             valuePrompt.ValueStep = (decimal)0.1f;
+            valuePrompt.OKButton.Text = "Add";
             if (typeSelection.ShowDialog() == DialogResult.OK && valuePrompt.ShowDialog() == DialogResult.OK)
             {
                 renderer3D1.SetPartOffset(typeSelection.SelectedItem, (float)valuePrompt.SelectedValue);
