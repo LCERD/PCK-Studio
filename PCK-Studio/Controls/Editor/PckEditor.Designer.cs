@@ -114,6 +114,7 @@ namespace PckStudio.Controls
             this.addMultipleEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LittleEndianCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.previewPictureBox = new PckStudio.ToolboxItems.InterpolationPictureBox();
+            this.addOFFSETParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(logoPictureBox)).BeginInit();
             this.ParametersTabControl.SuspendLayout();
@@ -284,8 +285,9 @@ namespace PckStudio.Controls
             // 
             this.addParameterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addParameterToolStripMenuItem1,
+            this.addANIMEntryToolStripMenuItem1,
             this.addBOXEntryToolStripMenuItem1,
-            this.addANIMEntryToolStripMenuItem1});
+            this.addOFFSETParameterToolStripMenuItem});
             resources.ApplyResources(this.addParameterToolStripMenuItem, "addParameterToolStripMenuItem");
             this.addParameterToolStripMenuItem.Name = "addParameterToolStripMenuItem";
             // 
@@ -782,6 +784,12 @@ namespace PckStudio.Controls
             this.previewPictureBox.Name = "previewPictureBox";
             this.previewPictureBox.TabStop = false;
             // 
+            // addOFFSETParameterToolStripMenuItem
+            // 
+            this.addOFFSETParameterToolStripMenuItem.Name = "addOFFSETParameterToolStripMenuItem";
+            resources.ApplyResources(this.addOFFSETParameterToolStripMenuItem, "addOFFSETParameterToolStripMenuItem");
+            this.addOFFSETParameterToolStripMenuItem.Click += new System.EventHandler(this.addOFFSETParameterToolStripMenuItem_Click);
+            // 
             // PckEditor
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
@@ -893,5 +901,6 @@ namespace PckStudio.Controls
         private ToolStripMenuItem exportIconToolStripMenuItem;
         private ToolStripMenuItem fullBodyToolStripMenuItem;
         private ToolStripMenuItem croppedToolStripMenuItem;
+        private ToolStripMenuItem addOFFSETParameterToolStripMenuItem;
     }
 }

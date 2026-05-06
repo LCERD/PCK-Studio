@@ -2564,6 +2564,46 @@ namespace PckStudio.Controls
         private void fullBodyToolStripMenuItem_Click(object sender, EventArgs e) => exportSkinIcon();
         private void croppedToolStripMenuItem_Click(object sender, EventArgs e) => exportSkinIcon(cropped: true);
 
+        private void addOFFSETParameterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeViewMain?.SelectedNode.TryGetTagData(out PckAsset asset) ?? false)
+            {
+                Skin skin = null;
+
+                try
+                {
+                    skin = asset.GetSkin();
+                }
+                catch {
+                    MessageBox.Show(this, "Failed to get skin", "Parameter not added");
+                    return;
+                }
+
+                // code borrowed from CustomSkinEditor
+                var offsets = skin.Model.PartOffsets.Select(offset => offset.Type).ToList();
+                string[] available = SkinPartOffset.ValidModelOffsetTypes.Where(s => !offsets.Contains(s)).ToArray();
+
+                if(available.Length == 0)
+                {
+                    MessageBox.Show(this, "All possible offset types are already present on this skin.", "Parameter not added");
+                    return;
+                }
+
+                using ItemSelectionPopUp typeSelection = new ItemSelectionPopUp(available);
+                const float cOffsetMaximum = 100_000f;
+                using NumericPrompt valuePrompt = new NumericPrompt(0f, -cOffsetMaximum, cOffsetMaximum);
+                valuePrompt.DecimalPlaces = 1;
+                valuePrompt.ValueStep = (decimal)0.1f;
+                valuePrompt.OKButton.Text = "Add";
+                if (typeSelection.ShowDialog() == DialogResult.OK && valuePrompt.ShowDialog() == DialogResult.OK)
+                {
+                    asset.AddParameter(SkinPartOffset.FromString($"{typeSelection.SelectedItem} Y {(float)valuePrompt.SelectedValue}").ToParameter());
+                    ReloadParameterTreeView();
+                    _wasModified = true;
+                }
+            }
+        }
+
         private void contextMenuPCKEntries_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             fixSkinDecimalsToolStripMenuItem.Visible = false;
