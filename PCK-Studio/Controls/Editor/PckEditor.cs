@@ -730,7 +730,7 @@ namespace PckStudio.Controls
 
                     gfx.Fill(new Rectangle(0, 0, customIcon.Width, customIcon.Height), Color.FromArgb(0xFF, 0x5D, 0x9C, 0xEC));
 
-                    gfx.DrawImage(DrawCapeIcon(capeTexture), 56, 12, 145, 232); // position for the cape on the icon
+                    gfx.DrawImage(DrawCapeIcon(capeTexture), 0, 0); // the cape icon is already the same dimensions as the custom icon
 
                     gfx.DrawImage(Resources.CUSTOM_SKIN_ICON, 0, 0);
                 }
@@ -784,7 +784,7 @@ namespace PckStudio.Controls
                     // this is handled externally to use the skin data to ensure skins are positioned in context of the default player head
                     Image croppedPaperDoll = skin.DrawPaperDoll(xmlVersion: EditorValue.File.xmlVersion, bustCrop: true);
 
-                    gfx.DrawImage(croppedPaperDoll, 0, 0); // the crop bust is already the same dimensions as the skin icon
+                    gfx.DrawImage(croppedPaperDoll, 0, 0); // the crop bust is already the same dimensions as the custom icon
 
                     gfx.DrawImage(Resources.CUSTOM_SKIN_ICON, 0, 0); // draw border on top
                 }
