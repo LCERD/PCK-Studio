@@ -1698,41 +1698,40 @@ namespace PckStudio.Controls
                 string textureExtension = Path.GetExtension(asset.Filename);
 
                 using NumericPrompt numericPrompt = new NumericPrompt(0);
-                numericPrompt.Minimum = 1;
-                numericPrompt.Maximum = 4; // 5 is the presumed max MipMap level
-                numericPrompt.ToolTipText = "You can enter the amount of MipMap levels that you would like to generate. " +
-                    "For example: if you enter 2, MipMapLevel1.png and MipMapLevel2.png will be generated";
-                numericPrompt.TextLabel.Text = "Levels";
+                numericPrompt.Minimum = 2;
+                numericPrompt.Maximum = 5; // 5 is the presumed max MipMap level
+                numericPrompt.TextLabel.Text = "Level";
 
                 if (numericPrompt.ShowDialog(this) == DialogResult.OK)
                 {
-                    for (int i = 2; i < 2 + numericPrompt.SelectedValueAsInt; i++)
+                    int level = numericPrompt.SelectedValueAsInt;
+
+                    string mippedPath = $"{textureDirectory}/{textureName}MipMapLevel{level}{textureExtension}";
+                    Debug.WriteLine(mippedPath);
+                    if (EditorValue.File.HasAsset(mippedPath, PckAssetType.TextureFile))
+                        EditorValue.File.RemoveAsset(EditorValue.File.GetAsset(mippedPath, PckAssetType.TextureFile));
+                    PckAsset mipMappedAsset = new PckAsset(mippedPath, PckAssetType.TextureFile);
+
+                    Image originalTexture = asset.GetTexture();
+                    int newWidth = Math.Max(originalTexture.Width / (int)Math.Pow(2, level - 1), 1);
+                    int newHeight = Math.Max(originalTexture.Height / (int)Math.Pow(2, level - 1), 1);
+
+                    Rectangle tileArea = new Rectangle(0, 0, newWidth, newHeight);
+                    Image mippedTexture = new Bitmap(newWidth, newHeight);
+                    using (Graphics gfx = Graphics.FromImage(mippedTexture))
                     {
-                        string mippedPath = $"{textureDirectory}/{textureName}MipMapLevel{i}{textureExtension}";
-                        Debug.WriteLine(mippedPath);
-                        if (EditorValue.File.HasAsset(mippedPath, PckAssetType.TextureFile))
-                            EditorValue.File.RemoveAsset(EditorValue.File.GetAsset(mippedPath, PckAssetType.TextureFile));
-                        PckAsset mipMappedAsset = new PckAsset(mippedPath, PckAssetType.TextureFile);
-
-                        Image originalTexture = asset.GetTexture();
-                        int newWidth = Math.Max(originalTexture.Width / (int)Math.Pow(2, i - 1), 1);
-                        int newHeight = Math.Max(originalTexture.Height / (int)Math.Pow(2, i - 1), 1);
-
-                        Rectangle tileArea = new Rectangle(0, 0, newWidth, newHeight);
-                        Image mippedTexture = new Bitmap(newWidth, newHeight);
-                        using (Graphics gfx = Graphics.FromImage(mippedTexture))
-                        {
-                            gfx.SmoothingMode = SmoothingMode.None;
-                            gfx.InterpolationMode = InterpolationMode.NearestNeighbor;
-                            gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                            gfx.DrawImage(originalTexture, tileArea);
-                        }
-
-                        mipMappedAsset.SetTexture(mippedTexture);
-
-                        EditorValue.File.InsertAsset(EditorValue.File.IndexOfAsset(asset) + i - 1, mipMappedAsset);
+                        gfx.SmoothingMode = SmoothingMode.AntiAlias;
+                        gfx.InterpolationMode = InterpolationMode.NearestNeighbor;
+                        gfx.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                        gfx.DrawImage(originalTexture, tileArea);
                     }
+
+                    mipMappedAsset.SetTexture(mippedTexture);
+
+                    EditorValue.File.InsertAsset(EditorValue.File.IndexOfAsset(asset) + 1, mipMappedAsset);
+
                     BuildMainTreeView();
+                    _wasModified = true;
                 }
             }
         }
