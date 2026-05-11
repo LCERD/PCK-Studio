@@ -123,7 +123,7 @@ namespace PckStudio.ModelSupport
             SkinBOX ApplyOffset(SkinBOX box)
             {
                 SkinPartOffset offset = skinModel.PartOffsets.FirstOrDefault(offset => offset.Type == (box.IsOverlayPart() ? box.GetBaseType() : box.Type));
-                return string.IsNullOrEmpty(offset.Type) ? box : new SkinBOX(box.Type, box.Pos - (Vector3.UnitY * offset.Value), box.Size, box.UV, box.ArmorMaskFlags, box.Mirror, box.Scale);
+                return string.IsNullOrEmpty(offset.Type) ? box : new SkinBOX(box.Type, box.Pos - (Vector3.UnitY * offset.Value), box.Size, box.UV, box.ArmorMaskFlags.ToValue(), box.Mirror, box.Scale);
             }
 
             IEnumerable<SkinBOX> convertedBoxes = boxes.Select(ApplyOffset);

@@ -90,7 +90,7 @@ namespace PckStudio.Core.Skin
         public Vector3 Pos { get; }
         public Vector3 Size { get; }
         public Vector2 UV { get; }
-        public int ArmorMaskFlags { get; }
+        public SkinArmorFlags ArmorMaskFlags { get; }
         public bool Mirror { get; }
         public float Scale { get; }
         // Simplified display info for the CustomSkinEditor
@@ -106,7 +106,7 @@ namespace PckStudio.Core.Skin
             Pos = pos;
             Size = size;
             UV = uv;
-            ArmorMaskFlags = armorMaskFlags;
+            ArmorMaskFlags = new SkinArmorFlags(armorMaskFlags);
             Mirror = mirror;
             Scale = scale;
         }

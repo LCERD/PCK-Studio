@@ -83,10 +83,10 @@ namespace PckStudio.Controls
             SizeZUpDown.Value = (decimal)box.Size.Z;
             uvXUpDown.Value = (decimal)box.UV.X;
             uvYUpDown.Value = (decimal)box.UV.Y;
-            helmetCheckBox.Checked = (box.ArmorMaskFlags & 1) != 0;
-            chestplateCheckBox.Checked = (box.ArmorMaskFlags & 2) != 0;
-            leggingsCheckBox.Checked = (box.ArmorMaskFlags & 4) != 0;
-            bootsCheckBox.Checked = (box.ArmorMaskFlags & 8) != 0;
+            helmetCheckBox.Checked = box.ArmorMaskFlags.GetFlag(SkinArmorFlagsFlag.HELMET);
+            chestplateCheckBox.Checked = box.ArmorMaskFlags.GetFlag(SkinArmorFlagsFlag.CHESTPLATE);
+            leggingsCheckBox.Checked = box.ArmorMaskFlags.GetFlag(SkinArmorFlagsFlag.LEGGINGS);
+            bootsCheckBox.Checked = box.ArmorMaskFlags.GetFlag(SkinArmorFlagsFlag.BOOTS);
             mirrorCheckBox.Checked = box.Mirror;
             // if the XMLVersion doesn't support scaling, set this value to 0 because it's not supported and fixes a rendering issue - May
             inflationUpDown.Value = boxVersion == 3 ? (decimal)box.Scale : 0;
