@@ -113,7 +113,22 @@ namespace PckStudio.Rendering
 
         public bool CenterOnSelect { get; set; } = false;
         public bool ShowBoundingBox { get; set; }
-        public bool ShowArmor { get; set; } = false;
+        public bool ShowArmor
+        {
+            get;
+            set
+            {
+                field = value;
+
+                // set box armor visibility appropriately
+                head.HandleArmorFlags(ShowArmor);
+                body.HandleArmorFlags(ShowArmor);
+                rightArm.HandleArmorFlags(ShowArmor);
+                leftArm.HandleArmorFlags(ShowArmor);
+                rightLeg.HandleArmorFlags(ShowArmor);
+                leftLeg.HandleArmorFlags(ShowArmor);
+            }
+        }
         public bool ShowTools { get; set; } = false;
         public bool Animate { get; set; } = true;
         public bool RenderCape { get; set; } = true;

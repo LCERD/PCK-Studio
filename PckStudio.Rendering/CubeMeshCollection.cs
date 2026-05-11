@@ -150,6 +150,21 @@ namespace PckStudio.Rendering
             cubes.RemoveAt(index);
         }
 
+        public void HandleArmorFlags(bool showArmor)
+        {
+            for (int i = 0; i < cubes.Count; i++)
+            {
+                if (cubes[i] is CubeMesh cubeMesh)
+                {
+                    bool hasArmorFlags = cubeMesh.GetCube().ArmorFlags != 0;
+
+                    bool visible = !(showArmor && hasArmorFlags);
+
+                    cubes[i] = cubes[i].SetVisible(visible);
+                }
+            }
+        }
+
         public void ReplaceCube(int index, Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false, int armorFlags = 0)
         {
             if (!cubes.IndexInRange(index))

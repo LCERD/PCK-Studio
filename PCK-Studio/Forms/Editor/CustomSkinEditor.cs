@@ -465,6 +465,7 @@ namespace PckStudio.Forms.Editor
             if (index > -1)
             {
                 renderer3D1.ModelData[index] = boxEditorControl1.GetBOX();
+                renderer3D1.ShowArmor = showArmorCheckbox.Checked;
                 _skinPartListBindingSource.ResetItem(index);
             }
         }
