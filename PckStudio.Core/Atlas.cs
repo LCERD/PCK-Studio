@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using PckStudio.Core.Extensions;
 
@@ -221,11 +222,27 @@ namespace PckStudio.Core
 
         public void SetGroup(AtlasGroup group, Image texture)
         {
-            IEnumerable<Image> images = texture.Split(TileSize, group.Direction);
-            if (!images.All(img => img.Size == TileSize))
-                return;
-            Size s = group.GetSize(new Size(1, 1));
-            SetRange(group.Row, group.Column, s.Width, s.Height, images);
+            Size tileSize = group.GetSize(new Size(1, 1));
+
+            // stretch image too small or too big to fit space
+            Size targetSize = new Size(
+                tileSize.Width * TileSize.Width,
+                tileSize.Height * TileSize.Height);
+
+            Bitmap finalGroup = new Bitmap(targetSize.Width, targetSize.Height);
+
+            using (Graphics gfx = Graphics.FromImage(finalGroup))
+            {
+                gfx.InterpolationMode = InterpolationMode.NearestNeighbor;
+                gfx.PixelOffsetMode = PixelOffsetMode.Half;
+                gfx.CompositingQuality = CompositingQuality.HighSpeed;
+
+                gfx.DrawImage(texture, 0, 0, targetSize.Width, targetSize.Height);
+            }
+
+            IEnumerable<Image> images = finalGroup.Split(TileSize, group.Direction);
+
+            SetRange(group.Row, group.Column, tileSize.Width, tileSize.Height, images);
         }
     }
 }
