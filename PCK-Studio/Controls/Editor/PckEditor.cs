@@ -44,7 +44,6 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PckStudio.Controls
 {
@@ -82,6 +81,7 @@ namespace PckStudio.Controls
             _currentEndianness = packInfo.Endianness;
 
             LittleEndianCheckBox.Visible = packInfo.AllowEndianSwap;
+            LittleEndianCheckBox.Checked = packInfo.Endianness == OMI.ByteOrder.LittleEndian;
 
             treeViewMain.TreeViewNodeSorter = new PckNodeSorter();
             treeViewMain.DrawMode = TreeViewDrawMode.OwnerDrawText;
@@ -769,8 +769,6 @@ namespace PckStudio.Controls
                 int skinIconHeight = Resources.SKINS_ICON.Height;
 
                 Bitmap customIcon = new Bitmap(skinIconWidth, skinIconHeight);
-
-                skin.DrawPaperDoll(xmlVersion: EditorValue.File.xmlVersion).Save("C:\\Users\\MattN\\Pictures\\icontest\\" + skin.Identifier.Id.ToString() + ".png");
 
                 using (Graphics gfx = Graphics.FromImage(customIcon))
                 {
