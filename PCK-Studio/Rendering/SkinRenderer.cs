@@ -204,7 +204,6 @@ namespace PckStudio.Rendering
         private Texture2D capeTexture;
         private Texture2D armorTexture;
         private Texture2D toolsTexture;
-
         private DrawContext _cubicalDrawContext;
         private DrawContext _skeletonDrawContext;
         private DrawContext _groundDrawContext;
@@ -346,7 +345,7 @@ namespace PckStudio.Rendering
 
         private void InitializeCapeData()
         {
-            cape ??= new CubeMesh(new Cube(new(5, 0, 3), new(10, 16, 1), new(0, 0), 0f, false, false));
+            cape ??= new CubeMesh(new Cube(new(5, 0, 3), new(10, 16, 1), new(0, 0), 0f, false, false, 0));
         }
 
         private void InitializeArmorData()

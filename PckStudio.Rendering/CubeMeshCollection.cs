@@ -117,15 +117,15 @@ namespace PckStudio.Rendering
             return cubes.Where(c => c.Visible).SelectMany(selector);
         }
 
-        public void Add(Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false)
+        public void Add(Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false, int armorFlags = 0)
         {
-            var cube = new Cube(position, size, uv, inflate, mirrorTexture, FlipZMapping);
+            var cube = new Cube(position, size, uv, inflate, mirrorTexture, FlipZMapping, armorFlags);
             Add(new CubeMesh(cube));
         }
 
-        public void AddNamed(string name, Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false)
+        public void AddNamed(string name, Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false, int armorFlags = 0)
         {
-            var cube = new Cube(position, size, uv, inflate, mirrorTexture, FlipZMapping);
+            var cube = new Cube(position, size, uv, inflate, mirrorTexture, FlipZMapping, armorFlags);
             Add(new CubeMesh(name, cube));
         }
 
@@ -150,14 +150,14 @@ namespace PckStudio.Rendering
             cubes.RemoveAt(index);
         }
 
-        public void ReplaceCube(int index, Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false)
+        public void ReplaceCube(int index, Vector3 position, Vector3 size, Vector2 uv, float inflate = 0f, bool mirrorTexture = false, int armorFlags = 0)
         {
             if (!cubes.IndexInRange(index))
                 throw new IndexOutOfRangeException();
 
 
             if (cubes[index] is CubeMesh cubeMesh)
-            cubes[index] = cubeMesh.SetCube(new Cube(position, size, uv, inflate, mirrorTexture, FlipZMapping));
+            cubes[index] = cubeMesh.SetCube(new Cube(position, size, uv, inflate, mirrorTexture, FlipZMapping, armorFlags));
         }
 
         public Vector3 GetCenter(int index)

@@ -35,6 +35,8 @@ namespace PckStudio.Rendering
 
         public bool MirrorTexture { get; }
 
+        public int ArmorFlags { get;  }
+
         public bool FlipZMapping { get; }
 
         public Vector3 Center => Position + Size / 2f;
@@ -49,7 +51,7 @@ namespace PckStudio.Rendering
             Right
         }
 
-        public Cube(Vector3 position, Vector3 size, Vector2 uv, float inflate, bool mirrorTexture, bool flipZMapping)
+        public Cube(Vector3 position, Vector3 size, Vector2 uv, float inflate, bool mirrorTexture, bool flipZMapping, int armorFlags)
         {
             Position = position;
             Size = size;
@@ -57,6 +59,7 @@ namespace PckStudio.Rendering
             Inflate = inflate;
             MirrorTexture = mirrorTexture;
             FlipZMapping = flipZMapping;
+            ArmorFlags = armorFlags;
         }
 
         public Vector3 GetFaceCenter(Face face)
