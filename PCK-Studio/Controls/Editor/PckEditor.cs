@@ -770,7 +770,12 @@ namespace PckStudio.Controls
 
                 Bitmap customIcon = new Bitmap(skinIconWidth, skinIconHeight);
 
-                skin.DrawPaperDoll(xmlVersion: EditorValue.File.xmlVersion).Save("C:\\Users\\MattN\\Pictures\\icontest\\" + skin.Identifier.Id.ToString() + ".png");
+                string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                if (!Directory.Exists($"{userDirectory}\\Pictures\\icontest"))
+                {
+                    Directory.CreateDirectory($"{userDirectory}\\Pictures\\icontest");
+                }
+                skin.DrawPaperDoll(xmlVersion: EditorValue.File.xmlVersion).Save($"{userDirectory}\\Pictures\\icontest\\{skin.Identifier.Id.ToString()}.png");
 
                 using (Graphics gfx = Graphics.FromImage(customIcon))
                 {
