@@ -770,8 +770,6 @@ namespace PckStudio.Controls
 
                 Bitmap customIcon = new Bitmap(skinIconWidth, skinIconHeight);
 
-                skin.DrawPaperDoll(xmlVersion: EditorValue.File.xmlVersion).Save("C:\\Users\\MattN\\Pictures\\icontest\\" + skin.Identifier.Id.ToString() + ".png");
-
                 using (Graphics gfx = Graphics.FromImage(customIcon))
                 {
                     gfx.InterpolationMode = InterpolationMode.NearestNeighbor;
