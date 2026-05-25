@@ -156,6 +156,10 @@ namespace PckStudio.Rendering
             {
                 if (cubes[i] is CubeMesh cubeMesh)
                 {
+                    // basic fix for base skin cubes; base cube names start with "Default". If found, ignore
+                    if (cubeMesh.Name.StartsWith("Default"))
+                        continue;
+
                     bool hasArmorFlags = cubeMesh.GetCube().ArmorFlags != 0;
 
                     bool visible = !(showArmor && hasArmorFlags);
