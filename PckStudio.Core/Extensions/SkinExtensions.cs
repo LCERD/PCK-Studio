@@ -174,7 +174,7 @@ namespace PckStudio.Core.Extensions
                             ? -box.Pos.Z
                             : box.Pos.Z
                     )
-                    .OrderBy(box => box.Scale)
+                    .ThenBy(box => box.Scale)
                     .ToList();
 
                 float canvasWidth = 0;
