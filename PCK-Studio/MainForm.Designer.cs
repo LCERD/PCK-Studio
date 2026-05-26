@@ -600,10 +600,10 @@
         private System.Windows.Forms.ToolStripMenuItem recentlyOpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setXMLVersionStripMenuItem;
-        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion0MenuItem;
-        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion1MenuItem;
-        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion2MenuItem;
-        private ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion3MenuItem;
+        public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion0MenuItem;
+        public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion1MenuItem;
+        public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion2MenuItem;
+        public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion3MenuItem;
     }
 }
 

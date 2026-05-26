@@ -75,7 +75,7 @@ namespace PckStudio.Forms.Editor
             skinNameLabel.Text = EditorValue.MetaData.Name;
             if (EditorValue.HasCape)
                 renderer3D1.CapeTexture = EditorValue.CapeTexture;
-            boxEditorControl1.Enabled = false; // enabled by default just in case - May
+            boxEditorControl1.Enabled = false;
             LoadModelData();
         }
 
@@ -90,13 +90,14 @@ namespace PckStudio.Forms.Editor
 
             List<SkinBOX> boxProperties = modelInfo.AdditionalBoxes;
             List<SkinPartOffset> offsetProperties = modelInfo.PartOffsets;
-            
+
             renderer3D1.ANIM = EditorValue.Anim;
 
             renderer3D1.ModelData.Clear();
             foreach (SkinBOX box in boxProperties)
             {
-                renderer3D1.ModelData.Add(box);
+                // this is to ensure scales are removed if not version 3
+                renderer3D1.ModelData.Add(new SkinBOX(box.Type, box.Pos, box.Size, box.UV, box.ArmorMaskFlags.ToValue(), box.Mirror, _xmlVersion == 3 ? box.Scale : 0));
             }
             renderer3D1.ResetOffsets();
             foreach (SkinPartOffset offset in offsetProperties)

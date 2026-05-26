@@ -502,6 +502,13 @@ namespace PckStudio.Controls
                 asset.SetSkin(customSkin, locFile);
             });
 
+            if (skin.Model.AdditionalBoxes.FindAll(box => box.Scale != 0).Count > 0 && EditorValue.File.xmlVersion != 3 && 
+                MessageBox.Show(this, "This skin has custom scaled boxes but the PCK file's current BOX Version does not support it. Would you like to set the PCK's BOX version to 3? This feature only works in TU69 and above.", "BOX Version mismatch.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // set the xmlVersion of the parent pck to 3
+                (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
+            }
+
             using CustomSkinEditor skinEditor = new CustomSkinEditor(skin, saveContext, EditorValue.File.xmlVersion);
             if (skinEditor.ShowDialog() == DialogResult.OK)
             {
