@@ -88,7 +88,7 @@ namespace PckStudio.Core.Extensions
             SkinANIM anim = asset.GetParameter("ANIM", SkinANIM.FromString);
             SkinGameFlags gameFlags = asset.GetParameter("GAME_FLAGS", SkinGameFlags.FromString);
             IEnumerable<SkinBOX> boxes = asset.GetMultipleParameters("BOX").Select(kv => SkinBOX.FromString(kv.Value));
-            IEnumerable<SkinPartOffset> offsets = asset.GetMultipleParameters("OFFSET").Select(kv => SkinPartOffset.FromString(kv.Value));
+            IEnumerable<SkinPartOffset> offsets = asset.GetMultipleParameters("OFFSET").Select(kv => SkinPartOffset.FromString(kv.Value)).GroupBy(o => o.Type).Select(g => g.First());
             return new Skin.Skin(name, skinId, texture, anim, gameFlags, boxes, offsets);
         }
 
