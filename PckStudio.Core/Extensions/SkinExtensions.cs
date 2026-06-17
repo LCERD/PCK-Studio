@@ -309,7 +309,7 @@ namespace PckStudio.Core.Extensions
                         case "LEGGING0":
                         case "SOCK0":
                         case "BOOT0":
-                            partOffsets.TryGetValue("BOOT0", out offset);
+                            partOffsets.TryGetValue("LEG0", out offset);
                             drawOffsetX -= legXOffset;
                             drawOffsetY += legYOffset;
                             break;
@@ -319,7 +319,7 @@ namespace PckStudio.Core.Extensions
                         case "LEGGING1":
                         case "SOCK1":
                         case "BOOT1":
-                            partOffsets.TryGetValue("BOOT1", out offset);
+                            partOffsets.TryGetValue("LEG1", out offset);
                             drawOffsetX += legXOffset;
                             drawOffsetY += legYOffset;
                             break;
