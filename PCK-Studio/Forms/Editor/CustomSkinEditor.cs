@@ -247,17 +247,6 @@ namespace PckStudio.Forms.Editor
             renderer3D1.Dispose();
         }
 
-        private void outlineColorButton_Click(object sender, EventArgs e)
-        {
-            ColorDialog colorDialog = new ColorDialog();
-            colorDialog.SolidColorOnly = true;
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                renderer3D1.GuideLineColor = colorDialog.Color;
-                skinPartListBox_SelectedIndexChanged(sender, e);
-            }
-        }
-
         private void renderer3D1_TextureChanging(object sender, Rendering.TextureChangingEventArgs e)
         {
             Image texture = e.NewTexture;

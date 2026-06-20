@@ -272,7 +272,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonDone.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>20</value>
   </data>
   <data name="importSkinButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 396</value>
@@ -296,7 +296,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;importSkinButton.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>19</value>
   </data>
   <data name="exportSkinButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 396</value>
@@ -320,34 +320,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportSkinButton.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="outlineColorButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 327</value>
-  </data>
-  <data name="outlineColorButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 21</value>
-  </data>
-  <data name="outlineColorButton.TabIndex" type="System.Int32, mscorlib">
-    <value>145</value>
-  </data>
-  <data name="outlineColorButton.Text" xml:space="preserve">
-    <value>Set Outline Color</value>
-  </data>
-  <data name="outlineColorButton.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;outlineColorButton.Name" xml:space="preserve">
-    <value>outlineColorButton</value>
-  </data>
-  <data name="&gt;&gt;outlineColorButton.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;outlineColorButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;outlineColorButton.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>18</value>
   </data>
   <data name="generateTextureCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -449,7 +422,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;captureScreenshotButton.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="showToolsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -506,7 +479,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;skinNameLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="parameterTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -650,7 +623,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderer3D1.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="uvPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -680,7 +653,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;uvPictureBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="centerSelectionCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -761,7 +734,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderSettingsButton.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="exportTemplateButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 423</value>
@@ -785,7 +758,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportTemplateButton.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="boxEditorControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>

@@ -40,7 +40,6 @@
             this.buttonDone = new MetroFramework.Controls.MetroButton();
             this.importSkinButton = new MetroFramework.Controls.MetroButton();
             this.exportSkinButton = new MetroFramework.Controls.MetroButton();
-            this.outlineColorButton = new MetroFramework.Controls.MetroButton();
             this.generateTextureCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.showArmorCheckbox = new MetroFramework.Controls.MetroCheckBox();
             this.skinPartListBox = new System.Windows.Forms.ListBox();
@@ -150,15 +149,6 @@
             this.exportSkinButton.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.exportSkinButton.UseSelectable = true;
             this.exportSkinButton.Click += new System.EventHandler(this.exportSkinButton_Click);
-            // 
-            // outlineColorButton
-            // 
-            this.outlineColorButton.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.outlineColorButton, "outlineColorButton");
-            this.outlineColorButton.Name = "outlineColorButton";
-            this.outlineColorButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.outlineColorButton.UseSelectable = true;
-            this.outlineColorButton.Click += new System.EventHandler(this.outlineColorButton_Click);
             // 
             // generateTextureCheckBox
             // 
@@ -283,6 +273,7 @@
             this.renderer3D1.ShowArmor = false;
             this.renderer3D1.ShowBoundingBox = false;
             this.renderer3D1.ShowGuideLines = false;
+            this.renderer3D1.ShowTools = false;
             this.renderer3D1.Texture = null;
             this.renderer3D1.VSync = true;
             this.renderer3D1.TextureChanging += new System.EventHandler<PckStudio.Rendering.TextureChangingEventArgs>(this.renderer3D1_TextureChanging);
@@ -355,7 +346,6 @@
             this.Controls.Add(this.centerSelectionCheckbox);
             this.Controls.Add(this.showArmorCheckbox);
             this.Controls.Add(this.generateTextureCheckBox);
-            this.Controls.Add(this.outlineColorButton);
             this.Controls.Add(this.uvPictureBox);
             this.Controls.Add(this.exportTemplateButton);
             this.Controls.Add(this.renderSettingsButton);
@@ -387,7 +377,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateUvTextureToolStripMenuItem;
         private MetroFramework.Controls.MetroButton buttonDone;
-        private MetroFramework.Controls.MetroButton outlineColorButton;
         private MetroFramework.Controls.MetroButton exportSkinButton;
         private MetroFramework.Controls.MetroButton importSkinButton;
         private PckStudio.ToolboxItems.InterpolationPictureBox uvPictureBox;
