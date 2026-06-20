@@ -122,11 +122,22 @@ namespace PckStudio.Rendering
 
                 // set box armor visibility appropriately
                 head.HandleArmorFlags(ShowArmor);
+                waist.HandleArmorFlags(ShowArmor);
+                bodyArmor.HandleArmorFlags(ShowArmor);
+                belt.HandleArmorFlags(ShowArmor);
                 body.HandleArmorFlags(ShowArmor);
                 rightArm.HandleArmorFlags(ShowArmor);
+                rightArmArmor.HandleArmorFlags(ShowArmor);
                 leftArm.HandleArmorFlags(ShowArmor);
+                leftArmArmor.HandleArmorFlags(ShowArmor);
                 rightLeg.HandleArmorFlags(ShowArmor);
+                rightLegging.HandleArmorFlags(ShowArmor);
+                rightSock.HandleArmorFlags(ShowArmor);
+                rightBoot.HandleArmorFlags(ShowArmor);
                 leftLeg.HandleArmorFlags(ShowArmor);
+                leftLegging.HandleArmorFlags(ShowArmor);
+                leftSock.HandleArmorFlags(ShowArmor);
+                leftBoot.HandleArmorFlags(ShowArmor);
             }
         }
         public bool ShowTools { get; set; } = false;
@@ -239,6 +250,17 @@ namespace PckStudio.Rendering
         private CubeMeshCollection leftLeg;
         private CubeMeshCollection tool0;
         private CubeMeshCollection tool1;
+        private CubeMeshCollection bodyArmor;
+        private CubeMeshCollection waist;
+        private CubeMeshCollection belt;
+        private CubeMeshCollection rightArmArmor;
+        private CubeMeshCollection leftArmArmor;
+        private CubeMeshCollection rightLegging;
+        private CubeMeshCollection leftLegging;
+        private CubeMeshCollection rightSock;
+        private CubeMeshCollection leftSock;
+        private CubeMeshCollection rightBoot;
+        private CubeMeshCollection leftBoot;
 
         private float animationCurrentRotationAngle;
         private float animationRotationSpeed = 16f;
@@ -288,17 +310,17 @@ namespace PckStudio.Rendering
                 { "PANTS0"  , rightLeg },
                 { "PANTS1"  , leftLeg },
 
-                { "WAIST"  , body },
-                { "LEGGING0"  , rightLeg},
-                { "LEGGING1"  , leftLeg},
-                { "SOCK0"  , rightLeg},
-                { "SOCK1"  , leftLeg},
-                { "BOOT0"  , rightLeg},
-                { "BOOT1"  , leftLeg},
-                { "ARMARMOR0", rightArm },
-                { "ARMARMOR1", leftArm },
-                { "BODYARMOR"  , body },
-                { "BELT"  , body },
+                { "WAIST"  , waist },
+                { "LEGGING0"  , rightLegging},
+                { "LEGGING1"  , leftLegging},
+                { "SOCK0"  , rightSock},
+                { "SOCK1"  , leftSock},
+                { "BOOT0"  , rightBoot},
+                { "BOOT1"  , leftBoot},
+                { "ARMARMOR0", rightArmArmor },
+                { "ARMARMOR1", leftArmArmor },
+                { "BODYARMOR"  , bodyArmor },
+                { "BELT"  , belt },
             };
             CalculateSkinBounds();
             InitializeArmorData();
@@ -341,21 +363,37 @@ namespace PckStudio.Rendering
             body.AddNamed("DefaultBody",new(-4, 0, -2), new(8, 12, 4), new(16, 16));
             body.AddNamed("DefaultBodyOverlay", new(-4, 0, -2), new(8, 12, 4), new(16, 32), OverlayScale);
 
+            waist ??= new CubeMeshCollection("Waist", GameConstants.SkinBodyTranslation.ToOpenTKVector(), GameConstants.SkinBodyPivot.ToOpenTKVector());
+            bodyArmor ??= new CubeMeshCollection("Body Armor", GameConstants.SkinBodyTranslation.ToOpenTKVector(), GameConstants.SkinBodyPivot.ToOpenTKVector());
+            belt ??= new CubeMeshCollection("Belt", GameConstants.SkinBodyTranslation.ToOpenTKVector(), GameConstants.SkinBodyPivot.ToOpenTKVector());
+
             rightArm ??= new CubeMeshCollection("Right Arm", GameConstants.SkinRightArmTranslation.ToOpenTKVector(), GameConstants.SkinRightArmPivot.ToOpenTKVector());
             rightArm.AddNamed("DefaultRightArm",new(-3, -2, -2), new(4, 12, 4), new(40, 16));
             rightArm.AddNamed("DefaultRightArmOverlay", new(-3, -2, -2), new(4, 12, 4), new(40, 32), OverlayScale);
+
+            rightArmArmor ??= new CubeMeshCollection("Right Arm Armor", GameConstants.SkinRightArmTranslation.ToOpenTKVector(), GameConstants.SkinRightArmPivot.ToOpenTKVector());
 
             leftArm ??= new CubeMeshCollection("Left Arm", GameConstants.SkinLeftArmTranslation.ToOpenTKVector(), GameConstants.SkinLeftArmPivot.ToOpenTKVector());
             leftArm.AddNamed("DefaultLeftArm",new(-1, -2, -2), new(4, 12, 4), new(32, 48));
             leftArm.AddNamed("DefaultLeftArmOverlay", new(-1, -2, -2), new(4, 12, 4), new(48, 48), inflate: OverlayScale);
 
+            leftArmArmor ??= new CubeMeshCollection("Left Arm Armor", GameConstants.SkinLeftArmTranslation.ToOpenTKVector(), GameConstants.SkinLeftArmPivot.ToOpenTKVector());
+
             rightLeg ??= new CubeMeshCollection("Right Leg", GameConstants.SkinRightLegTranslation.ToOpenTKVector(), GameConstants.SkinRightLegPivot.ToOpenTKVector());
             rightLeg.AddNamed("DefaultRightLeg",new(-2, 0, -2), new(4, 12, 4), new(0, 16));
             rightLeg.AddNamed("DefaultRightLegOverlay", new(-2, 0, -2), new(4, 12, 4), new(0, 32), OverlayScale);
 
+            rightLegging ??= new CubeMeshCollection("Right Legging", GameConstants.SkinRightLegTranslation.ToOpenTKVector(), GameConstants.SkinRightLegPivot.ToOpenTKVector());
+            rightSock ??= new CubeMeshCollection("Right Sock", GameConstants.SkinRightLegTranslation.ToOpenTKVector(), GameConstants.SkinRightLegPivot.ToOpenTKVector());
+            rightBoot ??= new CubeMeshCollection("Right Boot", GameConstants.SkinRightLegTranslation.ToOpenTKVector(), GameConstants.SkinRightLegPivot.ToOpenTKVector());
+
             leftLeg ??= new CubeMeshCollection("Left Leg", GameConstants.SkinLeftLegTranslation.ToOpenTKVector(), GameConstants.SkinLeftLegPivot.ToOpenTKVector());
             leftLeg.AddNamed("DefaultLeftLeg",new(-2, 0, -2), new(4, 12, 4), new(16, 48));
             leftLeg.AddNamed("DefaultLeftLegOverlay", new(-2, 0, -2), new(4, 12, 4), new(0, 48), OverlayScale);
+
+            leftLegging ??= new CubeMeshCollection("Left Legging", GameConstants.SkinLeftLegTranslation.ToOpenTKVector(), GameConstants.SkinLeftLegPivot.ToOpenTKVector());
+            leftSock ??= new CubeMeshCollection("Left Sock", GameConstants.SkinLeftLegTranslation.ToOpenTKVector(), GameConstants.SkinLeftLegPivot.ToOpenTKVector());
+            leftBoot ??= new CubeMeshCollection("Left Boot", GameConstants.SkinLeftLegTranslation.ToOpenTKVector(), GameConstants.SkinLeftLegPivot.ToOpenTKVector());
         }
 
         private void InitializeCapeData()
@@ -939,11 +977,11 @@ namespace PckStudio.Rendering
                     armLeftMatrix = LeftArmMatrix * armLeftMatrix;
                 }
 
-                RenderBodyPart(cubeShader, Matrix4.Identity, renderTransform, "HEAD", "HEADWEAR", "BODY", "JACKET");
-                RenderBodyPart(cubeShader, armRightMatrix, renderTransform, "ARM0", "SLEEVE0");
-                RenderBodyPart(cubeShader, armLeftMatrix, renderTransform, "ARM1", "SLEEVE1");
-                RenderBodyPart(cubeShader, legRightMatrix, renderTransform, "LEG0", "PANTS0");
-                RenderBodyPart(cubeShader, legLeftMatrix, renderTransform, "LEG1", "PANTS1");
+                RenderBodyPart(cubeShader, Matrix4.Identity, renderTransform, "HEAD", "HEADWEAR", "BODY", "JACKET", "WAIST", "BODYARMOR", "BELT");
+                RenderBodyPart(cubeShader, armRightMatrix, renderTransform, "ARM0", "SLEEVE0", "ARMARMOR0");
+                RenderBodyPart(cubeShader, armLeftMatrix, renderTransform, "ARM1", "SLEEVE1", "ARMARMOR1");
+                RenderBodyPart(cubeShader, legRightMatrix, renderTransform, "LEG0", "PANTS0", "LEGGING0", "SOCK0", "BOOT0");
+                RenderBodyPart(cubeShader, legLeftMatrix, renderTransform, "LEG1", "PANTS1", "LEGGING1", "SOCK1", "BOOT1");
 
                 if (_capeImage is not null && RenderCape)
                 {
@@ -974,33 +1012,33 @@ namespace PckStudio.Rendering
                     armorTexture.Bind();
                     cubeShader.SetUniform2("TexSize", new Vector2(64, 64));
                     if (!ANIM.GetFlag(SkinAnimFlag.HEAD_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_HEAD_ARMOR))
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["HELMET"], Matrix4.Identity, renderTransform);
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["HELMET"], Matrix4.Identity, renderTransform, "HEAD");
                     
                     if (!ANIM.GetFlag(SkinAnimFlag.TORSO_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_CENTER))
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["CHEST"], Matrix4.Identity, renderTransform);
-                    
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["CHEST"], Matrix4.Identity, renderTransform, "BODY");
+
                     if (!ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT))
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["SHOULDER0"], armRightMatrix, renderTransform);
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["SHOULDER0"], armRightMatrix, renderTransform, "ARM0");
                     
                     if (!ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT))
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["SHOULDER1"], armLeftMatrix, renderTransform);
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["SHOULDER1"], armLeftMatrix, renderTransform, "ARM1");
 
                     bool showRightLegArmor = !ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR);
                     if (showRightLegArmor)
                     {
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["PANTS0"], legRightMatrix, renderTransform);
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["BOOT0"], legRightMatrix, renderTransform);
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["PANTS0"], legRightMatrix, renderTransform, "LEG0");
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["BOOT0"], legRightMatrix, renderTransform, "LEG0");
                     }
 
                     bool showLeftLegArmor = !ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_LEFT_LEG_ARMOR);
                     if (showLeftLegArmor)
                     {
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["PANTS1"], legLeftMatrix, renderTransform);
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["BOOT1"], legLeftMatrix, renderTransform);
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["PANTS1"], legLeftMatrix, renderTransform, "LEG1");
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["BOOT1"], legLeftMatrix, renderTransform, "LEG1");
                     }
                     
                     if (showRightLegArmor && showLeftLegArmor)
-                        RenderPart(cubeShader, offsetSpecificMeshStorage["WAIST"], Matrix4.Identity, renderTransform);
+                        RenderArmorPart(cubeShader, offsetSpecificMeshStorage["WAIST"], Matrix4.Identity, renderTransform, "BODY");
                 }
 
                 if(ShowTools)
@@ -1010,8 +1048,8 @@ namespace PckStudio.Rendering
 
                     Matrix4 handheldRotation = Matrix4.CreateRotationX(MathHelper.DegreesToRadians(45f));
 
-                    RenderPart(cubeShader, offsetSpecificMeshStorage["TOOL0"], armRightMatrix * handheldRotation, renderTransform);
-                    RenderPart(cubeShader, offsetSpecificMeshStorage["TOOL1"], armLeftMatrix * handheldRotation, renderTransform);
+                    RenderArmorPart(cubeShader, offsetSpecificMeshStorage["TOOL0"], armRightMatrix * handheldRotation, renderTransform, "ARM0");
+                    RenderArmorPart(cubeShader, offsetSpecificMeshStorage["TOOL1"], armLeftMatrix * handheldRotation, renderTransform, "ARM1");
                 }
 
                 if (showWireFrame)
@@ -1130,6 +1168,13 @@ namespace PckStudio.Rendering
             {
                 RenderPart(shader, meshStorage[partName], partsMatrix, globalMatrix);
             }
+        }
+
+        private void RenderArmorPart<T>(ShaderProgram shader, GenericMesh<T> mesh, Matrix4 partMatrix, Matrix4 globalMatrix, string parentName) where T : struct
+        {
+            Matrix4 transform = partMatrix * mesh.GetTransform() * globalMatrix;
+
+            DrawMesh(mesh, shader, Matrix4.CreateTranslation(meshStorage[parentName].Offset) * transform);
         }
 
         private void RenderPart<T>(ShaderProgram shader, GenericMesh<T> mesh, Matrix4 partMatrix, Matrix4 globalMatrix) where T : struct
