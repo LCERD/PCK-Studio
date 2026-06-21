@@ -912,7 +912,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 69</value>
+    <value>76, 66</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -957,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="ParameterTypeTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 39</value>
+    <value>215, 36</value>
   </data>
   <data name="ParameterTypeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1002,7 +1002,7 @@
     <value>False</value>
   </data>
   <data name="parameterValueTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 71</value>
+    <value>215, 68</value>
   </data>
   <data name="parameterValueTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1026,7 +1026,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 97</value>
+    <value>215, 94</value>
   </data>
   <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 33</value>
@@ -1059,7 +1059,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, -38</value>
+    <value>138, -41</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1523,20 +1523,14 @@
   <data name="generateMipMapTextureToolStripMenuItem1.Text" xml:space="preserve">
     <value>Generate MipMap Texture</value>
   </data>
-  <data name="fixSkinDecimalsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
-  </data>
-  <data name="fixSkinDecimalsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Fix Skin Decimals</value>
-  </data>
   <data name="bigEndianXbox360PS3WiiUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="bigEndianXbox360PS3WiiUToolStripMenuItem.Text" xml:space="preserve">
     <value>Big</value>
   </data>
   <data name="littleEndianPS4PSVitaSwitchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="littleEndianPS4PSVitaSwitchToolStripMenuItem.Text" xml:space="preserve">
     <value>Little</value>
@@ -1548,19 +1542,19 @@
     <value>Set Endianness</value>
   </data>
   <data name="version1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="version1ToolStripMenuItem.Text" xml:space="preserve">
     <value>Models Version 1</value>
   </data>
   <data name="version2ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="version2ToolStripMenuItem.Text" xml:space="preserve">
     <value>Models Version 2</value>
   </data>
   <data name="version3114ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="version3114ToolStripMenuItem.Text" xml:space="preserve">
     <value>Models Version 3</value>
@@ -1572,25 +1566,25 @@
     <value>Set Model Container version</value>
   </data>
   <data name="bOXVersion0ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="bOXVersion0ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 0</value>
   </data>
   <data name="bOXVersion1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="bOXVersion1ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 1</value>
   </data>
   <data name="bOXVersion2ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="bOXVersion2ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 2</value>
   </data>
   <data name="bOXVersion3ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="bOXVersion3ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 3</value>
@@ -1602,13 +1596,13 @@
     <value>Set BOX Version</value>
   </data>
   <data name="fullBodyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="fullBodyToolStripMenuItem.Text" xml:space="preserve">
     <value>Full Body</value>
   </data>
   <data name="croppedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="croppedToolStripMenuItem.Text" xml:space="preserve">
     <value>Cropped</value>
@@ -2065,12 +2059,6 @@
     <value>generateMipMapTextureToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;generateMipMapTextureToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fixSkinDecimalsToolStripMenuItem.Name" xml:space="preserve">
-    <value>fixSkinDecimalsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;fixSkinDecimalsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;setSubPCKEndiannessToolStripMenuItem.Name" xml:space="preserve">

@@ -89,7 +89,6 @@ namespace PckStudio.Controls
             this.entityMaterialsFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewFileInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateMipMapTextureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.fixSkinDecimalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setSubPCKEndiannessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bigEndianXbox360PS3WiiUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.littleEndianPS4PSVitaSwitchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -506,7 +505,6 @@ namespace PckStudio.Controls
             this.setFileTypeToolStripMenuItem,
             this.viewFileInfoToolStripMenuItem,
             this.generateMipMapTextureToolStripMenuItem1,
-            this.fixSkinDecimalsToolStripMenuItem,
             this.setSubPCKEndiannessToolStripMenuItem,
             this.setModelContainerFormatToolStripMenuItem,
             this.setSubPCKBOXVersionToolStripMenuItem,
@@ -615,12 +613,6 @@ namespace PckStudio.Controls
             this.generateMipMapTextureToolStripMenuItem1.Name = "generateMipMapTextureToolStripMenuItem1";
             resources.ApplyResources(this.generateMipMapTextureToolStripMenuItem1, "generateMipMapTextureToolStripMenuItem1");
             this.generateMipMapTextureToolStripMenuItem1.Click += new System.EventHandler(this.generateMipMapTextureToolStripMenuItem_Click);
-            // 
-            // fixSkinDecimalsToolStripMenuItem
-            // 
-            this.fixSkinDecimalsToolStripMenuItem.Name = "fixSkinDecimalsToolStripMenuItem";
-            resources.ApplyResources(this.fixSkinDecimalsToolStripMenuItem, "fixSkinDecimalsToolStripMenuItem");
-            this.fixSkinDecimalsToolStripMenuItem.Click += new System.EventHandler(this.correctSkinDecimalsToolStripMenuItem_Click);
             // 
             // setSubPCKEndiannessToolStripMenuItem
             // 
@@ -857,7 +849,6 @@ namespace PckStudio.Controls
         private System.Windows.Forms.ToolStripMenuItem miscFunctionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateMipMapTextureToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem viewFileInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fixSkinDecimalsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cloneFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameFileToolStripMenuItem;

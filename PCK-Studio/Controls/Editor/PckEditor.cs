@@ -1754,21 +1754,6 @@ namespace PckStudio.Controls
             }
         }
 
-        private void correctSkinDecimalsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (treeViewMain.SelectedNode.TryGetTagData(out PckAsset asset) &&
-                asset.Type == PckAssetType.SkinFile)
-            {
-                foreach (KeyValuePair<string, string> p in asset.GetParameters().ToList())
-                {
-                    if (p.Key == "BOX" || p.Key == "OFFSET")
-                        asset.SetParameter(asset.GetParameterIndex(p), new KeyValuePair<string, string>(p.Key, p.Value.Replace(',', '.')));
-                }
-                ReloadParameterTreeView();
-                _wasModified = true;
-            }
-        }
-
         private void extractToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = treeViewMain.SelectedNode;
@@ -2610,7 +2595,6 @@ namespace PckStudio.Controls
 
         private void contextMenuPCKEntries_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            fixSkinDecimalsToolStripMenuItem.Visible = false;
             generateMipMapTextureToolStripMenuItem1.Visible = false;
             setModelContainerFormatToolStripMenuItem.Visible = false;
             setSubPCKEndiannessToolStripMenuItem.Visible = false;
@@ -2635,7 +2619,6 @@ namespace PckStudio.Controls
                 switch (asset.Type)
                 {
                     case PckAssetType.SkinFile:
-                        fixSkinDecimalsToolStripMenuItem.Visible = true;
                         exportToolStripMenuItem.Visible = true;
 
                         exportIconToolStripMenuItem.Visible = customSkinIcons; // only enable if setting is true, no point in exporting custom icons otherwise
