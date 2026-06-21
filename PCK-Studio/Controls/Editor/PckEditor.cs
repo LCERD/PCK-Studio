@@ -980,28 +980,6 @@ namespace PckStudio.Controls
             return;
         }
 
-        private void addTextureToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Texture File(*.png,*.tga)|*.png;*.tga";
-            if (fileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                using TextPrompt renamePrompt = new TextPrompt(Path.GetFileName(fileDialog.FileName));
-                renamePrompt.LabelText = "Path";
-                if (renamePrompt.ShowDialog(this) == DialogResult.OK && !string.IsNullOrEmpty(renamePrompt.NewText))
-                {
-                    if (EditorValue.File.Contains(renamePrompt.NewText, PckAssetType.TextureFile))
-                    {
-                        MessageBox.Show(this, $"'{renamePrompt.NewText}' already exists.", "Import failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    PckAsset asset = EditorValue.File.CreateNewAsset(renamePrompt.NewText, PckAssetType.TextureFile, () => File.ReadAllBytes(fileDialog.FileName));
-                    BuildMainTreeView();
-                    _wasModified = true;
-                }
-            }
-        }
-
         [Obsolete("Refactor or remove this")]
         private void importSkinToolStripMenuItem_Click(object sender, EventArgs e)
         {

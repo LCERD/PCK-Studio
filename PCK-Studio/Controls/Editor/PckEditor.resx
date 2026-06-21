@@ -912,7 +912,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 63</value>
+    <value>76, 60</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -957,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="ParameterTypeTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 33</value>
+    <value>215, 30</value>
   </data>
   <data name="ParameterTypeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1002,7 +1002,7 @@
     <value>False</value>
   </data>
   <data name="parameterValueTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 65</value>
+    <value>215, 62</value>
   </data>
   <data name="parameterValueTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1026,7 +1026,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 91</value>
+    <value>215, 88</value>
   </data>
   <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 33</value>
@@ -1059,7 +1059,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, -44</value>
+    <value>138, -47</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1261,7 +1261,7 @@
 </value>
   </data>
   <data name="folderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="folderToolStripMenuItem.Text" xml:space="preserve">
     <value>Folder</value>
@@ -1283,7 +1283,7 @@
 </value>
   </data>
   <data name="skinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="skinToolStripMenuItem.Text" xml:space="preserve">
     <value>Skin</value>
@@ -1305,37 +1305,37 @@
 </value>
   </data>
   <data name="createAnimatedTextureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="createAnimatedTextureToolStripMenuItem.Text" xml:space="preserve">
     <value>Animated Texture</value>
   </data>
   <data name="audiopckToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="audiopckToolStripMenuItem.Text" xml:space="preserve">
     <value>Audio.pck</value>
   </data>
   <data name="colourscolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="colourscolToolStripMenuItem.Text" xml:space="preserve">
     <value>Colours.col</value>
   </data>
   <data name="CreateSkinsPCKToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="CreateSkinsPCKToolStripMenuItem1.Text" xml:space="preserve">
     <value>Skins.pck</value>
   </data>
   <data name="behavioursbinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="behavioursbinToolStripMenuItem.Text" xml:space="preserve">
     <value>Behaviours.bin</value>
   </data>
   <data name="entityMaterialsbinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="entityMaterialsbinToolStripMenuItem.Text" xml:space="preserve">
     <value>EntityMaterials.bin</value>
@@ -1391,12 +1391,6 @@
   </data>
   <data name="importExtractedSkinsFolderToolStripMenuItem.Text" xml:space="preserve">
     <value>Import Extracted Skins Folder</value>
-  </data>
-  <data name="addTextureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
-  </data>
-  <data name="addTextureToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add Texture</value>
   </data>
   <data name="addFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 22</value>
@@ -1524,19 +1518,19 @@
     <value>Generate MipMap Texture</value>
   </data>
   <data name="version1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>163, 22</value>
   </data>
   <data name="version1ToolStripMenuItem.Text" xml:space="preserve">
     <value>Models Version 1</value>
   </data>
   <data name="version2ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>163, 22</value>
   </data>
   <data name="version2ToolStripMenuItem.Text" xml:space="preserve">
     <value>Models Version 2</value>
   </data>
   <data name="version3114ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>163, 22</value>
   </data>
   <data name="version3114ToolStripMenuItem.Text" xml:space="preserve">
     <value>Models Version 3</value>
@@ -1548,25 +1542,25 @@
     <value>Set Model Container version</value>
   </data>
   <data name="bOXVersion0ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="bOXVersion0ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 0</value>
   </data>
   <data name="bOXVersion1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="bOXVersion1ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 1</value>
   </data>
   <data name="bOXVersion2ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="bOXVersion2ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 2</value>
   </data>
   <data name="bOXVersion3ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="bOXVersion3ToolStripMenuItem.Text" xml:space="preserve">
     <value>BOX Version 3</value>
@@ -1915,12 +1909,6 @@
     <value>importExtractedSkinsFolderToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;importExtractedSkinsFolderToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addTextureToolStripMenuItem.Name" xml:space="preserve">
-    <value>addTextureToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;addTextureToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;addFileToolStripMenuItem.Name" xml:space="preserve">
