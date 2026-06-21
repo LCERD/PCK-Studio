@@ -439,11 +439,13 @@ namespace PckStudio.Controls
         {
             try
             {
+                OMI.ByteOrder endianness = BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian;
+
                 ISaveContext<PckAudioFile> saveContext = new DelegatedSaveContext<PckAudioFile>(Settings.Default.AutoSaveChanges, (audioFile) =>
                 {
-                    asset.SetData(new PckAudioFileWriter(audioFile, _currentEndianness));
+                    asset.SetData(new PckAudioFileWriter(audioFile, endianness));
                 });
-                PckAudioFile audioFile = asset.GetData(new PckAudioFileReader(_originalEndianness));
+                PckAudioFile audioFile = asset.GetData(new PckAudioFileReader(endianness));
                 using AudioEditor audioEditor = new AudioEditor(audioFile, saveContext);
                 _wasModified = audioEditor.ShowDialog(this) == DialogResult.OK;
             }
