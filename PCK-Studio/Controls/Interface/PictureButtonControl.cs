@@ -73,12 +73,11 @@ namespace PckStudio.Controls
 
             var pen = new Pen(penColor, 2.5f);
 
-            pen.DashStyle = (ForceHidden || ForceShown) ? DashStyle.Solid : DashStyle.Dash;
+            pen.DashStyle = (ForceHidden || ForceShown) ? SetDashStyle : DashStyle;
 
             paintEventArgs.Graphics.DrawRectangle(pen, ClientRectangle);
         }
 
-        // Add implementation to the IButtonControl.PerformClick method.
         public void PerformClick()
         {
             if (CanSelect)

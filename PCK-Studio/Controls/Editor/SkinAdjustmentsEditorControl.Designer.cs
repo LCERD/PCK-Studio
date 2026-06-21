@@ -126,7 +126,7 @@ namespace PckStudio.Controls
             // 
             // rightSleeveButtonControl
             // 
-            this.rightSleeveButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rightSleeveButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.rightSleeveButtonControl.ForceHidden = false;
             this.rightSleeveButtonControl.ForceShown = false;
             this.rightSleeveButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -155,7 +155,7 @@ namespace PckStudio.Controls
             // 
             // leftSleeveButtonControl
             // 
-            this.leftSleeveButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leftSleeveButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.leftSleeveButtonControl.ForceHidden = false;
             this.leftSleeveButtonControl.ForceShown = false;
             this.leftSleeveButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -174,7 +174,7 @@ namespace PckStudio.Controls
             // 
             // jacketButtonControl
             // 
-            this.jacketButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.jacketButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.jacketButtonControl.ForceHidden = false;
             this.jacketButtonControl.ForceShown = false;
             this.jacketButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -193,7 +193,7 @@ namespace PckStudio.Controls
             // 
             // leftPantsLegButtonControl
             // 
-            this.leftPantsLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leftPantsLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.leftPantsLegButtonControl.ForceHidden = false;
             this.leftPantsLegButtonControl.ForceShown = false;
             this.leftPantsLegButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -212,7 +212,7 @@ namespace PckStudio.Controls
             // 
             // hatButtonControl
             // 
-            this.hatButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.hatButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.hatButtonControl.ForceHidden = false;
             this.hatButtonControl.ForceShown = false;
             this.hatButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -231,7 +231,7 @@ namespace PckStudio.Controls
             // 
             // rightPantsLegButtonControl
             // 
-            this.rightPantsLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rightPantsLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.rightPantsLegButtonControl.ForceHidden = false;
             this.rightPantsLegButtonControl.ForceShown = false;
             this.rightPantsLegButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -266,7 +266,7 @@ namespace PckStudio.Controls
             // 
             // rightArmButtonControl
             // 
-            this.rightArmButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rightArmButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.rightArmButtonControl.ForceHidden = false;
             this.rightArmButtonControl.ForceShown = false;
             this.rightArmButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -285,7 +285,7 @@ namespace PckStudio.Controls
             // 
             // leftArmButtonControl
             // 
-            this.leftArmButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leftArmButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.leftArmButtonControl.ForceHidden = false;
             this.leftArmButtonControl.ForceShown = false;
             this.leftArmButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -304,7 +304,7 @@ namespace PckStudio.Controls
             // 
             // leftLegButtonControl
             // 
-            this.leftLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leftLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.leftLegButtonControl.ForceHidden = false;
             this.leftLegButtonControl.ForceShown = false;
             this.leftLegButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -323,7 +323,7 @@ namespace PckStudio.Controls
             // 
             // rightLegButtonControl
             // 
-            this.rightLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rightLegButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.rightLegButtonControl.ForceHidden = false;
             this.rightLegButtonControl.ForceShown = false;
             this.rightLegButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -342,7 +342,7 @@ namespace PckStudio.Controls
             // 
             // torsoButtonControl
             // 
-            this.torsoButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.torsoButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.torsoButtonControl.ForceHidden = false;
             this.torsoButtonControl.ForceShown = false;
             this.torsoButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -361,7 +361,7 @@ namespace PckStudio.Controls
             // 
             // headButtonControl
             // 
-            this.headButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.headButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.headButtonControl.ForceHidden = false;
             this.headButtonControl.ForceShown = false;
             this.headButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -622,7 +622,7 @@ namespace PckStudio.Controls
             // 
             // rightShoulderButtonControl
             // 
-            this.rightShoulderButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rightShoulderButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.rightShoulderButtonControl.ForceHidden = false;
             this.rightShoulderButtonControl.ForceShown = true;
             this.rightShoulderButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -642,7 +642,7 @@ namespace PckStudio.Controls
             // 
             // leftShoulderButtonControl
             // 
-            this.leftShoulderButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leftShoulderButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.leftShoulderButtonControl.ForceHidden = false;
             this.leftShoulderButtonControl.ForceShown = true;
             this.leftShoulderButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -662,7 +662,7 @@ namespace PckStudio.Controls
             // 
             // leftLeggingButtonControl
             // 
-            this.leftLeggingButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leftLeggingButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.leftLeggingButtonControl.ForceHidden = false;
             this.leftLeggingButtonControl.ForceShown = true;
             this.leftLeggingButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -682,7 +682,7 @@ namespace PckStudio.Controls
             // 
             // rightLeggingButtonControl
             // 
-            this.rightLeggingButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rightLeggingButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.rightLeggingButtonControl.ForceHidden = false;
             this.rightLeggingButtonControl.ForceShown = true;
             this.rightLeggingButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -702,7 +702,7 @@ namespace PckStudio.Controls
             // 
             // chestButtonControl
             // 
-            this.chestButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.chestButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.chestButtonControl.ForceHidden = false;
             this.chestButtonControl.ForceShown = true;
             this.chestButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
@@ -722,7 +722,7 @@ namespace PckStudio.Controls
             // 
             // headArmorButtonControl
             // 
-            this.headArmorButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.headArmorButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.headArmorButtonControl.ForceHidden = false;
             this.headArmorButtonControl.ForceShown = true;
             this.headArmorButtonControl.HiddenBorderColor = System.Drawing.Color.Red;
