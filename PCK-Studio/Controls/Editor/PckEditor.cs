@@ -1388,6 +1388,7 @@ namespace PckStudio.Controls
                 {
                     importedAsset.DeserializeParameters(File.ReadAllLines(parameterFile));
                 }
+
                 addedCount++;
             }
             Trace.TraceInformation("[{0}] Imported {1} file(s).", nameof(ImportFiles), addedCount);
@@ -2068,7 +2069,7 @@ namespace PckStudio.Controls
         {
             if (treeViewMain.SelectedNode.TryGetTagData(out PckAsset asset))
             {
-                IEnumerable<string> parameters = asset.SerializeParameters(separator: " ");
+                IEnumerable<string> parameters = asset.SerializeParameters();
                 using (var input = new MultiTextPrompt(parameters))
                 {
                     if (input.ShowDialog(this) == DialogResult.OK)

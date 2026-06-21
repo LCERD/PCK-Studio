@@ -211,14 +211,14 @@ namespace PckStudio.Core.Extensions
             IEnumerable<KeyValuePair<string, string>> lines = serializedData
                 .Select(line => line.Split([' '], 2))
                 .Where (keyValue => keyValue.Length == 2)
-                .Select(keyValue => new KeyValuePair<string, string>(keyValue[0].Replace(":", ""), keyValue[1]));
+                .Select(keyValue => new KeyValuePair<string, string>(keyValue[0], keyValue[1]));
             foreach (KeyValuePair<string, string> kv in lines)
             {
                 asset.AddParameter(kv);
             }
         }
 
-        public static IEnumerable<string> SerializeParameters(this PckAsset asset, string separator = ":")
+        public static IEnumerable<string> SerializeParameters(this PckAsset asset, string separator = " ")
         {
             IReadOnlyList<KeyValuePair<string, string>> parameters = asset.GetParameters();
             return parameters.Select(parameter => parameter.Key + separator + parameter.Value);
