@@ -1337,6 +1337,16 @@ namespace PckStudio.Controls
             bool askForAssetType = true;
             foreach (var filepath in files)
             {
+                if (filepath.EndsWith(".txt") && fileCount > 1)
+                {
+                    string originalFile = Path.Combine(
+                        Path.GetDirectoryName(filepath)!,
+                        Path.GetFileNameWithoutExtension(filepath));
+
+                    if (File.Exists(originalFile))
+                        continue;
+                }
+
                 string assetPath = Path.Combine(prefix + filepath.Substring(baseDirectory.Length)).TrimStart('/', '\\');
                 PckAssetType assetType = lastSelectedAssetType;
 
