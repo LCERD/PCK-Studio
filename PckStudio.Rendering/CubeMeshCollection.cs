@@ -150,7 +150,7 @@ namespace PckStudio.Rendering
             cubes.RemoveAt(index);
         }
 
-        public void HandleArmorFlags(bool showArmor)
+        public void HandleArmorFlags(SkinArmorFlags showArmorMask)
         {
             for (int i = 0; i < cubes.Count; i++)
             {
@@ -160,9 +160,7 @@ namespace PckStudio.Rendering
                     if (cubeMesh.Name.StartsWith("Default"))
                         continue;
 
-                    bool hasArmorFlags = cubeMesh.GetCube().ArmorFlags != 0;
-
-                    bool visible = !(showArmor && hasArmorFlags);
+                    bool visible = (showArmorMask.ToValue() & cubeMesh.GetCube().ArmorFlags) == 0;
 
                     cubes[i] = cubes[i].SetVisible(visible);
                 }

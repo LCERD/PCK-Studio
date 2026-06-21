@@ -153,6 +153,16 @@ namespace PckStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap boots {
+            get {
+                object obj = ResourceManager.GetObject("boots", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap CAPE_ICON {
             get {
                 object obj = ResourceManager.GetObject("CAPE_ICON", resourceCulture);
@@ -188,6 +198,16 @@ namespace PckStudio.Properties {
         public static System.Drawing.Bitmap changeTile {
             get {
                 object obj = ResourceManager.GetObject("changeTile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap chestplate {
+            get {
+                object obj = ResourceManager.GetObject("chestplate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -556,6 +576,16 @@ namespace PckStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap helmet {
+            get {
+                object obj = ResourceManager.GetObject("helmet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap IMAGE_ICON {
             get {
                 object obj = ResourceManager.GetObject("IMAGE_ICON", resourceCulture);
@@ -569,6 +599,16 @@ namespace PckStudio.Properties {
         public static System.Drawing.Bitmap INFO_ICON {
             get {
                 object obj = ResourceManager.GetObject("INFO_ICON", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap leggings {
+            get {
+                object obj = ResourceManager.GetObject("leggings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

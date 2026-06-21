@@ -41,7 +41,6 @@
             this.importSkinButton = new MetroFramework.Controls.MetroButton();
             this.exportSkinButton = new MetroFramework.Controls.MetroButton();
             this.generateTextureCheckBox = new MetroFramework.Controls.MetroCheckBox();
-            this.showArmorCheckbox = new MetroFramework.Controls.MetroCheckBox();
             this.skinPartListBox = new System.Windows.Forms.ListBox();
             this.captureScreenshotButton = new MetroFramework.Controls.MetroButton();
             this.showToolsCheckBox = new MetroFramework.Controls.MetroCheckBox();
@@ -61,12 +60,20 @@
             this.exportTemplateButton = new MetroFramework.Controls.MetroButton();
             this.boxEditorControl1 = new PckStudio.Controls.BoxEditorControl();
             this.skinAdjustmentsEditorControl1 = new PckStudio.Controls.SkinAdjustmentsEditorControl();
+            this.helmetButtonControl = new PckStudio.Controls.PictureButtonControl();
+            this.chestplateButtonControl = new PckStudio.Controls.PictureButtonControl();
+            this.leggingsButtonControl = new PckStudio.Controls.PictureButtonControl();
+            this.bootsButtonControl = new PckStudio.Controls.PictureButtonControl();
             this.skinPartTabContextMenu.SuspendLayout();
             this.parameterTabControl.SuspendLayout();
             this.skinPartsTabPage.SuspendLayout();
             this.skinOffsetsTabPage.SuspendLayout();
             this.offsetTabContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.helmetButtonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chestplateButtonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leggingsButtonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bootsButtonControl)).BeginInit();
             this.SuspendLayout();
             // 
             // importTextureButton
@@ -156,14 +163,6 @@
             this.generateTextureCheckBox.Name = "generateTextureCheckBox";
             this.generateTextureCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.generateTextureCheckBox.UseSelectable = true;
-            // 
-            // showArmorCheckbox
-            // 
-            resources.ApplyResources(this.showArmorCheckbox, "showArmorCheckbox");
-            this.showArmorCheckbox.Name = "showArmorCheckbox";
-            this.showArmorCheckbox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.showArmorCheckbox.UseSelectable = true;
-            this.showArmorCheckbox.CheckedChanged += new System.EventHandler(this.showArmorCheckbox_CheckedChanged);
             // 
             // skinPartListBox
             // 
@@ -270,7 +269,7 @@
             this.renderer3D1.SelectedIndex = -1;
             this.renderer3D1.SelectedIndices = new int[] {
         -1};
-            this.renderer3D1.ShowArmor = false;
+            this.renderer3D1.ShowArmorMask = null;
             this.renderer3D1.ShowBoundingBox = false;
             this.renderer3D1.ShowGuideLines = false;
             this.renderer3D1.ShowTools = false;
@@ -332,10 +331,86 @@
             this.skinAdjustmentsEditorControl1.Name = "skinAdjustmentsEditorControl1";
             this.skinAdjustmentsEditorControl1.AdjustmentsChanged += new System.EventHandler(this.skinAdjustmentsEditorControl1_AdjustmentsChanged);
             // 
+            // helmetButtonControl
+            // 
+            this.helmetButtonControl.BackColor = System.Drawing.Color.Transparent;
+            this.helmetButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.helmetButtonControl.ForceHidden = false;
+            this.helmetButtonControl.ForceShown = false;
+            this.helmetButtonControl.HiddenBorderColor = System.Drawing.Color.White;
+            this.helmetButtonControl.Image = global::PckStudio.Properties.Resources.helmet;
+            resources.ApplyResources(this.helmetButtonControl, "helmetButtonControl");
+            this.helmetButtonControl.Inverted = true;
+            this.helmetButtonControl.Name = "helmetButtonControl";
+            this.helmetButtonControl.SetDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.helmetButtonControl.ShownBorderColor = System.Drawing.Color.White;
+            this.helmetButtonControl.state = PckStudio.Controls.PictureButtonControl.DisplayState.Set;
+            this.helmetButtonControl.TabStop = false;
+            this.helmetButtonControl.Tag = PckStudio.Core.Skin.SkinArmorFlagsFlag.HELMET;
+            this.helmetButtonControl.Click += new System.EventHandler(this.armorButtonControl_Click);
+            // 
+            // chestplateButtonControl
+            // 
+            this.chestplateButtonControl.BackColor = System.Drawing.Color.Transparent;
+            this.chestplateButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.chestplateButtonControl.ForceHidden = false;
+            this.chestplateButtonControl.ForceShown = false;
+            this.chestplateButtonControl.HiddenBorderColor = System.Drawing.Color.White;
+            this.chestplateButtonControl.Image = global::PckStudio.Properties.Resources.chestplate;
+            resources.ApplyResources(this.chestplateButtonControl, "chestplateButtonControl");
+            this.chestplateButtonControl.Inverted = true;
+            this.chestplateButtonControl.Name = "chestplateButtonControl";
+            this.chestplateButtonControl.SetDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.chestplateButtonControl.ShownBorderColor = System.Drawing.Color.White;
+            this.chestplateButtonControl.state = PckStudio.Controls.PictureButtonControl.DisplayState.Set;
+            this.chestplateButtonControl.TabStop = false;
+            this.chestplateButtonControl.Tag = PckStudio.Core.Skin.SkinArmorFlagsFlag.CHESTPLATE;
+            this.chestplateButtonControl.Click += new System.EventHandler(this.armorButtonControl_Click);
+            // 
+            // leggingsButtonControl
+            // 
+            this.leggingsButtonControl.BackColor = System.Drawing.Color.Transparent;
+            this.leggingsButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leggingsButtonControl.ForceHidden = false;
+            this.leggingsButtonControl.ForceShown = false;
+            this.leggingsButtonControl.HiddenBorderColor = System.Drawing.Color.White;
+            this.leggingsButtonControl.Image = global::PckStudio.Properties.Resources.leggings;
+            resources.ApplyResources(this.leggingsButtonControl, "leggingsButtonControl");
+            this.leggingsButtonControl.Inverted = true;
+            this.leggingsButtonControl.Name = "leggingsButtonControl";
+            this.leggingsButtonControl.SetDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.leggingsButtonControl.ShownBorderColor = System.Drawing.Color.White;
+            this.leggingsButtonControl.state = PckStudio.Controls.PictureButtonControl.DisplayState.Set;
+            this.leggingsButtonControl.TabStop = false;
+            this.leggingsButtonControl.Tag = PckStudio.Core.Skin.SkinArmorFlagsFlag.LEGGINGS;
+            this.leggingsButtonControl.Click += new System.EventHandler(this.armorButtonControl_Click);
+            // 
+            // bootsButtonControl
+            // 
+            this.bootsButtonControl.BackColor = System.Drawing.Color.Transparent;
+            this.bootsButtonControl.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.bootsButtonControl.ForceHidden = false;
+            this.bootsButtonControl.ForceShown = false;
+            this.bootsButtonControl.HiddenBorderColor = System.Drawing.Color.White;
+            this.bootsButtonControl.Image = global::PckStudio.Properties.Resources.boots;
+            resources.ApplyResources(this.bootsButtonControl, "bootsButtonControl");
+            this.bootsButtonControl.Inverted = true;
+            this.bootsButtonControl.Name = "bootsButtonControl";
+            this.bootsButtonControl.SetDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.bootsButtonControl.ShownBorderColor = System.Drawing.Color.White;
+            this.bootsButtonControl.state = PckStudio.Controls.PictureButtonControl.DisplayState.Set;
+            this.bootsButtonControl.TabStop = false;
+            this.bootsButtonControl.Tag = PckStudio.Core.Skin.SkinArmorFlagsFlag.BOOTS;
+            this.bootsButtonControl.Click += new System.EventHandler(this.armorButtonControl_Click);
+            // 
             // CustomSkinEditor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bootsButtonControl);
+            this.Controls.Add(this.leggingsButtonControl);
+            this.Controls.Add(this.chestplateButtonControl);
+            this.Controls.Add(this.helmetButtonControl);
             this.Controls.Add(this.skinAdjustmentsEditorControl1);
             this.Controls.Add(this.parameterTabControl);
             this.Controls.Add(this.boxEditorControl1);
@@ -344,7 +419,6 @@
             this.Controls.Add(this.textureSizeLabel);
             this.Controls.Add(this.showToolsCheckBox);
             this.Controls.Add(this.centerSelectionCheckbox);
-            this.Controls.Add(this.showArmorCheckbox);
             this.Controls.Add(this.generateTextureCheckBox);
             this.Controls.Add(this.uvPictureBox);
             this.Controls.Add(this.exportTemplateButton);
@@ -365,6 +439,10 @@
             this.skinOffsetsTabPage.ResumeLayout(false);
             this.offsetTabContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uvPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.helmetButtonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chestplateButtonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leggingsButtonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bootsButtonControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +461,6 @@
         private MetroFramework.Controls.MetroButton importTextureButton;
         private MetroFramework.Controls.MetroButton exportTextureButton;
         private MetroFramework.Controls.MetroCheckBox generateTextureCheckBox;
-        private MetroFramework.Controls.MetroCheckBox showArmorCheckbox;
         private Rendering.SkinRenderer renderer3D1;
         private System.Windows.Forms.ListBox skinPartListBox;
         private MetroFramework.Controls.MetroButton captureScreenshotButton;
@@ -402,5 +479,9 @@
         private MetroFramework.Controls.MetroButton exportTemplateButton;
         private Controls.BoxEditorControl boxEditorControl1;
         private Controls.SkinAdjustmentsEditorControl skinAdjustmentsEditorControl1;
+        private Controls.PictureButtonControl helmetButtonControl;
+        private Controls.PictureButtonControl chestplateButtonControl;
+        private Controls.PictureButtonControl leggingsButtonControl;
+        private Controls.PictureButtonControl bootsButtonControl;
     }
 }

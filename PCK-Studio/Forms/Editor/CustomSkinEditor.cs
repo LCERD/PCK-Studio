@@ -27,6 +27,7 @@ namespace PckStudio.Forms.Editor
         private bool _inflateOverlayParts;
         private int _xmlVersion;
         private SkinGameFlags _gameFlags;
+        private SkinArmorFlags displayArmorFlags = SkinArmorFlags.Empty;
 
         private BindingSource _skinPartListBindingSource;
         private BindingSource _skinOffsetListBindingSource;
@@ -55,6 +56,7 @@ namespace PckStudio.Forms.Editor
             boxEditorControl1.SetBOXVersion(xmlVersion);
             _inflateOverlayParts = _xmlVersion > 0 && _xmlVersion < 3;
             skinAdjustmentsEditorControl1.SetSkin(skin);
+            renderer3D1.ShowArmorMask = displayArmorFlags;
         }
 
         private void InitializeRenderSettings()
@@ -316,11 +318,6 @@ namespace PckStudio.Forms.Editor
             }
         }
 
-        private void showArmorCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            renderer3D1.ShowArmor = showArmorCheckbox.Checked;
-        }
-
         private void showToolsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             renderer3D1.ShowTools = showToolsCheckBox.Checked;
@@ -455,7 +452,7 @@ namespace PckStudio.Forms.Editor
             if (index > -1)
             {
                 renderer3D1.ModelData[index] = boxEditorControl1.GetBOX();
-                renderer3D1.ShowArmor = showArmorCheckbox.Checked;
+                renderer3D1.ShowArmorMask = displayArmorFlags;
                 _skinPartListBindingSource.ResetItem(index);
             }
         }
@@ -464,6 +461,20 @@ namespace PckStudio.Forms.Editor
         {
             renderer3D1.ANIM = skinAdjustmentsEditorControl1.GetAnim();
             _gameFlags = skinAdjustmentsEditorControl1.GetGameFlags();
+        }
+
+        private void armorButtonControl_Click(object sender, EventArgs e)
+        {
+            PictureButtonControl btn = (PictureButtonControl)sender;
+
+            bool state = btn.state == PictureButtonControl.DisplayState.Set;
+            SkinArmorFlagsFlag flag = (SkinArmorFlagsFlag)btn.Tag;
+
+            btn.state = !state ? PictureButtonControl.DisplayState.Set : PictureButtonControl.DisplayState.Default;
+            displayArmorFlags = displayArmorFlags.SetFlag(flag, state);
+            renderer3D1.ShowArmorMask = displayArmorFlags;
+
+            btn.Refresh();
         }
     }
 }

@@ -113,7 +113,7 @@ namespace PckStudio.Rendering
 
         public bool CenterOnSelect { get; set; } = false;
         public bool ShowBoundingBox { get; set; }
-        public bool ShowArmor
+        public SkinArmorFlags ShowArmorMask
         {
             get;
             set
@@ -121,23 +121,23 @@ namespace PckStudio.Rendering
                 field = value;
 
                 // set box armor visibility appropriately
-                head.HandleArmorFlags(ShowArmor);
-                waist.HandleArmorFlags(ShowArmor);
-                bodyArmor.HandleArmorFlags(ShowArmor);
-                belt.HandleArmorFlags(ShowArmor);
-                body.HandleArmorFlags(ShowArmor);
-                rightArm.HandleArmorFlags(ShowArmor);
-                rightArmArmor.HandleArmorFlags(ShowArmor);
-                leftArm.HandleArmorFlags(ShowArmor);
-                leftArmArmor.HandleArmorFlags(ShowArmor);
-                rightLeg.HandleArmorFlags(ShowArmor);
-                rightLegging.HandleArmorFlags(ShowArmor);
-                rightSock.HandleArmorFlags(ShowArmor);
-                rightBoot.HandleArmorFlags(ShowArmor);
-                leftLeg.HandleArmorFlags(ShowArmor);
-                leftLegging.HandleArmorFlags(ShowArmor);
-                leftSock.HandleArmorFlags(ShowArmor);
-                leftBoot.HandleArmorFlags(ShowArmor);
+                head.HandleArmorFlags(ShowArmorMask);
+                waist.HandleArmorFlags(ShowArmorMask);
+                bodyArmor.HandleArmorFlags(ShowArmorMask);
+                belt.HandleArmorFlags(ShowArmorMask);
+                body.HandleArmorFlags(ShowArmorMask);
+                rightArm.HandleArmorFlags(ShowArmorMask);
+                rightArmArmor.HandleArmorFlags(ShowArmorMask);
+                leftArm.HandleArmorFlags(ShowArmorMask);
+                leftArmArmor.HandleArmorFlags(ShowArmorMask);
+                rightLeg.HandleArmorFlags(ShowArmorMask);
+                rightLegging.HandleArmorFlags(ShowArmorMask);
+                rightSock.HandleArmorFlags(ShowArmorMask);
+                rightBoot.HandleArmorFlags(ShowArmorMask);
+                leftLeg.HandleArmorFlags(ShowArmorMask);
+                leftLegging.HandleArmorFlags(ShowArmorMask);
+                leftSock.HandleArmorFlags(ShowArmorMask);
+                leftBoot.HandleArmorFlags(ShowArmorMask);
             }
         }
         public bool ShowTools { get; set; } = false;
@@ -1007,36 +1007,48 @@ namespace PckStudio.Rendering
                 }
 
                 // Armor rendering
-                if (ShowArmor && !ANIM.GetFlag(SkinAnimFlag.ALL_ARMOR_DISABLED))
+                if (!ANIM.GetFlag(SkinAnimFlag.ALL_ARMOR_DISABLED))
                 {
                     armorTexture.Bind();
                     cubeShader.SetUniform2("TexSize", new Vector2(64, 64));
-                    if (!ANIM.GetFlag(SkinAnimFlag.HEAD_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_HEAD_ARMOR))
+                    if (ShowArmorMask.GetFlag(SkinArmorFlagsFlag.HELMET) && (!ANIM.GetFlag(SkinAnimFlag.HEAD_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_HEAD_ARMOR)))
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["HELMET"], Matrix4.Identity, renderTransform, "HEAD");
-                    
-                    if (!ANIM.GetFlag(SkinAnimFlag.TORSO_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_CENTER))
+
+                    bool chestplateEnabled = ShowArmorMask.GetFlag(SkinArmorFlagsFlag.CHESTPLATE);
+
+                    if (chestplateEnabled && (!ANIM.GetFlag(SkinAnimFlag.TORSO_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_CENTER)))
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["CHEST"], Matrix4.Identity, renderTransform, "BODY");
 
-                    if (!ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT))
+                    if (chestplateEnabled && (!ANIM.GetFlag(SkinAnimFlag.RIGHT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_RIGHT)))
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["SHOULDER0"], armRightMatrix, renderTransform, "ARM0");
                     
-                    if (!ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT))
+                    if (chestplateEnabled && (!ANIM.GetFlag(SkinAnimFlag.LEFT_ARM_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_CHESTPLATE_LEFT)))
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["SHOULDER1"], armLeftMatrix, renderTransform, "ARM1");
 
-                    bool showRightLegArmor = !ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR);
+                    bool showRightLegArmor = ShowArmorMask.GetFlag(SkinArmorFlagsFlag.LEGGINGS) && (!ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR));
+
                     if (showRightLegArmor)
                     {
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["PANTS0"], legRightMatrix, renderTransform, "LEG0");
+                    }
+
+                    if (ShowArmorMask.GetFlag(SkinArmorFlagsFlag.BOOTS) && (!ANIM.GetFlag(SkinAnimFlag.RIGHT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_RIGHT_LEG_ARMOR)))
+                    {
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["BOOT0"], legRightMatrix, renderTransform, "LEG0");
                     }
 
-                    bool showLeftLegArmor = !ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_LEFT_LEG_ARMOR);
+                    bool showLeftLegArmor = ShowArmorMask.GetFlag(SkinArmorFlagsFlag.LEGGINGS) && (!ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_LEFT_LEG_ARMOR));
+
                     if (showLeftLegArmor)
                     {
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["PANTS1"], legLeftMatrix, renderTransform, "LEG1");
+                    }
+
+                    if (ShowArmorMask.GetFlag(SkinArmorFlagsFlag.BOOTS) && (!ANIM.GetFlag(SkinAnimFlag.LEFT_LEG_DISABLED) || ANIM.GetFlag(SkinAnimFlag.SHOW_LEFT_LEG_ARMOR)))
+                    {
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["BOOT1"], legLeftMatrix, renderTransform, "LEG1");
                     }
-                    
+
                     if (showRightLegArmor && showLeftLegArmor)
                         RenderArmorPart(cubeShader, offsetSpecificMeshStorage["WAIST"], Matrix4.Identity, renderTransform, "BODY");
                 }

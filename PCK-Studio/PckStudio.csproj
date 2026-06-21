@@ -585,6 +585,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\skin_editor\leggings.png" />
+    <None Include="Resources\skin_editor\helmet.png" />
+    <None Include="Resources\skin_editor\chestplate.png" />
+    <None Include="Resources\skin_editor\boots.png" />
     <None Include="Resources\atlases\bannerData.json" />
     <None Include="Resources\atlases\blockData.json" />
     <None Include="Resources\atlases\entityBehavioursData.json" />

@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;importTextureButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="exportTextureButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 249</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportTextureButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <metadata name="skinPartTabContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -272,7 +272,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonDone.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="importSkinButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 396</value>
@@ -296,7 +296,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;importSkinButton.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="exportSkinButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 396</value>
@@ -320,7 +320,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportSkinButton.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="generateTextureCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -347,34 +347,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;generateTextureCheckBox.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="showArmorCheckbox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="showArmorCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 375</value>
-  </data>
-  <data name="showArmorCheckbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 15</value>
-  </data>
-  <data name="showArmorCheckbox.TabIndex" type="System.Int32, mscorlib">
-    <value>149</value>
-  </data>
-  <data name="showArmorCheckbox.Text" xml:space="preserve">
-    <value>Show Armor</value>
-  </data>
-  <data name="&gt;&gt;showArmorCheckbox.Name" xml:space="preserve">
-    <value>showArmorCheckbox</value>
-  </data>
-  <data name="&gt;&gt;showArmorCheckbox.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;showArmorCheckbox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;showArmorCheckbox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="skinPartListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -422,13 +395,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;captureScreenshotButton.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="showToolsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="showToolsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 354</value>
+    <value>56, 375</value>
   </data>
   <data name="showToolsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 15</value>
@@ -449,7 +422,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;showToolsCheckBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="skinNameLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -479,7 +452,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;skinNameLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="parameterTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -599,7 +572,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;parameterTabControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="renderer3D1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -623,7 +596,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderer3D1.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="uvPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -653,7 +626,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;uvPictureBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="centerSelectionCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -680,7 +653,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;centerSelectionCheckbox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="textureSizeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -710,7 +683,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textureSizeLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="renderSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 423</value>
@@ -734,7 +707,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderSettingsButton.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="exportTemplateButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 423</value>
@@ -758,7 +731,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportTemplateButton.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="boxEditorControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -785,7 +758,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;boxEditorControl1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="skinAdjustmentsEditorControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -809,6 +782,114 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;skinAdjustmentsEditorControl1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="helmetButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="helmetButtonControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 339</value>
+  </data>
+  <data name="helmetButtonControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="helmetButtonControl.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="helmetButtonControl.TabIndex" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
+  <data name="&gt;&gt;helmetButtonControl.Name" xml:space="preserve">
+    <value>helmetButtonControl</value>
+  </data>
+  <data name="&gt;&gt;helmetButtonControl.Type" xml:space="preserve">
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;helmetButtonControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;helmetButtonControl.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chestplateButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chestplateButtonControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 339</value>
+  </data>
+  <data name="chestplateButtonControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="chestplateButtonControl.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="chestplateButtonControl.TabIndex" type="System.Int32, mscorlib">
+    <value>181</value>
+  </data>
+  <data name="&gt;&gt;chestplateButtonControl.Name" xml:space="preserve">
+    <value>chestplateButtonControl</value>
+  </data>
+  <data name="&gt;&gt;chestplateButtonControl.Type" xml:space="preserve">
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chestplateButtonControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chestplateButtonControl.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="leggingsButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="leggingsButtonControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 339</value>
+  </data>
+  <data name="leggingsButtonControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="leggingsButtonControl.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="leggingsButtonControl.TabIndex" type="System.Int32, mscorlib">
+    <value>182</value>
+  </data>
+  <data name="&gt;&gt;leggingsButtonControl.Name" xml:space="preserve">
+    <value>leggingsButtonControl</value>
+  </data>
+  <data name="&gt;&gt;leggingsButtonControl.Type" xml:space="preserve">
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;leggingsButtonControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;leggingsButtonControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="bootsButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bootsButtonControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 339</value>
+  </data>
+  <data name="bootsButtonControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="bootsButtonControl.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="bootsButtonControl.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;bootsButtonControl.Name" xml:space="preserve">
+    <value>bootsButtonControl</value>
+  </data>
+  <data name="&gt;&gt;bootsButtonControl.Type" xml:space="preserve">
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bootsButtonControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bootsButtonControl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
