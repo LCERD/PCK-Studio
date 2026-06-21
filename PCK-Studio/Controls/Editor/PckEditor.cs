@@ -14,7 +14,6 @@ using OMI.Workers.Language;
 using OMI.Workers.Material;
 using OMI.Workers.Model;
 using OMI.Workers.Pck;
-using OpenTK;
 using PckStudio.Core;
 using PckStudio.Core.Deserializer;
 using PckStudio.Core.Extensions;
@@ -35,7 +34,6 @@ using PckStudio.ModelSupport;
 using PckStudio.Popups;
 using PckStudio.Properties;
 using PckStudio.Rendering;
-using PckStudio.Rendering.Texture;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -159,6 +157,8 @@ namespace PckStudio.Controls
                 [PckAssetType.BehavioursFile] = HandleBehavioursFile,
                 [PckAssetType.MaterialFile] = HandleMaterialFile,
             };
+
+            BigEndianCheckBox.CheckedChanged += bigEndianCheckbox_CheckChanged;
         }
 
         private void TreeViewMain_DrawNode(object sender, DrawTreeNodeEventArgs e)
@@ -2375,41 +2375,6 @@ namespace PckStudio.Controls
 
         private void setBoxVersion3ToolStripMenuItem_Click(object sender, EventArgs e) => SetPckXMLVersion(3);
 
-        private void SetPckEndianness(OMI.ByteOrder endianness)
-        {
-            try
-            {
-                if (treeViewMain.SelectedNode.Tag is PckAsset asset && (asset.Type is PckAssetType.AudioFile || asset.Type is PckAssetType.SkinDataFile || asset.Type is PckAssetType.TexturePackInfoFile))
-                {
-                    IDataFormatReader reader = asset.Type is PckAssetType.AudioFile
-                        ? new PckAudioFileReader(endianness == OMI.ByteOrder.BigEndian ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian)
-                        : new PckFileReader(endianness == OMI.ByteOrder.BigEndian ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian);
-                    object pck = reader.FromStream(new MemoryStream(asset.Data));
-
-                    IDataFormatWriter writer = asset.Type is PckAssetType.AudioFile
-                        ? new PckAudioFileWriter((PckAudioFile)pck, endianness)
-                        : new PckFileWriter((PckFile)pck, endianness);
-                    asset.SetData(writer);
-                    _wasModified = true;
-                    MessageBox.Show($"\"{asset.Filename}\" successfully converted to {(endianness == OMI.ByteOrder.LittleEndian ? "little" : "big")} endian.", "Converted PCK file");
-                }
-            }
-            catch (OverflowException)
-            {
-                MessageBox.Show(this, $"File was not a valid {(endianness != OMI.ByteOrder.LittleEndian ? "little" : "big")} endian PCK File.", "Not a valid PCK file");
-                return;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, ex.Message, "Not a valid PCK file");
-                return;
-            }
-        }
-
-        private void littleEndianToolStripMenuItem_Click(object sender, EventArgs e) => SetPckEndianness(OMI.ByteOrder.LittleEndian);
-
-        private void bigEndianToolStripMenuItem_Click(object sender, EventArgs e) => SetPckEndianness(OMI.ByteOrder.BigEndian);
-
         private void SetModelVersion(int version)
         {
             if (treeViewMain.SelectedNode.Tag is PckAsset asset && asset.Type is PckAssetType.ModelsFile)
@@ -2595,11 +2560,46 @@ namespace PckStudio.Controls
             }
         }
 
+        private void bigEndianCheckbox_CheckChanged(object sender, EventArgs e)
+        {
+            OMI.ByteOrder endianness = BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian;
+
+            foreach (PckAsset asset in EditorValue.File.GetAssets())
+            {
+                try
+                {
+                    if (asset.Type is PckAssetType.AudioFile || asset.Type is PckAssetType.SkinDataFile || asset.Type is PckAssetType.TexturePackInfoFile)
+                    {
+                        IDataFormatReader reader = asset.Type is PckAssetType.AudioFile
+                            ? new PckAudioFileReader(endianness == OMI.ByteOrder.BigEndian ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian)
+                            : new PckFileReader(endianness == OMI.ByteOrder.BigEndian ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian);
+                        object pck = reader.FromStream(new MemoryStream(asset.Data));
+
+                        IDataFormatWriter writer = asset.Type is PckAssetType.AudioFile
+                            ? new PckAudioFileWriter((PckAudioFile)pck, endianness)
+                            : new PckFileWriter((PckFile)pck, endianness);
+                        asset.SetData(writer);
+                        _wasModified = true;
+                        MessageBox.Show($"\"{asset.Filename}\" successfully converted to {(endianness == OMI.ByteOrder.LittleEndian ? "little" : "big")} endian.", "Converted PCK file");
+                    }
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show(this, $"\"{asset.Filename}\" was not a valid {(endianness != OMI.ByteOrder.LittleEndian ? "little" : "big")} endian PCK File.", "Failed to convert PCK file");
+                    continue;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, $"\"{asset.Filename}\" was not a valid PCK File.", "Failed to convert PCK file");
+                    continue;
+                }
+            }
+        }
+
         private void contextMenuPCKEntries_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             generateMipMapTextureToolStripMenuItem1.Visible = false;
             setModelContainerFormatToolStripMenuItem.Visible = false;
-            setSubPCKEndiannessToolStripMenuItem.Visible = false;
             setSubPCKBOXVersionToolStripMenuItem.Visible = false;
             exportToolStripMenuItem.Visible = false;
             toolStripSeparator5.Visible = false;
@@ -2638,11 +2638,6 @@ namespace PckStudio.Controls
                         break;
                     case PckAssetType.SkinDataFile:
                         setSubPCKBOXVersionToolStripMenuItem.Visible = true;
-                        setSubPCKEndiannessToolStripMenuItem.Visible = true;
-                        break;
-                    case PckAssetType.TexturePackInfoFile:
-                    case PckAssetType.AudioFile:
-                        setSubPCKEndiannessToolStripMenuItem.Visible = true;
                         break;
                 }
             }

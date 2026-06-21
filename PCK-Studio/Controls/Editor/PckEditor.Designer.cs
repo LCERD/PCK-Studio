@@ -89,9 +89,6 @@ namespace PckStudio.Controls
             this.entityMaterialsFileBINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewFileInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateMipMapTextureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.setSubPCKEndiannessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bigEndianXbox360PS3WiiUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.littleEndianPS4PSVitaSwitchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setModelContainerFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.version1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.version2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -505,7 +502,6 @@ namespace PckStudio.Controls
             this.setFileTypeToolStripMenuItem,
             this.viewFileInfoToolStripMenuItem,
             this.generateMipMapTextureToolStripMenuItem1,
-            this.setSubPCKEndiannessToolStripMenuItem,
             this.setModelContainerFormatToolStripMenuItem,
             this.setSubPCKBOXVersionToolStripMenuItem,
             this.exportIconToolStripMenuItem});
@@ -613,26 +609,6 @@ namespace PckStudio.Controls
             this.generateMipMapTextureToolStripMenuItem1.Name = "generateMipMapTextureToolStripMenuItem1";
             resources.ApplyResources(this.generateMipMapTextureToolStripMenuItem1, "generateMipMapTextureToolStripMenuItem1");
             this.generateMipMapTextureToolStripMenuItem1.Click += new System.EventHandler(this.generateMipMapTextureToolStripMenuItem_Click);
-            // 
-            // setSubPCKEndiannessToolStripMenuItem
-            // 
-            this.setSubPCKEndiannessToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bigEndianXbox360PS3WiiUToolStripMenuItem,
-            this.littleEndianPS4PSVitaSwitchToolStripMenuItem});
-            this.setSubPCKEndiannessToolStripMenuItem.Name = "setSubPCKEndiannessToolStripMenuItem";
-            resources.ApplyResources(this.setSubPCKEndiannessToolStripMenuItem, "setSubPCKEndiannessToolStripMenuItem");
-            // 
-            // bigEndianXbox360PS3WiiUToolStripMenuItem
-            // 
-            this.bigEndianXbox360PS3WiiUToolStripMenuItem.Name = "bigEndianXbox360PS3WiiUToolStripMenuItem";
-            resources.ApplyResources(this.bigEndianXbox360PS3WiiUToolStripMenuItem, "bigEndianXbox360PS3WiiUToolStripMenuItem");
-            this.bigEndianXbox360PS3WiiUToolStripMenuItem.Click += new System.EventHandler(this.bigEndianToolStripMenuItem_Click);
-            // 
-            // littleEndianPS4PSVitaSwitchToolStripMenuItem
-            // 
-            this.littleEndianPS4PSVitaSwitchToolStripMenuItem.Name = "littleEndianPS4PSVitaSwitchToolStripMenuItem";
-            resources.ApplyResources(this.littleEndianPS4PSVitaSwitchToolStripMenuItem, "littleEndianPS4PSVitaSwitchToolStripMenuItem");
-            this.littleEndianPS4PSVitaSwitchToolStripMenuItem.Click += new System.EventHandler(this.littleEndianToolStripMenuItem_Click);
             // 
             // setModelContainerFormatToolStripMenuItem
             // 
@@ -862,9 +838,6 @@ namespace PckStudio.Controls
         private MetroFramework.Controls.MetroButton buttonEdit;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroCheckBox BigEndianCheckBox;
-        private System.Windows.Forms.ToolStripMenuItem setSubPCKEndiannessToolStripMenuItem;
-        private ToolStripMenuItem bigEndianXbox360PS3WiiUToolStripMenuItem;
-        private ToolStripMenuItem littleEndianPS4PSVitaSwitchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setModelContainerFormatToolStripMenuItem;
         private ToolStripMenuItem version1ToolStripMenuItem;
         private ToolStripMenuItem version2ToolStripMenuItem;

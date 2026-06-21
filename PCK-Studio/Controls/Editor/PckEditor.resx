@@ -912,7 +912,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 66</value>
+    <value>76, 63</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -957,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="ParameterTypeTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 36</value>
+    <value>215, 33</value>
   </data>
   <data name="ParameterTypeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1002,7 +1002,7 @@
     <value>False</value>
   </data>
   <data name="parameterValueTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 68</value>
+    <value>215, 65</value>
   </data>
   <data name="parameterValueTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1026,7 +1026,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 94</value>
+    <value>215, 91</value>
   </data>
   <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 33</value>
@@ -1059,7 +1059,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, -41</value>
+    <value>138, -44</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1348,7 +1348,7 @@
 </value>
   </data>
   <data name="createToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="createToolStripMenuItem.Text" xml:space="preserve">
     <value>Create</value>
@@ -1413,7 +1413,7 @@
 </value>
   </data>
   <data name="importSkinsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="importSkinsToolStripMenuItem.Text" xml:space="preserve">
     <value>Import</value>
@@ -1425,13 +1425,13 @@
     <value>Export as 3DS Texture</value>
   </data>
   <data name="exportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="exportToolStripMenuItem.Text" xml:space="preserve">
     <value>Export</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="skinToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 22</value>
@@ -1523,24 +1523,6 @@
   <data name="generateMipMapTextureToolStripMenuItem1.Text" xml:space="preserve">
     <value>Generate MipMap Texture</value>
   </data>
-  <data name="bigEndianXbox360PS3WiiUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="bigEndianXbox360PS3WiiUToolStripMenuItem.Text" xml:space="preserve">
-    <value>Big</value>
-  </data>
-  <data name="littleEndianPS4PSVitaSwitchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="littleEndianPS4PSVitaSwitchToolStripMenuItem.Text" xml:space="preserve">
-    <value>Little</value>
-  </data>
-  <data name="setSubPCKEndiannessToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 22</value>
-  </data>
-  <data name="setSubPCKEndiannessToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set Endianness</value>
-  </data>
   <data name="version1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -1596,13 +1578,13 @@
     <value>Set BOX Version</value>
   </data>
   <data name="fullBodyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="fullBodyToolStripMenuItem.Text" xml:space="preserve">
     <value>Full Body</value>
   </data>
   <data name="croppedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="croppedToolStripMenuItem.Text" xml:space="preserve">
     <value>Cropped</value>
@@ -1614,7 +1596,7 @@
     <value>Export Icon</value>
   </data>
   <data name="miscFunctionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="miscFunctionsToolStripMenuItem.Text" xml:space="preserve">
     <value>File Functions</value>
@@ -1629,16 +1611,16 @@
 </value>
   </data>
   <data name="extractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="extractToolStripMenuItem.Text" xml:space="preserve">
     <value>Extract</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="cloneFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="cloneFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Clone</value>
@@ -1651,7 +1633,7 @@
 </value>
   </data>
   <data name="renameFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="renameFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Rename</value>
@@ -1667,19 +1649,19 @@
 </value>
   </data>
   <data name="replaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="replaceToolStripMenuItem.Text" xml:space="preserve">
     <value>Replace</value>
   </data>
   <data name="deleteFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="deleteFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="contextMenuPCKEntries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 214</value>
+    <value>181, 236</value>
   </data>
   <data name="&gt;&gt;contextMenuPCKEntries.Name" xml:space="preserve">
     <value>contextMenuPCKEntries</value>
@@ -2059,24 +2041,6 @@
     <value>generateMipMapTextureToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;generateMipMapTextureToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;setSubPCKEndiannessToolStripMenuItem.Name" xml:space="preserve">
-    <value>setSubPCKEndiannessToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;setSubPCKEndiannessToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bigEndianXbox360PS3WiiUToolStripMenuItem.Name" xml:space="preserve">
-    <value>bigEndianXbox360PS3WiiUToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;bigEndianXbox360PS3WiiUToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;littleEndianPS4PSVitaSwitchToolStripMenuItem.Name" xml:space="preserve">
-    <value>littleEndianPS4PSVitaSwitchToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;littleEndianPS4PSVitaSwitchToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;setModelContainerFormatToolStripMenuItem.Name" xml:space="preserve">
