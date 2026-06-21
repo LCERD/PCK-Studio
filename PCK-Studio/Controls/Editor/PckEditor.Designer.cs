@@ -47,8 +47,9 @@ namespace PckStudio.Controls
             this.contextMenuParameterTree = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addParameterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addBOXEntryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addANIMEntryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBOXEntryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addOFFSETParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addMultipleEntriesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAllEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,9 +113,8 @@ namespace PckStudio.Controls
             this.deleteFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.addMultipleEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LittleEndianCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.BigEndianCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.previewPictureBox = new PckStudio.ToolboxItems.InterpolationPictureBox();
-            this.addOFFSETParameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(logoPictureBox)).BeginInit();
             this.ParametersTabControl.SuspendLayout();
@@ -297,17 +297,23 @@ namespace PckStudio.Controls
             resources.ApplyResources(this.addParameterToolStripMenuItem1, "addParameterToolStripMenuItem1");
             this.addParameterToolStripMenuItem1.Click += new System.EventHandler(this.addParameterToolStripMenuItem_Click);
             // 
+            // addANIMEntryToolStripMenuItem1
+            // 
+            this.addANIMEntryToolStripMenuItem1.Name = "addANIMEntryToolStripMenuItem1";
+            resources.ApplyResources(this.addANIMEntryToolStripMenuItem1, "addANIMEntryToolStripMenuItem1");
+            this.addANIMEntryToolStripMenuItem1.Click += new System.EventHandler(this.addSkinAdjustmentParametersToolStripMenuItem_Click);
+            // 
             // addBOXEntryToolStripMenuItem1
             // 
             this.addBOXEntryToolStripMenuItem1.Name = "addBOXEntryToolStripMenuItem1";
             resources.ApplyResources(this.addBOXEntryToolStripMenuItem1, "addBOXEntryToolStripMenuItem1");
             this.addBOXEntryToolStripMenuItem1.Click += new System.EventHandler(this.addBOXParameterToolStripMenuItem1_Click);
             // 
-            // addANIMEntryToolStripMenuItem1
+            // addOFFSETParameterToolStripMenuItem
             // 
-            this.addANIMEntryToolStripMenuItem1.Name = "addANIMEntryToolStripMenuItem1";
-            resources.ApplyResources(this.addANIMEntryToolStripMenuItem1, "addANIMEntryToolStripMenuItem1");
-            this.addANIMEntryToolStripMenuItem1.Click += new System.EventHandler(this.addSkinAdjustmentParametersToolStripMenuItem_Click);
+            this.addOFFSETParameterToolStripMenuItem.Name = "addOFFSETParameterToolStripMenuItem";
+            resources.ApplyResources(this.addOFFSETParameterToolStripMenuItem, "addOFFSETParameterToolStripMenuItem");
+            this.addOFFSETParameterToolStripMenuItem.Click += new System.EventHandler(this.addOFFSETParameterToolStripMenuItem_Click);
             // 
             // addMultipleEntriesToolStripMenuItem1
             // 
@@ -765,14 +771,14 @@ namespace PckStudio.Controls
             resources.ApplyResources(this.addMultipleEntriesToolStripMenuItem, "addMultipleEntriesToolStripMenuItem");
             this.addMultipleEntriesToolStripMenuItem.Name = "addMultipleEntriesToolStripMenuItem";
             // 
-            // LittleEndianCheckBox
+            // BigEndianCheckBox
             // 
-            resources.ApplyResources(this.LittleEndianCheckBox, "LittleEndianCheckBox");
-            this.LittleEndianCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.LittleEndianCheckBox.Name = "LittleEndianCheckBox";
-            this.LittleEndianCheckBox.Style = MetroFramework.MetroColorStyle.White;
-            this.LittleEndianCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.LittleEndianCheckBox.UseSelectable = true;
+            resources.ApplyResources(this.BigEndianCheckBox, "BigEndianCheckBox");
+            this.BigEndianCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.BigEndianCheckBox.Name = "BigEndianCheckBox";
+            this.BigEndianCheckBox.Style = MetroFramework.MetroColorStyle.White;
+            this.BigEndianCheckBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.BigEndianCheckBox.UseSelectable = true;
             // 
             // previewPictureBox
             // 
@@ -784,18 +790,12 @@ namespace PckStudio.Controls
             this.previewPictureBox.Name = "previewPictureBox";
             this.previewPictureBox.TabStop = false;
             // 
-            // addOFFSETParameterToolStripMenuItem
-            // 
-            this.addOFFSETParameterToolStripMenuItem.Name = "addOFFSETParameterToolStripMenuItem";
-            resources.ApplyResources(this.addOFFSETParameterToolStripMenuItem, "addOFFSETParameterToolStripMenuItem");
-            this.addOFFSETParameterToolStripMenuItem.Click += new System.EventHandler(this.addOFFSETParameterToolStripMenuItem_Click);
-            // 
             // PckEditor
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.previewPictureBox);
-            this.Controls.Add(this.LittleEndianCheckBox);
+            this.Controls.Add(this.BigEndianCheckBox);
             this.Controls.Add(this.pckFileLabel);
             this.Controls.Add(this.labelImageSize);
             this.Controls.Add(this.fileEntryCountLabel);
@@ -870,7 +870,7 @@ namespace PckStudio.Controls
         private MetroFramework.Controls.MetroTextBox parameterValueTextBox;
         private MetroFramework.Controls.MetroButton buttonEdit;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroCheckBox LittleEndianCheckBox;
+        private MetroFramework.Controls.MetroCheckBox BigEndianCheckBox;
         private System.Windows.Forms.ToolStripMenuItem setSubPCKEndiannessToolStripMenuItem;
         private ToolStripMenuItem bigEndianXbox360PS3WiiUToolStripMenuItem;
         private ToolStripMenuItem littleEndianPS4PSVitaSwitchToolStripMenuItem;

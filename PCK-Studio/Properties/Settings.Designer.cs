@@ -47,12 +47,12 @@ namespace PckStudio.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UseLittleEndianAsDefault {
+        public bool UseBigEndianAsDefault {
             get {
-                return ((bool)(this["UseLittleEndianAsDefault"]));
+                return ((bool)(this["UseBigEndianAsDefault"]));
             }
             set {
-                this["UseLittleEndianAsDefault"] = value;
+                this["UseBigEndianAsDefault"] = value;
             }
         }
         

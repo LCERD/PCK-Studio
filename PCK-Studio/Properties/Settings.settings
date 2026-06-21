@@ -8,7 +8,7 @@
     <Setting Name="AutoSaveChanges" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UseLittleEndianAsDefault" Type="System.Boolean" Scope="User">
+    <Setting Name="UseBigEndianAsDefault" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LoadSubPcks" Type="System.Boolean" Scope="User">

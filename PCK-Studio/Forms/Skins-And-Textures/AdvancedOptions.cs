@@ -14,11 +14,11 @@ namespace PckStudio.Popups
 {
     public partial class AdvancedOptions : MetroFramework.Forms.MetroForm
     {
-        public bool IsLittleEndian
+        public bool IsBigEndian
         {
             set
             {
-                _endianness = value ? ByteOrder.LittleEndian : ByteOrder.BigEndian;
+                _endianness = value ? ByteOrder.BigEndian : ByteOrder.LittleEndian;
             }
         }
         private readonly PckFile _pckFile;

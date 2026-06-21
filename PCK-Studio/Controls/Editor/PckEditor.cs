@@ -80,8 +80,8 @@ namespace PckStudio.Controls
             _originalEndianness = packInfo.Endianness;
             _currentEndianness = packInfo.Endianness;
 
-            LittleEndianCheckBox.Visible = packInfo.AllowEndianSwap;
-            LittleEndianCheckBox.Checked = packInfo.Endianness == OMI.ByteOrder.LittleEndian;
+            BigEndianCheckBox.Visible = packInfo.AllowEndianSwap;
+            BigEndianCheckBox.Checked = packInfo.Endianness == OMI.ByteOrder.BigEndian;
 
             treeViewMain.TreeViewNodeSorter = new PckNodeSorter();
             treeViewMain.DrawMode = TreeViewDrawMode.OwnerDrawText;
@@ -186,7 +186,7 @@ namespace PckStudio.Controls
 
         protected override void PreSave()
         {
-            EditorValue.Endianness = LittleEndianCheckBox.Checked ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian;
+            EditorValue.Endianness = BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian;
         }
 
         protected override void PostSave()
@@ -1526,11 +1526,11 @@ namespace PckStudio.Controls
             }
 
             PckAudioFile newAudioFile = CreateNewAudioFile();
-            PckAsset newAudioAsset = CreateNewAudioAsset(LittleEndianCheckBox.Checked, newAudioFile);
+            PckAsset newAudioAsset = CreateNewAudioAsset(BigEndianCheckBox.Checked, newAudioFile);
 
             ISaveContext<PckAudioFile> saveContext = new DelegatedSaveContext<PckAudioFile>(Settings.Default.AutoSaveChanges, (audioFile) =>
             {
-                newAudioAsset.SetData(new PckAudioFileWriter(audioFile, LittleEndianCheckBox.Checked ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian));
+                newAudioAsset.SetData(new PckAudioFileWriter(audioFile, BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian));
             });
 
             AudioEditor diag = new AudioEditor(newAudioFile, saveContext);
@@ -1563,7 +1563,7 @@ namespace PckStudio.Controls
             }
 
             EditorValue.File.CreateNewAsset("Skins.pck", PckAssetType.SkinDataFile, new PckFileWriter(new PckFile(3, 3),
-                    LittleEndianCheckBox.Checked ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian));
+                    BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian));
 
             BuildMainTreeView();
         }
@@ -2352,13 +2352,13 @@ namespace PckStudio.Controls
 
         private void SetPckXMLVersion(int xmlVersion)
         {
-            bool isLittleEndian = LittleEndianCheckBox.Checked;
+            bool isBigEndian = BigEndianCheckBox.Checked;
 
             try
             {
                 if (treeViewMain.SelectedNode.Tag is PckAsset asset && (asset.Type is PckAssetType.AudioFile || asset.Type is PckAssetType.SkinDataFile || asset.Type is PckAssetType.TexturePackInfoFile))
                 {
-                    OMI.ByteOrder endianness = isLittleEndian ? OMI.ByteOrder.LittleEndian : OMI.ByteOrder.BigEndian;
+                    OMI.ByteOrder endianness = isBigEndian ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian;
                     IDataFormatReader reader = new PckFileReader(endianness);
                     object pck = reader.FromStream(new MemoryStream(asset.Data));
 
@@ -2370,7 +2370,7 @@ namespace PckStudio.Controls
             }
             catch (OverflowException)
             {
-                MessageBox.Show(this, $"\"PCK cannot be set because the file endianness is not {(isLittleEndian ? "little" : "big")}.", "Unable to set PCK BOX Version");
+                MessageBox.Show(this, $"\"PCK cannot be set because the file endianness is not {(isBigEndian ? "big" : "little")}.", "Unable to set PCK BOX Version");
                 return;
             }
             catch (Exception ex)

@@ -912,7 +912,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 72</value>
+    <value>76, 69</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -957,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="ParameterTypeTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 42</value>
+    <value>215, 39</value>
   </data>
   <data name="ParameterTypeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1002,7 +1002,7 @@
     <value>False</value>
   </data>
   <data name="parameterValueTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 74</value>
+    <value>215, 71</value>
   </data>
   <data name="parameterValueTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1026,7 +1026,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 100</value>
+    <value>215, 97</value>
   </data>
   <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 33</value>
@@ -1059,7 +1059,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, -35</value>
+    <value>138, -38</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1139,7 +1139,7 @@
     <value>Edit All Parameters</value>
   </data>
   <data name="contextMenuParameterTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 114</value>
+    <value>206, 92</value>
   </data>
   <data name="&gt;&gt;contextMenuParameterTree.Name" xml:space="preserve">
     <value>contextMenuParameterTree</value>
@@ -1743,34 +1743,34 @@
   <data name="addMultipleEntriesToolStripMenuItem.Text" xml:space="preserve">
     <value>Add Multiple Entries</value>
   </data>
-  <data name="LittleEndianCheckBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="BigEndianCheckBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="LittleEndianCheckBox.AutoSize" type="System.Boolean, mscorlib">
+  <data name="BigEndianCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="LittleEndianCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>831, 0</value>
+  <data name="BigEndianCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>819, 0</value>
   </data>
-  <data name="LittleEndianCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 15</value>
+  <data name="BigEndianCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 15</value>
   </data>
-  <data name="LittleEndianCheckBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="BigEndianCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="LittleEndianCheckBox.Text" xml:space="preserve">
-    <value>Save as Switch/Vita/PS4 PCK</value>
+  <data name="BigEndianCheckBox.Text" xml:space="preserve">
+    <value>Set as Xbox 360/PS3/Wii U PCK</value>
   </data>
-  <data name="&gt;&gt;LittleEndianCheckBox.Name" xml:space="preserve">
-    <value>LittleEndianCheckBox</value>
+  <data name="&gt;&gt;BigEndianCheckBox.Name" xml:space="preserve">
+    <value>BigEndianCheckBox</value>
   </data>
-  <data name="&gt;&gt;LittleEndianCheckBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;BigEndianCheckBox.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;LittleEndianCheckBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BigEndianCheckBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;LittleEndianCheckBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BigEndianCheckBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="previewPictureBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1833,16 +1833,22 @@
   <data name="&gt;&gt;addParameterToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;addANIMEntryToolStripMenuItem1.Name" xml:space="preserve">
+    <value>addANIMEntryToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;addANIMEntryToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;addBOXEntryToolStripMenuItem1.Name" xml:space="preserve">
     <value>addBOXEntryToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;addBOXEntryToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;addANIMEntryToolStripMenuItem1.Name" xml:space="preserve">
-    <value>addANIMEntryToolStripMenuItem1</value>
+  <data name="&gt;&gt;addOFFSETParameterToolStripMenuItem.Name" xml:space="preserve">
+    <value>addOFFSETParameterToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;addANIMEntryToolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;addOFFSETParameterToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;addMultipleEntriesToolStripMenuItem1.Name" xml:space="preserve">
@@ -2203,12 +2209,6 @@
     <value>addMultipleEntriesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;addMultipleEntriesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addOFFSETParameterToolStripMenuItem.Name" xml:space="preserve">
-    <value>addOFFSETParameterToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;addOFFSETParameterToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

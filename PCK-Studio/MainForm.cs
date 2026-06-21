@@ -95,7 +95,8 @@ namespace PckStudio
             }
             try
             {
-                OMI.ByteOrder byteOrder = OMI.ByteOrder.BigEndian;
+                // Try first with Little Endian as more platforms use that
+                OMI.ByteOrder byteOrder = OMI.ByteOrder.LittleEndian;
                 PckFile pckFile = ReadPck(filepath, byteOrder);
                 packInfo = PackInfo.Create(pckFile, byteOrder, true);
                 return packInfo.IsValid;
@@ -104,8 +105,8 @@ namespace PckStudio
             {
                 try
                 {
-                    // if failed, attempt again in the reverse. THEN throw an error if failed
-                    OMI.ByteOrder byteOrder = OMI.ByteOrder.LittleEndian;
+                    // if failed, attempt check again for Old Gen Platforms
+                    OMI.ByteOrder byteOrder = OMI.ByteOrder.BigEndian;
                     PckFile pckFile = ReadPck(filepath, byteOrder);
                     packInfo = PackInfo.Create(pckFile, byteOrder, true);
                     return packInfo.IsValid;
@@ -441,7 +442,7 @@ namespace PckStudio
             if (TryGetCurrentEditor(out IEditor<PackInfo> editor))
             {
                 using AdvancedOptions advanced = new AdvancedOptions(editor.EditorValue.File);
-                advanced.IsLittleEndian = editor.EditorValue.Endianness == OMI.ByteOrder.LittleEndian;
+                advanced.IsBigEndian = editor.EditorValue.Endianness == OMI.ByteOrder.BigEndian;
                 if (advanced.ShowDialog() == DialogResult.OK)
                 {
                     editor.UpdateView();
