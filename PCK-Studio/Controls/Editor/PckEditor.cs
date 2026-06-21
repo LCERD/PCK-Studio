@@ -1020,7 +1020,7 @@ namespace PckStudio.Controls
                                     continue;
                                 string key = arg[0];
                                 string value = arg[1];
-                                if (key == "DISPLNAMEID" || key == "THEMENAMEID")
+                                if (key == "DISPLAYNAMEID" || key == "THEMENAMEID")
                                 {
 
                                 }
@@ -1242,9 +1242,11 @@ namespace PckStudio.Controls
 
                 string baseDirectory = Path.GetDirectoryName(filesDropped.First());
 
+                string finalDropPath = targetNode.Tag != null ? Path.GetDirectoryName(targetNode?.FullPath) : targetNode?.FullPath;
+
                 IEnumerable<string> importPaths = files.Concat(directoryFiles);
 
-                ImportFiles(baseDirectory, importPaths, string.IsNullOrWhiteSpace(targetNode?.FullPath) ? string.Empty : targetNode?.FullPath);
+                ImportFiles(baseDirectory, importPaths, string.IsNullOrWhiteSpace(finalDropPath) ? string.Empty : finalDropPath);
                 return;
             }
 
