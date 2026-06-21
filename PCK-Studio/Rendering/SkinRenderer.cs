@@ -404,12 +404,13 @@ namespace PckStudio.Rendering
         private void InitializeArmorData()
         {
             const float armorInflation = 0.75f;
+            const float armorLayer2Inflation = 0.5f;
 
             var helmet = new CubeMeshCollection("HELMET");
             helmet.Add(new(-4, -8, -4), new(8, 8, 8), new(0, 0), inflate: armorInflation);
 
             var chest = new CubeMeshCollection("CHEST");
-            chest.Add(new(-4, 0, -2), new(8, 12, 4), new(16, 16), inflate: armorInflation + 0.01f);
+            chest.Add(new(-4, 0, -2), new(8, 12, 4), new(16, 16), inflate: armorInflation);
 
             var shoulder0 = new CubeMeshCollection("SHOULDER0", rightArm.Translation, rightArm.Pivot);
             shoulder0.Add(new(-3, -2, -2), new(4, 12, 4), new(40, 16), inflate: armorInflation);
@@ -418,19 +419,19 @@ namespace PckStudio.Rendering
             shoulder1.Add(new(-1, -2, -2), new(4, 12, 4), new(40, 16), inflate: armorInflation, mirrorTexture: true);
             
             var waist = new CubeMeshCollection("WAIST");
-            waist.Add(new(-4, 0, -2), new(8, 12, 4), new(16, 48), inflate: armorInflation);
+            waist.Add(new(-4, 0, -2), new(8, 12, 4), new(16, 48), inflate: armorLayer2Inflation + 0.01f);
 
             var pants0 = new CubeMeshCollection("PANTS0", rightLeg.Translation, rightLeg.Pivot);
-            pants0.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 48), inflate: armorInflation);
+            pants0.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 48), inflate: armorLayer2Inflation);
             
             var pants1 = new CubeMeshCollection("PANTS1", leftLeg.Translation, leftLeg.Pivot);
-            pants1.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 48), inflate: armorInflation, mirrorTexture: true);
+            pants1.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 48), inflate: armorLayer2Inflation, mirrorTexture: true);
 
             var boot0 = new CubeMeshCollection("BOOT0", rightLeg.Translation, rightLeg.Pivot);
-            boot0.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 16), inflate: armorInflation + 0.25f);
+            boot0.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 16), inflate: armorInflation);
             
             var boot1 = new CubeMeshCollection("BOOT1", leftLeg.Translation, leftLeg.Pivot);
-            boot1.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 16), inflate: armorInflation + 0.25f, mirrorTexture: true);
+            boot1.Add(new(-2, 0, -2), new(4, 12, 4), new(0, 16), inflate: armorInflation, mirrorTexture: true);
 
             // Tool boxes handled by UpdateANIM method - May
             tool0 = new CubeMeshCollection("TOOL0", rightArm.Translation, rightArm.Pivot);
