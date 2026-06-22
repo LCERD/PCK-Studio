@@ -966,63 +966,6 @@ namespace PckStudio.Controls
             return;
         }
 
-        [Obsolete("Refactor or remove this")]
-        private void importSkinToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog contents = new OpenFileDialog())
-            {
-                contents.Title = "Select Extracted Skin File";
-                contents.Filter = "Skin File (*.png)|*.png";
-
-                if (contents.ShowDialog() == DialogResult.OK)
-                {
-                    string skinNameImport = Path.GetFileName(contents.FileName);
-                    byte[] data = File.ReadAllBytes(contents.FileName);
-                    PckAsset mfNew = EditorValue.File.CreateNewAsset(skinNameImport, PckAssetType.SkinFile);
-                    mfNew.SetData(data);
-                    string propertyFile = Path.GetFileNameWithoutExtension(contents.FileName) + ".txt";
-                    if (File.Exists(propertyFile))
-                    {
-                        string[] txtProperties = File.ReadAllLines(propertyFile);
-                        if ((txtProperties.Contains("DISPLAYNAMEID") && txtProperties.Contains("DISPLAYNAME")) ||
-                            txtProperties.Contains("THEMENAMEID") && txtProperties.Contains("THEMENAME") &&
-                            TryGetLocFile(out LOCFile locFile))
-                        {
-                            // do stuff 
-                            //l.AddLocKey(locThemeId, locTheme);
-                            //using (var stream = new MemoryStream())
-                            //{
-                            //	LOCFileWriter.Write(stream, locFile);
-                            //	locdata.SetData(stream.ToArray());
-                            //}
-                        }
-
-                        try
-                        {
-                            foreach (string prop in txtProperties)
-                            {
-                                string[] arg = prop.Split(':');
-                                if (arg.Length < 2)
-                                    continue;
-                                string key = arg[0];
-                                string value = arg[1];
-                                if (key == "DISPLAYNAMEID" || key == "THEMENAMEID")
-                                {
-
-                                }
-                                mfNew.AddParameter(key, value);
-                            }
-                            _wasModified = true;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                }
-            }
-        }
-
         private void folderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TextPrompt folderNamePrompt = new TextPrompt();

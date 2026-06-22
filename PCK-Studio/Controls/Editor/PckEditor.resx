@@ -912,7 +912,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 57</value>
+    <value>76, 51</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -957,7 +957,7 @@
     <value>False</value>
   </data>
   <data name="ParameterTypeTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 27</value>
+    <value>215, 21</value>
   </data>
   <data name="ParameterTypeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1002,7 +1002,7 @@
     <value>False</value>
   </data>
   <data name="parameterValueTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 59</value>
+    <value>215, 53</value>
   </data>
   <data name="parameterValueTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 20</value>
@@ -1026,7 +1026,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="buttonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 85</value>
+    <value>215, 79</value>
   </data>
   <data name="buttonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 33</value>
@@ -1059,7 +1059,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, -50</value>
+    <value>138, -56</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1348,32 +1348,16 @@
 </value>
   </data>
   <data name="createToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="createToolStripMenuItem.Text" xml:space="preserve">
     <value>Create</value>
   </data>
-  <data name="importSkinToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xOdTWsmQAAAImSURBVDhPpc/d
-        T1JxHMdxLosny82tHI9pRSeKWt4oA3mQw+aQ1lq2pdFKBQ5x6OzMaYkmlSWksS6aF8Jqri4UbT1g5jS6
-        7D9p66Yu6ybOp50vAoN10/ptr52d7fd9f89RKP73AFDYTBoweg1OGjSwGVuIRa8inYf2kWPtSmI1qOie
-        fF+erQSMLbDq1I0BnYocObyfdLRXMAZ5kRYndOp6QB5sdq7zIPEwB+BhWtHLtBF5WCZ/XUNgfIjF7PV+
-        zI0GyWL8MhZvDiIbCeJJNIgF7gKZuuTGnUEnTpu1jYGVVBhbmThKWZF8WUqR0oJYkR0nhYkhrE9cRdfR
-        1npgdXoMxQdxbM7xWLsbJuuzCWykbmFZGMaycAW7GZHkuQHkuH5SCxRmwtisBqZHIb+/TvEkLw6TnYyA
-        3YyAPBdAjgvQsxaQB399/wpJksDan4PtXkUxOYYPyQh29jb7etbA2l/JQyhLv2lJLVB8yOPnj28oSxJ8
-        9hfw9azgfTKKrWQEpXkRnzIi/N0FsPaXdEcql1GYidYD+REWbydDKCZv4ON9kXC9NsRcZ2pK6Tg+p+NA
-        m4KkLnbVA7kRP97cDqE4FcK7ewKJO0+Bd9RtP0pgez7x98DTkBfPrrmxFHLBZVLBbVIjPeDA40BddbAZ
-        BQSfFYKXAd9nqQTManj1SuI3a0nzYEOA9zOI9R1HzGeBw6yC06yG06gkng5tg+rg5PmzlV/411PbvHf+
-        ACl773zoakfrAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="importSkinToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="importFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 22</value>
   </data>
-  <data name="importSkinToolStripMenuItem.Text" xml:space="preserve">
-    <value>Import Skin</value>
+  <data name="importFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Import File</value>
   </data>
   <data name="importExtractedSkinsFolderToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1392,12 +1376,6 @@
   <data name="importExtractedSkinsFolderToolStripMenuItem.Text" xml:space="preserve">
     <value>Import Extracted Skins Folder</value>
   </data>
-  <data name="importFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
-  </data>
-  <data name="importFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Import File</value>
-  </data>
   <data name="importSkinsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -1407,7 +1385,7 @@
 </value>
   </data>
   <data name="importSkinsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="importSkinsToolStripMenuItem.Text" xml:space="preserve">
     <value>Import</value>
@@ -1419,13 +1397,13 @@
     <value>Export as 3DS Texture</value>
   </data>
   <data name="exportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="exportToolStripMenuItem.Text" xml:space="preserve">
     <value>Export</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="skinToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 22</value>
@@ -1590,7 +1568,7 @@
     <value>Export Icon</value>
   </data>
   <data name="miscFunctionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="miscFunctionsToolStripMenuItem.Text" xml:space="preserve">
     <value>File Functions</value>
@@ -1605,16 +1583,16 @@
 </value>
   </data>
   <data name="extractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="extractToolStripMenuItem.Text" xml:space="preserve">
     <value>Extract</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="cloneFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="cloneFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Clone</value>
@@ -1627,7 +1605,7 @@
 </value>
   </data>
   <data name="renameFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="renameFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Rename</value>
@@ -1643,19 +1621,19 @@
 </value>
   </data>
   <data name="replaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="replaceToolStripMenuItem.Text" xml:space="preserve">
     <value>Replace</value>
   </data>
   <data name="deleteFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="deleteFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="contextMenuPCKEntries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 214</value>
+    <value>181, 236</value>
   </data>
   <data name="&gt;&gt;contextMenuPCKEntries.Name" xml:space="preserve">
     <value>contextMenuPCKEntries</value>
@@ -1897,12 +1875,6 @@
     <value>importSkinsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;importSkinsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;importSkinToolStripMenuItem.Name" xml:space="preserve">
-    <value>importSkinToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;importSkinToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;importExtractedSkinsFolderToolStripMenuItem.Name" xml:space="preserve">

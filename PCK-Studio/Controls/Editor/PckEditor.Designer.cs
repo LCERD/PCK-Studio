@@ -66,7 +66,6 @@ namespace PckStudio.Controls
             this.behavioursbinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entityMaterialsbinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importSkinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importExtractedSkinsFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -444,17 +443,10 @@ namespace PckStudio.Controls
             // importSkinsToolStripMenuItem
             // 
             this.importSkinsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importSkinToolStripMenuItem,
-            this.importExtractedSkinsFolderToolStripMenuItem,
-            this.importFileToolStripMenuItem});
+            this.importFileToolStripMenuItem,
+            this.importExtractedSkinsFolderToolStripMenuItem});
             resources.ApplyResources(this.importSkinsToolStripMenuItem, "importSkinsToolStripMenuItem");
             this.importSkinsToolStripMenuItem.Name = "importSkinsToolStripMenuItem";
-            // 
-            // importSkinToolStripMenuItem
-            // 
-            resources.ApplyResources(this.importSkinToolStripMenuItem, "importSkinToolStripMenuItem");
-            this.importSkinToolStripMenuItem.Name = "importSkinToolStripMenuItem";
-            this.importSkinToolStripMenuItem.Click += new System.EventHandler(this.importSkinToolStripMenuItem_Click);
             // 
             // importExtractedSkinsFolderToolStripMenuItem
             // 
@@ -807,7 +799,6 @@ namespace PckStudio.Controls
         private System.Windows.Forms.ToolStripMenuItem behavioursbinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entityMaterialsbinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importSkinsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importSkinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importExtractedSkinsFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
