@@ -1321,6 +1321,11 @@ namespace PckStudio.Controls
             int skipAttempts = 3;
             int typeDuplication = 0;
             PckAssetType lastSelectedAssetType = PckAssetType.SkinFile;
+
+            bool addSkin = false;
+            LOCFile locFile = null;
+            TryGetLocFile(out locFile);
+
             foreach (var filepath in files)
             {
                 if (filepath.EndsWith(".txt") && !singleFile)
@@ -1405,11 +1410,43 @@ namespace PckStudio.Controls
                 if (EditorValue.File.Contains(importedAsset.Filename, importedAsset.Type))
                 {
                     MessageBox.Show(this, $"'{assetPath}' of type {assetType} already exists.\nSkiping file.", "File already exists", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    Debug.WriteLine($"'{assetPath}' of type {assetType} already exists.\nSkiping file.");
+                    Debug.WriteLine($"'{assetPath}' of type {assetType} already exists.\nSkipping file.");
+                    skippedFiles++;
                     continue;
                 }
 
                 EditorValue.File.AddAsset(importedAsset);
+
+                if(importedAsset.Type == PckAssetType.SkinFile && locFile != null)
+                {
+                    const string displayNameLabel = "DISPLAYNAME";
+                    const string displayNameIDLabel = "DISPLAYNAMEID";
+                    const string themeNameLabel = "THEMENAME";
+                    const string themeNameIDLabel = "THEMENAMEID";
+
+                    string displayName;
+                    string skin_key;
+                    string themeName;
+                    string themeNameID;
+
+                    importedAsset.TryGetParameter(displayNameLabel, out displayName);
+                    if (!importedAsset.TryGetParameter(displayNameIDLabel, out skin_key))
+                    {
+                        // if failed, try LOC_KEY
+                        importedAsset.TryGetParameter("LOC_KEY", out skin_key);
+                    }
+
+                    importedAsset.TryGetParameter(themeNameLabel, out themeName);
+                    importedAsset.TryGetParameter(themeNameIDLabel, out themeNameID);
+
+                    if (!locFile.HasLocEntry(skin_key) && !String.IsNullOrEmpty(displayName))
+                        locFile.AddLocKey(skin_key, displayName);
+
+                    if (!locFile.HasLocEntry(themeNameID) && !String.IsNullOrEmpty(themeName))
+                        locFile.AddLocKey(themeNameID, themeName);
+
+                    addSkin = true;
+                }
 
                 addedCount++;
             }
@@ -1420,6 +1457,9 @@ namespace PckStudio.Controls
             {
                 _wasModified = true;
                 BuildMainTreeView();
+
+                if(locFile != null && addSkin)
+                    TrySetLocFile(locFile);
             }
         }
 
@@ -1436,29 +1476,6 @@ namespace PckStudio.Controls
                 trailingNodes.Add(node);
             }
             return trailingNodes;
-        }
-
-        private void ImportFiles(string[] files)
-        {
-            int addedCount = 0;
-            foreach (var file in files)
-            {
-                using AddFilePrompt addFile = new AddFilePrompt(Path.GetFileName(file));
-                if (addFile.ShowDialog(this) != DialogResult.OK)
-                    continue;
-
-                if (EditorValue.File.Contains(addFile.Filepath, addFile.Filetype))
-                {
-                    MessageBox.Show(this, $"'{addFile.Filepath}' of type {addFile.Filetype} already exists.", "Import failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    continue;
-                }
-                EditorValue.File.CreateNewAsset(addFile.Filepath, addFile.Filetype, () => File.ReadAllBytes(file));
-                addedCount++;
-
-                BuildMainTreeView();
-                _wasModified = true;
-            }
-            Trace.TraceInformation("[{0}] Imported {1} file(s).", nameof(ImportFiles), addedCount);
         }
 
         private void createSkinToolStripMenuItem_Click(object sender, EventArgs e)
