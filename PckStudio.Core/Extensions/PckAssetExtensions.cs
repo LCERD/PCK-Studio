@@ -45,6 +45,10 @@ namespace PckStudio.Core.Extensions
             {
                 throw new Exception("Asset is not suitable to contain image data.");
             }
+            if (asset.Size == 0)
+            {
+                throw new Exception("Asset is has no data.");
+            }
             return asset.GetDeserializedData(ImageDeserializer.DefaultDeserializer);
         }
 

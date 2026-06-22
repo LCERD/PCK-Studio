@@ -1118,7 +1118,7 @@ namespace PckStudio.Controls
                         previewPictureBox.Image = img;
                         labelImageSize.Text = $"{previewPictureBox.Image.Size.Width}x{previewPictureBox.Image.Size.Height}";
                     }
-                    catch(System.ArgumentException ex)
+                    catch(Exception ex)
                     {
                         previewPictureBox.Image = Resources.NoImageFound;
                         MessageBox.Show(this, "Not a valid .PNG or .TGA image or invalid image data found");
@@ -1803,11 +1803,10 @@ namespace PckStudio.Controls
         {
             TreeNode node = treeViewMain.SelectedNode;
 
-            // abb = "Abbreviated Path"
-            string abbPath = Path.GetDirectoryName(asset.Filename);
-            int startIndex = abbPath.IndexOf(node.Text);
-            abbPath = abbPath.Substring(startIndex, abbPath.Length - startIndex);
-            string finalPath = ($"{outPath}/{abbPath}/").Replace('\\', '/');
+            string abbreviatedPath = Path.GetDirectoryName(asset.Filename);
+            int startIndex = abbreviatedPath.IndexOf(node.Text);
+            abbreviatedPath = abbreviatedPath.Substring(startIndex, abbreviatedPath.Length - startIndex);
+            string finalPath = ($"{outPath}/{abbreviatedPath}/").Replace('\\', '/');
 
             if (!Directory.Exists(finalPath))
                 Directory.CreateDirectory(finalPath);
