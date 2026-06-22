@@ -1228,7 +1228,7 @@ namespace PckStudio.Controls
 
                 string baseDirectory = Path.GetDirectoryName(filesDropped.First());
 
-                string finalDropPath = targetNode.Tag != null ? Path.GetDirectoryName(targetNode?.FullPath) : targetNode?.FullPath;
+                string finalDropPath = targetNode != null ? (targetNode.Tag != null ? Path.GetDirectoryName(targetNode?.FullPath) : targetNode?.FullPath) : "";
 
                 IEnumerable<string> importPaths = files.Concat(directoryFiles);
 
