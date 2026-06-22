@@ -956,26 +956,12 @@ namespace PckStudio.Controls
         private void importFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using var ofd = new OpenFileDialog();
-            // Suddenly, and randomly, this started throwing an exception because it wasn't formatted correctly?
-            // So now it's formatted correctly and now displays the file type name in the dialog.
             ofd.Filter = "All files (*.*)|*.*";
             ofd.Multiselect = false;
 
             if (ofd.ShowDialog(this) == DialogResult.OK)
             {
-                using AddFilePrompt diag = new AddFilePrompt("res/" + Path.GetFileName(ofd.FileName));
-                if (diag.ShowDialog(this) == DialogResult.OK)
-                {
-                    if (EditorValue.File.Contains(diag.Filepath, diag.Filetype))
-                    {
-                        MessageBox.Show(this, $"'{diag.Filepath}' of type {diag.Filetype} already exists.", "Import failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    PckAsset asset = EditorValue.File.CreateNewAsset(diag.Filepath, diag.Filetype, () => File.ReadAllBytes(ofd.FileName));
-
-                    BuildMainTreeView();
-                    _wasModified = true;
-                }
+                ImportFiles(Path.GetDirectoryName(ofd.FileName), new[] { ofd.FileName }, String.Empty);
             }
             return;
         }
@@ -1329,15 +1315,15 @@ namespace PckStudio.Controls
         private void ImportFiles(string baseDirectory, IEnumerable<string> files, string prefix)
         {
             int fileCount = files.Count();
+            bool singleFile = fileCount == 1;
             int addedCount = 0;
             int skippedFiles = 0;
             int skipAttempts = 3;
             int typeDuplication = 0;
             PckAssetType lastSelectedAssetType = PckAssetType.SkinFile;
-            bool askForAssetType = true;
             foreach (var filepath in files)
             {
-                if (filepath.EndsWith(".txt") && fileCount > 1)
+                if (filepath.EndsWith(".txt") && !singleFile)
                 {
                     string originalFile = Path.Combine(
                         Path.GetDirectoryName(filepath)!,
@@ -1350,9 +1336,33 @@ namespace PckStudio.Controls
                 string assetPath = Path.Combine(prefix + filepath.Substring(baseDirectory.Length)).TrimStart('/', '\\');
                 PckAssetType assetType = lastSelectedAssetType;
 
-                if (askForAssetType)
+                bool askForAssetType = true;
+
+                string parameterFile = filepath + ".txt";
+
+                PckAsset importedAsset = new PckAsset(assetPath, 0);
+
+                if (File.Exists(parameterFile))
+                {
+                    importedAsset.DeserializeParameters(File.ReadAllLines(parameterFile));
+
+                    string typeParam = "ASSET_TYPE";
+
+                    askForAssetType = String.IsNullOrWhiteSpace(importedAsset.GetParameter(typeParam));
+                    
+                    if(!askForAssetType)
+                    {
+                        importedAsset.Type = (PckAssetType)int.Parse(importedAsset.GetParameter(typeParam));
+                        importedAsset.RemoveParameter(typeParam);
+                    }
+                }
+
+                if (askForAssetType || singleFile)
                 {
                     using AddFilePrompt addFile = new AddFilePrompt(assetPath);
+                    if (singleFile && !askForAssetType)
+                        addFile.Filetype = importedAsset.Type;
+
                     if (addFile.ShowDialog(this) != DialogResult.OK)
                     {
                         skippedFiles++;
@@ -1379,30 +1389,31 @@ namespace PckStudio.Controls
                     lastSelectedAssetType = addFile.Filetype;
                     if (typeDuplication > 1)
                     {
-                        DialogResult useSameTypeForRest = MessageBox.Show($"Do you want to import all remaining files as {lastSelectedAssetType}?", "Import all as", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                        DialogResult useSameTypeForRest = MessageBox.Show($"Do you want to import all typeless remaining files as {lastSelectedAssetType}?", "Import all as", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                         if (useSameTypeForRest == DialogResult.Yes)
                         {
                             askForAssetType = false;
                         }
                     }
+
+                    importedAsset.Filename = assetPath;
+                    importedAsset.Type = assetType;
                 }
 
-                if (EditorValue.File.Contains(filepath, assetType))
+                importedAsset.SetData(File.ReadAllBytes(filepath));
+
+                if (EditorValue.File.Contains(importedAsset.Filename, importedAsset.Type))
                 {
-                    if (askForAssetType)
-                        MessageBox.Show(this, $"'{assetPath}' of type {assetType} already exists.\nSkiping file.", "File already exists", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show(this, $"'{assetPath}' of type {assetType} already exists.\nSkiping file.", "File already exists", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                     Debug.WriteLine($"'{assetPath}' of type {assetType} already exists.\nSkiping file.");
                     continue;
                 }
-                PckAsset importedAsset = EditorValue.File.CreateNewAsset(assetPath, assetType, () => File.ReadAllBytes(filepath));
-                string parameterFile = filepath + ".txt";
-                if (File.Exists(parameterFile))
-                {
-                    importedAsset.DeserializeParameters(File.ReadAllLines(parameterFile));
-                }
+
+                EditorValue.File.AddAsset(importedAsset);
 
                 addedCount++;
             }
+
             Trace.TraceInformation("[{0}] Imported {1} file(s).", nameof(ImportFiles), addedCount);
             Trace.TraceInformation("[{0}] Skipped {1} file(s).", nameof(ImportFiles), skippedFiles);
             if (addedCount > 0)
@@ -1817,10 +1828,14 @@ namespace PckStudio.Controls
         private void extractFile(string outFilePath, PckAsset asset)
         {
             File.WriteAllBytes(outFilePath, asset.Data);
-            if (asset.ParameterCount > 0)
-            {
-                File.WriteAllLines($"{outFilePath}.txt", asset.SerializeParameters());
-            }
+            // ASSET_TYPE is a temporary custom parameter to track what kind of asset the file was on extraction
+            string typeParam = "ASSET_TYPE";
+
+            List<string> parameters = parameters = asset.SerializeParameters().ToList();
+            parameters.Insert(0, $"{typeParam} {(int)asset.Type}");
+            File.WriteAllLines($"{outFilePath}.txt", parameters.ToArray());
+
+            asset.RemoveParameter(typeParam);
         }
 
         private void cloneFileToolStripMenuItem_Click(object sender, EventArgs e)
