@@ -5,14 +5,24 @@ using OMI.Formats.Pck;
 
 namespace PckStudio.Popups
 {
-    public partial class AddFilePrompt : MetroForm
+	public partial class AddFilePrompt : MetroForm
 	{
-        /// <summary>
-        /// Text entered only valid when <see cref="DialogResult"/> == <see cref="DialogResult.OK"/>,
-        /// otherwise <see cref="string.Empty"/>
-        /// </summary>
-        public string Filepath => DialogResult == DialogResult.OK ? InputTextBox.Text : string.Empty;
-		public PckAssetType Filetype => (PckAssetType)(FileTypeComboBox.SelectedIndex + (FileTypeComboBox.SelectedIndex >= 3 ? 1 : 0));
+		/// <summary>
+		/// Text entered only valid when <see cref="DialogResult"/> == <see cref="DialogResult.OK"/>,
+		/// otherwise <see cref="string.Empty"/>
+		/// </summary>
+		public string Filepath => DialogResult == DialogResult.OK ? InputTextBox.Text : string.Empty;
+		public PckAssetType Filetype
+		{
+			get => (PckAssetType)(FileTypeComboBox.SelectedIndex + (FileTypeComboBox.SelectedIndex >= 3 ? 1 : 0));
+			set
+			{
+				int index = (int)value;
+
+
+                FileTypeComboBox.SelectedIndex = index >= 3 ? index - 1 : index;
+			}
+		}
 
 		public AddFilePrompt(string initialText) : this(initialText, -1)
 		{ }
