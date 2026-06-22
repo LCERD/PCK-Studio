@@ -953,7 +953,7 @@ namespace PckStudio.Controls
             return audioFile;
         }
 
-        private void addFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void importFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using var ofd = new OpenFileDialog();
             // Suddenly, and randomly, this started throwing an exception because it wasn't formatted correctly?

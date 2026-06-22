@@ -68,7 +68,7 @@ namespace PckStudio.Controls
             this.importSkinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importSkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importExtractedSkinsFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.as3DSTextureFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -446,7 +446,7 @@ namespace PckStudio.Controls
             this.importSkinsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importSkinToolStripMenuItem,
             this.importExtractedSkinsFolderToolStripMenuItem,
-            this.addFileToolStripMenuItem});
+            this.importFileToolStripMenuItem});
             resources.ApplyResources(this.importSkinsToolStripMenuItem, "importSkinsToolStripMenuItem");
             this.importSkinsToolStripMenuItem.Name = "importSkinsToolStripMenuItem";
             // 
@@ -462,12 +462,12 @@ namespace PckStudio.Controls
             this.importExtractedSkinsFolderToolStripMenuItem.Name = "importExtractedSkinsFolderToolStripMenuItem";
             this.importExtractedSkinsFolderToolStripMenuItem.Click += new System.EventHandler(this.importExtractedSkinsFolder);
             // 
-            // addFileToolStripMenuItem
+            // importFileToolStripMenuItem
             // 
-            this.addFileToolStripMenuItem.Image = global::PckStudio.Properties.Resources.blank;
-            this.addFileToolStripMenuItem.Name = "addFileToolStripMenuItem";
-            resources.ApplyResources(this.addFileToolStripMenuItem, "addFileToolStripMenuItem");
-            this.addFileToolStripMenuItem.Click += new System.EventHandler(this.addFileToolStripMenuItem_Click);
+            this.importFileToolStripMenuItem.Image = global::PckStudio.Properties.Resources.blank;
+            this.importFileToolStripMenuItem.Name = "importFileToolStripMenuItem";
+            resources.ApplyResources(this.importFileToolStripMenuItem, "importFileToolStripMenuItem");
+            this.importFileToolStripMenuItem.Click += new System.EventHandler(this.importFileToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
@@ -809,7 +809,7 @@ namespace PckStudio.Controls
         private System.Windows.Forms.ToolStripMenuItem importSkinsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importSkinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importExtractedSkinsFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem as3DSTextureFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miscFunctionsToolStripMenuItem;
