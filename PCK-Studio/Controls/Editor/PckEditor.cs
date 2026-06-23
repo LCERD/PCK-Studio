@@ -40,6 +40,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.IO.Packaging;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -1557,8 +1558,7 @@ namespace PckStudio.Controls
             BuildMainTreeView();
         }
 
-        [Obsolete("Refactor or remove this")]
-        private void importExtractedSkinsFolder(object sender, EventArgs e)
+        private void importFolder(object sender, EventArgs e)
         {
             OpenFolderDialog contents = new OpenFolderDialog();
             if (contents.ShowDialog(Handle) == true)
@@ -1569,71 +1569,21 @@ namespace PckStudio.Controls
                     MessageBox.Show("Directory Lost");
                     return;
                 }
-                // creates variable to indicate wether current pck skin structure is mashup or regular skin
-                bool hasSkinsPck = EditorValue.File.HasAsset("Skins.pck", PckAssetType.SkinDataFile);
 
-                foreach (var fullfilename in Directory.GetFiles(contents.ResultPath, "*.png"))
-                {
-                    string filename = Path.GetFileNameWithoutExtension(fullfilename);
-                    // sets file type based on wether its a cape or skin
-                    PckAssetType pckfiletype = filename.StartsWith("dlccape", StringComparison.OrdinalIgnoreCase)
-                        ? PckAssetType.CapeFile
-                        : PckAssetType.SkinFile;
-                    string pckfilepath = (hasSkinsPck ? "Skins/" : string.Empty) + filename + ".png";
+                string[] filesImported = Directory.GetFiles(contents.ResultPath);
 
+                IEnumerable<string> files = filesImported.Where(File.Exists);
+                IEnumerable<string> directoryFiles = filesImported
+                    .Where(f => (File.GetAttributes(f) & FileAttributes.Directory) != 0)
+                    .SelectMany(dir => Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories));
 
-                    PckAsset newFile = new PckAsset(pckfilepath, pckfiletype);
-                    byte[] filedata = File.ReadAllBytes(fullfilename);
-                    newFile.SetData(filedata);
+                TreeNode targetNode = treeViewMain.SelectedNode ?? null;
 
-                    if (File.Exists(fullfilename + ".txt"))
-                    {
-                        string[] properties = File.ReadAllText(fullfilename + ".txt").Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-                        foreach (string property in properties)
-                        {
-                            string[] param = property.Split(':');
-                            if (param.Length < 2)
-                                continue;
-                            newFile.AddParameter(param[0], param[1]);
-                            //switch (param[0])
-                            //{
-                            //    case "DISPLAYNAMEID":
-                            //        locNameId = param[1];
-                            //        continue;
+                string finalDropPath = targetNode != null ? (targetNode.Tag != null ? Path.GetDirectoryName(targetNode?.FullPath) : targetNode?.FullPath) : "";
 
-                            //    case "DISPLAYNAME":
-                            //        locName = param[1];
-                            //        continue;
+                IEnumerable<string> importPaths = files.Concat(directoryFiles);
 
-                            //    case "THEMENAMEID":
-                            //        locThemeId = param[1];
-                            //        continue;
-
-                            //    case "THEMENAME":
-                            //        locTheme = param[1];
-                            //        continue;
-                            //}
-                        }
-                    }
-                    if (hasSkinsPck)
-                    {
-                        PckAsset skinsFileAsset = EditorValue.File.GetAsset("Skins.pck", PckAssetType.SkinDataFile);
-                        using (var ms = new MemoryStream(skinsFileAsset.Data))
-                        {
-                            //var reader = new PckFileReader(LittleEndianCheckBox.Checked ? OMI.Endianness.LittleEndian : OMI.Endianness.BigEndian);
-                            //var skinspck = reader.FromStream(ms);
-                            //skinspck.Files.Add(newFile);
-                            //ms.Position = 0;
-                            //var writer = new PckFileWriter(skinspck, LittleEndianCheckBox.Checked ? OMI.Endianness.LittleEndian : OMI.Endianness.BigEndian);
-                            //writer.WriteToStream(ms);
-                            //skinsfile.SetData(ms.ToArray());
-                        }
-                        continue;
-                    }
-                    EditorValue.File.AddAsset(newFile);
-                }
-                BuildMainTreeView();
-                _wasModified = true;
+                ImportFiles(contents.ResultPath, importPaths, string.IsNullOrWhiteSpace(finalDropPath) ? string.Empty : finalDropPath);
             }
         }
 
