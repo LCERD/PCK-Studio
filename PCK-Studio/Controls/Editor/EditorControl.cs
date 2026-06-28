@@ -41,15 +41,16 @@ namespace PckStudio.Controls
 
         public void SetSaveContext(ISaveContext<T> saveContext) => SaveContext = saveContext;
 
-        protected virtual void PreSave()
-        { }
+        protected virtual bool PreSave()
+        { return true; }
         
         protected virtual void PostSave()
         { }
 
         public void Save()
         {
-            PreSave();
+            if (!PreSave())
+                return;
             SaveContext.Save(EditorValue);
             PostSave();
         }
