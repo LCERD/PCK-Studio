@@ -189,6 +189,31 @@ namespace PckStudio.Controls
         {
             EditorValue.Endianness = BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian;
 
+            // there should only ever by 1 but the game will only read the first one it finds. Check all of them to take potential race conditions or other reading errors or quirks with the game into account - May
+            foreach (PckAsset skinDataFile in EditorValue.File.GetAssetsByType(PckAssetType.SkinDataFile))
+            {
+                try
+                {
+                    PckFile skinDataPck = new PckFileReader(EditorValue.Endianness).FromStream(new MemoryStream(skinDataFile.Data));
+
+                    if (EditorValue.File.xmlVersion != 0 && skinDataPck.xmlVersion != EditorValue.File.xmlVersion)
+                    {
+                        MessageBox.Show(this, $"{skinDataFile.Filename} is a SkinData file set to a BOX version value that does not match the BOX version of {TitleName} and can crash the game. Either set the BOX version of this pck to 0 or the same value in \"PCK->Set Skin BOX Version\" or fix the BOX version of {skinDataFile.Filename} by using the context menu tool in \"File Functions->Set BOX Version\".", "Cannot save PCK file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
+                    if (skinDataPck.GetAssetsByType(PckAssetType.SkinFile).Count() < 1)
+                    {
+                        MessageBox.Show(this, $"{skinDataFile.Filename} is a SkinData file but stores no skin files, which can cause the game to crash. If skins are already stored outside of this file then this file may be included by mistake. Please delete it or add skins to {skinDataFile.Filename}.", "Cannot save PCK file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                catch {
+                    MessageBox.Show(this, $"{skinDataFile.Filename} is an invalid SkinData file and can crash the game. Please remove or fix it.", "Cannot save PCK file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
             return true;
         }
 
