@@ -479,25 +479,25 @@
     <value>Quick Change</value>
   </data>
   <data name="setXMLVersion0MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>121, 22</value>
   </data>
   <data name="setXMLVersion0MenuItem.Text" xml:space="preserve">
     <value>Version 0</value>
   </data>
   <data name="setXMLVersion1MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>121, 22</value>
   </data>
   <data name="setXMLVersion1MenuItem.Text" xml:space="preserve">
     <value>Version 1</value>
   </data>
   <data name="setXMLVersion2MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>121, 22</value>
   </data>
   <data name="setXMLVersion2MenuItem.Text" xml:space="preserve">
     <value>Version 2</value>
   </data>
   <data name="setXMLVersion3MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>121, 22</value>
   </data>
   <data name="setXMLVersion3MenuItem.Text" xml:space="preserve">
     <value>Version 3</value>
@@ -511,11 +511,11 @@
   <data name="setXMLVersionStripMenuItem.Text" xml:space="preserve">
     <value>Set Skin BOX Version</value>
   </data>
-  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+  <data name="pckToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 20</value>
   </data>
-  <data name="editToolStripMenuItem.Text" xml:space="preserve">
-    <value>Edit</value>
+  <data name="pckToolStripMenuItem.Text" xml:space="preserve">
+    <value>PCK</value>
   </data>
   <data name="openPckManagerToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5842,10 +5842,10 @@
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
-    <value>editToolStripMenuItem</value>
+  <data name="&gt;&gt;pckToolStripMenuItem.Name" xml:space="preserve">
+    <value>pckToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;pckToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;quickChangeToolStripMenuItem.Name" xml:space="preserve">

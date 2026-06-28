@@ -46,7 +46,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quickChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setXMLVersionStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setXMLVersion0MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
@@ -119,7 +119,7 @@
             this.menuStrip.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
+            this.pckToolStripMenuItem,
             this.miscToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip.Name = "menuStrip";
@@ -210,14 +210,14 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // editToolStripMenuItem
+            // pckToolStripMenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pckToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quickChangeToolStripMenuItem,
             this.setXMLVersionStripMenuItem});
-            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
+            this.pckToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
+            this.pckToolStripMenuItem.Name = "pckToolStripMenuItem";
+            resources.ApplyResources(this.pckToolStripMenuItem, "pckToolStripMenuItem");
             // 
             // quickChangeToolStripMenuItem
             // 
@@ -558,7 +558,7 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quickChangeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private PckStudio.Controls.CustomTabControl tabControl;
