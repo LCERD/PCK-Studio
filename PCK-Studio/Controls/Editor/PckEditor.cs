@@ -221,7 +221,7 @@ namespace PckStudio.Controls
         {
             _timesSaved++;
             _wasModified = false;
-            MessageBox.Show("Pck Saved.", "Saved");
+            MessageBox.Show($"{TitleName} saved.", "PCK successfully Saved");
             Debug.WriteLine($"_timesSaved: {_timesSaved}");
         }
 
