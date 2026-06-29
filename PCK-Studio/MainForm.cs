@@ -625,5 +625,21 @@ namespace PckStudio
                 }
             }
         }
+
+        private void setPackIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TryGetCurrentEditor(out IEditor<PackInfo> editor))
+            {
+                PckEditor pckEditor = editor as PckEditor;
+
+                NumericPrompt packIDPrompt = new NumericPrompt(pckEditor._packID, -1, GameConstants.MAX_PACK_ID);
+                packIDPrompt.TextLabel.Text = "Pack ID";
+
+                if (packIDPrompt.ShowDialog() == DialogResult.OK)
+                {
+                    pckEditor._packID = packIDPrompt.SelectedValueAsInt;
+                }
+            }
+        }
     }
 }

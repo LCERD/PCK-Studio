@@ -146,6 +146,10 @@
   <data name="menuStrip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="menuStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -240,7 +244,6 @@
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="saveToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -317,8 +320,41 @@
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="quickChangeToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="setPackIDToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="setPackIDToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set Pack ID</value>
+  </data>
+  <data name="setXMLVersion0MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="setXMLVersion0MenuItem.Text" xml:space="preserve">
+    <value>Version 0</value>
+  </data>
+  <data name="setXMLVersion1MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="setXMLVersion1MenuItem.Text" xml:space="preserve">
+    <value>Version 1</value>
+  </data>
+  <data name="setXMLVersion2MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="setXMLVersion2MenuItem.Text" xml:space="preserve">
+    <value>Version 2</value>
+  </data>
+  <data name="setXMLVersion3MenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="setXMLVersion3MenuItem.Text" xml:space="preserve">
+    <value>Version 3</value>
+  </data>
+  <data name="setXMLVersionStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="setXMLVersionStripMenuItem.Text" xml:space="preserve">
+    <value>Set Skin BOX Version</value>
   </data>
   <data name="quickChangeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -480,39 +516,6 @@
   </data>
   <data name="quickChangeToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="setXMLVersion0MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="setXMLVersion0MenuItem.Text" xml:space="preserve">
-    <value>Version 0</value>
-  </data>
-  <data name="setXMLVersion1MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="setXMLVersion1MenuItem.Text" xml:space="preserve">
-    <value>Version 1</value>
-  </data>
-  <data name="setXMLVersion2MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="setXMLVersion2MenuItem.Text" xml:space="preserve">
-    <value>Version 2</value>
-  </data>
-  <data name="setXMLVersion3MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="setXMLVersion3MenuItem.Text" xml:space="preserve">
-    <value>Version 3</value>
-  </data>
-  <data name="setXMLVersionStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="setXMLVersionStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="setXMLVersionStripMenuItem.Text" xml:space="preserve">
-    <value>Set Skin BOX Version</value>
   </data>
   <data name="pckToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 20</value>
@@ -1961,7 +1964,7 @@
     <value>0, 6, 60, 0</value>
   </data>
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 24</value>
+    <value>208, 24</value>
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5851,10 +5854,10 @@
   <data name="&gt;&gt;pckToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;quickChangeToolStripMenuItem.Name" xml:space="preserve">
-    <value>quickChangeToolStripMenuItem</value>
+  <data name="&gt;&gt;setPackIDToolStripMenuItem.Name" xml:space="preserve">
+    <value>setPackIDToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;quickChangeToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;setPackIDToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;setXMLVersionStripMenuItem.Name" xml:space="preserve">
@@ -5886,6 +5889,12 @@
   </data>
   <data name="&gt;&gt;setXMLVersion3MenuItem.Type" xml:space="preserve">
     <value>PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;quickChangeToolStripMenuItem.Name" xml:space="preserve">
+    <value>quickChangeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;quickChangeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;miscToolStripMenuItem.Name" xml:space="preserve">
     <value>miscToolStripMenuItem</value>

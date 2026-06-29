@@ -64,6 +64,8 @@ namespace PckStudio.Controls
             }
         }
 
+        public int _packID = -1;
+
         private delegate void OnModifiedChangeDelegate(bool state);
         private OnModifiedChangeDelegate _onModifiedChangeDelegate;
 
@@ -78,6 +80,25 @@ namespace PckStudio.Controls
             _onModifiedChangeDelegate = OnModify;
             _originalEndianness = packInfo.Endianness;
             _currentEndianness = packInfo.Endianness;
+
+            if (EditorValue.File.TryGetAsset("0", PckAssetType.InfoFile, out PckAsset infoFile) && infoFile != null)
+            {
+                string packID;
+
+                if (infoFile.TryGetParameter("PACKID", out packID))
+                {
+                    try
+                    {
+                        _packID = int.Parse(packID);
+                    }
+                    catch
+                    {
+                        _packID = -1;
+                    }
+                }
+
+                EditorValue.File.RemoveAsset(infoFile);
+            }
 
             BigEndianCheckBox.Visible = packInfo.AllowEndianSwap;
             BigEndianCheckBox.Checked = packInfo.Endianness == OMI.ByteOrder.BigEndian;
@@ -214,6 +235,16 @@ namespace PckStudio.Controls
                 }
             }
 
+            // Add an info file back to the PCK
+
+            if (_packID != -1)
+            {
+                PckAsset infoFile = new PckAsset("0", PckAssetType.InfoFile);
+                infoFile.AddParameter("PACKID", _packID.ToString());
+
+                EditorValue.File.InsertAsset(0, infoFile);
+            }
+
             return true;
         }
 
@@ -221,6 +252,13 @@ namespace PckStudio.Controls
         {
             _timesSaved++;
             _wasModified = false;
+
+            PckAsset infoFile;
+            EditorValue.File.TryGetAsset("0", PckAssetType.InfoFile, out infoFile);
+
+            if (infoFile != null)
+                EditorValue.File.RemoveAsset(infoFile);
+
             MessageBox.Show($"{TitleName} saved.", "PCK successfully Saved");
             Debug.WriteLine($"_timesSaved: {_timesSaved}");
         }

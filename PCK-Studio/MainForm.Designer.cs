@@ -47,12 +47,13 @@
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quickChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPackIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setXMLVersionStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setXMLVersion0MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
             this.setXMLVersion1MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
             this.setXMLVersion2MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
             this.setXMLVersion3MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
+            this.quickChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPckManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertMusicFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,17 +214,18 @@
             // pckToolStripMenuItem
             // 
             this.pckToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quickChangeToolStripMenuItem,
-            this.setXMLVersionStripMenuItem});
+            this.setPackIDToolStripMenuItem,
+            this.setXMLVersionStripMenuItem,
+            this.quickChangeToolStripMenuItem});
             this.pckToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.pckToolStripMenuItem.Name = "pckToolStripMenuItem";
             resources.ApplyResources(this.pckToolStripMenuItem, "pckToolStripMenuItem");
             // 
-            // quickChangeToolStripMenuItem
+            // setPackIDToolStripMenuItem
             // 
-            resources.ApplyResources(this.quickChangeToolStripMenuItem, "quickChangeToolStripMenuItem");
-            this.quickChangeToolStripMenuItem.Name = "quickChangeToolStripMenuItem";
-            this.quickChangeToolStripMenuItem.Click += new System.EventHandler(this.quickChangeToolStripMenuItem_Click);
+            this.setPackIDToolStripMenuItem.Name = "setPackIDToolStripMenuItem";
+            resources.ApplyResources(this.setPackIDToolStripMenuItem, "setPackIDToolStripMenuItem");
+            this.setPackIDToolStripMenuItem.Click += new System.EventHandler(this.setPackIDToolStripMenuItem_Click);
             // 
             // setXMLVersionStripMenuItem
             // 
@@ -232,8 +234,8 @@
             this.setXMLVersion1MenuItem,
             this.setXMLVersion2MenuItem,
             this.setXMLVersion3MenuItem});
-            resources.ApplyResources(this.setXMLVersionStripMenuItem, "setXMLVersionStripMenuItem");
             this.setXMLVersionStripMenuItem.Name = "setXMLVersionStripMenuItem";
+            resources.ApplyResources(this.setXMLVersionStripMenuItem, "setXMLVersionStripMenuItem");
             // 
             // setXMLVersion0MenuItem
             // 
@@ -266,6 +268,12 @@
             resources.ApplyResources(this.setXMLVersion3MenuItem, "setXMLVersion3MenuItem");
             this.setXMLVersion3MenuItem.Tag = 3;
             this.setXMLVersion3MenuItem.Click += new System.EventHandler(this.setXMLVersionMenuItem_Click);
+            // 
+            // quickChangeToolStripMenuItem
+            // 
+            resources.ApplyResources(this.quickChangeToolStripMenuItem, "quickChangeToolStripMenuItem");
+            this.quickChangeToolStripMenuItem.Name = "quickChangeToolStripMenuItem";
+            this.quickChangeToolStripMenuItem.Click += new System.EventHandler(this.quickChangeToolStripMenuItem_Click);
             // 
             // miscToolStripMenuItem
             // 
@@ -548,7 +556,6 @@
             this.StartPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pckOpen)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -604,6 +611,7 @@
         public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion1MenuItem;
         public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion2MenuItem;
         public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion3MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setPackIDToolStripMenuItem;
     }
 }
 
