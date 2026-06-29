@@ -350,8 +350,6 @@ namespace PckStudio
 			locFile.InitializeDefault(packName);
 			pack.CreateNewAsset("localisation.loc", PckAssetType.LocalisationFile, new LOCFileWriter(locFile, 2));
 
-			pack.CreateNewAssetIf(createSkinsPCK, "Skins.pck", PckAssetType.SkinDataFile, new PckFileWriter(new PckFile(3, 3), OMI.ByteOrder.BigEndian));
-
 			return pack;
 		}
 
