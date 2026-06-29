@@ -40,7 +40,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
-using System.IO.Packaging;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -48,8 +47,6 @@ namespace PckStudio.Controls
 {
     internal partial class PckEditor : EditorControl<PackInfo>
     {
-        private readonly OMI.ByteOrder _originalEndianness;
-        private OMI.ByteOrder _currentEndianness;
         private bool __modified = false;
         private bool _wasModified
         {
@@ -78,8 +75,6 @@ namespace PckStudio.Controls
         {
             InitializeComponent();
             _onModifiedChangeDelegate = OnModify;
-            _originalEndianness = packInfo.Endianness;
-            _currentEndianness = packInfo.Endianness;
 
             if (EditorValue.File.TryGetAsset("0", PckAssetType.InfoFile, out PckAsset infoFile) && infoFile != null)
             {
@@ -168,13 +163,13 @@ namespace PckStudio.Controls
                 [PckAssetType.TextureFile] = HandleTextureFile,
                 [PckAssetType.UIDataFile] = _ => throw new NotSupportedException("unused in-game"),
                 [PckAssetType.InfoFile] = null,
-                [PckAssetType.TexturePackInfoFile] = HandleInnerPckFile,
+                [PckAssetType.TexturePackInfoFile] = null,
                 [PckAssetType.LocalisationFile] = HandleLocalisationFile,
                 [PckAssetType.GameRulesFile] = HandleGameRuleFile,
                 [PckAssetType.AudioFile] = HandleAudioFile,
                 [PckAssetType.ColourTableFile] = HandleColourFile,
                 [PckAssetType.GameRulesHeader] = HandleGameRuleFile,
-                [PckAssetType.SkinDataFile] = HandleInnerPckFile,
+                [PckAssetType.SkinDataFile] = null,
                 [PckAssetType.ModelsFile] = HandleModelsFile,
                 [PckAssetType.BehavioursFile] = HandleBehavioursFile,
                 [PckAssetType.MaterialFile] = HandleMaterialFile,
@@ -277,29 +272,6 @@ namespace PckStudio.Controls
         public override void UpdateView()
         {
             BuildMainTreeView(true);
-        }
-
-        private void HandleInnerPckFile(PckAsset asset)
-        {
-            if (asset.Type != PckAssetType.SkinDataFile && asset.Type != PckAssetType.TexturePackInfoFile || asset.Size <= 0 || !Settings.Default.LoadSubPcks)
-                return;
-            
-            ISaveContext<PackInfo> saveContext = new DelegatedSaveContext<PackInfo>(false, (packInfo) =>
-            {
-                if (packInfo.IsValid)
-                {
-                    asset.SetData(new PckFileWriter(packInfo.File, _currentEndianness));
-                    _wasModified = true;
-                }
-            });
-
-            string caption = Path.GetFileName(asset.Filename);
-            string identifier = TitleName + Path.GetFileName(asset.Filename);
-            PckFile pckFile = asset.GetData(new PckFileReader(_originalEndianness));
-            PackInfo packInfo = PackInfo.Create(pckFile, _originalEndianness, false);
-
-            // TODO: may change to use a new tab page that will be closed when the main pck is closed
-            //Program.MainInstance.OpenNewPckTab(caption, identifier, packInfo, saveContext);
         }
 
         private void HandleTextureFile(PckAsset asset)
@@ -1631,7 +1603,7 @@ namespace PckStudio.Controls
                 //checks to make sure selected path exist
                 if (!Directory.Exists(contents.ResultPath))
                 {
-                    MessageBox.Show("Directory Lost");
+                    MessageBox.Show(this, $"Target directory \"{contents.ResultPath}\" was missing or moved.", "Import failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -1781,23 +1753,18 @@ namespace PckStudio.Controls
 
             foreach (PckAsset asset in EditorValue.File.GetAssets().Where(asset => asset.Filename.StartsWith(selectedFolder)))
             {
-                extractFolderFile(outPath, asset);
+                TreeNode node = treeViewMain.SelectedNode;
+
+                string abbreviatedPath = Path.GetDirectoryName(asset.Filename);
+                int startIndex = abbreviatedPath.IndexOf(node.Text);
+                abbreviatedPath = abbreviatedPath.Substring(startIndex, abbreviatedPath.Length - startIndex);
+                string finalPath = ($"{outPath}/{abbreviatedPath}/").Replace('\\', '/');
+
+                if (!Directory.Exists(finalPath))
+                    Directory.CreateDirectory(finalPath);
+
+                extractFile(finalPath + "/" + Path.GetFileName(asset.Filename), asset);
             }
-        }
-
-        private void extractFolderFile(string outPath, PckAsset asset)
-        {
-            TreeNode node = treeViewMain.SelectedNode;
-
-            string abbreviatedPath = Path.GetDirectoryName(asset.Filename);
-            int startIndex = abbreviatedPath.IndexOf(node.Text);
-            abbreviatedPath = abbreviatedPath.Substring(startIndex, abbreviatedPath.Length - startIndex);
-            string finalPath = ($"{outPath}/{abbreviatedPath}/").Replace('\\', '/');
-
-            if (!Directory.Exists(finalPath))
-                Directory.CreateDirectory(finalPath);
-
-            extractFile(finalPath + "/" + Path.GetFileName(asset.Filename), asset);
         }
 
         private void extractFile(string outFilePath, PckAsset asset)
