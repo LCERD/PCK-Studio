@@ -108,13 +108,16 @@ namespace PckStudio.Core.Extensions
             // TODO: keep filepath 
             asset.Filename = $"dlcskin{skinId}.png";
 
-            asset.SetParameter("DISPLAYNAME", skin.MetaData.Name);
-
-            if (localizationFile is not null)
+            if (!string.IsNullOrEmpty(skin.MetaData.Name))
             {
-                string skinLocKey = $"IDS_dlcskin{skinId}_DISPLAYNAME";
-                asset.SetParameter("DISPLAYNAMEID", skinLocKey);
-                localizationFile.SetLocEntry(skinLocKey, skin.MetaData.Name);
+                asset.SetParameter("DISPLAYNAME", skin.MetaData.Name);
+
+                if (localizationFile is not null)
+                {
+                    string skinLocKey = $"IDS_dlcskin{skinId}_DISPLAYNAME";
+                    asset.SetParameter("DISPLAYNAMEID", skinLocKey);
+                    localizationFile.SetLocEntry(skinLocKey, skin.MetaData.Name);
+                }
             }
 
             if (!string.IsNullOrEmpty(skin.MetaData.Theme))
