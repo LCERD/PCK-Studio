@@ -2556,6 +2556,7 @@ namespace PckStudio.Controls
 
         private void contextMenuPCKEntries_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            miscFunctionsToolStripMenuItem.Visible = false;
             generateMipMapTextureToolStripMenuItem1.Visible = false;
             setModelContainerFormatToolStripMenuItem.Visible = false;
             setSubPCKBOXVersionToolStripMenuItem.Visible = false;
@@ -2563,27 +2564,23 @@ namespace PckStudio.Controls
             toolStripSeparator5.Visible = false;
             toolStripSeparator6.Visible = false;
             exportIconToolStripMenuItem.Visible = false;
-            fullBodyToolStripMenuItem.Visible = false;
-            croppedToolStripMenuItem.Visible = false;
+            convertToFolderToolStripMenuItem.Visible = false;
 
             if (treeViewMain?.SelectedNode.TryGetTagData(out PckAsset asset) ?? false)
             {
+                miscFunctionsToolStripMenuItem.Visible = true;
                 replaceToolStripMenuItem.Visible = true;
                 cloneFileToolStripMenuItem.Visible = true;
                 setFileTypeToolStripMenuItem.Visible = true;
                 toolStripSeparator5.Visible = true;
                 toolStripSeparator6.Visible = true;
 
-                bool customSkinIcons = Settings.Default.UseCustomSkinIcons;
-
                 switch (asset.Type)
                 {
                     case PckAssetType.SkinFile:
                         exportToolStripMenuItem.Visible = true;
 
-                        exportIconToolStripMenuItem.Visible = customSkinIcons; // only enable if setting is true, no point in exporting custom icons otherwise
-                            fullBodyToolStripMenuItem.Visible = customSkinIcons; // these 2 are sub menu items of export icon - May
-                            croppedToolStripMenuItem.Visible = customSkinIcons;
+                        exportIconToolStripMenuItem.Visible = Settings.Default.UseCustomSkinIcons; // only enable if setting is true, no point in exporting custom icons otherwise
                         break;
                     case PckAssetType.CapeFile:
                         exportIconToolStripMenuItem.Visible = Settings.Default.UseCustomCapeIcons;
@@ -2596,6 +2593,7 @@ namespace PckStudio.Controls
                         break;
                     case PckAssetType.SkinDataFile:
                         setSubPCKBOXVersionToolStripMenuItem.Visible = true;
+                        convertToFolderToolStripMenuItem.Visible = true;
                         break;
                 }
             }
@@ -2604,6 +2602,77 @@ namespace PckStudio.Controls
                 replaceToolStripMenuItem.Visible = false;
                 cloneFileToolStripMenuItem.Visible = false;
                 setFileTypeToolStripMenuItem.Visible = false;
+            }
+        }
+
+        private void convertToFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TreeNode node = treeViewMain.SelectedNode;
+
+            if (node == null)
+            {
+                MessageBox.Show(this, "The selected node was null. Please select a node and try again.", "Node not extracted");
+
+                return;
+            }
+
+            if(node.TryGetTagData(out PckAsset asset) && asset.Type == PckAssetType.SkinDataFile)
+            {
+                try
+                {
+                    PckFileReader reader = new PckFileReader(BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian);
+
+                    PckFile skinDataPCK = reader.FromStream(new MemoryStream(asset.Data));
+
+                    string path = Path.Combine(Path.GetDirectoryName(asset.Filename), Path.GetFileNameWithoutExtension(asset.Filename));
+
+                    foreach (PckAsset skinAsset in skinDataPCK.GetAssets())
+                    {
+                        PckAsset _skinAsset = new PckAsset(Path.Combine(path, skinAsset.Filename), skinAsset.Type);
+                        _skinAsset.SetData(skinAsset.Data);
+                        
+                        foreach(KeyValuePair<string, string> parameter in skinAsset.GetParameters())
+                        {
+                            _skinAsset.AddParameter(parameter);
+                        }
+
+                        EditorValue.File.AddAsset(_skinAsset);
+                    }
+
+                    // delete the file first so that it doesn't hang around and look weird while skin icons are generated
+                    EditorValue.File.RemoveAsset(asset);
+                    BuildMainTreeView(true);
+
+                    if (skinDataPCK.xmlVersion != EditorValue.File.xmlVersion)
+                    {
+                        if(MessageBox.Show(this, 
+                            $"\"{asset.Filename}\" has a Skin BOX Version value that does not match the one present in this file. This can affect how your skins look in game. Would you like to transfer this value?", 
+                            "Archive not converted", 
+                            MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            switch (skinDataPCK.xmlVersion)
+                            {
+                                case 1:
+                                    (ParentForm as MainForm).setXMLVersion1MenuItem.PerformClick();
+                                    break;
+                                case 2:
+                                    (ParentForm as MainForm).setXMLVersion2MenuItem.PerformClick();
+                                    break;
+                                case 3:
+                                    (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
+                                    break;
+                                default:
+                                    (ParentForm as MainForm).setXMLVersion0MenuItem.PerformClick();
+                                    break;
+                            }
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(this, $"\"{asset.Filename}\" was not a valid SkinData file.", "Archive not converted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
         }
     }

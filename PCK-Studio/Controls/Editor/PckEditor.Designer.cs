@@ -109,6 +109,7 @@ namespace PckStudio.Controls
             this.addMultipleEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BigEndianCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.previewPictureBox = new PckStudio.ToolboxItems.InterpolationPictureBox();
+            this.convertToFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(logoPictureBox)).BeginInit();
             this.ParametersTabControl.SuspendLayout();
@@ -486,7 +487,8 @@ namespace PckStudio.Controls
             this.generateMipMapTextureToolStripMenuItem1,
             this.setModelContainerFormatToolStripMenuItem,
             this.setSubPCKBOXVersionToolStripMenuItem,
-            this.exportIconToolStripMenuItem});
+            this.exportIconToolStripMenuItem,
+            this.convertToFolderToolStripMenuItem});
             this.miscFunctionsToolStripMenuItem.Name = "miscFunctionsToolStripMenuItem";
             resources.ApplyResources(this.miscFunctionsToolStripMenuItem, "miscFunctionsToolStripMenuItem");
             // 
@@ -740,6 +742,12 @@ namespace PckStudio.Controls
             this.previewPictureBox.Name = "previewPictureBox";
             this.previewPictureBox.TabStop = false;
             // 
+            // convertToFolderToolStripMenuItem
+            // 
+            this.convertToFolderToolStripMenuItem.Name = "convertToFolderToolStripMenuItem";
+            resources.ApplyResources(this.convertToFolderToolStripMenuItem, "convertToFolderToolStripMenuItem");
+            this.convertToFolderToolStripMenuItem.Click += new System.EventHandler(this.convertToFolderToolStripMenuItem_Click);
+            // 
             // PckEditor
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
@@ -846,5 +854,6 @@ namespace PckStudio.Controls
         private ToolStripMenuItem fullBodyToolStripMenuItem;
         private ToolStripMenuItem croppedToolStripMenuItem;
         private ToolStripMenuItem addOFFSETParameterToolStripMenuItem;
+        private ToolStripMenuItem convertToFolderToolStripMenuItem;
     }
 }
