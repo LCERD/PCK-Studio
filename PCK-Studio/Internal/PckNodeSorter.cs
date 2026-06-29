@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows.Forms;
-
-using OMI.Formats.Pck;
+﻿using OMI.Formats.Pck;
 using PckStudio.Core.Extensions;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace PckStudio.Internal
 {
@@ -37,20 +36,33 @@ namespace PckStudio.Internal
             return result;
 		}
 
-		private int InternalCompare(TreeNode first, TreeNode second)
-		{
-			if (first.IsTagOfType<PckAsset>() && !second.IsTagOfType<PckAsset>())
-				return -1;
-			if (!first.IsTagOfType<PckAsset>() && second.IsTagOfType<PckAsset>())
-				return 1;
+        private int InternalCompare(TreeNode first, TreeNode second)
+        {
+            bool firstIsFile = first.IsTagOfType<PckAsset>();
+            bool secondIsFile = second.IsTagOfType<PckAsset>();
 
-			if (CheckForSkinAndCapeFiles(first))
-				return 1;
-			if (CheckForSkinAndCapeFiles(second))
-				return 1;
+            // Put folders first
+            if (!firstIsFile && secondIsFile)
+                return -1;
+            if (firstIsFile && !secondIsFile)
+                return 1;
 
-			return first.Text.CompareTo(second.Text);
-		}
-	}
+            bool firstIsSkinOrCape = CheckForSkinAndCapeFiles(first);
+            bool secondIsSkinOrCape = CheckForSkinAndCapeFiles(second);
+
+            // Skins and capes after the rest for simplicity
+            if (firstIsSkinOrCape && !secondIsSkinOrCape)
+                return 1;
+            if (!firstIsSkinOrCape && secondIsSkinOrCape)
+                return -1;
+
+            // Don't change order if both are skin related files
+            if (firstIsSkinOrCape && secondIsSkinOrCape)
+                return 0;
+
+            // Sort the rest alpha-numerically
+            return string.Compare(first.Text, second.Text, StringComparison.OrdinalIgnoreCase);
+        }
+    }
 
 }
