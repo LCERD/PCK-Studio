@@ -14,7 +14,6 @@ using OMI.Workers.Language;
 using PckStudio.Properties;
 using PckStudio.Forms;
 using PckStudio.Forms.Additional_Popups;
-using PckStudio.Core.Misc;
 using PckStudio.Forms.Features;
 using PckStudio.Core.Extensions;
 using PckStudio.Popups;
@@ -45,8 +44,10 @@ namespace PckStudio
 			labelVersion.Text = $"{Application.ProductName}: {ApplicationScope.CurrentVersion}";
 
 			ChangelogRichTextBox.Text = Resources.CHANGELOG;
-			
-			pckOpen.AllowDrop = true;
+
+            pckToolStripMenuItem.Visible = false;
+
+            pckOpen.AllowDrop = true;
 		}
 
         public void LoadPckFromFile(IEnumerable<string> filepaths)
@@ -325,7 +326,7 @@ namespace PckStudio
             closeAllToolStripMenuItem.Visible = tabControl.SelectedIndex == 0 && tabControl.TabCount > 1;
             saveToolStripMenuItem.Visible = isEditorTabSelected;
             saveAsToolStripMenuItem.Visible = isEditorTabSelected;
-            setXMLVersionStripMenuItem.Enabled = isEditorTabSelected;
+            pckToolStripMenuItem.Visible = isEditorTabSelected;
 
             if (tabControl.SelectedIndex == 0)
             {
