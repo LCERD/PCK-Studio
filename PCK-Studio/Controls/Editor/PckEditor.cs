@@ -1596,7 +1596,7 @@ namespace PckStudio.Controls
                     return;
                 }
 
-                string[] filesImported = Directory.GetFiles(contents.ResultPath);
+                string[] filesImported = Directory.GetFiles(contents.ResultPath, "*.*", SearchOption.AllDirectories);
 
                 IEnumerable<string> files = filesImported.Where(File.Exists);
                 IEnumerable<string> directoryFiles = filesImported
