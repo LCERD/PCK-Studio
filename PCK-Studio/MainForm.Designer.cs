@@ -53,6 +53,7 @@
             this.setXMLVersion1MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
             this.setXMLVersion2MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
             this.setXMLVersion3MenuItem = new PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem();
+            this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quickChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPckManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -216,6 +217,7 @@
             this.pckToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setPackIDToolStripMenuItem,
             this.setXMLVersionStripMenuItem,
+            this.extractToolStripMenuItem,
             this.quickChangeToolStripMenuItem});
             this.pckToolStripMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.pckToolStripMenuItem.Name = "pckToolStripMenuItem";
@@ -268,6 +270,12 @@
             resources.ApplyResources(this.setXMLVersion3MenuItem, "setXMLVersion3MenuItem");
             this.setXMLVersion3MenuItem.Tag = 3;
             this.setXMLVersion3MenuItem.Click += new System.EventHandler(this.setXMLVersionMenuItem_Click);
+            // 
+            // extractToolStripMenuItem
+            // 
+            this.extractToolStripMenuItem.Name = "extractToolStripMenuItem";
+            resources.ApplyResources(this.extractToolStripMenuItem, "extractToolStripMenuItem");
+            this.extractToolStripMenuItem.Click += new System.EventHandler(this.extractToolStripMenuItem_Click);
             // 
             // quickChangeToolStripMenuItem
             // 
@@ -612,6 +620,7 @@
         public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion2MenuItem;
         public ToolboxItems.ToolStripRadioButtonMenuItem setXMLVersion3MenuItem;
         private System.Windows.Forms.ToolStripMenuItem setPackIDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractToolStripMenuItem;
     }
 }
 

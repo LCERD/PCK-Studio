@@ -356,6 +356,12 @@
   <data name="setXMLVersionStripMenuItem.Text" xml:space="preserve">
     <value>Set Skin BOX Version</value>
   </data>
+  <data name="extractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="extractToolStripMenuItem.Text" xml:space="preserve">
+    <value>Extract PCK Contents</value>
+  </data>
   <data name="quickChangeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -5889,6 +5895,12 @@
   </data>
   <data name="&gt;&gt;setXMLVersion3MenuItem.Type" xml:space="preserve">
     <value>PckStudio.ToolboxItems.ToolStripRadioButtonMenuItem, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;extractToolStripMenuItem.Name" xml:space="preserve">
+    <value>extractToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;extractToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;quickChangeToolStripMenuItem.Name" xml:space="preserve">
     <value>quickChangeToolStripMenuItem</value>

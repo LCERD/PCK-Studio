@@ -1694,6 +1694,33 @@ namespace PckStudio.Controls
             }
         }
 
+        public void extractEntirePCK()
+        {
+            OpenFolderDialog dialog = new OpenFolderDialog();
+            dialog.Title = @"Select destination folder";
+
+            if (dialog.ShowDialog(Handle) == true)
+            {
+                foreach (TreeNode node in treeViewMain.Nodes)
+                {
+                    if(node == null)
+                        continue;
+
+                    if (node.Tag == null)
+                    {
+                        extractFolder(dialog.ResultPath, node);
+                    }
+                    else if (node.TryGetTagData(out PckAsset asset))
+                    {
+                        extractFile(Path.Combine(dialog.ResultPath, Path.GetFileName(asset.Filename)), asset);
+                    }
+                }
+
+                // Verification that file extraction path was successful
+                MessageBox.Show(this, $"{TitleName} successfully extracted");
+            }
+        }
+
         private void extractToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = treeViewMain.SelectedNode;
@@ -1711,7 +1738,7 @@ namespace PckStudio.Controls
                 dialog.Title = @"Select destination folder";
 
                 if (dialog.ShowDialog(Handle) == true)
-                    extractFolder(dialog.ResultPath);
+                    extractFolder(dialog.ResultPath, node);
             }
             else if (node.TryGetTagData(out PckAsset asset))
             {
@@ -1734,10 +1761,8 @@ namespace PckStudio.Controls
             MessageBox.Show(this, $"\"{node.Text}\" successfully extracted");
         }
 
-        private void extractFolder(string outPath)
+        private void extractFolder(string outPath, TreeNode node)
         {
-            TreeNode node = treeViewMain.SelectedNode;
-
             string selectedFolder = node.FullPath;
 
             foreach (PckAsset asset in EditorValue.File.GetAssets().Where(asset => asset.Filename.StartsWith(selectedFolder)))
@@ -1750,7 +1775,7 @@ namespace PckStudio.Controls
                 if (!Directory.Exists(finalPath))
                     Directory.CreateDirectory(finalPath);
 
-                extractFile(finalPath + "/" + Path.GetFileName(asset.Filename), asset);
+                extractFile(Path.Combine(finalPath, Path.GetFileName(asset.Filename)), asset);
             }
         }
 

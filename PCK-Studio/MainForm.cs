@@ -641,5 +641,15 @@ namespace PckStudio
                 }
             }
         }
+
+        private void extractToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TryGetCurrentEditor(out IEditor<PackInfo> editor))
+            {
+                PckEditor pckEditor = editor as PckEditor;
+
+                pckEditor.extractEntirePCK();
+            }
+        }
     }
 }
