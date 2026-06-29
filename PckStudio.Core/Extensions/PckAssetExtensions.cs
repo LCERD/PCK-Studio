@@ -80,23 +80,89 @@ namespace PckStudio.Core.Extensions
             return skinId;
         }
 
-        public static Skin.Skin GetSkin(this PckAsset asset)
+        public static Skin.Skin GetSkin(this PckAsset asset, LOCFile localizationFile = null)
         {
             if (asset.Type != PckAssetType.SkinFile)
                 throw new InvalidOperationException("Asset is not a skin.");
 
             int skinId = asset.GetSkinId();
 
-            string name = asset.GetParameter("DISPLAYNAME");
             Image texture = asset.GetTexture();
             SkinANIM anim = asset.GetParameter("ANIM", SkinANIM.FromString);
             SkinGameFlags gameFlags = asset.GetParameter("GAME_FLAGS", SkinGameFlags.FromString);
             IEnumerable<SkinBOX> boxes = asset.GetMultipleParameters("BOX").Select(kv => SkinBOX.FromString(kv.Value));
             IEnumerable<SkinPartOffset> offsets = asset.GetMultipleParameters("OFFSET").Select(kv => SkinPartOffset.FromString(kv.Value)).GroupBy(o => o.Type).Select(g => g.First());
-            return new Skin.Skin(name, skinId, texture, anim, gameFlags, boxes, offsets);
+
+            // this is so something is displayed in the custom skin editor when a displayname is missing but does write that name as the DISPLAYNAME when done
+            bool isDisplayName = true;
+            string name = "";
+
+            // prioritize LOC_KEY since DISPLAYNAMEID doesn't even exist in versions after Update Aquatic
+            if (string.IsNullOrEmpty(name))
+            {
+                string locKey = asset.GetParameter("LOC_KEY");
+
+                if (!string.IsNullOrEmpty(locKey))
+                {
+                    name = locKey;
+
+                    if (localizationFile is not null && localizationFile.HasLocEntry(locKey))
+                    {
+                        try
+                        {
+                            name = localizationFile.GetLocEntry(locKey, "en-EN");
+                        }
+                        catch
+                        {
+                            name = locKey;
+                        }
+
+                        if (string.IsNullOrEmpty(name))
+                            name = locKey;
+                    }
+                }
+            }
+
+            string displaynameID = asset.GetParameter("DISPLAYNAMEID");
+            if (!string.IsNullOrEmpty(displaynameID))
+            {
+                name = displaynameID;
+
+                if (localizationFile is not null && localizationFile.HasLocEntry(displaynameID))
+                {
+                    try
+                    {
+                        name = localizationFile.GetLocEntry(displaynameID, "en-EN");
+                    }
+                    catch
+                    {
+                        name = displaynameID;
+                    }
+
+                    if (string.IsNullOrEmpty(name))
+                        name = displaynameID;
+                }
+            }
+
+            if (string.IsNullOrEmpty(name))
+            {
+                isDisplayName = true;
+
+                name = asset.GetParameter("DISPLAYNAME");
+
+                if (string.IsNullOrEmpty(name))
+                {
+                    name = Path.GetFileNameWithoutExtension(asset.Filename);
+                }
+            }
+
+            Skin.Skin skin = new Skin.Skin(name, skinId, texture, anim, gameFlags, boxes, offsets);
+            skin.MetaData.IsDisplayName = isDisplayName;
+
+            return skin;
         }
 
-        public static void SetSkin(this PckAsset asset, Skin.Skin skin, LOCFile localizationFile)
+        public static void SetSkin(this PckAsset asset, Skin.Skin skin, in LOCFile localizationFile)
         {
             if (asset.Type != PckAssetType.SkinFile)
                 throw new InvalidOperationException("Asset is not a skin file");
@@ -108,7 +174,7 @@ namespace PckStudio.Core.Extensions
             // TODO: keep filepath 
             asset.Filename = $"dlcskin{skinId}.png";
 
-            if (!string.IsNullOrEmpty(skin.MetaData.Name))
+            if (!string.IsNullOrEmpty(skin.MetaData.Name) && skin.MetaData.IsDisplayName)
             {
                 asset.SetParameter("DISPLAYNAME", skin.MetaData.Name);
 

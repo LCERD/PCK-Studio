@@ -525,7 +525,10 @@ namespace PckStudio.Controls
 
         private void HandleSkinFile(PckAsset asset)
         {
-            Skin skin = asset.GetSkin();
+            LOCFile locFile = null;
+            TryGetLocFile(out locFile);
+
+            Skin skin = asset.GetSkin(locFile);
             if (asset.HasParameter("CAPEPATH"))
             {
                 string capeAssetPath = asset.GetParameter("CAPEPATH");
@@ -537,9 +540,13 @@ namespace PckStudio.Controls
 
             ISaveContext<Skin> saveContext = new DelegatedSaveContext<Skin>(Settings.Default.AutoSaveChanges, (customSkin) =>
             {
-                if (!TryGetLocFile(out LOCFile locFile))
+                if (locFile == null)
                     Debug.WriteLine("Failed to aquire loc file.");
+
                 asset.SetSkin(customSkin, locFile);
+
+                if (locFile != null)
+                    TrySetLocFile(locFile);
             });
 
             if (skin.Model.AdditionalBoxes.FindAll(box => box.Scale != 0).Count > 0 && EditorValue.File.xmlVersion != 3 && 

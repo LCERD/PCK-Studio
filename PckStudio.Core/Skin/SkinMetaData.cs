@@ -4,6 +4,7 @@
     {
         public string Name { get; }
         public string Theme { get; }
+        public bool IsDisplayName;
 
         public SkinMetaData(string name, string theme)
         {
