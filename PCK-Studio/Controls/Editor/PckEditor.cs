@@ -627,14 +627,6 @@ namespace PckStudio.Controls
             _wasModified = edit.ShowDialog(this) == DialogResult.OK;
         }
 
-        private void CheckForPasswordAndRemove()
-        {
-            if (EditorValue.File.TryGetAsset("0", PckAssetType.InfoFile, out PckAsset asset))
-            {
-                asset.RemoveParameters("LOCK");
-            }
-        }
-
         /// <summary>
         /// wrapper that allows the use of <paramref name="name"/> in <code>TreeNode.Nodes.Find(<paramref name="name"/>, ...)</code> and <code>TreeNode.Nodes.ContainsKey(<paramref name="name"/>)</code>
         /// </summary>
@@ -673,24 +665,21 @@ namespace PckStudio.Controls
             return BuildNodeTreeBySeperator(subNode.Nodes, subPath, seperator);
         }
 
-        private void BuildPckTreeView(TreeNodeCollection root, PckFile pckFile, bool resetNodes = false)
-        {
-            foreach (PckAsset asset in pckFile.GetAssets())
-            {
-                TreeNode node = BuildNodeTreeBySeperator(root, asset.Filename, '/');
-                node.Tag = asset;
-                node.ImageKey = node.SelectedImageKey = GetNodeIconKey(asset, resetNodes);
-            }
-        }
-
         private void BuildMainTreeView(bool resetNodes = false)
         {
             // In case the Rename function was just used and the selected node name no longer matches the file name
-            string selectedNodeText = treeViewMain.SelectedNode is TreeNode node ? node.FullPath : string.Empty;
+            string selectedNodeText = treeViewMain.SelectedNode is TreeNode selectedNode ? selectedNode.FullPath : string.Empty;
             previewPictureBox.Image = Resources.NoImageFound;
             treeParameters.Nodes.Clear();
             treeViewMain.Nodes.Clear();
-            BuildPckTreeView(treeViewMain.Nodes, EditorValue.File, resetNodes);
+
+            foreach (PckAsset asset in EditorValue.File.GetAssets())
+            {
+                TreeNode node = BuildNodeTreeBySeperator(treeViewMain.Nodes, asset.Filename, '/');
+                node.Tag = asset;
+                node.ImageKey = node.SelectedImageKey = GetNodeIconKey(asset, resetNodes);
+            }
+
             treeViewMain.Sort();
 
             TreeNode[] selectedNodes = treeViewMain.FindPath(selectedNodeText);
@@ -1753,8 +1742,6 @@ namespace PckStudio.Controls
 
             foreach (PckAsset asset in EditorValue.File.GetAssets().Where(asset => asset.Filename.StartsWith(selectedFolder)))
             {
-                TreeNode node = treeViewMain.SelectedNode;
-
                 string abbreviatedPath = Path.GetDirectoryName(asset.Filename);
                 int startIndex = abbreviatedPath.IndexOf(node.Text);
                 abbreviatedPath = abbreviatedPath.Substring(startIndex, abbreviatedPath.Length - startIndex);
@@ -2274,7 +2261,6 @@ namespace PckStudio.Controls
 
         private void PckEditor_Load(object sender, EventArgs e)
         {
-            CheckForPasswordAndRemove();
             BuildMainTreeView();
             UpdateRichPresence();
         }
