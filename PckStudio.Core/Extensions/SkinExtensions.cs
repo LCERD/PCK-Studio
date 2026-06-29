@@ -463,8 +463,6 @@ namespace PckStudio.Core.Extensions
                 canvasWidth = canvasMaxX - canvasMinX;
                 canvasHeight = canvasMaxY - canvasMinY;
 
-                Console.WriteLine($"{skin.Identifier.Id} {canvasWidth}x{canvasHeight}");
-
                 Rectangle cropRect = new Rectangle(
                     (int)Math.Floor(canvasMinX),
                     (int)Math.Floor(canvasMinY),
