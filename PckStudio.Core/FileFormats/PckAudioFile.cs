@@ -7,20 +7,20 @@ namespace PckStudio.Core.FileFormats
 {
     public class PckAudioFile
     {
-		public class InvalidCategoryException : Exception
+		public class InvalidTrackListException : Exception
         {
-			public InvalidCategoryException(string message) : base(message)
+			public InvalidTrackListException(string message) : base(message)
 			{ }
 		}
 
 		public readonly int type = 1;
 
-        public AudioCategory[] Categories => Array.FindAll(_categories, c => c is not null);
-        private AudioCategory[] _categories { get; } = new AudioCategory[9];
+        public AudioTrackList[] TrackLists => Array.FindAll(_trackLists, c => c is not null);
+        private AudioTrackList[] _trackLists { get; } = new AudioTrackList[9];
 
 		public Dictionary<string, string> Credits { get; } = new Dictionary<string, string>();
 
-		public class AudioCategory
+		public class AudioTrackList
         {
 			public enum EAudioType : int
 			{
@@ -43,10 +43,10 @@ namespace PckStudio.Core.FileFormats
 
 			public string Name { get; set; } = string.Empty;
 			public EAudioType AudioType { get; }
-			public List<string> SongNames { get;  } = new List<string>();
+			public List<string> TrackNames { get;  } = new List<string>();
             public EAudioParameterType parameterType { get; }
 
-			public AudioCategory(string name, EAudioParameterType parameterType, EAudioType audioType)
+			public AudioTrackList(string name, EAudioParameterType parameterType, EAudioType audioType)
 			{
 				this.Name = name;
 				this.parameterType = parameterType;
@@ -101,55 +101,55 @@ namespace PckStudio.Core.FileFormats
 		public void AddCreditId(string creditId) => Credits.Add(creditId, string.Empty);
 
 
-		/// <exception cref="InvalidCategoryException"></exception>
-		public bool HasCategory(AudioCategory.EAudioType category) => GetCategory(category) is AudioCategory;
+		/// <exception cref="InvalidTrackListException"></exception>
+		public bool HasTrackList(AudioTrackList.EAudioType trackList) => GetTrackList(trackList) is AudioTrackList;
 
-		/// <exception cref="InvalidCategoryException"></exception>
-		public AudioCategory GetCategory(AudioCategory.EAudioType category)
+		/// <exception cref="InvalidTrackListException"></exception>
+		public AudioTrackList GetTrackList(AudioTrackList.EAudioType trackList)
 		{
-			if (category < AudioCategory.EAudioType.Overworld ||
-				category > AudioCategory.EAudioType.BuildOff)
-				throw new InvalidCategoryException(nameof(category));
-			return _categories[(int)category];
+			if (trackList < AudioTrackList.EAudioType.Overworld ||
+				trackList > AudioTrackList.EAudioType.BuildOff)
+				throw new InvalidTrackListException(nameof(trackList));
+			return _trackLists[(int)trackList];
 		}
 
-		/// <exception cref="InvalidCategoryException"></exception>
-		public bool TryGetCategory(AudioCategory.EAudioType category, out AudioCategory audioCategory)
+		/// <exception cref="InvalidTrackListException"></exception>
+		public bool TryGetTrackList(AudioTrackList.EAudioType trackList, out AudioTrackList audioTrackList)
         {
-			if (GetCategory(category) is AudioCategory a)
+			if (GetTrackList(trackList) is AudioTrackList a)
             {
-				audioCategory = a;
+				audioTrackList = a;
 				return true;
             }
-			audioCategory = null;
+			audioTrackList = null;
 			return false;
         }
 
-		/// <returns>True when category was created, otherwise false</returns>
-		/// <exception cref="InvalidCategoryException"></exception>
-		public bool AddCategory(AudioCategory.EAudioParameterType parameterType, AudioCategory.EAudioType category, string name = "")
+		/// <returns>True when track list was created, otherwise false</returns>
+		/// <exception cref="InvalidTrackListException"></exception>
+		public bool AddTrackList(AudioTrackList.EAudioParameterType parameterType, AudioTrackList.EAudioType trackList, string name = "")
 		{
-			if (category < AudioCategory.EAudioType.Overworld ||
-				category > AudioCategory.EAudioType.BuildOff)
-				throw new InvalidCategoryException(nameof(category));
-			bool exists = HasCategory(category);
+			if (trackList < AudioTrackList.EAudioType.Overworld ||
+				trackList > AudioTrackList.EAudioType.BuildOff)
+				throw new InvalidTrackListException(nameof(trackList));
+			bool exists = HasTrackList(trackList);
 			if (!exists)
-				_categories[(int)category] = new AudioCategory(name, parameterType, category);
+				_trackLists[(int)trackList] = new AudioTrackList(name, parameterType, trackList);
 			return !exists;
 		}
 
-		/// <returns>True when category was created, otherwise false</returns>
-		/// <exception cref="InvalidCategoryException"></exception>
-		public bool AddCategory(AudioCategory.EAudioType category)
-			=> AddCategory(AudioCategory.EAudioParameterType.unk0, category);
+		/// <returns>True when track list was created, otherwise false</returns>
+		/// <exception cref="InvalidTrackListException"></exception>
+		public bool AddTrackList(AudioTrackList.EAudioType trackList)
+			=> AddTrackList(AudioTrackList.EAudioParameterType.unk0, trackList);
 
-		/// <returns>True when category was removed, otherwise false</returns>
-		/// <exception cref="InvalidCategoryException"></exception>
-		public bool RemoveCategory(AudioCategory.EAudioType category)
+		/// <returns>True when track list was removed, otherwise false</returns>
+		/// <exception cref="InvalidTrackListException"></exception>
+		public bool RemoveTrackList(AudioTrackList.EAudioType trackList)
         {
-			bool exists = HasCategory(category);
+			bool exists = HasTrackList(trackList);
 			if (exists)
-				_categories[(int)category] = null;
+				_trackLists[(int)trackList] = null;
 			return exists;
 		}
 

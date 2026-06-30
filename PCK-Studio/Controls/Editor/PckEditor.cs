@@ -981,9 +981,9 @@ namespace PckStudio.Controls
         private static PckAudioFile CreateNewAudioFile()
         {
             PckAudioFile audioFile = new PckAudioFile();
-            audioFile.AddCategory(PckAudioFile.AudioCategory.EAudioType.Overworld);
-            audioFile.AddCategory(PckAudioFile.AudioCategory.EAudioType.Nether);
-            audioFile.AddCategory(PckAudioFile.AudioCategory.EAudioType.End);
+            audioFile.AddTrackList(PckAudioFile.AudioTrackList.EAudioType.Overworld);
+            audioFile.AddTrackList(PckAudioFile.AudioTrackList.EAudioType.Nether);
+            audioFile.AddTrackList(PckAudioFile.AudioTrackList.EAudioType.End);
             return audioFile;
         }
 

@@ -67,8 +67,8 @@ namespace PckStudio.Core.IO.PckAudio
 
         private void WriteCategories(EndiannessAwareBinaryWriter writer)
         {
-            writer.Write(_file.Categories.Length);
-            foreach (PckAudioFile.AudioCategory category in _file.Categories)
+            writer.Write(_file.TrackLists.Length);
+            foreach (PckAudioFile.AudioTrackList category in _file.TrackLists)
             {
                 writer.Write((int)category.parameterType);
                 writer.Write((int)category.AudioType);
@@ -79,10 +79,10 @@ namespace PckStudio.Core.IO.PckAudio
         private void WriteCategorySongs(EndiannessAwareBinaryWriter writer)
         {
             bool addCredit = true;
-            foreach (PckAudioFile.AudioCategory category in _file.Categories)
+            foreach (PckAudioFile.AudioTrackList category in _file.TrackLists)
             {
-                writer.Write(category.SongNames.Count + (addCredit ? _file.Credits.Count * 2 : 0));
-                foreach (var name in category.SongNames)
+                writer.Write(category.TrackNames.Count + (addCredit ? _file.Credits.Count * 2 : 0));
+                foreach (var name in category.TrackNames)
                 {
                     writer.Write(LUT.IndexOf("CUENAME"));
                     WriteString(writer, name);

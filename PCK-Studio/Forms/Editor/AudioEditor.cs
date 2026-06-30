@@ -24,9 +24,8 @@ namespace PckStudio.Forms.Editor
 	public partial class AudioEditor : EditorForm<PckAudioFile>
 	{
 		public string defaultType = "yes";
-        MainForm parent = null;
 
-        private static readonly List<string> Categories = new List<string>
+        private static readonly List<string> TrackLists = new List<string>
 		{
 			"Overworld",
 			"Nether",
@@ -40,7 +39,7 @@ namespace PckStudio.Forms.Editor
 
 			/* If the SetMusicID function within the game is ever set to 0x9,
 			 * it actually plays a tracklist for MG04, with all of the Creative 
-			 * Tracks and the "MG04_01.binka" file in it. The 9th category is MG04 - May
+			 * Tracks and the "MG04_01.binka" file in it. The 9th track list ID is MG04 - May
 			 */
 		};
 
@@ -52,15 +51,15 @@ namespace PckStudio.Forms.Editor
             SetUpTree();
         }
 
-        private string GetCategoryFromId(PckAudioFile.AudioCategory.EAudioType categoryId)
-			=> categoryId >= PckAudioFile.AudioCategory.EAudioType.Overworld &&
-				categoryId <= PckAudioFile.AudioCategory.EAudioType.BuildOff
-				? Categories[(int)categoryId]
+        private string GetTrackListFromId(PckAudioFile.AudioTrackList.EAudioType trackListID)
+			=> trackListID >= PckAudioFile.AudioTrackList.EAudioType.Overworld &&
+				trackListID <= PckAudioFile.AudioTrackList.EAudioType.BuildOff
+				? TrackLists[(int)trackListID]
 				: "Not valid";
 
-		private PckAudioFile.AudioCategory.EAudioType GetCategoryId(string category)
+		private PckAudioFile.AudioTrackList.EAudioType GetTrackListId(string trackList)
 		{
-			return (PckAudioFile.AudioCategory.EAudioType)Categories.IndexOf(category);
+			return (PckAudioFile.AudioTrackList.EAudioType)TrackLists.IndexOf(trackList);
 		}
 
 		public void SetUpTree()
@@ -68,60 +67,42 @@ namespace PckStudio.Forms.Editor
 			trackListTreeView.BeginUpdate();
 			trackListTreeView.Nodes.Clear();
 
-			foreach (PckAudioFile.AudioCategory category in EditorValue.Categories)
+			foreach (PckAudioFile.AudioTrackList trackList in EditorValue.TrackLists)
 			{
-				// fix songs with directories using backslash instead of forward slash
-				// Songs with a backslash instead of a forward slash would not play in RPCS3
-				foreach (string songname in category.SongNames.FindAll(s => s.Contains('\\')))
-					category.SongNames[category.SongNames.IndexOf(songname)] = songname.Replace('\\', '/');
+				// fix tracks with directories using backslash instead of forward slash
+				// Tracks with a backslash instead of a forward slash would not play in RPCS3
+				foreach (string trackName in trackList.TrackNames.FindAll(s => s.Contains('\\')))
+					trackList.TrackNames[trackList.TrackNames.IndexOf(trackName)] = trackName.Replace('\\', '/');
 
-				if (category.AudioType == PckAudioFile.AudioCategory.EAudioType.Creative)
+				if (trackList.AudioType == PckAudioFile.AudioTrackList.EAudioType.Creative)
 				{
-					if (category.Name == "include_overworld" &&
-                        EditorValue.TryGetCategory(PckAudioFile.AudioCategory.EAudioType.Overworld, out PckAudioFile.AudioCategory overworldCategory))
+					if (trackList.Name == "include_overworld" &&
+                        EditorValue.TryGetTrackList(PckAudioFile.AudioTrackList.EAudioType.Overworld, out PckAudioFile.AudioTrackList overworldTrackList))
 					{
-						foreach (var name in category.SongNames.ToList())
+						foreach (var name in trackList.TrackNames.ToList())
 						{
-							if (overworldCategory.SongNames.Contains(name))
-								category.SongNames.Remove(name);
+							if (overworldTrackList.TrackNames.Contains(name))
+								trackList.TrackNames.Remove(name);
 						}
 						playOverworldInCreative.Checked = true;
 					}
 					playOverworldInCreative.Visible = true;
 				}
 
-				TreeNode treeNode = new TreeNode(GetCategoryFromId(category.AudioType), (int)category.AudioType, (int)category.AudioType);
-				treeNode.Tag = category;
+				TreeNode treeNode = new TreeNode(GetTrackListFromId(trackList.AudioType), (int)trackList.AudioType, (int)trackList.AudioType);
+				treeNode.Tag = trackList;
 				trackListTreeView.Nodes.Add(treeNode);
 			}
-			playOverworldInCreative.Enabled = EditorValue.HasCategory(PckAudioFile.AudioCategory.EAudioType.Creative);
+			playOverworldInCreative.Enabled = EditorValue.HasTrackList(PckAudioFile.AudioTrackList.EAudioType.Creative);
 			trackListTreeView.EndUpdate();
 		}
 
-		private void verifyFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			/*
-			if (treeView1.SelectedNode == null || treeView2.SelectedNode == null)
-				return;
-            TreeNode entry = treeView2.SelectedNode;
-
-			string fileName = Path.Combine(parent., entry.Text + ".binka");
-
-			if (File.Exists(fileName))
-				MessageBox.Show(this, $"\"{entry.Text}.binka\" exists in the \"Data\" folder", "File found");
-			else
-				MessageBox.Show(this, $"\"{entry.Text}.binka\" does not exist in the \"Data\" folder. The game will crash when attempting to load this track.", "File missing");
-			*/
-
-			// Disabling this for now until location stuff is fixed
-		}
-
-		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+		private void trackListTreeView_AfterSelect(object sender, TreeViewEventArgs e)
 		{
 			trackTreeView.Nodes.Clear();
-			if (e.Node.Tag is PckAudioFile.AudioCategory category)
+			if (e.Node.Tag is PckAudioFile.AudioTrackList trackList)
 			{
-				foreach (var name in category.SongNames)
+				foreach (var name in trackList.TrackNames)
 				{
 					trackTreeView.Nodes.Add(name);
 				}
@@ -130,80 +111,80 @@ namespace PckStudio.Forms.Editor
 				trackTreeView.SelectedNode = trackTreeView.Nodes[0];
 		}
 
-		private void addCategoryStripMenuItem_Click(object sender, EventArgs e)
+		private void addTrackListStripMenuItem_Click(object sender, EventArgs e)
 		{
-			string[] available = Categories.FindAll(str => !EditorValue.HasCategory(GetCategoryId(str))).ToArray();
+			string[] available = TrackLists.FindAll(str => !EditorValue.HasTrackList(GetTrackListId(str))).ToArray(); // array needed for popup form down below
 			if (available.Length == 0)
 			{
-				MessageBox.Show(this, "There are no more categories that could be added", "All possible categories are used");
+				MessageBox.Show(this, "There are no more track lists that could be added", "All possible track lists are used");
 			}
 			
 			using ItemSelectionPopUp add = new ItemSelectionPopUp(available);
 			if (add.ShowDialog(this) != DialogResult.OK)
 				return;
 
-			EditorValue.AddCategory(GetCategoryId(add.SelectedItem));
-            PckAudioFile.AudioCategory category = EditorValue.GetCategory(GetCategoryId(add.SelectedItem));
+			EditorValue.AddTrackList(GetTrackListId(add.SelectedItem));
+            PckAudioFile.AudioTrackList trackList = EditorValue.GetTrackList(GetTrackListId(add.SelectedItem));
 
-			if (GetCategoryId(add.SelectedItem) == PckAudioFile.AudioCategory.EAudioType.Creative)
+			if (GetTrackListId(add.SelectedItem) == PckAudioFile.AudioTrackList.EAudioType.Creative)
 			{
 				playOverworldInCreative.Visible = true;
 				playOverworldInCreative.Checked = false;
 			}
 
-			TreeNode treeNode = new TreeNode(GetCategoryFromId(category.AudioType), (int)category.AudioType, (int)category.AudioType);
-			treeNode.Tag = category;
+			TreeNode treeNode = new TreeNode(GetTrackListFromId(trackList.AudioType), (int)trackList.AudioType, (int)trackList.AudioType);
+			treeNode.Tag = trackList;
 			trackListTreeView.Nodes.Add(treeNode);
 
 			SetUpTree();
 		}
 
-		private void addTrack(PckAudioFile.AudioCategory category, String trackname)
+		private void addTrack(PckAudioFile.AudioTrackList trackList, String trackname)
 		{
-            category.SongNames.Add(trackname);
+            trackList.TrackNames.Add(trackname);
             trackTreeView.Nodes.Add(trackname);
         }
 
 		private void addEntryMenuItem_Click(object sender, EventArgs e)
 		{
-			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category)
+			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList)
 			{
 				TextPrompt audioEntry = new TextPrompt();
-				audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/song\" => \"DLC/{Pack}/Data/music/song.binka\")";
+				audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/track\" => \"DLC/{Pack}/Data/music/track.binka\")";
 				audioEntry.LabelText = "Path";
 				audioEntry.OKButtonText = "Add";
                 if (audioEntry.ShowDialog() == DialogResult.OK)
 				{
-					addTrack(category, audioEntry.NewText);
+					addTrack(trackList, audioEntry.NewText);
 				}
 			}
 		}
 
         private void editEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category && trackTreeView.SelectedNode is TreeNode track)
+            if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList && trackTreeView.SelectedNode is TreeNode track)
             {
                 TextPrompt audioEntry = new TextPrompt(track.Text);
-                audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/song\" => \"DLC/{Pack}/Data/music/song.binka\")";
+                audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/track\" => \"DLC/{Pack}/Data/music/track.binka\")";
                 audioEntry.LabelText = "Path";
                 audioEntry.OKButtonText = "Save";
                 if (audioEntry.ShowDialog() == DialogResult.OK)
                 {
-                    int index = category.SongNames.IndexOf(track.Text);
+                    int index = trackList.TrackNames.IndexOf(track.Text);
                     if (index != -1) // Check if the item was found
                     {
-                        track.Text = category.SongNames[index] = audioEntry.NewText;
+                        track.Text = trackList.TrackNames[index] = audioEntry.NewText;
                     }
                 }
             }
         }
 
-        private void removeCategoryStripMenuItem_Click(object sender, EventArgs e)
+        private void removeTrackListStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (trackListTreeView.SelectedNode is TreeNode main &&
-				EditorValue.RemoveCategory(GetCategoryId(trackListTreeView.SelectedNode.Text)))
+				EditorValue.RemoveTrackList(GetTrackListId(trackListTreeView.SelectedNode.Text)))
 			{
-				if(GetCategoryId(trackListTreeView.SelectedNode.Text) == PckAudioFile.AudioCategory.EAudioType.Creative)
+				if(GetTrackListId(trackListTreeView.SelectedNode.Text) == PckAudioFile.AudioTrackList.EAudioType.Creative)
 				{
 					playOverworldInCreative.Visible = false;
 					playOverworldInCreative.Checked = false;
@@ -213,13 +194,13 @@ namespace PckStudio.Forms.Editor
 			}
 		}
 
-		private void treeView1_KeyDown(object sender, KeyEventArgs e)
+		private void trackListTreeView_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Delete)
-				removeCategoryStripMenuItem_Click(sender, e);
+				removeTrackListStripMenuItem_Click(sender, e);
 		}
 
-		public void treeView2_KeyDown(object sender, KeyEventArgs e)
+		public void trackTreeView_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Delete)
 				removeEntryMenuItem_Click(sender, e);
@@ -227,64 +208,57 @@ namespace PckStudio.Forms.Editor
 
 		private void removeEntryMenuItem_Click(object sender, EventArgs e)
 		{
-			if (trackTreeView.SelectedNode != null && trackListTreeView.SelectedNode.Tag is PckAudioFile.AudioCategory category)
+			if (trackTreeView.SelectedNode != null && trackListTreeView.SelectedNode.Tag is PckAudioFile.AudioTrackList trackList)
 			{
-				category.SongNames.Remove(trackTreeView.SelectedNode.Text);
+				trackList.TrackNames.Remove(trackTreeView.SelectedNode.Text);
 				trackTreeView.SelectedNode.Remove();
 			}
 		}
 
 		private void Binka_DragDrop(object sender, DragEventArgs e)
 		{
-			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category)
+			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList)
 			{
 				foreach(String s in (string[])e.Data.GetData(DataFormats.FileDrop, false))
 				{
-                    addTrack(category, Path.GetFileNameWithoutExtension(s));
+                    addTrack(trackList, Path.GetFileNameWithoutExtension(s));
                 }
 			}
 		}
 
 		private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			if (!EditorValue.HasCategory(PckAudioFile.AudioCategory.EAudioType.Overworld) ||
-			   !EditorValue.HasCategory(PckAudioFile.AudioCategory.EAudioType.Nether) ||
-			   !EditorValue.HasCategory(PckAudioFile.AudioCategory.EAudioType.End))
+			if (!EditorValue.HasTrackList(PckAudioFile.AudioTrackList.EAudioType.Overworld) ||
+			   !EditorValue.HasTrackList(PckAudioFile.AudioTrackList.EAudioType.Nether) ||
+			   !EditorValue.HasTrackList(PckAudioFile.AudioTrackList.EAudioType.End))
 			{
-				MessageBox.Show(this, "Your changes were not saved. The game will crash when loading your pack if the Overworld, Nether and End categories don't all exist with at least one valid song.", "Mandatory Categories Missing");
+				MessageBox.Show(this, "Your changes were not saved. The game will crash when loading your pack if an Overworld, Nether and End track list don't all exist with at least one valid track.", "Mandatory Track Lists Missing");
 				return;
 			}
 
-			PckAudioFile.AudioCategory overworldCategory = EditorValue.GetCategory(PckAudioFile.AudioCategory.EAudioType.Overworld);
+			PckAudioFile.AudioTrackList overworldTrackList = EditorValue.GetTrackList(PckAudioFile.AudioTrackList.EAudioType.Overworld);
 
-			bool songs_missing = false;
-			foreach (PckAudioFile.AudioCategory category in EditorValue.Categories)
+			foreach (PckAudioFile.AudioTrackList trackList in EditorValue.TrackLists)
 			{
-				if (category.SongNames.Count < 1)
+				if (trackList.TrackNames.Count < 1)
 				{
-					MessageBox.Show(this, "The game will crash upon loading your pack if any of the categories are empty. Please remove or occupy the category.", "Empty Category");
+					MessageBox.Show(this, "The game will crash upon loading your pack if any of the track lists are empty. Please remove or occupy the track list.", "Empty Track List");
 					return;
 				}
 
-				category.Name = "";
-				if (playOverworldInCreative.Checked && category.AudioType == PckAudioFile.AudioCategory.EAudioType.Creative)
+				trackList.Name = "";
+				if (playOverworldInCreative.Checked && trackList.AudioType == PckAudioFile.AudioTrackList.EAudioType.Creative)
 				{
-					foreach (var name in overworldCategory.SongNames)
+					foreach (var name in overworldTrackList.TrackNames)
 					{
-						if (!category.SongNames.Contains(name))
+						if (!trackList.TrackNames.Contains(name))
 						{
-							category.SongNames.Add(name);
+							trackList.TrackNames.Add(name);
 							Console.WriteLine(name);
 						}
 					}
-					category.Name = "include_overworld";
+					trackList.Name = "include_overworld";
 				}
-			}
-
-			if (songs_missing)
-			{
-				MessageBox.Show(this, "Failed to save AudioData file because there are missing song entries", "Error");
-				return;
 			}
 
 			Save();
@@ -296,20 +270,12 @@ namespace PckStudio.Forms.Editor
 			e.Effect = DragDropEffects.All;
 		}
 
-		private void AudioEditor_Shown(object sender, EventArgs e)
+        private void setTrackListToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (Owner.Owner is MainForm p)
-				parent = p;
-			else
-				Close();
-		}
-
-		private void setCategoryToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if (!(trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category))
+			if (!(trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList))
 				return;
 
-			string[] available = Categories.FindAll(str => !EditorValue.HasCategory(GetCategoryId(str))).ToArray();
+			string[] available = TrackLists.FindAll(str => !EditorValue.HasTrackList(GetTrackListId(str))).ToArray();
 			if (available.Length > 0)
 			{
 				using ItemSelectionPopUp add = new ItemSelectionPopUp(available);
@@ -317,19 +283,19 @@ namespace PckStudio.Forms.Editor
 				if (add.ShowDialog(this) != DialogResult.OK)
 					return;
 
-				EditorValue.RemoveCategory(category.AudioType);
+				EditorValue.RemoveTrackList(trackList.AudioType);
 
-				EditorValue.AddCategory(category.parameterType, GetCategoryId(add.SelectedItem), category.AudioType == PckAudioFile.AudioCategory.EAudioType.Overworld && playOverworldInCreative.Checked ? "include_overworld" : "");
+				EditorValue.AddTrackList(trackList.parameterType, GetTrackListId(add.SelectedItem), trackList.AudioType == PckAudioFile.AudioTrackList.EAudioType.Overworld && playOverworldInCreative.Checked ? "include_overworld" : "");
 
-                PckAudioFile.AudioCategory newCategory = EditorValue.GetCategory(GetCategoryId(add.SelectedItem));
+                PckAudioFile.AudioTrackList newTrackList = EditorValue.GetTrackList(GetTrackListId(add.SelectedItem));
 
-				category.SongNames.ForEach(c => newCategory.SongNames.Add(c));
+				trackList.TrackNames.ForEach(c => newTrackList.TrackNames.Add(c));
 
 				SetUpTree();
 			}
 			else
 			{
-				MessageBox.Show(this, "There are no categories that aren't already used", "All possible categories are used");
+				MessageBox.Show(this, "There are no track lists that aren't already used", "All possible track lists are used");
 			}
 		}
 

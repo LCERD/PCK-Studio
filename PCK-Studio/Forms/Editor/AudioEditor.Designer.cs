@@ -32,25 +32,25 @@ namespace PckStudio.Forms.Editor
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AudioEditor));
             this.trackListTreeView = new System.Windows.Forms.TreeView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.trackListContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addCategoryStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeCategoryStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.catImages = new System.Windows.Forms.ImageList(this.components);
+            this.trackListIcons = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.trackTreeView = new System.Windows.Forms.TreeView();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.trackContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addEntryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeEntryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playOverworldInCreative = new MetroFramework.Controls.MetroCheckBox();
             this.compressionUpDown = new System.Windows.Forms.NumericUpDown();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.contextMenuStrip1.SuspendLayout();
+            this.trackListContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
+            this.trackContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compressionUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,54 +58,54 @@ namespace PckStudio.Forms.Editor
             // 
             resources.ApplyResources(this.trackListTreeView, "trackListTreeView");
             this.trackListTreeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.trackListTreeView.ContextMenuStrip = this.contextMenuStrip1;
+            this.trackListTreeView.ContextMenuStrip = this.trackListContextMenuStrip;
             this.trackListTreeView.ForeColor = System.Drawing.Color.White;
-            this.trackListTreeView.ImageList = this.catImages;
+            this.trackListTreeView.ImageList = this.trackListIcons;
             this.trackListTreeView.LabelEdit = true;
             this.trackListTreeView.Name = "trackListTreeView";
-            this.trackListTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.trackListTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyDown);
+            this.trackListTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trackListTreeView_AfterSelect);
+            this.trackListTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trackListTreeView_KeyDown);
             // 
-            // contextMenuStrip1
+            // trackListContextMenuStrip
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trackListContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCategoryStripMenuItem,
             this.removeCategoryStripMenuItem,
             this.changeCategoryToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.trackListContextMenuStrip.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.trackListContextMenuStrip, "trackListContextMenuStrip");
             // 
             // addCategoryStripMenuItem
             // 
-            resources.ApplyResources(this.addCategoryStripMenuItem, "addCategoryStripMenuItem");
             this.addCategoryStripMenuItem.Name = "addCategoryStripMenuItem";
-            this.addCategoryStripMenuItem.Click += new System.EventHandler(this.addCategoryStripMenuItem_Click);
+            resources.ApplyResources(this.addCategoryStripMenuItem, "addCategoryStripMenuItem");
+            this.addCategoryStripMenuItem.Click += new System.EventHandler(this.addTrackListStripMenuItem_Click);
             // 
             // removeCategoryStripMenuItem
             // 
             this.removeCategoryStripMenuItem.Name = "removeCategoryStripMenuItem";
             resources.ApplyResources(this.removeCategoryStripMenuItem, "removeCategoryStripMenuItem");
-            this.removeCategoryStripMenuItem.Click += new System.EventHandler(this.removeCategoryStripMenuItem_Click);
+            this.removeCategoryStripMenuItem.Click += new System.EventHandler(this.removeTrackListStripMenuItem_Click);
             // 
             // changeCategoryToolStripMenuItem
             // 
             this.changeCategoryToolStripMenuItem.Name = "changeCategoryToolStripMenuItem";
             resources.ApplyResources(this.changeCategoryToolStripMenuItem, "changeCategoryToolStripMenuItem");
-            this.changeCategoryToolStripMenuItem.Click += new System.EventHandler(this.setCategoryToolStripMenuItem_Click);
+            this.changeCategoryToolStripMenuItem.Click += new System.EventHandler(this.setTrackListToolStripMenuItem_Click);
             // 
-            // catImages
+            // trackListIcons
             // 
-            this.catImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("catImages.ImageStream")));
-            this.catImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.catImages.Images.SetKeyName(0, "0_overworld.png");
-            this.catImages.Images.SetKeyName(1, "1_nether.png");
-            this.catImages.Images.SetKeyName(2, "2_end.png");
-            this.catImages.Images.SetKeyName(3, "3_creative.png");
-            this.catImages.Images.SetKeyName(4, "4_menu.png");
-            this.catImages.Images.SetKeyName(5, "5_mg01.png");
-            this.catImages.Images.SetKeyName(6, "6_mg02.png");
-            this.catImages.Images.SetKeyName(7, "7_mg03.png");
-            this.catImages.Images.SetKeyName(8, "8_mg04.png");
+            this.trackListIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("trackListIcons.ImageStream")));
+            this.trackListIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.trackListIcons.Images.SetKeyName(0, "0_overworld.png");
+            this.trackListIcons.Images.SetKeyName(1, "1_nether.png");
+            this.trackListIcons.Images.SetKeyName(2, "2_end.png");
+            this.trackListIcons.Images.SetKeyName(3, "3_creative.png");
+            this.trackListIcons.Images.SetKeyName(4, "4_menu.png");
+            this.trackListIcons.Images.SetKeyName(5, "5_mg01.png");
+            this.trackListIcons.Images.SetKeyName(6, "6_mg02.png");
+            this.trackListIcons.Images.SetKeyName(7, "7_mg03.png");
+            this.trackListIcons.Images.SetKeyName(8, "8_mg04.png");
             // 
             // menuStrip
             // 
@@ -134,27 +134,27 @@ namespace PckStudio.Forms.Editor
             this.trackTreeView.AllowDrop = true;
             resources.ApplyResources(this.trackTreeView, "trackTreeView");
             this.trackTreeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.trackTreeView.ContextMenuStrip = this.contextMenuStrip2;
+            this.trackTreeView.ContextMenuStrip = this.trackContextMenuStrip;
             this.trackTreeView.ForeColor = System.Drawing.Color.White;
             this.trackTreeView.Name = "trackTreeView";
             this.trackTreeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.Binka_DragDrop);
             this.trackTreeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView2_DragEnter);
             this.trackTreeView.DoubleClick += new System.EventHandler(this.trackTreeView_DoubleClick);
-            this.trackTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView2_KeyDown);
+            this.trackTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trackTreeView_KeyDown);
             // 
-            // contextMenuStrip2
+            // trackContextMenuStrip
             // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trackContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addEntryMenuItem,
             this.editEntryToolStripMenuItem,
             this.removeEntryMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip2, "contextMenuStrip2");
+            this.trackContextMenuStrip.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.trackContextMenuStrip, "trackContextMenuStrip");
             // 
             // addEntryMenuItem
             // 
-            resources.ApplyResources(this.addEntryMenuItem, "addEntryMenuItem");
             this.addEntryMenuItem.Name = "addEntryMenuItem";
+            resources.ApplyResources(this.addEntryMenuItem, "addEntryMenuItem");
             this.addEntryMenuItem.Click += new System.EventHandler(this.addEntryMenuItem_Click);
             // 
             // editEntryToolStripMenuItem
@@ -224,11 +224,10 @@ namespace PckStudio.Forms.Editor
             this.Style = MetroFramework.MetroColorStyle.Silver;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AudioEditor_FormClosing);
-            this.Shown += new System.EventHandler(this.AudioEditor_Shown);
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.trackListContextMenuStrip.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.contextMenuStrip2.ResumeLayout(false);
+            this.trackContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.compressionUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -242,13 +241,13 @@ namespace PckStudio.Forms.Editor
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
 		private System.Windows.Forms.TreeView trackTreeView;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+		private System.Windows.Forms.ContextMenuStrip trackListContextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem removeCategoryStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem addCategoryStripMenuItem;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+		private System.Windows.Forms.ContextMenuStrip trackContextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem addEntryMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem removeEntryMenuItem;
-        private System.Windows.Forms.ImageList catImages;
+        private System.Windows.Forms.ImageList trackListIcons;
 		private MetroFramework.Controls.MetroCheckBox playOverworldInCreative;
 		private System.Windows.Forms.NumericUpDown compressionUpDown;
 		private MetroFramework.Controls.MetroLabel metroLabel1;
