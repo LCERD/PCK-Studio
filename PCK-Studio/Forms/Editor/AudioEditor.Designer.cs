@@ -31,7 +31,7 @@ namespace PckStudio.Forms.Editor
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AudioEditor));
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.trackListTreeView = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addCategoryStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeCategoryStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,31 +40,31 @@ namespace PckStudio.Forms.Editor
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeView2 = new System.Windows.Forms.TreeView();
+            this.trackTreeView = new System.Windows.Forms.TreeView();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addEntryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeEntryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playOverworldInCreative = new MetroFramework.Controls.MetroCheckBox();
             this.compressionUpDown = new System.Windows.Forms.NumericUpDown();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.editEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compressionUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // treeView1
+            // trackListTreeView
             // 
-            resources.ApplyResources(this.treeView1, "treeView1");
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.treeView1.ForeColor = System.Drawing.Color.White;
-            this.treeView1.ImageList = this.catImages;
-            this.treeView1.LabelEdit = true;
-            this.treeView1.Name = "treeView1";
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyDown);
+            resources.ApplyResources(this.trackListTreeView, "trackListTreeView");
+            this.trackListTreeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.trackListTreeView.ContextMenuStrip = this.contextMenuStrip1;
+            this.trackListTreeView.ForeColor = System.Drawing.Color.White;
+            this.trackListTreeView.ImageList = this.catImages;
+            this.trackListTreeView.LabelEdit = true;
+            this.trackListTreeView.Name = "trackListTreeView";
+            this.trackListTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.trackListTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyDown);
             // 
             // contextMenuStrip1
             // 
@@ -129,17 +129,18 @@ namespace PckStudio.Forms.Editor
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
-            // treeView2
+            // trackTreeView
             // 
-            this.treeView2.AllowDrop = true;
-            resources.ApplyResources(this.treeView2, "treeView2");
-            this.treeView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeView2.ContextMenuStrip = this.contextMenuStrip2;
-            this.treeView2.ForeColor = System.Drawing.Color.White;
-            this.treeView2.Name = "treeView2";
-            this.treeView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.Binka_DragDrop);
-            this.treeView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView2_DragEnter);
-            this.treeView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView2_KeyDown);
+            this.trackTreeView.AllowDrop = true;
+            resources.ApplyResources(this.trackTreeView, "trackTreeView");
+            this.trackTreeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.trackTreeView.ContextMenuStrip = this.contextMenuStrip2;
+            this.trackTreeView.ForeColor = System.Drawing.Color.White;
+            this.trackTreeView.Name = "trackTreeView";
+            this.trackTreeView.DragDrop += new System.Windows.Forms.DragEventHandler(this.Binka_DragDrop);
+            this.trackTreeView.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView2_DragEnter);
+            this.trackTreeView.DoubleClick += new System.EventHandler(this.trackTreeView_DoubleClick);
+            this.trackTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView2_KeyDown);
             // 
             // contextMenuStrip2
             // 
@@ -155,6 +156,12 @@ namespace PckStudio.Forms.Editor
             resources.ApplyResources(this.addEntryMenuItem, "addEntryMenuItem");
             this.addEntryMenuItem.Name = "addEntryMenuItem";
             this.addEntryMenuItem.Click += new System.EventHandler(this.addEntryMenuItem_Click);
+            // 
+            // editEntryToolStripMenuItem
+            // 
+            this.editEntryToolStripMenuItem.Name = "editEntryToolStripMenuItem";
+            resources.ApplyResources(this.editEntryToolStripMenuItem, "editEntryToolStripMenuItem");
+            this.editEntryToolStripMenuItem.Click += new System.EventHandler(this.editEntryToolStripMenuItem_Click);
             // 
             // removeEntryMenuItem
             // 
@@ -201,12 +208,6 @@ namespace PckStudio.Forms.Editor
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // editEntryToolStripMenuItem
-            // 
-            this.editEntryToolStripMenuItem.Name = "editEntryToolStripMenuItem";
-            resources.ApplyResources(this.editEntryToolStripMenuItem, "editEntryToolStripMenuItem");
-            this.editEntryToolStripMenuItem.Click += new System.EventHandler(this.editEntryToolStripMenuItem_Click);
-            // 
             // AudioEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -214,8 +215,8 @@ namespace PckStudio.Forms.Editor
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.compressionUpDown);
             this.Controls.Add(this.playOverworldInCreative);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.treeView2);
+            this.Controls.Add(this.trackListTreeView);
+            this.Controls.Add(this.trackTreeView);
             this.Controls.Add(this.menuStrip);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -236,11 +237,11 @@ namespace PckStudio.Forms.Editor
 
 		#endregion
 
-		private System.Windows.Forms.TreeView treeView1;
+		private System.Windows.Forms.TreeView trackListTreeView;
 		private System.Windows.Forms.MenuStrip menuStrip;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
-		private System.Windows.Forms.TreeView treeView2;
+		private System.Windows.Forms.TreeView trackTreeView;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem removeCategoryStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem addCategoryStripMenuItem;

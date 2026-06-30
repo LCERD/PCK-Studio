@@ -65,8 +65,8 @@ namespace PckStudio.Forms.Editor
 
 		public void SetUpTree()
 		{
-			treeView1.BeginUpdate();
-			treeView1.Nodes.Clear();
+			trackListTreeView.BeginUpdate();
+			trackListTreeView.Nodes.Clear();
 
 			foreach (PckAudioFile.AudioCategory category in EditorValue.Categories)
 			{
@@ -92,10 +92,10 @@ namespace PckStudio.Forms.Editor
 
 				TreeNode treeNode = new TreeNode(GetCategoryFromId(category.AudioType), (int)category.AudioType, (int)category.AudioType);
 				treeNode.Tag = category;
-				treeView1.Nodes.Add(treeNode);
+				trackListTreeView.Nodes.Add(treeNode);
 			}
 			playOverworldInCreative.Enabled = EditorValue.HasCategory(PckAudioFile.AudioCategory.EAudioType.Creative);
-			treeView1.EndUpdate();
+			trackListTreeView.EndUpdate();
 		}
 
 		private void verifyFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,16 +118,16 @@ namespace PckStudio.Forms.Editor
 
 		private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
 		{
-			treeView2.Nodes.Clear();
+			trackTreeView.Nodes.Clear();
 			if (e.Node.Tag is PckAudioFile.AudioCategory category)
 			{
 				foreach (var name in category.SongNames)
 				{
-					treeView2.Nodes.Add(name);
+					trackTreeView.Nodes.Add(name);
 				}
 			}
-			if (treeView2.Nodes.Count > 0)
-				treeView2.SelectedNode = treeView2.Nodes[0];
+			if (trackTreeView.Nodes.Count > 0)
+				trackTreeView.SelectedNode = trackTreeView.Nodes[0];
 		}
 
 		private void addCategoryStripMenuItem_Click(object sender, EventArgs e)
@@ -153,7 +153,7 @@ namespace PckStudio.Forms.Editor
 
 			TreeNode treeNode = new TreeNode(GetCategoryFromId(category.AudioType), (int)category.AudioType, (int)category.AudioType);
 			treeNode.Tag = category;
-			treeView1.Nodes.Add(treeNode);
+			trackListTreeView.Nodes.Add(treeNode);
 
 			SetUpTree();
 		}
@@ -161,12 +161,12 @@ namespace PckStudio.Forms.Editor
 		private void addTrack(PckAudioFile.AudioCategory category, String trackname)
 		{
             category.SongNames.Add(trackname);
-            treeView2.Nodes.Add(trackname);
+            trackTreeView.Nodes.Add(trackname);
         }
 
 		private void addEntryMenuItem_Click(object sender, EventArgs e)
 		{
-			if (treeView1.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category)
+			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category)
 			{
 				TextPrompt audioEntry = new TextPrompt();
 				audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/song\" => \"DLC/{Pack}/Data/music/song.binka\")";
@@ -181,7 +181,7 @@ namespace PckStudio.Forms.Editor
 
         private void editEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category && treeView2.SelectedNode is TreeNode track)
+            if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category && trackTreeView.SelectedNode is TreeNode track)
             {
                 TextPrompt audioEntry = new TextPrompt(track.Text);
                 audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/song\" => \"DLC/{Pack}/Data/music/song.binka\")";
@@ -200,15 +200,15 @@ namespace PckStudio.Forms.Editor
 
         private void removeCategoryStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (treeView1.SelectedNode is TreeNode main &&
-				EditorValue.RemoveCategory(GetCategoryId(treeView1.SelectedNode.Text)))
+			if (trackListTreeView.SelectedNode is TreeNode main &&
+				EditorValue.RemoveCategory(GetCategoryId(trackListTreeView.SelectedNode.Text)))
 			{
-				if(GetCategoryId(treeView1.SelectedNode.Text) == PckAudioFile.AudioCategory.EAudioType.Creative)
+				if(GetCategoryId(trackListTreeView.SelectedNode.Text) == PckAudioFile.AudioCategory.EAudioType.Creative)
 				{
 					playOverworldInCreative.Visible = false;
 					playOverworldInCreative.Checked = false;
 				}
-				treeView2.Nodes.Clear();
+				trackTreeView.Nodes.Clear();
 				main.Remove();
 			}
 		}
@@ -227,16 +227,16 @@ namespace PckStudio.Forms.Editor
 
 		private void removeEntryMenuItem_Click(object sender, EventArgs e)
 		{
-			if (treeView2.SelectedNode != null && treeView1.SelectedNode.Tag is PckAudioFile.AudioCategory category)
+			if (trackTreeView.SelectedNode != null && trackListTreeView.SelectedNode.Tag is PckAudioFile.AudioCategory category)
 			{
-				category.SongNames.Remove(treeView2.SelectedNode.Text);
-				treeView2.SelectedNode.Remove();
+				category.SongNames.Remove(trackTreeView.SelectedNode.Text);
+				trackTreeView.SelectedNode.Remove();
 			}
 		}
 
 		private void Binka_DragDrop(object sender, DragEventArgs e)
 		{
-			if (treeView1.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category)
+			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category)
 			{
 				foreach(String s in (string[])e.Data.GetData(DataFormats.FileDrop, false))
 				{
@@ -304,17 +304,9 @@ namespace PckStudio.Forms.Editor
 				Close();
 		}
 
-		private void convertToWAVToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if (treeView2.SelectedNode != null && treeView1.SelectedNode.Tag is PckAudioFile.AudioCategory)
-			{
-				//Binka.ToWav(Path.Combine(parent.GetDataPath(), treeView2.SelectedNode.Text + ".binka"), Path.Combine(parent.GetDataPath()));
-			}
-		}
-
 		private void setCategoryToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (!(treeView1.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category))
+			if (!(trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioCategory category))
 				return;
 
 			string[] available = Categories.FindAll(str => !EditorValue.HasCategory(GetCategoryId(str))).ToArray();
@@ -348,5 +340,7 @@ namespace PckStudio.Forms.Editor
 				saveToolStripMenuItem1_Click(sender, EventArgs.Empty);
 			}
         }
+
+        private void trackTreeView_DoubleClick(object sender, EventArgs e) => editEntryToolStripMenuItem_Click(sender, e);
     }
 }
