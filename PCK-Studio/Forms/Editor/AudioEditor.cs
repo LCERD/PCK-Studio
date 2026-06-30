@@ -1,21 +1,23 @@
-﻿using System;
+﻿using DiscordRPC;
+using NAudio.Wave;
+using OMI.Formats.Pck;
+using PckStudio.Controls;
+using PckStudio.Core.Extensions;
+using PckStudio.Core.FileFormats;
+using PckStudio.External.API.Miles;
+using PckStudio.Forms.Additional_Popups;
+using PckStudio.Interfaces;
+using PckStudio.Internal.App;
+using PckStudio.Properties;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
-using NAudio.Wave;
-using PckStudio.Forms.Additional_Popups;
-using PckStudio.Properties;
-using PckStudio.External.API.Miles;
-using PckStudio.Core.Extensions;
-using PckStudio.Internal.App;
-using PckStudio.Controls;
-using PckStudio.Interfaces;
-using PckStudio.Core.FileFormats;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 // Audio Editor by MayNL and Miku-666
 
@@ -308,5 +310,25 @@ namespace PckStudio.Forms.Editor
         }
 
         private void trackTreeView_DoubleClick(object sender, EventArgs e) => editEntryToolStripMenuItem_Click(sender, e);
+
+        private void bulkEditTracksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList)
+            {
+                using (var input = new MultiTextPrompt(trackList.TrackNames))
+                {
+                    if (input.ShowDialog(this) == DialogResult.OK)
+                    {
+                        trackTreeView.Nodes.Clear();
+						trackList.TrackNames.Clear();
+
+						foreach (String trackName in input.TextOutput)
+						{
+							addTrack(trackList, trackName);
+						}
+                    }
+                }
+            }
+        }
     }
 }

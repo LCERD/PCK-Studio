@@ -48,6 +48,7 @@ namespace PckStudio.Forms.Editor
             this.playOverworldInCreative = new MetroFramework.Controls.MetroCheckBox();
             this.compressionUpDown = new System.Windows.Forms.NumericUpDown();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.bulkEditTracksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackListContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.trackContextMenuStrip.SuspendLayout();
@@ -147,6 +148,7 @@ namespace PckStudio.Forms.Editor
             this.trackContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addEntryMenuItem,
             this.editEntryToolStripMenuItem,
+            this.bulkEditTracksToolStripMenuItem,
             this.removeEntryMenuItem});
             this.trackContextMenuStrip.Name = "contextMenuStrip1";
             resources.ApplyResources(this.trackContextMenuStrip, "trackContextMenuStrip");
@@ -208,6 +210,12 @@ namespace PckStudio.Forms.Editor
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
+            // bulkEditTracksToolStripMenuItem
+            // 
+            this.bulkEditTracksToolStripMenuItem.Name = "bulkEditTracksToolStripMenuItem";
+            resources.ApplyResources(this.bulkEditTracksToolStripMenuItem, "bulkEditTracksToolStripMenuItem");
+            this.bulkEditTracksToolStripMenuItem.Click += new System.EventHandler(this.bulkEditTracksToolStripMenuItem_Click);
+            // 
             // AudioEditor
             // 
             resources.ApplyResources(this, "$this");
@@ -253,5 +261,6 @@ namespace PckStudio.Forms.Editor
 		private MetroFramework.Controls.MetroLabel metroLabel1;
 		private System.Windows.Forms.ToolStripMenuItem changeCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editEntryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bulkEditTracksToolStripMenuItem;
     }
 }

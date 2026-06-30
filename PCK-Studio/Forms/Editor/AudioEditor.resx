@@ -164,7 +164,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACK
-        NAAAAk1TRnQBSQFMAgEBCQEAARgBAQEYAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        NAAAAk1TRnQBSQFMAgEBCQEAASABAQEgAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABMAMAAQEBAAEgBgABMBIAATkBXgFzAf8BOQFeAXMB/wE5AV4BcwH/AT4BYgF8Af8BMwFUAWkB/wEz
         AVQBaQH/AT4BYgF8Af8BMwFUAWkB/wE5AV4BcwH/ATkBXgFzAf8BOQFeAXMB/wEzAVQBaQH/ASYBPQFM
         Af8BMwFUAWkB/wEzAVQBaQH/ATkBXgFzAf/AAAFiAZgBvAH/AWIBmAG8Af8BTQGEAZ8B/wFNAYQBnwH/
@@ -477,25 +477,31 @@
     <value>282, 8</value>
   </metadata>
   <data name="addEntryMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="addEntryMenuItem.Text" xml:space="preserve">
     <value>Add Track</value>
   </data>
   <data name="editEntryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="editEntryToolStripMenuItem.Text" xml:space="preserve">
     <value>Edit Track</value>
   </data>
+  <data name="bulkEditTracksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="bulkEditTracksToolStripMenuItem.Text" xml:space="preserve">
+    <value>Bulk Edit Tracks</value>
+  </data>
   <data name="removeEntryMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="removeEntryMenuItem.Text" xml:space="preserve">
     <value>Remove Track</value>
   </data>
   <data name="trackContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 70</value>
+    <value>181, 114</value>
   </data>
   <data name="&gt;&gt;trackContextMenuStrip.Name" xml:space="preserve">
     <value>trackContextMenuStrip</value>
@@ -3184,6 +3190,12 @@
     <value>removeEntryMenuItem</value>
   </data>
   <data name="&gt;&gt;removeEntryMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bulkEditTracksToolStripMenuItem.Name" xml:space="preserve">
+    <value>bulkEditTracksToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;bulkEditTracksToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
