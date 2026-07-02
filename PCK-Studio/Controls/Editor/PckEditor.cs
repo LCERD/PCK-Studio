@@ -687,12 +687,12 @@ namespace PckStudio.Controls
                 node.ImageKey = node.SelectedImageKey = GetNodeIconKey(asset, resetNodes);
             }
 
+            treeViewMain.Sort();
             TreeNode[] selectedNodes = treeViewMain.FindPath(selectedNodeText);
             if (selectedNodes.Length > 0)
             {
                 treeViewMain.SelectedNode = selectedNodes[0];
             }
-            treeViewMain.Sort();
         }
 
         private string GetDefaultSkinNodeIconKey(SkinANIM anim)
@@ -1254,24 +1254,41 @@ namespace PckStudio.Controls
                 return;
             }
 
-            if (targetNode.Parent == null && isTargetPckFile && draggedNode.Parent == null)
-            {
-                Debug.WriteLine("target node is file and is in the root... nothing done.");
-                return;
-            }
+            bool targetNodeIsFile = targetNode.TryGetTagData(out PckAsset targetAsset);
+            bool draggedNodeIsFile = draggedNode.TryGetTagData(out PckAsset draggedAsset);
+            bool draggedNodeIsSkinAsset = draggedNodeIsFile && (draggedAsset.Type == PckAssetType.SkinFile || draggedAsset.Type == PckAssetType.CapeFile);
+            bool targetNodeIsSkinAsset = targetNodeIsFile && (targetAsset.Type == PckAssetType.SkinFile || targetAsset.Type == PckAssetType.CapeFile);
 
-            if ((targetNode.Parent?.Equals(draggedNode.Parent) ?? false) && isTargetPckFile)
+            if(!(draggedNodeIsSkinAsset && targetNodeIsSkinAsset))
             {
-                Debug.WriteLine("target node and dragged node have the same parent... nothing done.");
-                return;
+                if (targetNode.Parent == null && isTargetPckFile && draggedNode.Parent == null)
+                {
+                    Debug.WriteLine("target node is file and is in the root... nothing done.");
+                    return;
+                }
+
+                if ((targetNode.Parent?.Equals(draggedNode.Parent) ?? false) && isTargetPckFile)
+                {
+                    Debug.WriteLine("target node and dragged node have the same parent... nothing done.");
+                    return;
+                }
             }
 
             Debug.WriteLine($"Target drop location is {(isTargetPckFile ? "file" : "folder")}.");
 
-            // Retrieve the node that was dragged.
-            if (draggedNode.TryGetTagData(out PckAsset draggedAsset) &&
             string selectedNodePath = "";
 
+            if (draggedNodeIsSkinAsset && targetNodeIsSkinAsset)
+            {
+                // I overthought this for so long, I guess this works lol - May
+                int draggedIndex = EditorValue.File.IndexOfAsset(draggedAsset);
+                int targetIndex = EditorValue.File.IndexOfAsset(targetAsset);
+
+                EditorValue.File.RemoveAsset(draggedAsset);
+                EditorValue.File.InsertAsset(targetIndex, draggedAsset);
+                selectedNodePath = draggedAsset.Filename;
+            }
+            if (draggedNodeIsFile &&
                 targetNode.FullPath != draggedAsset.Filename)
             {
                 Debug.WriteLine(draggedAsset.Filename + " was dropped onto " + targetNode.FullPath);
