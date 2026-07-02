@@ -687,13 +687,12 @@ namespace PckStudio.Controls
                 node.ImageKey = node.SelectedImageKey = GetNodeIconKey(asset, resetNodes);
             }
 
-            treeViewMain.Sort();
-
             TreeNode[] selectedNodes = treeViewMain.FindPath(selectedNodeText);
             if (selectedNodes.Length > 0)
             {
                 treeViewMain.SelectedNode = selectedNodes[0];
             }
+            treeViewMain.Sort();
         }
 
         private string GetDefaultSkinNodeIconKey(SkinANIM anim)
@@ -1184,6 +1183,14 @@ namespace PckStudio.Controls
             treeViewMain.Focus();
         }
 
+        private void SelectNodeByPath(string selectedNodePath)
+        {
+            TreeNode[] selectedNodes = treeViewMain.FindPath(selectedNodePath.Replace('\\', '/'));
+
+            if (selectedNodes.Length > 0)
+                treeViewMain.SelectedNode = selectedNodes[0];
+        }
+
         private void treeViewMain_DragDrop(object sender, DragEventArgs e)
         {
             // Retrieve the client coordinates of the drop location.
@@ -1263,20 +1270,21 @@ namespace PckStudio.Controls
 
             // Retrieve the node that was dragged.
             if (draggedNode.TryGetTagData(out PckAsset draggedAsset) &&
+            string selectedNodePath = "";
+
                 targetNode.FullPath != draggedAsset.Filename)
             {
-                Debug.WriteLine(draggedAsset.Filename + " was droped onto " + targetNode.FullPath);
+                Debug.WriteLine(draggedAsset.Filename + " was dropped onto " + targetNode.FullPath);
                 string newFilePath = Path.Combine(isTargetPckFile
                     ? Path.GetDirectoryName(targetNode.FullPath)
                     : targetNode.FullPath, Path.GetFileName(draggedAsset.Filename));
                 Debug.WriteLine("New filepath: " + newFilePath);
                 draggedAsset.Filename = newFilePath;
-                _wasModified = true;
-                BuildMainTreeView();
-                return;
+                selectedNodePath = newFilePath;
             }
             else
             {
+                selectedNodePath = Path.Combine(targetNode.FullPath, draggedNode.Name);
                 IEnumerable<PckAsset> pckFiles = GetAllChildNodes(draggedNode.Nodes).Where(t => t.IsTagOfType<PckAsset>()).Select(t => t.Tag as PckAsset);
                 string oldPath = draggedNode.FullPath;
                 string newPath = Path.Combine(isTargetPckFile ? Path.GetDirectoryName(targetNode.FullPath) : targetNode.FullPath, draggedNode.Text).Replace('\\', '/');
@@ -1284,9 +1292,11 @@ namespace PckStudio.Controls
                 {
                     pckFile.Filename = Path.Combine(newPath, pckFile.Filename.Substring(oldPath.Length + 1)).Replace('\\', '/');
                 }
-                _wasModified = true;
-                BuildMainTreeView();
             }
+
+            _wasModified = true;
+            BuildMainTreeView();
+            SelectNodeByPath(selectedNodePath);
         }
 
         private void ImportFiles(string baseDirectory, IEnumerable<string> files, string prefix)
@@ -1860,6 +1870,8 @@ namespace PckStudio.Controls
 
             if (diag.ShowDialog(this) == DialogResult.OK)
             {
+                string newPath = "";
+
                 if (isFile)
                 {
                     if (EditorValue.File.Contains(diag.NewText, asset.Type))
@@ -1868,6 +1880,7 @@ namespace PckStudio.Controls
                         return;
                     }
                     asset.Filename = diag.NewText;
+                    newPath = asset.Filename;
                 }
                 else // folders
                 {
@@ -1881,9 +1894,11 @@ namespace PckStudio.Controls
                             folderAsset.Filename = childNode.FullPath;
                         }
                     }
+                    newPath = diag.NewText;
                 }
                 _wasModified = true;
                 BuildMainTreeView();
+                SelectNodeByPath(newPath);
             }
         }
 
