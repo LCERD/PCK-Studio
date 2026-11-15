@@ -64,6 +64,7 @@
             this.chestplateButtonControl = new PckStudio.Controls.PictureButtonControl();
             this.leggingsButtonControl = new PckStudio.Controls.PictureButtonControl();
             this.bootsButtonControl = new PckStudio.Controls.PictureButtonControl();
+            this.helpButton = new MetroFramework.Controls.MetroButton();
             this.skinPartTabContextMenu.SuspendLayout();
             this.parameterTabControl.SuspendLayout();
             this.skinPartsTabPage.SuspendLayout();
@@ -260,6 +261,7 @@
             this.renderer3D1.BackColor = System.Drawing.Color.DimGray;
             this.renderer3D1.CapeTexture = null;
             this.renderer3D1.CenterOnSelect = false;
+            this.renderer3D1.FlipCustomBoxSouths = false;
             this.renderer3D1.GuideLineColor = System.Drawing.Color.Empty;
             this.renderer3D1.HighlightlingColor = System.Drawing.Color.Aqua;
             this.renderer3D1.MouseSensetivity = 0.01F;
@@ -403,10 +405,20 @@
             this.bootsButtonControl.Tag = PckStudio.Core.Skin.SkinArmorFlagsFlag.BOOTS;
             this.bootsButtonControl.Click += new System.EventHandler(this.armorButtonControl_Click);
             // 
+            // helpButton
+            // 
+            this.helpButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.helpButton, "helpButton");
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.helpButton.UseSelectable = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
             // CustomSkinEditor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.bootsButtonControl);
             this.Controls.Add(this.leggingsButtonControl);
             this.Controls.Add(this.chestplateButtonControl);
@@ -483,5 +495,6 @@
         private Controls.PictureButtonControl chestplateButtonControl;
         private Controls.PictureButtonControl leggingsButtonControl;
         private Controls.PictureButtonControl bootsButtonControl;
+        private MetroFramework.Controls.MetroButton helpButton;
     }
 }

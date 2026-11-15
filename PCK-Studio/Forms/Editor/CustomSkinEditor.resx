@@ -119,17 +119,17 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="importTextureButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 249</value>
+    <value>3, 371</value>
   </data>
   <data name="importTextureButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
+    <value>91, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="importTextureButton.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
   </data>
   <data name="importTextureButton.Text" xml:space="preserve">
-    <value>Import</value>
+    <value>Import Texture</value>
   </data>
   <data name="&gt;&gt;importTextureButton.Name" xml:space="preserve">
     <value>importTextureButton</value>
@@ -141,19 +141,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;importTextureButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="exportTextureButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 249</value>
+    <value>100, 371</value>
   </data>
   <data name="exportTextureButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
+    <value>87, 21</value>
   </data>
   <data name="exportTextureButton.TabIndex" type="System.Int32, mscorlib">
     <value>114</value>
   </data>
   <data name="exportTextureButton.Text" xml:space="preserve">
-    <value>Export</value>
+    <value>Export Texture</value>
   </data>
   <data name="&gt;&gt;exportTextureButton.Name" xml:space="preserve">
     <value>exportTextureButton</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportTextureButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="skinPartTabContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -251,10 +251,10 @@
     <value>Top, Bottom, Left</value>
   </data>
   <data name="buttonDone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 477</value>
+    <value>3, 479</value>
   </data>
   <data name="buttonDone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 161</value>
+    <value>184, 159</value>
   </data>
   <data name="buttonDone.TabIndex" type="System.Int32, mscorlib">
     <value>111</value>
@@ -272,10 +272,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonDone.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="importSkinButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 396</value>
+    <value>3, 344</value>
   </data>
   <data name="importSkinButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 21</value>
@@ -296,10 +296,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;importSkinButton.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="exportSkinButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 396</value>
+    <value>97, 344</value>
   </data>
   <data name="exportSkinButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 21</value>
@@ -308,7 +308,7 @@
     <value>97</value>
   </data>
   <data name="exportSkinButton.Text" xml:space="preserve">
-    <value>Export skin</value>
+    <value>Export Skin</value>
   </data>
   <data name="&gt;&gt;exportSkinButton.Name" xml:space="preserve">
     <value>exportSkinButton</value>
@@ -320,13 +320,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportSkinButton.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="generateTextureCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="generateTextureCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 276</value>
+    <value>23, 242</value>
   </data>
   <data name="generateTextureCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 15</value>
@@ -347,7 +347,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;generateTextureCheckBox.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="skinPartListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -374,7 +374,7 @@
     <value>0</value>
   </data>
   <data name="captureScreenshotButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 450</value>
+    <value>3, 425</value>
   </data>
   <data name="captureScreenshotButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 21</value>
@@ -395,13 +395,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;captureScreenshotButton.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="showToolsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="showToolsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 375</value>
+    <value>56, 323</value>
   </data>
   <data name="showToolsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 15</value>
@@ -422,7 +422,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;showToolsCheckBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="skinNameLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -452,7 +452,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;skinNameLabel.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="parameterTabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -572,7 +572,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;parameterTabControl.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="renderer3D1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -590,13 +590,13 @@
     <value>renderer3D1</value>
   </data>
   <data name="&gt;&gt;renderer3D1.Type" xml:space="preserve">
-    <value>PckStudio.Rendering.SkinRenderer, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Rendering.SkinRenderer, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;renderer3D1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderer3D1.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="uvPictureBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
@@ -620,19 +620,19 @@
     <value>uvPictureBox</value>
   </data>
   <data name="&gt;&gt;uvPictureBox.Type" xml:space="preserve">
-    <value>PckStudio.ToolboxItems.InterpolationPictureBox, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.ToolboxItems.InterpolationPictureBox, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uvPictureBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;uvPictureBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="centerSelectionCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="centerSelectionCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 297</value>
+    <value>23, 263</value>
   </data>
   <data name="centerSelectionCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 15</value>
@@ -653,7 +653,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;centerSelectionCheckbox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="textureSizeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -683,10 +683,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textureSizeLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="renderSettingsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 423</value>
+    <value>97, 398</value>
   </data>
   <data name="renderSettingsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 21</value>
@@ -707,10 +707,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderSettingsButton.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="exportTemplateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 423</value>
+    <value>3, 398</value>
   </data>
   <data name="exportTemplateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 21</value>
@@ -731,7 +731,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportTemplateButton.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="boxEditorControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -752,13 +752,13 @@
     <value>boxEditorControl1</value>
   </data>
   <data name="&gt;&gt;boxEditorControl1.Type" xml:space="preserve">
-    <value>PckStudio.Controls.BoxEditorControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.BoxEditorControl, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;boxEditorControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;boxEditorControl1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="skinAdjustmentsEditorControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -776,19 +776,19 @@
     <value>skinAdjustmentsEditorControl1</value>
   </data>
   <data name="&gt;&gt;skinAdjustmentsEditorControl1.Type" xml:space="preserve">
-    <value>PckStudio.Controls.SkinAdjustmentsEditorControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.SkinAdjustmentsEditorControl, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;skinAdjustmentsEditorControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;skinAdjustmentsEditorControl1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="helmetButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="helmetButtonControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 339</value>
+    <value>27, 287</value>
   </data>
   <data name="helmetButtonControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -803,19 +803,19 @@
     <value>helmetButtonControl</value>
   </data>
   <data name="&gt;&gt;helmetButtonControl.Type" xml:space="preserve">
-    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;helmetButtonControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;helmetButtonControl.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="chestplateButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chestplateButtonControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 339</value>
+    <value>62, 287</value>
   </data>
   <data name="chestplateButtonControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -830,19 +830,19 @@
     <value>chestplateButtonControl</value>
   </data>
   <data name="&gt;&gt;chestplateButtonControl.Type" xml:space="preserve">
-    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;chestplateButtonControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chestplateButtonControl.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="leggingsButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="leggingsButtonControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 339</value>
+    <value>97, 287</value>
   </data>
   <data name="leggingsButtonControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -857,19 +857,19 @@
     <value>leggingsButtonControl</value>
   </data>
   <data name="&gt;&gt;leggingsButtonControl.Type" xml:space="preserve">
-    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;leggingsButtonControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;leggingsButtonControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="bootsButtonControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="bootsButtonControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 339</value>
+    <value>132, 287</value>
   </data>
   <data name="bootsButtonControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -884,19 +884,43 @@
     <value>bootsButtonControl</value>
   </data>
   <data name="&gt;&gt;bootsButtonControl.Type" xml:space="preserve">
-    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.PictureButtonControl, PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bootsButtonControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bootsButtonControl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="helpButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 452</value>
+  </data>
+  <data name="helpButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="helpButton.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="helpButton.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="&gt;&gt;helpButton.Name" xml:space="preserve">
+    <value>helpButton</value>
+  </data>
+  <data name="&gt;&gt;helpButton.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;helpButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;helpButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
+    <value>42</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -3410,6 +3434,9 @@
         AP//AAA=
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1333, 644</value>
   </data>
@@ -3459,6 +3486,6 @@
     <value>CustomSkinEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>PckStudio.Controls.EditorForm`1[[PckStudio.Core.Skin.Skin, PckStudio.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], PCK-Studio, Version=7.0.1.2, Culture=neutral, PublicKeyToken=null</value>
+    <value>PckStudio.Controls.EditorForm`1[[PckStudio.Core.Skin.Skin, PckStudio.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], PCK-Studio, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

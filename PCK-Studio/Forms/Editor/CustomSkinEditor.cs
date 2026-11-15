@@ -488,5 +488,10 @@ namespace PckStudio.Forms.Editor
 
             btn.Refresh();
         }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://minecraft.wiki/w/Skin_(Legacy_Console_Edition)");
+        }
     }
 }
