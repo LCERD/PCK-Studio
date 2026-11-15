@@ -44,15 +44,12 @@ namespace PckStudio.Forms.Editor
             this.trackContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addEntryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bulkEditTracksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeEntryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playOverworldInCreative = new MetroFramework.Controls.MetroCheckBox();
-            this.compressionUpDown = new System.Windows.Forms.NumericUpDown();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.bulkEditTracksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackListContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.trackContextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.compressionUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // trackListTreeView
@@ -165,6 +162,12 @@ namespace PckStudio.Forms.Editor
             resources.ApplyResources(this.editEntryToolStripMenuItem, "editEntryToolStripMenuItem");
             this.editEntryToolStripMenuItem.Click += new System.EventHandler(this.editEntryToolStripMenuItem_Click);
             // 
+            // bulkEditTracksToolStripMenuItem
+            // 
+            this.bulkEditTracksToolStripMenuItem.Name = "bulkEditTracksToolStripMenuItem";
+            resources.ApplyResources(this.bulkEditTracksToolStripMenuItem, "bulkEditTracksToolStripMenuItem");
+            this.bulkEditTracksToolStripMenuItem.Click += new System.EventHandler(this.bulkEditTracksToolStripMenuItem_Click);
+            // 
             // removeEntryMenuItem
             // 
             this.removeEntryMenuItem.Name = "removeEntryMenuItem";
@@ -182,46 +185,10 @@ namespace PckStudio.Forms.Editor
             this.playOverworldInCreative.UseCustomForeColor = true;
             this.playOverworldInCreative.UseSelectable = true;
             // 
-            // compressionUpDown
-            // 
-            resources.ApplyResources(this.compressionUpDown, "compressionUpDown");
-            this.compressionUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.compressionUpDown.ForeColor = System.Drawing.SystemColors.Window;
-            this.compressionUpDown.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.compressionUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.compressionUpDown.Name = "compressionUpDown";
-            this.compressionUpDown.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // metroLabel1
-            // 
-            resources.ApplyResources(this.metroLabel1, "metroLabel1");
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // bulkEditTracksToolStripMenuItem
-            // 
-            this.bulkEditTracksToolStripMenuItem.Name = "bulkEditTracksToolStripMenuItem";
-            resources.ApplyResources(this.bulkEditTracksToolStripMenuItem, "bulkEditTracksToolStripMenuItem");
-            this.bulkEditTracksToolStripMenuItem.Click += new System.EventHandler(this.bulkEditTracksToolStripMenuItem_Click);
-            // 
             // AudioEditor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.compressionUpDown);
             this.Controls.Add(this.playOverworldInCreative);
             this.Controls.Add(this.trackListTreeView);
             this.Controls.Add(this.trackTreeView);
@@ -236,7 +203,6 @@ namespace PckStudio.Forms.Editor
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.trackContextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.compressionUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,8 +223,6 @@ namespace PckStudio.Forms.Editor
 		private System.Windows.Forms.ToolStripMenuItem removeEntryMenuItem;
         private System.Windows.Forms.ImageList trackListIcons;
 		private MetroFramework.Controls.MetroCheckBox playOverworldInCreative;
-		private System.Windows.Forms.NumericUpDown compressionUpDown;
-		private MetroFramework.Controls.MetroLabel metroLabel1;
 		private System.Windows.Forms.ToolStripMenuItem changeCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bulkEditTracksToolStripMenuItem;
