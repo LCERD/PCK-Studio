@@ -38,8 +38,8 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateUvTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonDone = new MetroFramework.Controls.MetroButton();
-            this.importSkinButton = new MetroFramework.Controls.MetroButton();
-            this.exportSkinButton = new MetroFramework.Controls.MetroButton();
+            this.importModelButton = new MetroFramework.Controls.MetroButton();
+            this.exportModelButton = new MetroFramework.Controls.MetroButton();
             this.generateTextureCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.skinPartListBox = new System.Windows.Forms.ListBox();
             this.captureScreenshotButton = new MetroFramework.Controls.MetroButton();
@@ -140,23 +140,23 @@
             this.buttonDone.UseSelectable = true;
             this.buttonDone.Click += new System.EventHandler(this.buttonDone_Click);
             // 
-            // importSkinButton
+            // importModelButton
             // 
-            this.importSkinButton.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.importSkinButton, "importSkinButton");
-            this.importSkinButton.Name = "importSkinButton";
-            this.importSkinButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.importSkinButton.UseSelectable = true;
-            this.importSkinButton.Click += new System.EventHandler(this.importSkinButton_Click);
+            this.importModelButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.importModelButton, "importModelButton");
+            this.importModelButton.Name = "importModelButton";
+            this.importModelButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.importModelButton.UseSelectable = true;
+            this.importModelButton.Click += new System.EventHandler(this.importSkinButton_Click);
             // 
-            // exportSkinButton
+            // exportModelButton
             // 
-            this.exportSkinButton.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.exportSkinButton, "exportSkinButton");
-            this.exportSkinButton.Name = "exportSkinButton";
-            this.exportSkinButton.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.exportSkinButton.UseSelectable = true;
-            this.exportSkinButton.Click += new System.EventHandler(this.exportSkinButton_Click);
+            this.exportModelButton.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.exportModelButton, "exportModelButton");
+            this.exportModelButton.Name = "exportModelButton";
+            this.exportModelButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.exportModelButton.UseSelectable = true;
+            this.exportModelButton.Click += new System.EventHandler(this.exportSkinButton_Click);
             // 
             // generateTextureCheckBox
             // 
@@ -438,8 +438,8 @@
             this.Controls.Add(this.skinNameLabel);
             this.Controls.Add(this.captureScreenshotButton);
             this.Controls.Add(this.renderer3D1);
-            this.Controls.Add(this.exportSkinButton);
-            this.Controls.Add(this.importSkinButton);
+            this.Controls.Add(this.exportModelButton);
+            this.Controls.Add(this.importModelButton);
             this.Controls.Add(this.buttonDone);
             this.Name = "CustomSkinEditor";
             this.Style = MetroFramework.MetroColorStyle.Silver;
@@ -467,8 +467,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateUvTextureToolStripMenuItem;
         private MetroFramework.Controls.MetroButton buttonDone;
-        private MetroFramework.Controls.MetroButton exportSkinButton;
-        private MetroFramework.Controls.MetroButton importSkinButton;
+        private MetroFramework.Controls.MetroButton exportModelButton;
+        private MetroFramework.Controls.MetroButton importModelButton;
         private PckStudio.ToolboxItems.InterpolationPictureBox uvPictureBox;
         private MetroFramework.Controls.MetroButton importTextureButton;
         private MetroFramework.Controls.MetroButton exportTextureButton;
