@@ -1,4 +1,5 @@
-﻿using MetroFramework.Forms;
+﻿using DiscordRPC;
+using MetroFramework.Forms;
 using OMI.Formats.Behaviour;
 using OMI.Formats.Color;
 using OMI.Formats.GameRule;
@@ -169,7 +170,7 @@ namespace PckStudio.Controls
                 [PckAssetType.AudioFile] = HandleAudioFile,
                 [PckAssetType.ColourTableFile] = HandleColourFile,
                 [PckAssetType.GameRulesHeader] = HandleGameRuleFile,
-                [PckAssetType.SkinDataFile] = null,
+                [PckAssetType.SkinDataFile] = HandleSkinDataFile,
                 [PckAssetType.ModelsFile] = HandleModelsFile,
                 [PckAssetType.BehavioursFile] = HandleBehavioursFile,
                 [PckAssetType.MaterialFile] = HandleMaterialFile,
@@ -591,6 +592,15 @@ namespace PckStudio.Controls
                 ReloadParameterTreeView();
                 SetFileType(PckAssetType.SkinFile); // just a dirty way to get the right icon in case the anim was changed
             }
+        }
+
+        private void HandleSkinDataFile(PckAsset asset) // this is actually not needed
+        {
+            if (MessageBox.Show(this, 
+                "SkinDataFiles such as \"Skins.pck\" is not actually required by the game in order to use advanced skin features. Would you like to convert this archive into a folder?", 
+                "Convert SkinDataFile to folder?", 
+                MessageBoxButtons.YesNo) == DialogResult.Yes)
+                convertToFolderToolStripMenuItem_Click(null, null);
         }
 
         private void HandleModelsFile(PckAsset asset)
@@ -1145,6 +1155,11 @@ namespace PckStudio.Controls
 
                 case PckAssetType.LocalisationFile:
                     buttonEdit.Text = "EDIT LOC";
+                    buttonEdit.Visible = true;
+                    break;
+
+                case PckAssetType.SkinDataFile:
+                    buttonEdit.Text = "CONVERT TO FOLDER";
                     buttonEdit.Visible = true;
                     break;
 
@@ -2693,6 +2708,71 @@ namespace PckStudio.Controls
             }
         }
 
+        private void convertDataFileToFolder(PckAsset dataAsset)
+        {
+            try
+            {
+                PckFileReader reader = new PckFileReader(BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian);
+
+                PckFile dataFile = reader.FromStream(new MemoryStream(dataAsset.Data));
+
+                bool createFolder = MessageBox.Show(this,
+                    $"Would you like to create a folder to place the files inside of? If not, the files will be added to the root of the current folder.",
+                    "Create an additional folder?",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes;
+
+                string path = Path.Combine(Path.GetDirectoryName(dataAsset.Filename), createFolder ? Path.GetFileNameWithoutExtension(dataAsset.Filename) : String.Empty);
+
+                foreach (PckAsset asset in dataFile.GetAssets())
+                {
+                    PckAsset _asset = new PckAsset(Path.Combine(path, asset.Filename), asset.Type);
+                    _asset.SetData(asset.Data);
+
+                    foreach (KeyValuePair<string, string> parameter in asset.GetParameters())
+                    {
+                        _asset.AddParameter(parameter);
+                    }
+
+                    EditorValue.File.AddAsset(_asset);
+                }
+
+                // delete the file first so that it doesn't hang around and look weird while skin icons are generated
+                EditorValue.File.RemoveAsset(dataAsset);
+                BuildMainTreeView(true);
+
+                // ignore this whole block if it's not a skin data file - May
+                if (dataFile.xmlVersion != EditorValue.File.xmlVersion && dataAsset.Type == PckAssetType.SkinDataFile)
+                {
+                    if (MessageBox.Show(this,
+                        $"\"{dataAsset.Filename}\" has a Skin BOX Version value that does not match the one present in this file. This can affect how your skins look in game. Would you like to transfer this value?",
+                        "Archive not converted",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        switch (dataFile.xmlVersion)
+                        {
+                            case 1:
+                                (ParentForm as MainForm).setXMLVersion1MenuItem.PerformClick();
+                                break;
+                            case 2:
+                                (ParentForm as MainForm).setXMLVersion2MenuItem.PerformClick();
+                                break;
+                            case 3:
+                                (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
+                                break;
+                            default:
+                                (ParentForm as MainForm).setXMLVersion0MenuItem.PerformClick();
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"\"{dataAsset.Filename}\" was not a valid DataFile.", "Archive not converted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
         private void convertToFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode node = treeViewMain.SelectedNode;
@@ -2705,63 +2785,7 @@ namespace PckStudio.Controls
             }
 
             if(node.TryGetTagData(out PckAsset asset) && asset.Type == PckAssetType.SkinDataFile)
-            {
-                try
-                {
-                    PckFileReader reader = new PckFileReader(BigEndianCheckBox.Checked ? OMI.ByteOrder.BigEndian : OMI.ByteOrder.LittleEndian);
-
-                    PckFile skinDataPCK = reader.FromStream(new MemoryStream(asset.Data));
-
-                    string path = Path.Combine(Path.GetDirectoryName(asset.Filename), Path.GetFileNameWithoutExtension(asset.Filename));
-
-                    foreach (PckAsset skinAsset in skinDataPCK.GetAssets())
-                    {
-                        PckAsset _skinAsset = new PckAsset(Path.Combine(path, skinAsset.Filename), skinAsset.Type);
-                        _skinAsset.SetData(skinAsset.Data);
-                        
-                        foreach(KeyValuePair<string, string> parameter in skinAsset.GetParameters())
-                        {
-                            _skinAsset.AddParameter(parameter);
-                        }
-
-                        EditorValue.File.AddAsset(_skinAsset);
-                    }
-
-                    // delete the file first so that it doesn't hang around and look weird while skin icons are generated
-                    EditorValue.File.RemoveAsset(asset);
-                    BuildMainTreeView(true);
-
-                    if (skinDataPCK.xmlVersion != EditorValue.File.xmlVersion)
-                    {
-                        if(MessageBox.Show(this, 
-                            $"\"{asset.Filename}\" has a Skin BOX Version value that does not match the one present in this file. This can affect how your skins look in game. Would you like to transfer this value?", 
-                            "Archive not converted", 
-                            MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            switch (skinDataPCK.xmlVersion)
-                            {
-                                case 1:
-                                    (ParentForm as MainForm).setXMLVersion1MenuItem.PerformClick();
-                                    break;
-                                case 2:
-                                    (ParentForm as MainForm).setXMLVersion2MenuItem.PerformClick();
-                                    break;
-                                case 3:
-                                    (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
-                                    break;
-                                default:
-                                    (ParentForm as MainForm).setXMLVersion0MenuItem.PerformClick();
-                                    break;
-                            }
-                        }
-                    }
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(this, $"\"{asset.Filename}\" was not a valid SkinData file.", "Archive not converted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
+                convertDataFileToFolder(asset);
         }
 
         private void moveUpStripMenuItem_Click(object sender, EventArgs e)
