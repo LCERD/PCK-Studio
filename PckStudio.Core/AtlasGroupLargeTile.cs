@@ -33,11 +33,11 @@ namespace PckStudio.Core
 
         public override Size GetSize(Size tileSize) => new Size(RowSpan * tileSize.Width, ColumnSpan * tileSize.Height);
 
-        public AtlasGroupLargeTile(string name, int row, int column, int rowSpan, int columnSpan)
-            : base(name, row, column)
+        public AtlasGroupLargeTile(string name, int column, int row, int columnSpan, int rowSpan)
+            : base(name, column, row)
         {
-            RowSpan = Math.Max(1, rowSpan);
-            ColumnSpan = Math.Max(1, columnSpan);
+            RowSpan = Math.Max(1, columnSpan);
+            ColumnSpan = Math.Max(1, rowSpan);
         }
     }
 }
