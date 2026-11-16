@@ -296,7 +296,7 @@ namespace PckStudio.Forms.Editor
 
         private void SetTile(Image texture)
         {
-            if (_selectedTile.IsPartOfGroup)
+            if (_selectedTile.IsPartOfGroup && allowGroupsToolStripMenuItem.Checked)
             {
                 AtlasGroup group = _selectedTile.GetGroup();
                 _atlas.SetGroup(group, texture);
