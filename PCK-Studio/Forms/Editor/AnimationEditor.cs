@@ -75,6 +75,7 @@ namespace PckStudio.Forms.Editor
 
         private void LoadAnimationTreeView()
         {
+            UpdateTreeView();
             if (EditorValue is null)
             {
                 AnimationStartStopBtn.Visible = false;
