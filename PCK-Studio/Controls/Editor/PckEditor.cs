@@ -1398,7 +1398,7 @@ namespace PckStudio.Controls
                         continue;
                 }
 
-                string assetPath = Path.Combine(prefix + filepath.Substring(baseDirectory.Length)).TrimStart('/', '\\');
+                string assetPath = Path.Combine(prefix + filepath.Substring(baseDirectory.Length)).Replace("\\","/").TrimStart('/');
                 PckAssetType assetType = lastSelectedAssetType;
 
                 bool askForAssetType = true;
