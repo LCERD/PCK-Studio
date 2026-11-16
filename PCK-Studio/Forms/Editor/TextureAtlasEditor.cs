@@ -446,7 +446,7 @@ namespace PckStudio.Forms.Editor
 
         private void animationButton_Click(object sender, EventArgs e)
         {
-            if (_selectedTile.IsPartOfGroup)
+            if (_selectedTile.IsPartOfGroup && allowGroupsToolStripMenuItem.Checked)
             {
                 AtlasGroup group = _selectedTile.GetGroup();
                 Animation anim = _atlas.GetAnimationFromGroup(group);
