@@ -402,6 +402,8 @@ namespace PckStudio.Controls
                             bool found = EditorValue.File.TryGetAsset(key + ".png", PckAssetType.TextureFile, out PckAsset foundAsset) ||
                                          EditorValue.File.TryGetAsset(key + ".tga", PckAssetType.TextureFile, out foundAsset);
 
+                            string extension = found ? Path.GetExtension(foundAsset.Filename) : ".png";
+
                             if (found)
                             {
                                 animationSaveContext = new DelegatedSaveContext<Animation>(Settings.Default.AutoSaveChanges, (animation) =>
@@ -417,8 +419,14 @@ namespace PckStudio.Controls
                                     Debug.WriteLine("New animation has 0 frames. Aborting saving.");
                                     return;
                                 }
-                                PckAsset newAnimationAsset = EditorValue.File.CreateNewAsset(key + ".png", PckAssetType.TextureFile);
-                                newAnimationAsset.SetSerializedData(animation, AnimationSerializer.DefaultSerializer);
+
+                                string assetName = key + extension;
+
+                                if (!EditorValue.File.Contains(assetName, PckAssetType.TextureFile))
+                                {
+                                    PckAsset newAnimationAsset = EditorValue.File.CreateNewAsset(assetName, PckAssetType.TextureFile);
+                                    newAnimationAsset.SetSerializedData(animation, AnimationSerializer.DefaultSerializer);
+                                }
                                 BuildMainTreeView();
                             });
                             return true;
