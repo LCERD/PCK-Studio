@@ -53,9 +53,6 @@ namespace PckStudio.Core
              new AtlasGroupLargeTile("Jungle Door"  , column: 3, row: 23, columnSpan: 1, rowSpan: 2),
              new AtlasGroupLargeTile("Spruce Door"  , column: 4, row: 23, columnSpan: 1, rowSpan: 2),
 
-             new AtlasGroupLargeTile("Flowing Water", column: 14, row: 8, columnSpan: 2, rowSpan: 2),
-             new AtlasGroupLargeTile("Flowing Lava" , column: 14, row: 8, columnSpan: 2, rowSpan: 2),
-
              new AtlasGroupLargeTile("Large Fern"       , column: 0, row: 20, columnSpan: 1, rowSpan: 2),
              new AtlasGroupLargeTile("Double Tall Grass", column: 1, row: 20, columnSpan: 1, rowSpan: 2),
              new AtlasGroupLargeTile("Poeny"            , column: 2, row: 20, columnSpan: 1, rowSpan: 2),

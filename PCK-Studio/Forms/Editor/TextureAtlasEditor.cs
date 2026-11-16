@@ -492,7 +492,7 @@ namespace PckStudio.Forms.Editor
 
         private string GetSanitizedFilename()
         {
-            if (_selectedTile.IsPartOfGroup)
+            if (_selectedTile.IsPartOfGroup && allowGroupsToolStripMenuItem.Checked)
             {
                 AtlasGroup group = _selectedTile.GetGroup();
                 return group.Name.Replace(' ', '_').Trim().ToLower();
