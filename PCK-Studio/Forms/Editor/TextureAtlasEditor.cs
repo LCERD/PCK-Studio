@@ -219,8 +219,8 @@ namespace PckStudio.Forms.Editor
             ImageLayoutDirection imageLayout)
         {
             Point result = new Point();
-            int rowCount = imageSize.Width / areaSize.Width;
-            int columnCount = imageSize.Height / areaSize.Height;
+            int columnCount = imageSize.Width / areaSize.Width;
+            int rowCount = imageSize.Height / areaSize.Height;
             switch (sizeMode)
             {
                 case PictureBoxSizeMode.Normal:
@@ -281,15 +281,15 @@ namespace PckStudio.Forms.Editor
                     break;
             }
             Debug.WriteLine(result);
-            return GetSelectedIndex(result.X, result.Y, rowCount, columnCount, imageLayout);
+            return GetSelectedIndex(result.X, result.Y, columnCount, rowCount, imageLayout);
         }
 
-        private static int GetSelectedIndex(int x, int y, int rowCount, int columnCount, ImageLayoutDirection imageLayout)
+        private static int GetSelectedIndex(int x, int y, int columnCount, int rowCount, ImageLayoutDirection imageLayout)
         {
             return imageLayout switch
             {
-                ImageLayoutDirection.Horizontal => x + y * rowCount,
-                ImageLayoutDirection.Vertical   => y + x * columnCount,
+                ImageLayoutDirection.Horizontal => x + y * columnCount,
+                ImageLayoutDirection.Vertical   => y + x * rowCount,
                 _ => throw new ArgumentOutOfRangeException(nameof(imageLayout)),
             };
         }
@@ -467,7 +467,7 @@ namespace PckStudio.Forms.Editor
 
             Debug.Assert(isValidAnimationSaveContext, "Couldn't get valid animation save context.");
 
-            var animationEditor = new AnimationEditor(hasAnimation ? animation : Animation.CreateEmpty(), animationSaveContext, tileInfo.DisplayName);
+            var animationEditor = new AnimationEditor(hasAnimation ? animation : new Animation(new List<Image>() { _atlas.GetTileTexture(_selectedTile) }, true), animationSaveContext, tileInfo.DisplayName);
             if (animationEditor.ShowDialog(this) == DialogResult.OK)
             {
                 // so animations can automatically update upon saving
