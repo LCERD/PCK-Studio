@@ -27,7 +27,7 @@ namespace PckStudio.Forms.Editor
 	{
 		public string defaultType = "yes";
 
-        private static readonly List<string> TrackLists = new List<string>
+		private static readonly List<string> TrackLists = new List<string>
 		{
 			"Overworld",
 			"Nether",
@@ -45,15 +45,15 @@ namespace PckStudio.Forms.Editor
 			 */
 		};
 
-        public AudioEditor(PckAudioFile audioFile, ISaveContext<PckAudioFile> saveContext)
+		public AudioEditor(PckAudioFile audioFile, ISaveContext<PckAudioFile> saveContext)
 			: base(audioFile, saveContext)
-        {
-            InitializeComponent();
-            saveToolStripMenuItem1.Visible = !saveContext.AutoSave;
-            SetUpTree();
-        }
+		{
+			InitializeComponent();
+			saveToolStripMenuItem1.Visible = !saveContext.AutoSave;
+			SetUpTree();
+		}
 
-        private string GetTrackListFromId(PckAudioFile.AudioTrackList.EAudioType trackListID)
+		private string GetTrackListFromId(PckAudioFile.AudioTrackList.EAudioType trackListID)
 			=> trackListID >= PckAudioFile.AudioTrackList.EAudioType.Overworld &&
 				trackListID <= PckAudioFile.AudioTrackList.EAudioType.BuildOff
 				? TrackLists[(int)trackListID]
@@ -79,7 +79,7 @@ namespace PckStudio.Forms.Editor
 				if (trackList.AudioType == PckAudioFile.AudioTrackList.EAudioType.Creative)
 				{
 					if (trackList.Name == "include_overworld" &&
-                        EditorValue.TryGetTrackList(PckAudioFile.AudioTrackList.EAudioType.Overworld, out PckAudioFile.AudioTrackList overworldTrackList))
+						EditorValue.TryGetTrackList(PckAudioFile.AudioTrackList.EAudioType.Overworld, out PckAudioFile.AudioTrackList overworldTrackList))
 					{
 						foreach (var name in trackList.TrackNames.ToList())
 						{
@@ -126,7 +126,7 @@ namespace PckStudio.Forms.Editor
 				return;
 
 			EditorValue.AddTrackList(GetTrackListId(add.SelectedItem));
-            PckAudioFile.AudioTrackList trackList = EditorValue.GetTrackList(GetTrackListId(add.SelectedItem));
+			PckAudioFile.AudioTrackList trackList = EditorValue.GetTrackList(GetTrackListId(add.SelectedItem));
 
 			if (GetTrackListId(add.SelectedItem) == PckAudioFile.AudioTrackList.EAudioType.Creative)
 			{
@@ -143,9 +143,9 @@ namespace PckStudio.Forms.Editor
 
 		private void addTrack(PckAudioFile.AudioTrackList trackList, String trackname)
 		{
-            trackList.TrackNames.Add(trackname);
-            trackTreeView.Nodes.Add(trackname);
-        }
+			trackList.TrackNames.Add(trackname);
+			trackTreeView.Nodes.Add(trackname);
+		}
 
 		private void addEntryMenuItem_Click(object sender, EventArgs e)
 		{
@@ -155,33 +155,33 @@ namespace PckStudio.Forms.Editor
 				audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/track\" => \"DLC/{Pack}/Data/music/track.binka\")";
 				audioEntry.LabelText = "Path";
 				audioEntry.OKButtonText = "Add";
-                if (audioEntry.ShowDialog() == DialogResult.OK)
+				if (audioEntry.ShowDialog() == DialogResult.OK)
 				{
 					addTrack(trackList, audioEntry.NewText);
 				}
 			}
 		}
 
-        private void editEntryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList && trackTreeView.SelectedNode is TreeNode track)
-            {
-                TextPrompt audioEntry = new TextPrompt(track.Text);
-                audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/track\" => \"DLC/{Pack}/Data/music/track.binka\")";
-                audioEntry.LabelText = "Path";
-                audioEntry.OKButtonText = "Save";
-                if (audioEntry.ShowDialog() == DialogResult.OK)
-                {
-                    int index = trackList.TrackNames.IndexOf(track.Text);
-                    if (index != -1) // Check if the item was found
-                    {
-                        track.Text = trackList.TrackNames[index] = audioEntry.NewText;
-                    }
-                }
-            }
-        }
+		private void editEntryToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList && trackTreeView.SelectedNode is TreeNode track)
+			{
+				TextPrompt audioEntry = new TextPrompt(track.Text);
+				audioEntry.contextLabel.Text = "Please enter the relative file path without an extension. (i.e; \"music/track\" => \"DLC/{Pack}/Data/music/track.binka\")";
+				audioEntry.LabelText = "Path";
+				audioEntry.OKButtonText = "Save";
+				if (audioEntry.ShowDialog() == DialogResult.OK)
+				{
+					int index = trackList.TrackNames.IndexOf(track.Text);
+					if (index != -1) // Check if the item was found
+					{
+						track.Text = trackList.TrackNames[index] = audioEntry.NewText;
+					}
+				}
+			}
+		}
 
-        private void removeTrackListStripMenuItem_Click(object sender, EventArgs e)
+		private void removeTrackListStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (trackListTreeView.SelectedNode is TreeNode main &&
 				EditorValue.RemoveTrackList(GetTrackListId(trackListTreeView.SelectedNode.Text)))
@@ -223,8 +223,22 @@ namespace PckStudio.Forms.Editor
 			{
 				foreach(String s in (string[])e.Data.GetData(DataFormats.FileDrop, false))
 				{
-                    addTrack(trackList, Path.GetFileNameWithoutExtension(s));
-                }
+					if (Directory.Exists(s))
+					{
+						foreach (string file in Directory.GetFiles(s, "*.binka", SearchOption.AllDirectories))
+						{
+							string directoryName = Path.GetFileName(s);
+                            string relativePath = Path.GetDirectoryName(file).Substring(file.LastIndexOf(directoryName));
+							//why does .net 4.8 not have GetRelativePath??? - May
+
+							addTrack(trackList, Path.Combine(relativePath, Path.GetFileNameWithoutExtension(file)).Replace("\\","/"));
+						}
+					}
+					else if (File.Exists(s) && Path.GetExtension(s) == ".binka")
+					{
+						addTrack(trackList, Path.GetFileNameWithoutExtension(s));
+					}
+				}
 			}
 		}
 
@@ -272,7 +286,7 @@ namespace PckStudio.Forms.Editor
 			e.Effect = DragDropEffects.All;
 		}
 
-        private void setTrackListToolStripMenuItem_Click(object sender, EventArgs e)
+		private void setTrackListToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (!(trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList))
 				return;
@@ -289,7 +303,7 @@ namespace PckStudio.Forms.Editor
 
 				EditorValue.AddTrackList(trackList.parameterType, GetTrackListId(add.SelectedItem), trackList.AudioType == PckAudioFile.AudioTrackList.EAudioType.Overworld && playOverworldInCreative.Checked ? "include_overworld" : "");
 
-                PckAudioFile.AudioTrackList newTrackList = EditorValue.GetTrackList(GetTrackListId(add.SelectedItem));
+				PckAudioFile.AudioTrackList newTrackList = EditorValue.GetTrackList(GetTrackListId(add.SelectedItem));
 
 				trackList.TrackNames.ForEach(c => newTrackList.TrackNames.Add(c));
 
@@ -301,34 +315,34 @@ namespace PckStudio.Forms.Editor
 			}
 		}
 
-        private void AudioEditor_FormClosing(object sender, FormClosingEventArgs e)
-        {
+		private void AudioEditor_FormClosing(object sender, FormClosingEventArgs e)
+		{
 			if (Settings.Default.AutoSaveChanges)
 			{
 				saveToolStripMenuItem1_Click(sender, EventArgs.Empty);
 			}
-        }
+		}
 
-        private void trackTreeView_DoubleClick(object sender, EventArgs e) => editEntryToolStripMenuItem_Click(sender, e);
+		private void trackTreeView_DoubleClick(object sender, EventArgs e) => editEntryToolStripMenuItem_Click(sender, e);
 
-        private void bulkEditTracksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList)
-            {
-                using (var input = new MultiTextPrompt(trackList.TrackNames))
-                {
-                    if (input.ShowDialog(this) == DialogResult.OK)
-                    {
-                        trackTreeView.Nodes.Clear();
+		private void bulkEditTracksToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (trackListTreeView.SelectedNode is TreeNode t && t.Tag is PckAudioFile.AudioTrackList trackList)
+			{
+				using (var input = new MultiTextPrompt(trackList.TrackNames))
+				{
+					if (input.ShowDialog(this) == DialogResult.OK)
+					{
+						trackTreeView.Nodes.Clear();
 						trackList.TrackNames.Clear();
 
 						foreach (String trackName in input.TextOutput)
 						{
 							addTrack(trackList, trackName);
 						}
-                    }
-                }
-            }
-        }
-    }
+					}
+				}
+			}
+		}
+	}
 }
