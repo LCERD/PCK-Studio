@@ -427,7 +427,7 @@ namespace PckStudio.Controls
                     ISaveContext<Atlas> textureAtlasSaveContext = new DelegatedSaveContext<Atlas>(Settings.Default.AutoSaveChanges, atlas => asset.SetTexture(atlas));
 
                     var viewer = new TextureAtlasEditor(atlas, textureAtlasSaveContext, resourceLocation, colorContainer, tryGetAnimation, tryGetAnimationSaveContext);
-                    if (viewer.ShowDialog(this) == DialogResult.OK)
+                    if (viewer.ShowDialog(this) == DialogResult.OK || viewer.animationsUpdated)
                     {
                         _wasModified = true;
                         BuildMainTreeView();

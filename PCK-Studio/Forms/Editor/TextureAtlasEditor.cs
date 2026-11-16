@@ -42,6 +42,7 @@ namespace PckStudio.Forms.Editor
         private readonly ColorContainer _colourTable;
         private readonly ResourceCategory _resourceLocationCategory;
         private readonly Atlas _atlas;
+        public bool animationsUpdated;
 
         private AtlasTile _selectedTile;
 
@@ -472,6 +473,7 @@ namespace PckStudio.Forms.Editor
             {
                 // so animations can automatically update upon saving
                 SelectedIndex = _selectedTile.Index;
+                animationsUpdated = true;
             }
         }
 
