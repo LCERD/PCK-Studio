@@ -2820,7 +2820,7 @@ namespace PckStudio.Controls
             if (treeViewMain.SelectedNode is TreeNode selectedNode && selectedNode.Tag is PckAsset selectedAsset)
             {
                 int index = EditorValue.File.IndexOfAsset(selectedAsset);
-                if (index == EditorValue.File.AssetCount || selectedNode == selectedNode.Parent.LastNode)
+                if (index >= EditorValue.File.AssetCount - 1 || (selectedNode.Parent != null && selectedNode == selectedNode.Parent.LastNode))
                     return;
 
                 PckAsset targetAsset = EditorValue.File.GetAssets().ElementAt(index + 1);
