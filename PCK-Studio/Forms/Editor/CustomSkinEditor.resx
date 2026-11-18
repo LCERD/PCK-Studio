@@ -260,7 +260,7 @@
     <value>111</value>
   </data>
   <data name="buttonDone.Text" xml:space="preserve">
-    <value>Create</value>
+    <value>Done</value>
   </data>
   <data name="&gt;&gt;buttonDone.Name" xml:space="preserve">
     <value>buttonDone</value>
