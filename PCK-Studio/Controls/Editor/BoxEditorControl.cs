@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
@@ -21,7 +22,7 @@ namespace PckStudio.Controls
         public event EventHandler BoxChanged;
 
         private SkinBOX result;
-        private int boxVersion = 0;
+        public int boxVersion = 0;
 
         private bool CancelBoxChanged = false;
 
@@ -61,8 +62,13 @@ namespace PckStudio.Controls
         public void SetBOXVersion(int xmlVersion)
         {
             boxVersion = xmlVersion;
-            Debug.WriteLine(xmlVersion);
-            inflationUpDown.Enabled = boxVersion == 3;
+        }
+
+        public bool ShowScalingSupportPrompt()
+        {
+            bool pm = MessageBox.Show(this.ParentForm, $"This pack does not support custom box scaling but this skin uses the parameter. Box scaling was added in Xbox 360 Title Update 69, PlayStation versions 1.76, and Wii U version Patch 43. Xbox One and Switch Editions do not have support for this feature. This value can affect how other skins in this pack appear. This feature can be changed at any time via the \"PCK\"->\"Set BOX Version\" menu button at the top of the program. Would you like to enable it?", "Unlock box scaling support for this pack?", MessageBoxButtons.YesNo) == DialogResult.Yes;
+            if (pm) boxVersion = 3;
+            return pm;
         }
 
         public void SetBOX(SkinBOX box)
@@ -88,8 +94,11 @@ namespace PckStudio.Controls
             leggingsCheckBox.Checked = box.ArmorMaskFlags.GetFlag(SkinArmorFlagsFlag.LEGGINGS);
             bootsCheckBox.Checked = box.ArmorMaskFlags.GetFlag(SkinArmorFlagsFlag.BOOTS);
             mirrorCheckBox.Checked = box.Mirror;
-            // if the XMLVersion doesn't support scaling, set this value to 0 because it's not supported and fixes a rendering issue - May
-            inflationUpDown.Value = boxVersion == 3 ? (decimal)box.Scale : 0;
+            // if the XMLVersion doesn't support scaling, prompt user to change the XMLVersion - May
+            decimal scale = (decimal)box.Scale;
+            inflationUpDown.Value = 
+                boxVersion == 3 ? scale : 
+                    scale != 0 ? ShowScalingSupportPrompt() ? scale : 0 : 0;
             CancelBoxChanged = false;
         }
 

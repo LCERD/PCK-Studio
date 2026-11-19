@@ -60,6 +60,7 @@
             this.boxEditorControl1.Name = "boxEditorControl1";
             this.boxEditorControl1.Size = new System.Drawing.Size(502, 146);
             this.boxEditorControl1.TabIndex = 2;
+            this.boxEditorControl1.BoxChanged += new System.EventHandler(this.boxEditorControl1_BoxChanged);
             // 
             // BoxEditor
             // 

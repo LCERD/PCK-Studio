@@ -11,6 +11,8 @@ namespace PckStudio.Forms.Editor
 		private SkinBOX result;
 		public SkinBOX Result => result;
 
+		public int boxVersion => boxEditorControl1.boxVersion;
+
         public BoxEditor(string formattedBoxString, int xmlVersion)
 			: this(SkinBOX.FromString(formattedBoxString), xmlVersion)
 		{
@@ -27,7 +29,7 @@ namespace PckStudio.Forms.Editor
 		{
 			result = boxEditorControl1.GetBOX();
 			DialogResult = DialogResult.OK;
-		}
+        }
 
         private void BoxEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -35,6 +37,12 @@ namespace PckStudio.Forms.Editor
 			{
 				saveButton_Click(sender, EventArgs.Empty);
 			}
+        }
+
+        private void boxEditorControl1_BoxChanged(object sender, EventArgs e)
+        {
+			if (boxVersion != 3 && boxEditorControl1.GetBOX().Scale != 0)
+				boxEditorControl1.ShowScalingSupportPrompt();
         }
     }
 }

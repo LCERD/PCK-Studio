@@ -25,7 +25,7 @@ namespace PckStudio.Forms.Editor
         private const float cOffsetMaximum = 100_000f;
         private Random _rng;
         private bool _inflateOverlayParts;
-        private int _xmlVersion;
+        public int _xmlVersion;
         private SkinGameFlags _gameFlags;
         private SkinArmorFlags displayArmorFlags = SkinArmorFlags.Empty;
 
@@ -73,7 +73,8 @@ namespace PckStudio.Forms.Editor
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            renderer3D1.Initialize(_inflateOverlayParts);
+            renderer3D1.Initialize();
+            renderer3D1.autoInflateOverlayParts = _inflateOverlayParts;
             renderer3D1.GuideLineColor = Color.LightCoral;
             skinNameLabel.Text = EditorValue.MetaData.Name;
             if (EditorValue.HasCape)
@@ -465,6 +466,14 @@ namespace PckStudio.Forms.Editor
                 renderer3D1.ModelData[index] = boxEditorControl1.GetBOX();
                 renderer3D1.ShowArmorMask = displayArmorFlags;
                 _skinPartListBindingSource.ResetItem(index);
+            }
+
+            if (boxEditorControl1.boxVersion == 3 && _xmlVersion != 3)
+            {
+                _inflateOverlayParts = false;
+                renderer3D1.autoInflateOverlayParts = _inflateOverlayParts;
+                _xmlVersion = 3;
+                boxEditorControl1_BoxChanged(sender, e); // firing this again seems to do the trick for resetting any previously auto scaled boxes
             }
         }
 

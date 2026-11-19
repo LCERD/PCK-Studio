@@ -268,7 +268,7 @@ namespace PckStudio.Rendering
         private float animationMaxAngleInDegrees = 5f;
 
         private bool showWireFrame = false;
-        private bool autoInflateOverlayParts;
+        public bool autoInflateOverlayParts;
 
         private const float defaultArmRotation = 5f;
 
@@ -333,11 +333,10 @@ namespace PckStudio.Rendering
             ModelData.CollectionChanged += ModelData_CollectionChanged;
         }
 
-        public void Initialize(bool inflateOverlayParts)
+        public void Initialize()
         {
             if (initialized)
                 Debug.Fail("Already Initialized!");
-            autoInflateOverlayParts = inflateOverlayParts;
             InitializeShaders();
             Renderer.SetClearColor(BackColor);
             GLErrorCheck();

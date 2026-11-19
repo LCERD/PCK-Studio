@@ -598,6 +598,8 @@ namespace PckStudio.Controls
                 parameterValueTextBox.Text = ParameterTypeTextBox.Text = string.Empty;
                 _wasModified = true;
                 ReloadParameterTreeView();
+                if (skinEditor._xmlVersion != EditorValue.File.xmlVersion)
+                    (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
                 SetFileType(PckAssetType.SkinFile); // just a dirty way to get the right icon in case the anim was changed
             }
         }
@@ -2205,6 +2207,8 @@ namespace PckStudio.Controls
                                 {
                                     asset.SetParameter(asset.GetParameterIndex(parameter), new KeyValuePair<string, string>("BOX", diag.Result.ToString()));
                                     ReloadParameterTreeView();
+                                    if (diag.boxVersion != EditorValue.File.xmlVersion)
+                                        (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
                                     _wasModified = true;
                                 }
                                 return;
