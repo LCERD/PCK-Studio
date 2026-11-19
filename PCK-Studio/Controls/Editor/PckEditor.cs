@@ -2209,6 +2209,7 @@ namespace PckStudio.Controls
                                     ReloadParameterTreeView();
                                     if (diag.boxVersion != EditorValue.File.xmlVersion)
                                         (ParentForm as MainForm).setXMLVersion3MenuItem.PerformClick();
+                                    SetFileType(PckAssetType.SkinFile); // just to reload the icon
                                     _wasModified = true;
                                 }
                                 return;
