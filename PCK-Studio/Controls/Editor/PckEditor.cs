@@ -1132,7 +1132,7 @@ namespace PckStudio.Controls
                     catch(Exception ex)
                     {
                         previewPictureBox.Image = Resources.NoImageFound;
-                        MessageBox.Show(this, "Not a valid .PNG or .TGA image or invalid image data found");
+                        MessageBox.Show(this, $"{asset.Filename} is not a valid .PNG or .TGA image and could not be displayed.", "Invalid image data found");
                     }
 
                     if (asset.Type != PckAssetType.TextureFile)
